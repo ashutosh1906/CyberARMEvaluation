@@ -109,3 +109,5 @@ def find_threat_statistics_all(asset_statistics,asset_type_enumeration,threat_th
     # threat_threat_action_file.close()
     return total_reported_incidents
 
+
+

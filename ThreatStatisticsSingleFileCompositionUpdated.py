@@ -10,22 +10,14 @@ THREAT_NAME = 'action'
 THREAT_ACTION_NAME = 'variety'
 UNKNOWN_TAG = 'unknown'
 AVOID_WORDS = ['notes']
-WRITE_FILE_NAME = 'Global_Threat_Statistics.txt'
-FILENAME_TAG_OPEN = '<'
-FILENAME_TAG_CLOSE = '>'
-ASSET_TAG_WRITE_OPEN = "<<"
-ASSET_TAG_WRITE_CLOSE = ">>"
-THREAT_TAG_OPEN = '<<<'
-THREAT_TAG_CLOSE = '>>>'
-THREAT_ACTION_TAG_OPEN = '<<<<'
-THREAT_ACTION_TAG_CLOSE = '>>>>'
+
 ################################################################################################## End of the Configuration #######################################################################
 ################################################################################################## Global Variables #######################################################################
 # asset_statistics = {}
 # asset_type_enumeration  = []
 ################################################################################################## End of Global Variables #######################################################################
 ############################################# Collect all the reports in a single file ##################################
-write_threat_statistics_file = open(WRITE_FILE_NAME,'w')
+write_threat_statistics_file = open(ProjectConfigFile.WRITE_FILE_NAME,'w')
 ############################################### End of the writings #####################################################
 
 def init_custome(asset_statistics,asset_type_enumeration):
@@ -58,11 +50,11 @@ def read_json_threat_report(threat_report,file):
     # print asset_list_report
 
     ################################## Write the asset List #################################################
-    write_threat_statistics_file.write(ASSET_TAG_WRITE_OPEN)
+    write_threat_statistics_file.write(ProjectConfigFile.ASSET_TAG_WRITE_OPEN)
     for asset_name in range(len(asset_list_report)-1):
         write_threat_statistics_file.write("%s,"%(asset_name))
     write_threat_statistics_file.write(asset_list_report[len(asset_list_report)-1])
-    write_threat_statistics_file.write("%s\n"%(ASSET_TAG_WRITE_CLOSE))
+    write_threat_statistics_file.write("%s\n"%(ProjectConfigFile.ASSET_TAG_WRITE_CLOSE))
     ################################# End of the asset list #################################################
     ################################################################# Threat ########################################################################
     if THREAT_NAME in threat_report.keys():
@@ -71,15 +63,15 @@ def read_json_threat_report(threat_report,file):
                 continue
             if THREAT_ACTION_NAME not in threat_report[THREAT_NAME][threat].keys():
                 continue
-            write_threat_statistics_file.write("%s%s%s\n"%(THREAT_TAG_OPEN,threat,THREAT_TAG_CLOSE))
+            write_threat_statistics_file.write("%s%s%s\n"%(ProjectConfigFile.THREAT_TAG_OPEN,threat,ProjectConfigFile.THREAT_TAG_CLOSE))
             ############################################################################## Threat Action ####################################################################
             threat_action_list = threat_report[THREAT_NAME][threat][THREAT_ACTION_NAME]
             # print "%s --> " % (threat),
-            write_threat_statistics_file.write(THREAT_ACTION_TAG_OPEN)
+            write_threat_statistics_file.write(ProjectConfigFile.THREAT_ACTION_TAG_OPEN)
             for threat_action in threat_action_list:
                 threat_action = threat_action.lower()
                 write_threat_statistics_file.write("%s "%(threat_action))
-            write_threat_statistics_file.write("%s\n"%(THREAT_ACTION_TAG_CLOSE))
+            write_threat_statistics_file.write("%s\n"%(ProjectConfigFile.THREAT_ACTION_TAG_CLOSE))
 
     write_threat_statistics_file.write("\n")
 
@@ -95,7 +87,7 @@ def find_threat_statistics_all():
         # print "Root : %s Dir : %s Files : %s" % (root,dir,files)
         for filename in files:
             current_file = open(os.path.join(root, filename), 'r+')
-            write_threat_statistics_file.write("%s%s%s\n"%(FILENAME_TAG_OPEN,filename,FILENAME_TAG_CLOSE))
+            write_threat_statistics_file.write("%s%s%s\n"%(ProjectConfigFile.FILENAME_TAG_OPEN,filename,ProjectConfigFile.FILENAME_TAG_CLOSE))
             try:
                 threat_report = json.load(current_file)
                 read_json_threat_report(threat_report,current_file)

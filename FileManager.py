@@ -1,3 +1,3 @@
-import ThreatStatisticsSingleFileComposition
+import ThreatStatisticsSingleFileCompositionUpdated
 if __name__=="__main__":
-    ThreatStatisticsSingleFileComposition.find_threat_statistics_all()
+    ThreatStatisticsSingleFileCompositionUpdated.find_threat_statistics_all()

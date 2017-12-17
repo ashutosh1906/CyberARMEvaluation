@@ -28,6 +28,17 @@ CYBERARM_ROI = 2
 NUMBER_OF_CYBERARM_OUTPUT = 3
 TIMEOUT_DURATION = 120*1000
 
+################################################### Read from single THreat statistics file ##################
+WRITE_FILE_NAME = 'Global_Threat_Statistics.txt'
+FILENAME_TAG_OPEN = '<'
+FILENAME_TAG_CLOSE = '>'
+ASSET_TAG_WRITE_OPEN = "<<"
+ASSET_TAG_WRITE_CLOSE = ">>"
+THREAT_TAG_OPEN = '<<<'
+THREAT_TAG_CLOSE = '>>>'
+THREAT_ACTION_TAG_OPEN = '<<<<'
+THREAT_ACTION_TAG_CLOSE = '>>>>'
+
 ######################################### ROI Stattistics #####################################################
 IMPOSED_RISK = 'Imposed Risk'
 RESIDUAL_RISK = 'Residual Risk'
