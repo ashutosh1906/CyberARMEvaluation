@@ -1,0 +1,25 @@
+<asset>
+asset_name:database
+frequency:1
+confidentiality:125000
+integrity:125000
+availability:125000
+data_source:VERIS
+<threat_list>
+</threat_list>
+</asset>
+
+<asset>
+asset_name:files
+frequency:1
+confidentiality:125000
+integrity:125000
+availability:125000
+data_source:Experience
+<threat_list>
+threat_action_name_id:Misdelivery,frequency:11,
+threat_action_name_id:Possession abuse,frequency:12,
+threat_action_name_id:Wiretapping,frequency:14,
+</threat_list>
+</asset>
+

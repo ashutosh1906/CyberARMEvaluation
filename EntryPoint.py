@@ -1,0 +1,30 @@
+import CyberARMPowerPlant,CyberARMEngineUpdated, ProjectConfigFile, Initialization
+from CyberARMPowerPlant import threat_threat_action_possible_pair,asset_name_list,threat_threatAction_asset_veris,prob_threat_action_threat,prob_threat,prob_threat_threat_action,security_control_list,security_control_version_to_id
+
+if __name__=="__main__":
+    budget = 200000
+    risk_elimination = .80
+    affordable_risk = 450000
+    ######################################### Read the threat and threat action statistics ###############################################
+    Initialization.initializeEnvironment()
+    print "(Init) Threat Threat Action Asset Veris %s" % (threat_threatAction_asset_veris)
+    print "(Init) Asset List %s" % (asset_name_list)
+    print "(Init) Threat Threat Action Possible Pair %s" % (threat_threat_action_possible_pair)
+
+    #################################################### Read The Assets ###########################
+    veris_list = [['database', [500000, 500000, 500000]], ['desktop', [100000, 100000,
+                                                                       100000]]]  # ,['laptop',[100000,100000,100000]]]#,['end-user',[100000,100000,100000]]]
+    experience_list = []
+    experience_list.append([u'laptop_exp', [1222.0, 32345.0, 45678.0],
+                            {u'misuse': {u'net misuse': u'32'}, u'hacking': {u'forced browsing': u'329'},
+                             u'social': {u'forgery': u'23'}}])
+    ############################################# Include the assets ################################
+    asset_enterprise_list_input = [[] for i in range(2)]
+    asset_enterprise_list_input[ProjectConfigFile.VERIS_LIST] = veris_list
+    asset_enterprise_list_input[ProjectConfigFile.EXPERIENCE_LIST] = experience_list
+
+
+    CyberARMEngineUpdated.generate_risk_distribution(asset_enterprise_list_input,CyberARMPowerPlant.send_data)
+    print "Received DATA %s" % (CyberARMPowerPlant.send_data)
+    recommendedCDM = CyberARMPowerPlant.cyberarm_init_main(asset_enterprise_list_input, affordable_risk, budget,
+                                                           risk_elimination)
