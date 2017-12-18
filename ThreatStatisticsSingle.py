@@ -109,5 +109,44 @@ def find_threat_statistics_all(asset_statistics,asset_type_enumeration,threat_th
     # threat_threat_action_file.close()
     return total_reported_incidents
 
+def read_threat_statistics_single_file(threat_threatAction_asset_veris, asset_name_list,
+                                                      threat_threat_action_possible_pair):
+    read_file = open(ProjectConfigFile.WRITE_FILE_NAME,'r+')
+    asset_name = ""
+    threat_name = ""
+    for line in read_file:
+        line = line.replace('\n','')
+        if line.startswith(ProjectConfigFile.THREAT_ACTION_TAG_OPEN):
+            line = line.replace(ProjectConfigFile.THREAT_ACTION_TAG_OPEN, '').replace(ProjectConfigFile.THREAT_ACTION_TAG_CLOSE,'')
+            threat_action_list = line.split(",")
+            for asset_unique_name in asset_name:
+                for threat_action in threat_action_list:
+                    if threat_action == '':
+                        continue
+                    # if '/' in threat_action:
+                    #     print "/: %s" %(threat_action)
+                    # print threat_action
+                    if threat_action not in threat_threatAction_asset_veris[asset_unique_name][threat_name].keys():
+                        threat_threatAction_asset_veris[asset_unique_name][threat_name][threat_action] = 1
+                    else:
+                        threat_threatAction_asset_veris[asset_unique_name][threat_name][threat_action] += 1
+
+            # print "Threat Action %s" % (threat_action_list)
+        elif line.startswith(ProjectConfigFile.THREAT_TAG_OPEN):
+            line = line.replace(ProjectConfigFile.THREAT_TAG_OPEN,'').replace(ProjectConfigFile.THREAT_TAG_CLOSE,'')
+            threat_name = line
+            # print "Threat %s" % (threat_name)
+            for asset_unique_name in asset_name:
+                if threat_name not in threat_threatAction_asset_veris[asset_unique_name].keys():
+                    threat_threatAction_asset_veris[asset_unique_name][threat_name]={}
+        elif line.startswith(ProjectConfigFile.ASSET_TAG_WRITE_OPEN):
+            # print line
+            line = line.replace(ProjectConfigFile.ASSET_TAG_WRITE_OPEN,'').replace(ProjectConfigFile.ASSET_TAG_WRITE_CLOSE,'')
+            asset_name = line.split(',')
+            # print "Asset %s" % (asset_name)
+            for asset_unique_name in asset_name:
+                if asset_unique_name not in threat_threatAction_asset_veris.keys():
+                    threat_threatAction_asset_veris[asset_unique_name] = {}
+
 
 

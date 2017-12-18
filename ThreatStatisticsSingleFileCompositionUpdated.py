@@ -70,7 +70,12 @@ def read_json_threat_report(threat_report,file):
             write_threat_statistics_file.write(ProjectConfigFile.THREAT_ACTION_TAG_OPEN)
             for threat_action in threat_action_list:
                 threat_action = threat_action.lower()
-                write_threat_statistics_file.write("%s "%(threat_action))
+                if ' or ' in threat_action:
+                    threat_action = threat_action.replace('use of ','').split(' or ')
+                    for ta in threat_action:
+                        write_threat_statistics_file.write("%s," % (ta))
+                else:
+                    write_threat_statistics_file.write("%s,"%(threat_action))
             write_threat_statistics_file.write("%s\n"%(ProjectConfigFile.THREAT_ACTION_TAG_CLOSE))
 
     write_threat_statistics_file.write("\n")

@@ -26,10 +26,10 @@ def select_security_controls(security_control_list,threat_action_list,threat_act
             threat_action_name_list.append([])
             min_threat_action_consequence.append(global_risk_threat_action[0][0]) # Put the maximum threat action value
 
-    print "Global Risk Threat Action %s" % (global_risk_threat_action)
+    # print "Global Risk Threat Action %s" % (global_risk_threat_action)
     for threat_action_row in global_risk_threat_action:
         threat_action_name_list[threat_action_row[1]].append([threat_action_name_to_id[threat_action_row[2]],threat_action_row[0]])
-    Utitilities.printThreatActionNameListIter(threat_action_name_list)
+    # Utitilities.printThreatActionNameListIter(threat_action_name_list)
 
     for i in range(len(threat_action_name_list)):
         threat_action_id_list_for_all_assets.append([])
@@ -38,7 +38,7 @@ def select_security_controls(security_control_list,threat_action_list,threat_act
             if threat_action_id[1] < min_threat_action_consequence[i]:
                 min_threat_action_consequence[i] = threat_action_id[1]
     # print "Threat Action ID %s" % (threat_action_id_list_for_all_assets)
-    print "Min Threat Action Value %s" % (min_threat_action_consequence)
+    # print "Min Threat Action Value %s" % (min_threat_action_consequence)
 
     asset_index = 0
     for asset_type_index in range(len(asset_enterprise_list)):
@@ -55,8 +55,8 @@ def select_security_controls(security_control_list,threat_action_list,threat_act
             asset_index += 1
 
     ################################################################## Selection of all the threat actions of the candidate set of security controls #########################################
-    print "Before Threat Coverage:"
-    Utitilities.printThreatActionList(threat_action_id_list_for_all_assets)
+    # print "Before Threat Coverage:"
+    # Utitilities.printThreatActionList(threat_action_id_list_for_all_assets)
     asset_index = 0
     for i in range(len(risk_threat_action)):
         for j in range(len(risk_threat_action[i])):
@@ -70,8 +70,8 @@ def select_security_controls(security_control_list,threat_action_list,threat_act
                         if risk_threat_action[i][j][threat_action_id_to_name[threat_action_id]] >= min_threat_action_consequence[asset_index]/float(ProjectConfigFile.THREAT_ACTION_MINIMUM_CONSEQUENCE):
                             threat_action_id_list_for_all_assets[asset_index].append(threat_action_id)
             asset_index += 1
-    print "After Threat Coverage"
-    Utitilities.printThreatActionList(threat_action_id_list_for_all_assets)
+    # print "After Threat Coverage"
+    # Utitilities.printThreatActionList(threat_action_id_list_for_all_assets)
     ################################################################## End of Selection of all the threat actions of the candidate set of security controls #########################################
 
     ################################################################### Determine Cost Effectiveness #######################################################

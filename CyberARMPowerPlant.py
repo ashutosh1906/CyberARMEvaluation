@@ -42,7 +42,7 @@ def cyberarm_init_main(asset_enterprise_list_input,affordable_risk,budget,risk_e
     ###################################################################################### Inputs #######################################################################
     enterprise_asset_list_given = []
     ##################################################################################### End of Inputs #################################################################
-    Utitilities.printAssetList(asset_enterprise_list)
+    # Utitilities.printAssetList(asset_enterprise_list)
     init_power_plant(asset_enterprise_list,enterprise_asset_list_given)
     # ThreatStatisticsSingle.find_threat_statistics_all(threat_threatAction_asset_veris,asset_name_list,threat_threat_action_possible_pair)
     # print "Asset Enterprise List %s" % (enterprise_asset_list_given)
@@ -57,7 +57,7 @@ def cyberarm_init_main(asset_enterprise_list_input,affordable_risk,budget,risk_e
     threat_actions_frequency = generate_risk_distribution(risk_elimination,send_data['global_risk_threat_action'])
     print "Frequency Threat Actions %s" % (threat_actions_frequency)
     global_risk_threat_action = send_data['global_risk_threat_action'][0:threat_actions_frequency]
-    printGlobalRiskThreatAction(global_risk_threat_action)
+    # printGlobalRiskThreatAction(global_risk_threat_action)
     ######### ***************************************** end of Check the number of prioritized Threat Actions ****************************##############################################
 
     threat_threatAction_asset.append(threat_threatAction_asset_veris)
@@ -97,7 +97,7 @@ def cyberarm_init_main(asset_enterprise_list_input,affordable_risk,budget,risk_e
     ThreatActionToSecurityControl.parseAllScAndTAFiles(security_control_list,security_control_version_to_id,prob_threat_action_threat,prob_threat_action_threat_experience,
                                                        threat_action_list,threat_action_name_to_id,risk_threat,threat_list,
                                                        threat_name_to_id,enterprise_asset_list_given,threat_action_id_to_name)
-    print "Threat Action ID to Name %s" % (threat_action_id_to_name)
+    # print "Threat Action ID to Name %s" % (threat_action_id_to_name)
     # Utitilities.printThreatActionNameToId(threat_action_name_to_id)
     # Utitilities.printSecurityControls(security_control_list,security_control_version_to_id)
     # Utitilities.printThreatActionList(threat_action_list,threat_action_name_to_id)

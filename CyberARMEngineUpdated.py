@@ -30,7 +30,7 @@ def generate_risk_distribution(asset_enterprise_list,send_data):
                 global_risk_threat_action.append([risk_threat_action_distribution[i][j][ta],asset_index,ta])
             asset_index += 1
     global_risk_threat_action.sort(reverse=True)
-    print "Risk Threat Action %s" % (global_risk_threat_action)
+    # print "Risk Threat Action %s" % (global_risk_threat_action)
     risk_length = len(global_risk_threat_action)
     print "Risk Threat Action Length %s" % (risk_length)
     total_risk_value = sum([global_risk_threat_action[i][0] for i in range(risk_length)])
@@ -54,6 +54,6 @@ def generate_risk_distribution(asset_enterprise_list,send_data):
         percentage_sum = round(init_sum/float(total_risk_value)*100,3)
         sum_percentage.append({'risk':percentage_sum,'threat_action':round(start_index/float(risk_length)*100,3)})
         outer_loop_index += 1
-    print "This is the percentage %s" % (sum_percentage)
+    # print "This is the percentage %s" % (sum_percentage)
     send_data['percentage'] = sum_percentage
     send_data['global_risk_threat_action'] = global_risk_threat_action

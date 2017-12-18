@@ -69,7 +69,7 @@ def distribute_Unknown(asset_name,threat_name,threat_action_distribution):
 ######################################################### Probability Distributor ##################################################################
 def calculate_threatAction_threat_prob_distribution_experience(prob_threat_experience, prob_threat_action_threat_experience,asset_enterprise_list):
     for asset in asset_enterprise_list:
-        print "Asset Index %s" % (asset[2])
+        # print "Asset Index %s" % (asset[2])
         asset_name = asset[0]
         threat_threat_action_asset_experience = asset[2]
         prob_threat_action_threat_experience[asset_name] = {}

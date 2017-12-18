@@ -7,9 +7,9 @@ if __name__=="__main__":
     affordable_risk = 450000
     ######################################### Read the threat and threat action statistics ###############################################
     Initialization.initializeEnvironment()
-    print "(Init) Threat Threat Action Asset Veris %s" % (threat_threatAction_asset_veris)
-    print "(Init) Asset List %s" % (asset_name_list)
-    print "(Init) Threat Threat Action Possible Pair %s" % (threat_threat_action_possible_pair)
+    # print "(Init) Threat Threat Action Asset Veris %s" % (threat_threatAction_asset_veris)
+    # print "(Init) Asset List %s" % (asset_name_list)
+    # print "(Init) Threat Threat Action Possible Pair %s" % (threat_threat_action_possible_pair)
 
     #################################################### Read The Assets ###########################
     veris_list = [['database', [500000, 500000, 500000]], ['desktop', [100000, 100000,
@@ -25,6 +25,6 @@ if __name__=="__main__":
 
 
     CyberARMEngineUpdated.generate_risk_distribution(asset_enterprise_list_input,CyberARMPowerPlant.send_data)
-    print "Received DATA %s" % (CyberARMPowerPlant.send_data)
+    # print "Received DATA %s" % (CyberARMPowerPlant.send_data)
     recommendedCDM = CyberARMPowerPlant.cyberarm_init_main(asset_enterprise_list_input, affordable_risk, budget,
                                                            risk_elimination)

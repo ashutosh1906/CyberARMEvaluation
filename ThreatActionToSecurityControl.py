@@ -112,7 +112,7 @@ def parseAllScAndTAFiles(security_control_list,security_control_version_to_id,pr
     threat_action_security_controls_builder(security_control_version_to_id,security_control_list,threat_action_list,threat_action_name_to_id)
     threat_builder(risk_threat,threat_list,threat_name_to_id,len(enterprise_asset_list_given))
     # print "Threat Statistics %s" % (prob_threat_action_threat)
-    print "Threat Action Name to ID : %s" % (threat_action_name_to_id)
+    # print "Threat Action Name to ID : %s" % (threat_action_name_to_id)
     # print "Threat List %s" % (threat_list)
     prepare_threat_action_for_threat(threat_list,prob_threat_action_threat,prob_threat_action_threat_experience,enterprise_asset_list_given,threat_name_to_id,threat_action_name_to_id)
 

@@ -17,11 +17,11 @@ def printGlobalRiskThreatAction(risk_threat_action_distribution):
         print "\t %s" %(threat_action_row)
 
 def generate_risk_distribution(risk_elimination,global_risk_threat_action):
-    print "Risk Elimination Value: %s"%(risk_elimination)
+    # print "Risk Elimination Value: %s"%(risk_elimination)
     if risk_elimination == 0:
         return -1
-    print "Risk Threat Action %s" % (global_risk_threat_action)
-    printGlobalRiskThreatAction(global_risk_threat_action)
+    # print "Risk Threat Action %s" % (global_risk_threat_action)
+    # printGlobalRiskThreatAction(global_risk_threat_action)
     risk_length = len(global_risk_threat_action)
     print "Length %s" % (risk_length)
     total_risk_value = sum([global_risk_threat_action[i][0] for i in range(risk_length)])
