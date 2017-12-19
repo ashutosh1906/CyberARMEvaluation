@@ -1,0 +1,62 @@
+database
+laptop
+disk media
+web application
+documents
+desktop
+flash drive
+mail
+other
+system admin
+payment card
+gas terminal
+manager
+file
+atm
+smart card
+disk drive
+kiosk
+ped pad
+end-user
+telephone
+backup
+pos terminal
+finance
+media
+customer
+dns
+tapes
+mobile phone
+pos controller
+authentication
+executive
+mainframe
+wlan
+firewall
+camera
+cashier
+broadband
+pbx
+tablet
+guard
+code repository
+router or switch
+human resources
+directory
+call center
+maintenance
+developer
+partner
+san
+former employee
+remote access
+log
+dhcp
+public wan
+peripheral
+payment switch
+private wan
+lan
+helpdesk
+access reader
+ics

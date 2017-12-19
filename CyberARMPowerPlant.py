@@ -10,15 +10,19 @@ prob_threat_threat_action = {}
 prob_threat = {}
 security_control_list = []
 security_control_version_to_id = {}
+
 ###################### These variable are introduced in this file for convenience though it may be different in the web application###################################
 send_data = {}
 
 def init_power_plant(asset_enterprise_list,enterprise_asset_list_given):
+    asset_index = 0
     for i in range(len(asset_enterprise_list)):
         for asset in asset_enterprise_list[i]:
             asset_name = asset[0]
             if asset_name not in enterprise_asset_list_given:
                 enterprise_asset_list_given.append(asset_name)
+            asset_index += 1
+    return asset_index
     # ProjectConfigFile.init_conf()
 
 def cyberarm_init_main(asset_enterprise_list_input,affordable_risk,budget,risk_elimination):
@@ -43,7 +47,7 @@ def cyberarm_init_main(asset_enterprise_list_input,affordable_risk,budget,risk_e
     enterprise_asset_list_given = []
     ##################################################################################### End of Inputs #################################################################
     # Utitilities.printAssetList(asset_enterprise_list)
-    init_power_plant(asset_enterprise_list,enterprise_asset_list_given)
+    number_of_asset = init_power_plant(asset_enterprise_list,enterprise_asset_list_given)
     # ThreatStatisticsSingle.find_threat_statistics_all(threat_threatAction_asset_veris,asset_name_list,threat_threat_action_possible_pair)
     # print "Asset Enterprise List %s" % (enterprise_asset_list_given)
     # print "Threat Threat Action Asset Veris %s" % (threat_threatAction_asset_veris)
@@ -96,7 +100,7 @@ def cyberarm_init_main(asset_enterprise_list_input,affordable_risk,budget,risk_e
     ########################################################## List of Security Controls, Threat Action and Mappings ##########################################
     ThreatActionToSecurityControl.parseAllScAndTAFiles(security_control_list,security_control_version_to_id,prob_threat_action_threat,prob_threat_action_threat_experience,
                                                        threat_action_list,threat_action_name_to_id,risk_threat,threat_list,
-                                                       threat_name_to_id,enterprise_asset_list_given,threat_action_id_to_name)
+                                                       threat_name_to_id,enterprise_asset_list_given,threat_action_id_to_name,number_of_asset,asset_enterprise_list)
     # print "Threat Action ID to Name %s" % (threat_action_id_to_name)
     # Utitilities.printThreatActionNameToId(threat_action_name_to_id)
     # Utitilities.printSecurityControls(security_control_list,security_control_version_to_id)

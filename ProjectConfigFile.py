@@ -6,6 +6,7 @@ OTHER_ASSET = 'other'
 DESTROY_C = 4
 DESTROY_I = 2
 DESTROY_A = 1
+ASSET_UNKNOWN_TAG = 'unknown'
 THREAT_ACTION_UNKNOWN_TAG = 'unknown'
 HACKING_COST = DESTROY_C | DESTROY_I | DESTROY_A
 MALWARE_COST = DESTROY_C | DESTROY_I | DESTROY_A
@@ -26,7 +27,7 @@ CYBERARM_CDM_MATRIX = 0
 CYBERARM_RISK = 1
 CYBERARM_ROI = 2
 NUMBER_OF_CYBERARM_OUTPUT = 3
-TIMEOUT_DURATION = 120*1000
+TIMEOUT_DURATION = 1200*1000
 
 ################################################### Read from single THreat statistics file ##################
 WRITE_FILE_NAME = 'Global_Threat_Statistics.txt'
@@ -38,6 +39,8 @@ THREAT_TAG_OPEN = '<<<'
 THREAT_TAG_CLOSE = '>>>'
 THREAT_ACTION_TAG_OPEN = '<<<<'
 THREAT_ACTION_TAG_CLOSE = '>>>>'
+VERIS_LIST_FILE = 'ResourceFolder/InputFiles/veris_list_10.txt'
+EXPERIENCE_LIST_FILE = 'ExperienceList.txt'
 
 ######################################### ROI Stattistics #####################################################
 IMPOSED_RISK = 'Imposed Risk'

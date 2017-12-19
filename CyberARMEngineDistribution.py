@@ -41,6 +41,7 @@ def select_security_controls(security_control_list,threat_action_list,threat_act
     # print "Min Threat Action Value %s" % (min_threat_action_consequence)
 
     asset_index = 0
+    number_selected_security_controls = 0
     for asset_type_index in range(len(asset_enterprise_list)):
         for i in range(len(asset_enterprise_list[asset_type_index])):
             asset_name = asset_enterprise_list[asset_type_index][i][0]
@@ -51,7 +52,9 @@ def select_security_controls(security_control_list,threat_action_list,threat_act
                         continue
                     if security_control not in selected_security_controls_asset:
                         selected_security_controls_asset.append(security_control)
+
             selected_security_controls.append(selected_security_controls_asset)
+            number_selected_security_controls += len(selected_security_controls_asset)
             asset_index += 1
 
     ################################################################## Selection of all the threat actions of the candidate set of security controls #########################################
@@ -84,6 +87,7 @@ def select_security_controls(security_control_list,threat_action_list,threat_act
     # Utitilities.printSelectedSecurityControls(security_control_list,selected_security_controls)
     # TestCases.securityControlCoverage(security_control_list,selected_security_controls,threat_action_name_list)
     # startProcessing(security_control_list,selected_security_controls,threat_action_name_list,threat_action_list,asset_enterprise_list,risk_threat_action,threat_list,threat_name_to_id)
+    print "Number of Selected Security Controls %s" % (number_selected_security_controls)
     ######################################################### STart of the test and alternative approach ###########################################
     select_threat(threat_list, asset_enterprise_list,threat_id_for_all_assets)
     # Utitilities.printThreatIdForAllAssets(threat_id_for_all_assets,threat_list)

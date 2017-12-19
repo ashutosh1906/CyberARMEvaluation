@@ -116,6 +116,8 @@ def read_threat_statistics_single_file(threat_threatAction_asset_veris, asset_na
     threat_name = ""
     for line in read_file:
         line = line.replace('\n','')
+        if len(line) == 0:
+            continue
         if line.startswith(ProjectConfigFile.THREAT_ACTION_TAG_OPEN):
             line = line.replace(ProjectConfigFile.THREAT_ACTION_TAG_OPEN, '').replace(ProjectConfigFile.THREAT_ACTION_TAG_CLOSE,'')
             threat_action_list = line.split(",")

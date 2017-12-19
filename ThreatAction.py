@@ -37,6 +37,7 @@ class ThreatAction(object):
         self.asset_number_security_controls += 1
 
     def setProbThreatAction(self,prob_threat_action_threat,prob_threat_action_threat_experience,enterprise_asset_list_given):
+        # print "******** Enterprise Asset List Given %s" %(enterprise_asset_list_given)
         for asset in enterprise_asset_list_given:
             if asset not in self.prob_given_threat_asset.keys():
                 self.prob_given_threat_asset[asset] = {}

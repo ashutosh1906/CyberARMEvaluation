@@ -113,7 +113,8 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
                 threat_index = threat_id_to_position_roll[asset_index][threat_id]
                 minimum_threat_specific_risk[asset_index][threat_index] = 1-threat_list[threat_id].ignored_threat_action[asset_index]
                 if len(threat_list[threat_id].global_asset_threat_action[asset_index]) == 0:
-                    print "No Threat Action in %s by %s Ignored: %s" %(asset_index,threat_list[threat_id].threat_name,1-minimum_threat_specific_risk[asset_index][threat_index])
+                    pass
+                    # print "No Threat Action in %s by %s Ignored: %s" %(asset_index,threat_list[threat_id].threat_name,1-minimum_threat_specific_risk[asset_index][threat_index])
                 for threat_action_id in threat_list[threat_id].global_asset_threat_action[asset_index]:
                     minimum_threat_specific_risk[asset_index][threat_index] \
                         *= (1-threat_action_survive[threat_action_id_to_position_roll[asset_index][threat_action_id]]*
@@ -148,7 +149,7 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
         for j in range(len(asset_enterprise_list[i])):
             asset_list_for_smt.append(asset_enterprise_list[i][j])
 
-
+    # print "Asset List for SMT %s" % (asset_list_for_smt)
     ################################################# Min Security Control Cost #############################################################
     min_sec_control_cost = -1
     max_sec_control_cost = -1
@@ -199,7 +200,8 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
 
     smt_Security_Control_Cost = [[Real('sec_con_cost_%s_%s'%(i,j))for j in selected_security_controls[i]] for i in range(len(selected_security_controls))]
     # print "SMT Security Controls Cost %s" % (smt_Security_Control_Cost)
-    smt_Total_Security_Control_Cost = [Real('smt_total_sc_cost_%s'%(asset[0])) for asset in asset_list_for_smt]
+    smt_Total_Security_Control_Cost = [Real('smt_total_sc_cost_%s_%s'%(asset[0],asset_list_for_smt.index(asset))) for asset in asset_list_for_smt]
+    # print smt_Total_Security_Control_Cost
     smt_Global_Security_Control_Cost = Real('smt_Global_Security_Control_Cost')
     smt_Security_Control_Flag = [[Int('smt_Security_Control_Flag_%s_%s'%(asset_roll,sec_index)) for sec_index in range(len(selected_security_controls[asset_roll]))] for asset_roll in range(len(selected_security_controls))]
     ############################################################ 1.2 Declare the threat variables #######################################
@@ -229,7 +231,7 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
     #         print "SMT Variable %s" % (smt_Threat_Action_Security_Control[i][threat_action_id_to_position_roll[i][threat_action_id]])
 
     ############################################################ 1.5 Residual Risk Threshold Threat ############################
-    smt_Residual_Risk_Asset = [Real('res_risk_asset_%s'%(i[0])) for i in asset_list_for_smt]
+    smt_Residual_Risk_Asset = [Real('res_risk_asset_%s_%s'%(i[0],asset_list_for_smt.index(i))) for i in asset_list_for_smt]
     # print "Residual Risk Asset %s" % (smt_Residual_Risk_Asset)
     smt_Global_Residual_Risk = Real('smt_Global_Residual_Risk')
 

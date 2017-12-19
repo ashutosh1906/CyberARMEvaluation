@@ -86,33 +86,36 @@ def threat_builder(risk_threat,threat_list,threat_name_to_id,total_asset):
                     threat_index += 1
         # Utitilities.printThreat(threat_list,threat_name_to_id)
 
-def prepare_threat_action_for_threat(threat_list,prob_threat_action_threat,prob_threat_action_threat_experience,enterprise_asset_list_given,
+def prepare_threat_action_for_threat(threat_list,prob_threat_action_threat,prob_threat_action_threat_experience,asset_enterprise_list,
                                      threat_name_to_id,threat_action_name_to_id):
-    # print "Enterprise Asset List %s" % (enterprise_asset_list_given)
+    # print "Enterprise Asset List %s" % (asset_enterprise_list)
     asset_index = 0
-    for asset_name in enterprise_asset_list_given:
-        if asset_name in prob_threat_action_threat.keys():
-            for threat in prob_threat_action_threat[asset_name].keys():
-                threat_list[threat_name_to_id[threat]].addAssetThreatActionDistribution(prob_threat_action_threat[asset_name][threat],
-                                                                                        threat_action_name_to_id,asset_index)
-        else:
-            for threat in prob_threat_action_threat_experience[asset_name].keys():
-                threat_list[threat_name_to_id[threat]].addAssetThreatActionDistribution(prob_threat_action_threat_experience[asset_name][threat],
-                                                                                        threat_action_name_to_id,asset_index)
-        asset_index += 1
+    for asset_type in range(len(asset_enterprise_list)):
+        for asset_desc in asset_enterprise_list[asset_type]:
+            asset_name = asset_desc[0]
+            if asset_name in prob_threat_action_threat.keys():
+                for threat in prob_threat_action_threat[asset_name].keys():
+                    threat_list[threat_name_to_id[threat]].addAssetThreatActionDistribution(prob_threat_action_threat[asset_name][threat],
+                                                                                            threat_action_name_to_id,asset_index)
+            else:
+                for threat in prob_threat_action_threat_experience[asset_name].keys():
+                    threat_list[threat_name_to_id[threat]].addAssetThreatActionDistribution(prob_threat_action_threat_experience[asset_name][threat],
+                                                                                            threat_action_name_to_id,asset_index)
+            asset_index += 1
 
     for threat in threat_list:
         threat.determine_maximum_risk()
 
 def parseAllScAndTAFiles(security_control_list,security_control_version_to_id,prob_threat_action_threat,prob_threat_action_threat_experience,
-                         threat_action_list,threat_action_name_to_id,risk_threat,threat_list,threat_name_to_id,enterprise_asset_list_given,threat_action_id_to_name):
+                         threat_action_list,threat_action_name_to_id,risk_threat,threat_list,threat_name_to_id,enterprise_asset_list_given,
+                         threat_action_id_to_name,number_of_asset,asset_enterprise_list):
     # security_controls_list_builder(security_control_list,security_control_version_to_id)
     reinitialize_security_control_list(security_control_list)
     threat_action_builder(prob_threat_action_threat,prob_threat_action_threat_experience,threat_action_list,threat_action_name_to_id,enterprise_asset_list_given,threat_action_id_to_name)
     threat_action_security_controls_builder(security_control_version_to_id,security_control_list,threat_action_list,threat_action_name_to_id)
-    threat_builder(risk_threat,threat_list,threat_name_to_id,len(enterprise_asset_list_given))
+    threat_builder(risk_threat,threat_list,threat_name_to_id,number_of_asset)
     # print "Threat Statistics %s" % (prob_threat_action_threat)
     # print "Threat Action Name to ID : %s" % (threat_action_name_to_id)
     # print "Threat List %s" % (threat_list)
-    prepare_threat_action_for_threat(threat_list,prob_threat_action_threat,prob_threat_action_threat_experience,enterprise_asset_list_given,threat_name_to_id,threat_action_name_to_id)
+    prepare_threat_action_for_threat(threat_list,prob_threat_action_threat,prob_threat_action_threat_experience,asset_enterprise_list,threat_name_to_id,threat_action_name_to_id)
 

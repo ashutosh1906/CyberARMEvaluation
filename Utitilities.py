@@ -6,8 +6,8 @@ def determineCostEffectiveness(selected_security_controls,security_control_list,
     print threat_action_id_list_for_all_assets
     for asset_type in range(len(risk_threat_action)):
         for index in range(len(risk_threat_action[asset_type])):
-            print "Asset Index %s" % (asset_index)
-            print "Risk Threat Action %s" % (risk_threat_action[asset_type][index])
+            # print "Asset Index %s" % (asset_index)
+            # print "Risk Threat Action %s" % (risk_threat_action[asset_type][index])
             cost_effectiveness_sc.append(0.0)
             asset_specific_sc_cost = 0.0
             for security_control_id in selected_security_controls[asset_index]:
