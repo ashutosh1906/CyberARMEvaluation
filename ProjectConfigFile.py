@@ -27,7 +27,7 @@ CYBERARM_CDM_MATRIX = 0
 CYBERARM_RISK = 1
 CYBERARM_ROI = 2
 NUMBER_OF_CYBERARM_OUTPUT = 3
-TIMEOUT_DURATION = 1200*1000
+TIMEOUT_DURATION = 24000*1000
 
 ################################################### Read from single THreat statistics file ##################
 WRITE_FILE_NAME = 'Global_Threat_Statistics.txt'
@@ -39,7 +39,7 @@ THREAT_TAG_OPEN = '<<<'
 THREAT_TAG_CLOSE = '>>>'
 THREAT_ACTION_TAG_OPEN = '<<<<'
 THREAT_ACTION_TAG_CLOSE = '>>>>'
-VERIS_LIST_FILE = 'ResourceFolder/InputFiles/veris_list_10.txt'
+VERIS_LIST_FILE = 'ResourceFolder/InputFiles/veris_list_300.txt'
 EXPERIENCE_LIST_FILE = 'ExperienceList.txt'
 
 ######################################### ROI Stattistics #####################################################

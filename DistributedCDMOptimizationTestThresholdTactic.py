@@ -125,11 +125,11 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
             asset_index += 1
     global_min_risk = sum(minimum_affordable_risk)
 
-    ######################################################### Print the Minimum Affordable Risk ##################################
-    print "\nMininum Risk for Selected Security Controls Candidate Set"
-    for i in range(number_of_unique_asset):
-        print "\t Asset Index : %s -------- Minimum Risk : %s Maximum Risk Proportion Risk %s" % (i,minimum_affordable_risk[i],affordable_risk * float(risk_asset_specific[i]))
-    ######################################################### End of Print the Minimum Affordable Risk ##################################
+    # ######################################################### Print the Minimum Affordable Risk ##################################
+    # print "\nMininum Risk for Selected Security Controls Candidate Set"
+    # for i in range(number_of_unique_asset):
+    #     print "\t Asset Index : %s -------- Minimum Risk : %s Maximum Risk Proportion Risk %s" % (i,minimum_affordable_risk[i],affordable_risk * float(risk_asset_specific[i]))
+    # ######################################################### End of Print the Minimum Affordable Risk ##################################
 
     print "Global Minimum Risk %s" % (global_min_risk)
     if global_min_risk > affordable_risk:
@@ -243,8 +243,8 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
     ##################################################################### 2.1 Threat Action Constraint ######################################
     # print "\n**********************************************The main constraints are here ******************************************************************\n"
     for asset_index in range(len(selected_security_controls)):
-        print "**************** Asset Index %s" % (asset_index)
-        print "Selected Sec Controls %s" % (selected_security_controls[asset_index])
+        # print "**************** Asset Index %s" % (asset_index)
+        # print "Selected Sec Controls %s" % (selected_security_controls[asset_index])
         sec_index = 0
         for sec_control in selected_security_controls[asset_index]:
             for threat_action_id in security_control_list[sec_control].global_asset_threat_action_list[asset_index]:
