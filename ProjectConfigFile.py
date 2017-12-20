@@ -1,5 +1,8 @@
 import os
 ################################################################## File Names #############################################
+############################################################# Initial Files ###############################################
+SECURITY_CONTROL_FILE = 'ResourceFolder/SecurityControls.csv'
+THREAT_ACTION_SECURITY_CONTROL_FILE = 'ResourceFolder/ThreatActionSecurityControldistribution.csv'
 
 ############################################################## Global Variables #############################################
 OTHER_ASSET = 'other'
@@ -28,6 +31,10 @@ CYBERARM_RISK = 1
 CYBERARM_ROI = 2
 NUMBER_OF_CYBERARM_OUTPUT = 3
 TIMEOUT_DURATION = 24000*1000
+SECURITY_CONTROL_COST_MEAN = 3500
+SECURITY_CONTROL_COST_DEVIATION = 666
+SECURITY_CONTROL_COST_MAX = 3000
+SECURITY_CONTROL_COST_MIN = 5000
 
 ################################################### Read from single THreat statistics file ##################
 WRITE_FILE_NAME = 'Global_Threat_Statistics.txt'

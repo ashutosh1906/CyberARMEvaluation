@@ -17,14 +17,14 @@ AVOID_WORDS = ['notes']
 # asset_type_enumeration  = []
 ################################################################################################## End of Global Variables #######################################################################
 ############################################# Collect all the reports in a single file ##################################
-write_threat_statistics_file = open(ProjectConfigFile.WRITE_FILE_NAME,'w')
+
 ############################################### End of the writings #####################################################
 
 def init_custome(asset_statistics,asset_type_enumeration):
     asset_statistics.clear()
     del asset_type_enumeration[:]
 
-def read_json_threat_report(threat_report,file):
+def read_json_threat_report(threat_report,file,write_threat_statistics_file):
     # print "Name of file : ",file.name
 
     ###################################################### Asset Type ########################################################################
@@ -81,6 +81,7 @@ def read_json_threat_report(threat_report,file):
     write_threat_statistics_file.write("\n")
 
 def find_threat_statistics_all():
+    write_threat_statistics_file = open(ProjectConfigFile.WRITE_FILE_NAME, 'w')
     total_reported_incidents = 0
     # init_custome(asset_statistics,asset_type_enumeration)
     # search_directory = DATABASE_PATH
@@ -95,7 +96,7 @@ def find_threat_statistics_all():
             write_threat_statistics_file.write("%s%s%s\n"%(ProjectConfigFile.FILENAME_TAG_OPEN,filename,ProjectConfigFile.FILENAME_TAG_CLOSE))
             try:
                 threat_report = json.load(current_file)
-                read_json_threat_report(threat_report,current_file)
+                read_json_threat_report(threat_report,current_file,write_threat_statistics_file)
                 total_reported_incidents += 1
             except:
                 print "Here the culprit ",filename

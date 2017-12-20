@@ -34,4 +34,4 @@ def initializeEnvironment():
     ################################################ Initialize The Configuration & Security Control List #######################################
     ProjectConfigFile.init_conf()
     ThreatActionToSecurityControl.security_controls_list_builder(security_control_list, security_control_version_to_id)
-    effectivenessDistribution()
+    # effectivenessDistribution()

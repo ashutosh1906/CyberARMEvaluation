@@ -2,6 +2,7 @@ import ProjectConfigFile
 import random
 import numpy
 import matplotlib.pyplot as plt
+import scipy
 
 ASSET_LIST_FILE = 'unique_asset_name.txt'
 asset_list_unique = []
@@ -48,7 +49,7 @@ def asset_file_read():
     asset_file.close()
 
 def plot_distriution(cia,mean,sd):
-    count, bins, ignored = plt.hist(cia, 30, normed=True)
+    count, bins, ignored = plt.hist(cia,40,normed=True)
     plt.plot(bins, 1 / (numpy.sqrt(2 * numpy.pi * sd)) * numpy.exp(- (bins - mean) ** 2 / (2 * sd)),
              linewidth=2, color='r')
     plt.show()

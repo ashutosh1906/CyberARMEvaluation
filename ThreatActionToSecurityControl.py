@@ -13,7 +13,7 @@ def security_controls_list_builder(security_control_list,security_control_versio
         line = line.replace('\n','')
         line = line.lower()
         line = line.split(SECURITY_CONTROL_FILE_PARSER_CHARACTER)
-        security_control_list.append(SecurityControl.SecurityControl(start_index,line[0],line[1],line[2],line[3],line[4]))
+        security_control_list.append(SecurityControl.SecurityControl(start_index,line[0],line[1],line[2],line[3],line[4],line[5]))
         security_control_version_to_id[line[0]] = start_index
         start_index += 1
     sc_file.close()

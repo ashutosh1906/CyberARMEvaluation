@@ -1,1 +1,57 @@
 veris_list_10 1332707.963 .70
+veris_list_100 13396203.299 .70 13396203.299
+veris_list_200
+Time Required for Solution 3600.55100012
+ROI {'Imposed Risk': 62922101.42, 'ROI': 19.93747569129994, 'Total Implementation Cost': 1549219.0, 'Residual Risk': 30485366.267, 'Mitigated Risk': 32436735.153}
+
+
+veris_list_300
+Global Total Cost 2934113.0
+Global Risk Threshold 38973428.6632
+Global Minimum Risk 38973428.6632
+***** Affordable Risk 43488336.0 *********
+Tue Dec 19 20:36:53 2017
+Satisfiability sat
+Time Required for Solution 3907.28000021
+ROI {'Imposed Risk': 91550278.932, 'ROI': 21.804778004257887, 'Total Implementation Cost': 2107617.0, 'Residual Risk': 43486541.129, 'Mitigated Risk': 48063737.802999996}
+
+Budget 1937050
+Global Minimum Risk 38923327.7025
+Global Total Cost 2881066.0
+Global Risk Threshold 56167182.5785
+Global Minimum Risk 38923327.7025
+***** Affordable Risk 53488336.0 *********
+Wed Dec 20 14:09:27 2017
+Satisfiability sat
+Time Required for Solution 249.720000029
+ROI {'Imposed Risk': 91550278.932, 'ROI': 32.54853116638292, 'Total Implementation Cost': 1138374.0, 'Residual Risk': 53359503.314, 'Mitigated Risk': 38190775.61799999}
+
+Global Minimum Risk 37840466.8269
+Global Total Cost 2721707.0
+Global Risk Threshold 53324786.0564
+Global Minimum Risk 37840466.8269
+***** Affordable Risk 50488336.0 *********
+Wed Dec 20 14:36:13 2017
+Satisfiability sat
+Time Required for Solution 278.953999996
+ROI {'Imposed Risk': 91550278.932, 'ROI': 34.32453766719186, 'Total Implementation Cost': 1162736.0, 'Residual Risk': 50477167.303, 'Mitigated Risk': 41073111.62899999}
+
+Global Minimum Risk 37261209.0638
+Global Total Cost 2914163.0
+Global Risk Threshold 55464225.1361
+Global Minimum Risk 37261209.0638
+***** Affordable Risk 48488336.0 *********
+Wed Dec 20 14:42:10 2017
+Satisfiability sat
+Time Required for Solution 3575.87300014
+ROI {'Imposed Risk': 91550278.932, 'ROI': 33.706757898152816, 'Total Implementation Cost': 1241841.0, 'Residual Risk': 48450003.997, 'Mitigated Risk': 43100274.934999995}
+
+Global Minimum Risk 39388334.6813
+Global Total Cost 3406023.0
+Global Risk Threshold 61885096.3684
+Global Minimum Risk 39388334.6813
+***** Affordable Risk 58488336.0 *********
+Wed Dec 20 18:04:19 2017
+Satisfiability sat
+Time Required for Solution 214.477999926
+ROI {'Imposed Risk': 91550278.932, 'ROI': 28.02564761291654, 'Total Implementation Cost': 1182112.0, 'Residual Risk': 57238712.581, 'Mitigated Risk': 34311566.350999996}

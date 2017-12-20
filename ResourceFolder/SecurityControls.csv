@@ -1,164 +1,164 @@
-1.1;Automaed Asset Inventory;Exploit;Device;Identify
-1.2;DHCP Server Logging;Exploit;Device;Identify
-1.3;Asset Inventory System with Update;Exploit;Device;Identify
-1.4;Asset Inventory for Devices Connected to Internet;Exploit;Device;Identify
-1.5;Network Level Authentication;Deliver;Device;Identify
-1.6;Client Certificate;Deliver;Device;Identify
-2.1;Authorized Software Inventory;Exploit;Application;Identify
-2.2;Application Whitelisting;Exploit;Application;Protect
-2.4;Virtual Machine;Deliver;Application;Protect
-3.1;Standardized Image of Secure Configuration;Recon;Application;Identify
-3.2;Strict Configurations for Systems;Recon;Device;Identify
-3.4;Secure Channel for Devices' Remote Administration ;Recon;Network;Protect
-3.5;File Integrity Checking Tool;Exploit;Data;Detect
-3.6;Automated Configuration Monitoring;Maintain;Device;Detect
-3.7;System Configuration Management Tool;Maintain;Application;Protect
-3.6;Automated Configuration Monitoring;Maintain;Application;Detect
-4.1;Automated Vulnerability Scanning ;Recon;Device;Identify
-4.1;Automated Vulnerability Scanning ;Recon;Application;Identify
-4.2;Vulnerability Scanning Log;Recon;Device;Identify
-4.2;Vulnerability Scanning Log;Recon;Application;Identify
-4.3;Authenticated Vulnerability Scanning;Recon;Device;Identify
-4.4;Vulnerability Intelligent Service;Recon;Device;Identify
-4.4;Vulnerability Intelligent Service;Recon;Application;Identify
-4.5;Automated Patch Management;Exploit;Device;Protect
-4.5;Automated Patch Management;Exploit;Application;Protect
-4.7;Risk Assessment;Recon;Network;Identify
-4.7;Risk Assessment;Recon;Device;Identify
-4.8;Risk Rate Vulnerabilities;Recon;Network;Identify
-5.1;Minimize Administrative Privileges;Exploit;Network;Protect
-5.1;Minimize Administrative Privileges;Exploit;Device;Protect
-5.1;Minimize Administrative Privileges;Exploit;Application;Protect
-5.2;Administrative Account Inventory;Exploit;People;Protect
-5.3;Change Default Passwords;Exploit;Device;Protect
-5.3;Change Default Passwords;Exploit;Application;Protect
-5.4;Administrator Account Modification Log;Exploit;People;Protect
-5.5;Log Unsuccessful Login;Exploit;Device;Detect
-5.5;Log Unsuccessful Login;Exploit;Application;Detect
-5.6;Multi-Factor Authentication;Exploit;Device;Protect
-5.6;Multi-Factor Authentication;Exploit;Application;Protect
-5.7; Password Constraint;Exploit;Device;Protect
-5.7; Password Constraint;Exploit;Application;Protect
-5.8;Migration from Non-Administrative to Administrative;Exploit;People;Protect
-5.9;Dedicated Machine for Administrative Tasks;Deliver;Device;Protect
-6.1;Two Synchronized Time Sources;Exploit;Network;Identify
-6.2;Audit Log Validation;Exploit;Device;Detect
-6.4;Identify Anomalies;Maintain;Network;Detect
-6.5;Logs of Network Boundary Devices;Maintain;Network;Detect
-6.6;Security Information and Event Management;Maintain;Network;Detect
-7.1;Fully Supported Web browers and email clients;Deliver;Network;Protect
-7.2;Disable Unauthorized Plugins with Application & URL Whitelisting;Exploit;Application;Protect
-7.3;Limit Unnecessary Scripts;Exploit;Application;Protect
-7.4;Log URL Resuests;Deliver;Network;Detect
-7.5;Two Separate Browsers;Deliver;Network;Protect
-7.6;Network Based URL Filters;Deliver;Network;Protect
-7.7;Sender Policy Framework for Spoofed Email;Deliver;Network;Protect
-7.8;Block Malicious Email Attachments;Deliver;Network;Protect
-8.1;Continuous Monitoring ;Exploit;Device;Detect
-8.2;Anti-Malware;Exploit;Application;Detect
-8.3;Limit External Devices;Deliver;Device;Protect
-8.4;Anti-Exploitation Features;Exploit;Application;Protect
-8.5;Network Based Anti-Malware;Deliver;Network;Detect
-8.6;DNS Query Logging;Control;Network;Detect
-9.1;Validate Ports, Protocols, Services;Execute;Device;Detect
-9.2;Host Based Firewall;Deliver;Network;Protect
-9.3;Automated Port Scan;Control;Device;Detect
-9.4;VLAN;Deliver;Device;Protect
-9.5;Separate Physical or Logical Host Machines for Critical Services;Deliver;Application;Protect
-9.6;Application Firewall;Execute;Network;Respond
-10.1;Backup;Maintain;Application;Recover
-10.1;Backup;Maintain;Data;Recover
-10.2;Backup with Test;Maintain;Application;Recover
-10.2;Backup with Test;Maintain;Data;Recover
-10.3;Backup with Protection;Maintain;Application;Recover
-10.3;Backup with Protection;Maintain;Data;Recover
-10.4;Backup Destination;Execute;Application;Recover
-11.1;Standard Configuration of Network Devices;Recon;Application;Identify
-3.3;Master Image with Integration & Validation;Exploit;Device;Protect
-11.2;Configuration Rules of Network Devices;Recon;Network;Protect
-11.3;File Alteration Log;Execute;Data;Detect
-11.4;Two Factor & Encrypted Authentication Network Device;Exploit;Device;Protect
-11.5;Latest Stable Security Related Update;Exploit;Device;Protect
-12.1;Blacklist (IP Address);Deliver;Network;Protect
-12.1.2;Whitelist (IP Address);Deliver;Network;Protect
-12.3;Network Based IDS Sensors;Execute;Network;Detect
-12.3.2;Extranet DMZ;Execute;Network;Detect
-12.4;Network Based IPS;Deliver;Network;Respond
-12.5;Application Layer Filtering Proxy Server;Control;Network;Protect
-12.6;Two Factor Authentication Remote Login;Exploit;Network;Protect
-12.6;Two Factor Authentication Remote Login;Exploit;Device;Protect
-12.6;Two Factor Authentication Remote Login;Exploit;Application;Protect
-12.7;Remote Login Security Standards;Exploit;Device;Protect
-12.9;Netflow Analysis on DMZ;Maintain;Network;Detect
-12.10;Firewall Session Tracking;Maintain;Network;Detect
-12.2;DMZ Network Monitoring System;Maintain;Network;Detect
-13.2;Hard Drive Encryption Software;Execute;Data;Protect
-13.3;Block Sensitive Data Exfiltration;Execute;Network;Respond
-13.4;Determine Sensitive Information;Execute;Data;Identify
-13.5;Limited Privileges USB Devices;Execute;Device;Protect
-13.6;Network Based DLP;Maintain;Network;Respond
-13.7;Detect Encrypted Communication;Maintain;Network;Respond
-13.8;Block Malicious Email & File Transfer Websites ;Maintain;Network;Protect
-13.9;Host-Based Data Loss Prevention;Execute;Data;Protect
-14.1;Network Segmentation;Deliver;Network;Protect
-14.1.2;Network Segmentation with Firewall;Deliver;Network;Protect
-14.2;Encrypt Data of Less Trusted Channel;Recon;Network;Protect
-14.3;Private VLAN for Segmentated Workstation Network;Deliver;Network;Protect
-14.4;Access Control List;Exploit;Data;Protect
-14.5;Authentication Mechanism for Accessing Encrypted Data;Maintain;Data;Protect
-14.6;Audit & Authetication for Sensitive Data;Execute;Data;Protect
-14.7;Archive Irregular Accessed Data in Virtualized System;Deliver;Data;Protect
-15.1;Deny Wireless Devices with Unauthorized Configuration;Deliver;Device;Respond
-15.2;Network Vulnerability Scanning;Maintain;Device;Respond
-15.3;Wireless Intrusion Detection System;Execute;Device;Respond
-15.4;Wireless Access on Business Requirements;Deliver;Device;Protect
-15.5;AES with WPA2;Recon;Device;Protect
-15.6;EAP-TLS;Recon;Network;Protect
-15.7;Disable Peer - Peer Wireless Network Capabilities;Deliver;Network;Protect
-15.8;Disable Wireless Peripheral Access of Device;Deliver;Device;Protect
-15.9;VLAN for BYOD & Untrusted Device;Deliver;Network;Protect
-16.1;Disable Anonymous System Account ;Exploit;People;Protect
-16.2;Account Expiration Date;Exploit;People;Protect
-16.3;DIsable Account upon Termination of Employee or Contractor;Exploit;People;Protect
-16.4;Session Time Out;Exploit;People;Protect
-16.5;Screen Lock;Deliver;Application;Protect
-16.7;Account Lockout;Deliver;People;Protect
-16.8;Monitor Attemp for Deactivated Account;Deliver;People;Protect
-16.9;Active Directory or LDAP;Deliver;Device;Protect
-16.10;Anomaly Detection by User's Account Profile;Maintain;People;Detect
-16.11;Multi-Factor Authentication;Deliver;People;Protect
-16.13;Encrypt Credentials of Account;Recon;Network;Protect
-16.14;Authentication File Protection;Execute;Data;Protect
-17.1;Trainning and Awareness according to RoadMap;Deliver;People;Protect
-17.3;Security Awareness for Manual Instrusion Block;Maintain;People;Respond
-17.4;Validate and Improve Awareness Level;Deliver;People;Protect
-17.5;Security Skill Assessment;Deliver;People;Protect
-18.1;Vendor Supported & Updated Application Software;Recon;Application;Protect
-18.2;Web Application Firewall;Execute;Network;Detect
-18.2.2;Application Firewall;Execute;Application;Detect
-18.3;Explicit Error Checking;Exploit;Data;Protect
-18.4;Test In-House Softwares;Recon;Application;Protect
-18.5;Stop System Error Message;Recon;Application;Protect
-18.6;Production and Non-production Environment;Exploit;Application;Protect
-18.7;Standard Hardening Configuration for Application Accessing Databases;Deliver;Application;Protect
-18.8;Secure Development Training;Exploit;People;Protect
-18.9;Remove Artifacts of In-House Software in Production Environment;Exploit;Application;Protect
-19.1;Incident Responf Procedures;Maintain;People;Respond
-19.2;Job Duties for Response;Maintain;People;Respond
-19.3;Incident Response Manager;Maintain;People;Respond
-19.4;Notify Anomalous Event;Maintain;People;Respond
-19.6;Routine Employee Awareness;Exploit;People;Protect
-20.1;Penetration Testing;Exploit;Application;Protect
-20.2;Monitor Penetration Tesing Account;Deliver;People;Detect
-20.3;Red Team Exercise;Maintain;Device;Respond
-20.3.2;Red Team Exercise;Maintain;Application;Respond
-20.3.3;Red Team Exercise;Maintain;Network;Respond
-20.4;Disocer Unprotected System Information;Recon;Data;Protect
-20.5;Realistic Assessment of Security Posture & Risk to	Critical Assets;Recon;Application;Identify
-20.5.2;Realistic Assessment of Security Posture & Risk to	Critical Assets;Recon;Device;Identify
-20.5.3;Realistic Assessment of Security Posture & Risk to	Critical Assets;Recon;Network;Identify
-20.7;Periodic Red Team Exercises with Scoring;Exploit;Application;Identify
-20.7.2;Periodic Red Team Exercises with Scoring;Exploit;Device;Identify
-20.7.3;Periodic Red Team Exercises with Scoring;Exploit;Network;Identify
-20.8;Test Bed;Exploit;Application;Identify
-17.2;Online Training or Training Conference ;Exploit;People;Protect
+1.1;Automaed Asset Inventory;Exploit;Device;Identify;3235
+1.2;DHCP Server Logging;Exploit;Device;Identify;3608
+1.3;Asset Inventory System with Update;Exploit;Device;Identify;4244
+1.4;Asset Inventory for Devices Connected to Internet;Exploit;Device;Identify;2941
+1.5;Network Level Authentication;Deliver;Device;Identify;4426
+1.6;Client Certificate;Deliver;Device;Identify;2986
+2.1;Authorized Software Inventory;Exploit;Application;Identify;2921
+2.2;Application Whitelisting;Exploit;Application;Protect;2365
+2.4;Virtual Machine;Deliver;Application;Protect;3748
+3.1;Standardized Image of Secure Configuration;Recon;Application;Identify;3247
+3.2;Strict Configurations for Systems;Recon;Device;Identify;4133
+3.4;Secure Channel for Devices' Remote Administration ;Recon;Network;Protect;3635
+3.5;File Integrity Checking Tool;Exploit;Data;Detect;3459
+3.6;Automated Configuration Monitoring;Maintain;Device;Detect;4700
+3.7;System Configuration Management Tool;Maintain;Application;Protect;3181
+3.6;Automated Configuration Monitoring;Maintain;Application;Detect;2930
+4.1;Automated Vulnerability Scanning ;Recon;Device;Identify;3138
+4.1;Automated Vulnerability Scanning ;Recon;Application;Identify;3314
+4.2;Vulnerability Scanning Log;Recon;Device;Identify;3654
+4.2;Vulnerability Scanning Log;Recon;Application;Identify;3647
+4.3;Authenticated Vulnerability Scanning;Recon;Device;Identify;2765
+4.4;Vulnerability Intelligent Service;Recon;Device;Identify;3081
+4.4;Vulnerability Intelligent Service;Recon;Application;Identify;2922
+4.5;Automated Patch Management;Exploit;Device;Protect;4151
+4.5;Automated Patch Management;Exploit;Application;Protect;3170
+4.7;Risk Assessment;Recon;Network;Identify;3862
+4.7;Risk Assessment;Recon;Device;Identify;3388
+4.8;Risk Rate Vulnerabilities;Recon;Network;Identify;3617
+5.1;Minimize Administrative Privileges;Exploit;Network;Protect;3160
+5.1;Minimize Administrative Privileges;Exploit;Device;Protect;3668
+5.1;Minimize Administrative Privileges;Exploit;Application;Protect;4256
+5.2;Administrative Account Inventory;Exploit;People;Protect;4413
+5.3;Change Default Passwords;Exploit;Device;Protect;3477
+5.3;Change Default Passwords;Exploit;Application;Protect;3166
+5.4;Administrator Account Modification Log;Exploit;People;Protect;3463
+5.5;Log Unsuccessful Login;Exploit;Device;Detect;3378
+5.5;Log Unsuccessful Login;Exploit;Application;Detect;3519
+5.6;Multi-Factor Authentication;Exploit;Device;Protect;5876
+5.6;Multi-Factor Authentication;Exploit;Application;Protect;3285
+5.7; Password Constraint;Exploit;Device;Protect;3377
+5.7; Password Constraint;Exploit;Application;Protect;3865
+5.8;Migration from Non-Administrative to Administrative;Exploit;People;Protect;3305
+5.9;Dedicated Machine for Administrative Tasks;Deliver;Device;Protect;3282
+6.1;Two Synchronized Time Sources;Exploit;Network;Identify;3415
+6.2;Audit Log Validation;Exploit;Device;Detect;2342
+6.4;Identify Anomalies;Maintain;Network;Detect;4206
+6.5;Logs of Network Boundary Devices;Maintain;Network;Detect;4340
+6.6;Security Information and Event Management;Maintain;Network;Detect;3726
+7.1;Fully Supported Web browers and email clients;Deliver;Network;Protect;3454
+7.2;Disable Unauthorized Plugins with Application & URL Whitelisting;Exploit;Application;Protect;2573
+7.3;Limit Unnecessary Scripts;Exploit;Application;Protect;3005
+7.4;Log URL Resuests;Deliver;Network;Detect;3841
+7.5;Two Separate Browsers;Deliver;Network;Protect;2629
+7.6;Network Based URL Filters;Deliver;Network;Protect;3197
+7.7;Sender Policy Framework for Spoofed Email;Deliver;Network;Protect;3230
+7.8;Block Malicious Email Attachments;Deliver;Network;Protect;2751
+8.1;Continuous Monitoring ;Exploit;Device;Detect;3487
+8.2;Anti-Malware;Exploit;Application;Detect;3277
+8.3;Limit External Devices;Deliver;Device;Protect;2860
+8.4;Anti-Exploitation Features;Exploit;Application;Protect;2473
+8.5;Network Based Anti-Malware;Deliver;Network;Detect;3494
+8.6;DNS Query Logging;Control;Network;Detect;3902
+9.1;Validate Ports, Protocols, Services;Execute;Device;Detect;3968
+9.2;Host Based Firewall;Deliver;Network;Protect;4572
+9.3;Automated Port Scan;Control;Device;Detect;3285
+9.4;VLAN;Deliver;Device;Protect;3179
+9.5;Separate Physical or Logical Host Machines for Critical Services;Deliver;Application;Protect;3186
+9.6;Application Firewall;Execute;Network;Respond;2533
+10.1;Backup;Maintain;Application;Recover;3705
+10.1;Backup;Maintain;Data;Recover;3380
+10.2;Backup with Test;Maintain;Application;Recover;3639
+10.2;Backup with Test;Maintain;Data;Recover;3442
+10.3;Backup with Protection;Maintain;Application;Recover;3438
+10.3;Backup with Protection;Maintain;Data;Recover;4827
+10.4;Backup Destination;Execute;Application;Recover;2981
+11.1;Standard Configuration of Network Devices;Recon;Application;Identify;3276
+3.3;Master Image with Integration & Validation;Exploit;Device;Protect;2136
+11.2;Configuration Rules of Network Devices;Recon;Network;Protect;4016
+11.3;File Alteration Log;Execute;Data;Detect;4586
+11.4;Two Factor & Encrypted Authentication Network Device;Exploit;Device;Protect;3902
+11.5;Latest Stable Security Related Update;Exploit;Device;Protect;4216
+12.1;Blacklist (IP Address);Deliver;Network;Protect;4243
+12.1.2;Whitelist (IP Address);Deliver;Network;Protect;3815
+12.3;Network Based IDS Sensors;Execute;Network;Detect;3198
+12.3.2;Extranet DMZ;Execute;Network;Detect;3728
+12.4;Network Based IPS;Deliver;Network;Respond;3204
+12.5;Application Layer Filtering Proxy Server;Control;Network;Protect;2640
+12.6;Two Factor Authentication Remote Login;Exploit;Network;Protect;3540
+12.6;Two Factor Authentication Remote Login;Exploit;Device;Protect;3652
+12.6;Two Factor Authentication Remote Login;Exploit;Application;Protect;3505
+12.7;Remote Login Security Standards;Exploit;Device;Protect;3365
+12.9;Netflow Analysis on DMZ;Maintain;Network;Detect;3419
+12.10;Firewall Session Tracking;Maintain;Network;Detect;2792
+12.2;DMZ Network Monitoring System;Maintain;Network;Detect;3361
+13.2;Hard Drive Encryption Software;Execute;Data;Protect;3292
+13.3;Block Sensitive Data Exfiltration;Execute;Network;Respond;4186
+13.4;Determine Sensitive Information;Execute;Data;Identify;4261
+13.5;Limited Privileges USB Devices;Execute;Device;Protect;3736
+13.6;Network Based DLP;Maintain;Network;Respond;4304
+13.7;Detect Encrypted Communication;Maintain;Network;Respond;3598
+13.8;Block Malicious Email & File Transfer Websites ;Maintain;Network;Protect;3875
+13.9;Host-Based Data Loss Prevention;Execute;Data;Protect;3913
+14.1;Network Segmentation;Deliver;Network;Protect;3109
+14.1.2;Network Segmentation with Firewall;Deliver;Network;Protect;3384
+14.2;Encrypt Data of Less Trusted Channel;Recon;Network;Protect;3673
+14.3;Private VLAN for Segmentated Workstation Network;Deliver;Network;Protect;3827
+14.4;Access Control List;Exploit;Data;Protect;2355
+14.5;Authentication Mechanism for Accessing Encrypted Data;Maintain;Data;Protect;4412
+14.6;Audit & Authetication for Sensitive Data;Execute;Data;Protect;3043
+14.7;Archive Irregular Accessed Data in Virtualized System;Deliver;Data;Protect;3528
+15.1;Deny Wireless Devices with Unauthorized Configuration;Deliver;Device;Respond;3648
+15.2;Network Vulnerability Scanning;Maintain;Device;Respond;3084
+15.3;Wireless Intrusion Detection System;Execute;Device;Respond;2598
+15.4;Wireless Access on Business Requirements;Deliver;Device;Protect;2319
+15.5;AES with WPA2;Recon;Device;Protect;2588
+15.6;EAP-TLS;Recon;Network;Protect;3056
+15.7;Disable Peer - Peer Wireless Network Capabilities;Deliver;Network;Protect;3577
+15.8;Disable Wireless Peripheral Access of Device;Deliver;Device;Protect;4201
+15.9;VLAN for BYOD & Untrusted Device;Deliver;Network;Protect;2014
+16.1;Disable Anonymous System Account ;Exploit;People;Protect;3698
+16.2;Account Expiration Date;Exploit;People;Protect;3220
+16.3;DIsable Account upon Termination of Employee or Contractor;Exploit;People;Protect;3228
+16.4;Session Time Out;Exploit;People;Protect;1755
+16.5;Screen Lock;Deliver;Application;Protect;4518
+16.7;Account Lockout;Deliver;People;Protect;4266
+16.8;Monitor Attemp for Deactivated Account;Deliver;People;Protect;3373
+16.9;Active Directory or LDAP;Deliver;Device;Protect;2744
+16.10;Anomaly Detection by User's Account Profile;Maintain;People;Detect;3523
+16.11;Multi-Factor Authentication;Deliver;People;Protect;4419
+16.13;Encrypt Credentials of Account;Recon;Network;Protect;3443
+16.14;Authentication File Protection;Execute;Data;Protect;3313
+17.1;Trainning and Awareness according to RoadMap;Deliver;People;Protect;2958
+17.3;Security Awareness for Manual Instrusion Block;Maintain;People;Respond;2394
+17.4;Validate and Improve Awareness Level;Deliver;People;Protect;2859
+17.5;Security Skill Assessment;Deliver;People;Protect;3932
+18.1;Vendor Supported & Updated Application Software;Recon;Application;Protect;3745
+18.2;Web Application Firewall;Execute;Network;Detect;3677
+18.2.2;Application Firewall;Execute;Application;Detect;3507
+18.3;Explicit Error Checking;Exploit;Data;Protect;3929
+18.4;Test In-House Softwares;Recon;Application;Protect;4353
+18.5;Stop System Error Message;Recon;Application;Protect;3810
+18.6;Production and Non-production Environment;Exploit;Application;Protect;3631
+18.7;Standard Hardening Configuration for Application Accessing Databases;Deliver;Application;Protect;3401
+18.8;Secure Development Training;Exploit;People;Protect;3413
+18.9;Remove Artifacts of In-House Software in Production Environment;Exploit;Application;Protect;2916
+19.1;Incident Responf Procedures;Maintain;People;Respond;4180
+19.2;Job Duties for Response;Maintain;People;Respond;3726
+19.3;Incident Response Manager;Maintain;People;Respond;3230
+19.4;Notify Anomalous Event;Maintain;People;Respond;3981
+19.6;Routine Employee Awareness;Exploit;People;Protect;3832
+20.1;Penetration Testing;Exploit;Application;Protect;3320
+20.2;Monitor Penetration Tesing Account;Deliver;People;Detect;3702
+20.3;Red Team Exercise;Maintain;Device;Respond;3156
+20.3.2;Red Team Exercise;Maintain;Application;Respond;3811
+20.3.3;Red Team Exercise;Maintain;Network;Respond;4192
+20.4;Disocer Unprotected System Information;Recon;Data;Protect;3722
+20.5;Realistic Assessment of Security Posture & Risk to	Critical Assets;Recon;Application;Identify;3716
+20.5.2;Realistic Assessment of Security Posture & Risk to	Critical Assets;Recon;Device;Identify;3852
+20.5.3;Realistic Assessment of Security Posture & Risk to	Critical Assets;Recon;Network;Identify;2024
+20.7;Periodic Red Team Exercises with Scoring;Exploit;Application;Identify;4028
+20.7.2;Periodic Red Team Exercises with Scoring;Exploit;Device;Identify;3291
+20.7.3;Periodic Red Team Exercises with Scoring;Exploit;Network;Identify;3829
+20.8;Test Bed;Exploit;Application;Identify;3420
+17.2;Online Training or Training Conference ;Exploit;People;Protect;3916

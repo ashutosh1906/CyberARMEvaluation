@@ -341,6 +341,7 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
             # print "Constraints %s" % (simRes)
             cyberARM.add(simRes)
         # cyberARM.minimize(smt_Global_Residual_Risk)
+        print time.ctime()
         start_time = time.time()
         cyberARM.set("timeout",ProjectConfigFile.TIMEOUT_DURATION)
         satisfiability = cyberARM.check()

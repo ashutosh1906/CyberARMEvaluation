@@ -1,7 +1,7 @@
 import random
 import ProjectConfigFile, ThreatAction
 class SecurityControl(object):
-    def __init__(self,primary_key,version,name,kill_chain_phase,en_level,sec_func):
+    def __init__(self,primary_key,version,name,kill_chain_phase,en_level,sec_func,cost):
         self.primary_key = primary_key
         self.sc_version = version
         self.sc_name = name
@@ -13,7 +13,8 @@ class SecurityControl(object):
         self.number_threat_action = 0
         self.asset_threat_action_list = []
         self.global_asset_threat_action_list = []
-        self.investment_cost = random.randint(1000,5000)
+        self.investment_cost = int(cost)
+        # self.investment_cost = random.randint(1000,5000)
 
     def re_init(self):
         del self.threat_action[:]
