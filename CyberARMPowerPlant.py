@@ -119,7 +119,8 @@ def cyberarm_init_main(asset_enterprise_list_input,affordable_risk,budget,risk_e
                                                                  threat_action_name_to_id, risk_threat_action,
                                                                  asset_enterprise_list, threat_list, threat_name_to_id,
                                                                  float(affordable_risk), float(budget),global_risk_threat_action,threat_action_id_to_name)
-    print "ROI %s" % (recommendedCDM[2])
+    for iter_index in range(ProjectConfigFile.ITERATION_MODEL_SATISFACTION):
+        print "ROI %s" % (recommendedCDM[iter_index][2])
     if len(recommendedCDM[ProjectConfigFile.CYBERARM_CDM_MATRIX]) == 0:
         roi_row = {}
         roi_row[ProjectConfigFile.MITIGATED_RISK] = 0

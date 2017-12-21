@@ -189,8 +189,9 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
     ############################################################ End SMT Environment ####################################################
 
     ############################################################## Iterate over the SMT #################################################
+    reduced_risk_value_iteration = (affordable_risk-global_min_risk)/ProjectConfigFile.ITERATION_MODEL_SATISFACTION
     CDM_Global_All_Statistice_Iterative = []
-    for i in range(2):
+    for i in range(ProjectConfigFile.ITERATION_MODEL_SATISFACTION):
         ############################################################ Declare SMT Solver #####################################################
         cyberARMGoal = Goal()
         cyberARMTactic = Then(Tactic('simplify'), Tactic('solve-eqs'))
@@ -329,43 +330,44 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
         cyberARMGoal.add(smt_Maximum_Number_Security_Control <= max_security_control_number)
 
         ########################################################### Discover The Most Cost Effective Pattern #####################################
-        for iter_index in range(1):
-            ############################################################ 2.6 Add The Total Residual Risk #############################################
-            print "***** Affordable Risk %s *********" % (affordable_risk)
-            # cyberARM.push()
-            cyberARMGoal.add(smt_Global_Residual_Risk <= affordable_risk)
-            ############################################################ End Constrainst Development #################################################
-            ############################################################ 3. Check the model ##########################################################
-            simplifiedResult = cyberARMTactic(cyberARMGoal)
-            # print "Length %s" % (len(simplifiedResult))
-            cyberARM = Solver()
-            # cyberARM = Optimize()
-            for simRes in simplifiedResult:
-                # print "Constraints %s" % (simRes)
-                cyberARM.add(simRes)
-            # cyberARM.minimize(smt_Global_Residual_Risk)
-            print time.ctime()
-            start_time = time.time()
-            cyberARM.set("timeout",ProjectConfigFile.TIMEOUT_DURATION)
-            satisfiability = cyberARM.check()
-            print "Satisfiability %s" % (satisfiability)
-            print "Time Required for Solution %s" % (time.time() - start_time)
-            ############################################################ 4. Get The Model ############################################################
 
-            recommended_CDM = None
-            # print "Try %s" % (recommended_CDM.check())
-            if satisfiability == z3.sat:
-                recommended_CDM = cyberARM.model()
-                # print "Model %s" % (recommended_CDM)
+        ############################################################ 2.6 Add The Total Residual Risk #############################################
+        print "***** Affordable Risk %s *********" % (affordable_risk)
+        # cyberARM.push()
+        cyberARMGoal.add(smt_Global_Residual_Risk <= affordable_risk)
+        ############################################################ End Constrainst Development #################################################
+        ############################################################ 3. Check the model ##########################################################
+        simplifiedResult = cyberARMTactic(cyberARMGoal)
+        # print "Length %s" % (len(simplifiedResult))
+        cyberARM = Solver()
+        # cyberARM = Optimize()
+        for simRes in simplifiedResult:
+            # print "Constraints %s" % (simRes)
+            cyberARM.add(simRes)
+        # cyberARM.minimize(smt_Global_Residual_Risk)
+        print time.ctime()
+        start_time = time.time()
+        cyberARM.set("timeout",ProjectConfigFile.TIMEOUT_DURATION)
+        satisfiability = cyberARM.check()
+        print "Satisfiability %s" % (satisfiability)
+        print "Time Required for Solution %s" % (time.time() - start_time)
+        ############################################################ 4. Get The Model ############################################################
 
-            else:
-                print "There is no satisfiable model"
-                recommended_CDM = []
-                recommended_CDM.insert(ProjectConfigFile.CYBERARM_CDM_MATRIX, [])
-                recommended_CDM.insert(ProjectConfigFile.CYBERARM_RISK, [])
-                recommended_CDM.insert(ProjectConfigFile.CYBERARM_ROI, global_estimated_risk)
-                return recommended_CDM
-            # cyberARM.pop()
+        recommended_CDM = None
+        # print "Try %s" % (recommended_CDM.check())
+        if satisfiability == z3.sat:
+            recommended_CDM = cyberARM.model()
+            # print "Model %s" % (recommended_CDM)
+
+        else:
+            print "There is no satisfiable model"
+            recommended_CDM = []
+            recommended_CDM.insert(ProjectConfigFile.CYBERARM_CDM_MATRIX, [])
+            recommended_CDM.insert(ProjectConfigFile.CYBERARM_RISK, [])
+            recommended_CDM.insert(ProjectConfigFile.CYBERARM_ROI,-1)
+            CDM_Global_All_Statistice_Iterative.append(recommended_CDM)
+            continue
+        # cyberARM.pop()
 
         ################################################################## Prepare the output ###################################################
         CDM_Global_id = []
@@ -474,6 +476,7 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
         CDM_Global_All_Statistice.insert(ProjectConfigFile.CYBERARM_RISK,risk_all)
         CDM_Global_All_Statistice.insert(ProjectConfigFile.CYBERARM_ROI,roi_statistics)
         CDM_Global_All_Statistice_Iterative.append(CDM_Global_All_Statistice)
+        affordable_risk -= reduced_risk_value_iteration
     return CDM_Global_All_Statistice_Iterative
 
 

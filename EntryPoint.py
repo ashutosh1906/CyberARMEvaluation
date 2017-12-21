@@ -10,9 +10,9 @@ def readVerisList():
         veris_list.append([line[0],[float(line[1]),float(line[2]),float(line[3])]])
 
 if __name__=="__main__":
-    budget = 1937050
+    budget = 1007050
     risk_elimination = .70
-    affordable_risk = 52488336
+    affordable_risk = 22447833
     ######################################### Read the threat and threat action statistics ###############################################
     Initialization.initializeEnvironment()
     # print "(Init) Threat Threat Action Asset Veris %s" % (threat_threatAction_asset_veris)
