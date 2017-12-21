@@ -190,9 +190,14 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
     ############################################################ End SMT Environment ####################################################
 
     ############################################################## Iterate over the SMT #################################################
-    reduced_risk_value_iteration = (affordable_risk-global_min_risk)/ProjectConfigFile.ITERATION_MODEL_SATISFACTION
+    reduced_risk_value_iteration_variable = (affordable_risk - global_min_risk) / ProjectConfigFile.ITERATION_MODEL_SATISFACTION
     CDM_Global_All_Statistice_Iterative = []
-    for i in range(ProjectConfigFile.ITERATION_MODEL_SATISFACTION):
+    satisfied_risk_variable = -1
+    minimum_risk_variable = global_min_risk
+    affordable_risk_variable = affordable_risk
+    for model_iteration_index in range(ProjectConfigFile.ITERATION_MODEL_SATISFACTION):
+        if satisfied_risk_variable <= minimum_risk_variable:
+            break
         ############################################################ Declare SMT Solver #####################################################
         cyberARMGoal = Goal()
         cyberARMTactic = Then(Tactic('simplify'), Tactic('solve-eqs'))
@@ -333,9 +338,9 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
         ########################################################### Discover The Most Cost Effective Pattern #####################################
 
         ############################################################ 2.6 Add The Total Residual Risk #############################################
-        print "***** Affordable Risk %s *********" % (affordable_risk)
+        print "***** Affordable Risk %s *********" % (affordable_risk_variable)
         # cyberARM.push()
-        cyberARMGoal.add(smt_Global_Residual_Risk <= affordable_risk)
+        cyberARMGoal.add(smt_Global_Residual_Risk <= affordable_risk_variable)
         ############################################################ End Constrainst Development #################################################
         ############################################################ 3. Check the model ##########################################################
         simplifiedResult = cyberARMTactic(cyberARMGoal)
@@ -367,6 +372,9 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
             recommended_CDM.insert(ProjectConfigFile.CYBERARM_RISK, [])
             recommended_CDM.insert(ProjectConfigFile.CYBERARM_ROI,-1)
             CDM_Global_All_Statistice_Iterative.append(recommended_CDM)
+            minimum_risk_variable = affordable_risk_variable + 1
+            reduced_risk_value_iteration_variable = (satisfied_risk_variable - minimum_risk_variable)/(ProjectConfigFile.ITERATION_MODEL_SATISFACTION - model_iteration_index)
+            affordable_risk_variable = satisfied_risk_variable - reduced_risk_value_iteration_variable
             continue
         # cyberARM.pop()
 
@@ -477,7 +485,9 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
         CDM_Global_All_Statistice.insert(ProjectConfigFile.CYBERARM_RISK,risk_all)
         CDM_Global_All_Statistice.insert(ProjectConfigFile.CYBERARM_ROI,roi_statistics)
         CDM_Global_All_Statistice_Iterative.append(CDM_Global_All_Statistice)
-        affordable_risk -= reduced_risk_value_iteration
+        satisfied_risk_variable = roi_statistics[ProjectConfigFile.RESIDUAL_RISK]
+        reduced_risk_value_iteration_variable = (satisfied_risk_variable - minimum_risk_variable)/(ProjectConfigFile.ITERATION_MODEL_SATISFACTION - model_iteration_index)
+        affordable_risk_variable = satisfied_risk_variable - reduced_risk_value_iteration_variable
     return CDM_Global_All_Statistice_Iterative
 
 
