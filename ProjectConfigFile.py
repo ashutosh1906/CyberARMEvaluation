@@ -30,7 +30,7 @@ CYBERARM_CDM_MATRIX = 0
 CYBERARM_RISK = 1
 CYBERARM_ROI = 2
 NUMBER_OF_CYBERARM_OUTPUT = 3
-TIMEOUT_DURATION = 300*1000
+TIMEOUT_DURATION = 6000*1000
 SECURITY_CONTROL_COST_MEAN = 3500
 SECURITY_CONTROL_COST_DEVIATION = 666
 SECURITY_CONTROL_COST_MAX = 3000
@@ -46,7 +46,7 @@ THREAT_TAG_OPEN = '<<<'
 THREAT_TAG_CLOSE = '>>>'
 THREAT_ACTION_TAG_OPEN = '<<<<'
 THREAT_ACTION_TAG_CLOSE = '>>>>'
-VERIS_LIST_FILE = 'ResourceFolder/InputFiles/veris_list_100.txt'
+VERIS_LIST_FILE = 'ResourceFolder/InputFiles/veris_list_200.txt'
 EXPERIENCE_LIST_FILE = 'ExperienceList.txt'
 
 ######################################### ROI Stattistics #####################################################

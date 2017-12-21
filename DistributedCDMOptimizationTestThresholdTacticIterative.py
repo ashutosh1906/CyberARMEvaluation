@@ -137,11 +137,12 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
         for i in range(len(threat_id_for_all_assets)):
             for threat_id in threat_id_for_all_assets[i]:
                 max_risk_initial += threat_list[threat_id].maximum_risk[i]
-        recommended_CDM = []
-        recommended_CDM.insert(ProjectConfigFile.CYBERARM_CDM_MATRIX, [])
-        recommended_CDM.insert(ProjectConfigFile.CYBERARM_RISK, [])
-        recommended_CDM.insert(ProjectConfigFile.CYBERARM_ROI, max_risk_initial)
-        return recommended_CDM
+        # recommended_CDM = []
+        # recommended_CDM.insert(ProjectConfigFile.CYBERARM_CDM_MATRIX, [])
+        # recommended_CDM.insert(ProjectConfigFile.CYBERARM_RISK, [])
+        # recommended_CDM.insert(ProjectConfigFile.CYBERARM_ROI, max_risk_initial)
+        # return recommended_CDM
+        return []
 
     ######################################################## Prepare a list with the names of the assets ####################################################
     asset_list_for_smt = []

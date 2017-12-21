@@ -119,14 +119,14 @@ def cyberarm_init_main(asset_enterprise_list_input,affordable_risk,budget,risk_e
                                                                  threat_action_name_to_id, risk_threat_action,
                                                                  asset_enterprise_list, threat_list, threat_name_to_id,
                                                                  float(affordable_risk), float(budget),global_risk_threat_action,threat_action_id_to_name)
-    for iter_index in range(ProjectConfigFile.ITERATION_MODEL_SATISFACTION):
+    for iter_index in range(len(recommendedCDM)):
         print "ROI %s" % (recommendedCDM[iter_index][2])
-    if len(recommendedCDM[ProjectConfigFile.CYBERARM_CDM_MATRIX]) == 0:
-        roi_row = {}
-        roi_row[ProjectConfigFile.MITIGATED_RISK] = 0
-        roi_row[ProjectConfigFile.ROI] = 0
-        roi_row[ProjectConfigFile.IMPOSED_RISK] = round(recommendedCDM[ProjectConfigFile.CYBERARM_ROI],3)
-        roi_row[ProjectConfigFile.RESIDUAL_RISK] = roi_row[ProjectConfigFile.IMPOSED_RISK]
-        roi_row[ProjectConfigFile.TOTAL_IMPLEMENTATION_COST] = 0
-        recommendedCDM.insert(ProjectConfigFile.CYBERARM_ROI, roi_row)
+    # if len(recommendedCDM[ProjectConfigFile.CYBERARM_CDM_MATRIX]) == 0:
+    #     roi_row = {}
+    #     roi_row[ProjectConfigFile.MITIGATED_RISK] = 0
+    #     roi_row[ProjectConfigFile.ROI] = 0
+    #     roi_row[ProjectConfigFile.IMPOSED_RISK] = round(recommendedCDM[ProjectConfigFile.CYBERARM_ROI],3)
+    #     roi_row[ProjectConfigFile.RESIDUAL_RISK] = roi_row[ProjectConfigFile.IMPOSED_RISK]
+    #     roi_row[ProjectConfigFile.TOTAL_IMPLEMENTATION_COST] = 0
+    #     recommendedCDM.insert(ProjectConfigFile.CYBERARM_ROI, roi_row)
     return recommendedCDM
