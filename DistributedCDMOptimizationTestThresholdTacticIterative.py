@@ -171,6 +171,7 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
     else:
         probable_risk_threshold =  global_estimated_risk-(highest_risk_mitigation * budget/global_Total_Cost)
     print "Global Total Cost %s" % (global_Total_Cost)
+    print "Budget %s" % (budget)
     print "Global Risk Threshold %s" % (probable_risk_threshold)
     print "Global Minimum Risk %s" % (global_min_risk)
     ################################################# Append All The Risks ##########################################################################
@@ -192,7 +193,7 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
     ############################################################## Iterate over the SMT #################################################
     reduced_risk_value_iteration_variable = (affordable_risk - global_min_risk) / ProjectConfigFile.ITERATION_MODEL_SATISFACTION
     CDM_Global_All_Statistice_Iterative = []
-    satisfied_risk_variable = -1
+    satisfied_risk_variable = global_estimated_risk
     minimum_risk_variable = global_min_risk
     affordable_risk_variable = affordable_risk
     for model_iteration_index in range(ProjectConfigFile.ITERATION_MODEL_SATISFACTION):

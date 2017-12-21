@@ -35,7 +35,7 @@ SECURITY_CONTROL_COST_MEAN = 3500
 SECURITY_CONTROL_COST_DEVIATION = 666
 SECURITY_CONTROL_COST_MAX = 3000
 SECURITY_CONTROL_COST_MIN = 5000
-ITERATION_MODEL_SATISFACTION = 10
+ITERATION_MODEL_SATISFACTION = 20
 ################################################### Read from single THreat statistics file ##################
 WRITE_FILE_NAME = 'Global_Threat_Statistics.txt'
 FILENAME_TAG_OPEN = '<'
