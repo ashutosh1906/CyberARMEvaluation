@@ -339,7 +339,7 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
         ########################################################### Discover The Most Cost Effective Pattern #####################################
 
         ############################################################ 2.6 Add The Total Residual Risk #############################################
-        print "***** Affordable Risk %s *********" % (affordable_risk_variable)
+        print "***** Iteration Number %s :::: Affordable Risk %s *********" % (model_iteration_index,affordable_risk_variable)
         # cyberARM.push()
         cyberARMGoal.add(smt_Global_Residual_Risk <= affordable_risk_variable)
         ############################################################ End Constrainst Development #################################################
