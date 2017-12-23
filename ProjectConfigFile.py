@@ -4,6 +4,9 @@ import os
 SECURITY_CONTROL_FILE = 'ResourceFolder/SecurityControls.csv'
 THREAT_ACTION_SECURITY_CONTROL_FILE = 'ResourceFolder/ThreatActionSecurityControldistribution.csv'
 
+############################################################# Output Files ################################################
+OUTPUT_FILE_NAME = []
+OUTPUT_DIRECTORY =
 ############################################################## Global Variables #############################################
 OTHER_ASSET = 'other'
 DESTROY_C = 4
@@ -30,7 +33,7 @@ CYBERARM_CDM_MATRIX = 0
 CYBERARM_RISK = 1
 CYBERARM_ROI = 2
 NUMBER_OF_CYBERARM_OUTPUT = 3
-TIMEOUT_DURATION = 900*1000
+TIMEOUT_DURATION = 1200*1000
 SECURITY_CONTROL_COST_MEAN = 3500
 SECURITY_CONTROL_COST_DEVIATION = 666
 SECURITY_CONTROL_COST_MAX = 3000

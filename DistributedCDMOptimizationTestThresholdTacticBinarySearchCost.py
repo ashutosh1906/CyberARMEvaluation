@@ -203,13 +203,12 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
     reduced_risk_value_iteration_variable = (affordable_risk - global_min_risk) / ProjectConfigFile.ITERATION_MODEL_SATISFACTION
     CDM_Global_All_Statistice_Iterative = []
     satisfied_risk_variable = global_estimated_risk
-    minimum_risk_variable = global_min_risk
     affordable_risk_variable = affordable_risk
     for cost_iteration_index in range(ProjectConfigFile.COST_MODEL_ITERATION):
         CDM_Global_All_Statistice_Iterative_Budget = []
         allocated_cost(number_of_unique_asset, global_estimated_risk, risk_asset_specific, alloted_cost_asset_specific,
                        budget_variable)
-        minimum_risk_variable = global_min_risk
+        minimum_risk_variable = global_min_risk + 1
         for model_iteration_index in range(ProjectConfigFile.ITERATION_MODEL_SATISFACTION):
             print "Budget: %s --- Affordable Risk: %s --- Minimum Risk Achievable: %s Satisfied Risk %s" % (
             budget_variable, affordable_risk_variable, minimum_risk_variable,satisfied_risk_variable)
@@ -388,10 +387,15 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
                 recommended_CDM.insert(ProjectConfigFile.CYBERARM_CDM_MATRIX, [])
                 recommended_CDM.insert(ProjectConfigFile.CYBERARM_RISK, [])
                 recommended_CDM.insert(ProjectConfigFile.CYBERARM_ROI,-1)
-                CDM_Global_All_Statistice_Iterative.append(recommended_CDM)
-                minimum_risk_variable = affordable_risk_variable + 1
-                reduced_risk_value_iteration_variable = (satisfied_risk_variable - minimum_risk_variable)/(ProjectConfigFile.ITERATION_MODEL_SATISFACTION - model_iteration_index)
-                affordable_risk_variable = satisfied_risk_variable - reduced_risk_value_iteration_variable
+                CDM_Global_All_Statistice_Iterative_Budget.append(recommended_CDM)
+
+                ########################################################### get out if you can't satisfy the minimum ###################################################
+                if affordable_risk_variable == affordable_risk:
+                    break
+
+                minimum_risk_variable = affordable_risk_variable
+                # reduced_risk_value_iteration_variable = (satisfied_risk_variable - minimum_risk_variable)/(ProjectConfigFile.ITERATION_MODEL_SATISFACTION - model_iteration_index)
+                affordable_risk_variable = (satisfied_risk_variable + minimum_risk_variable)/2
                 continue
             # cyberARM.pop()
 
@@ -503,8 +507,13 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
             CDM_Global_All_Statistice.insert(ProjectConfigFile.CYBERARM_ROI,roi_statistics)
             CDM_Global_All_Statistice_Iterative_Budget.append(CDM_Global_All_Statistice)
             satisfied_risk_variable = roi_statistics[ProjectConfigFile.RESIDUAL_RISK]
-            reduced_risk_value_iteration_variable = (satisfied_risk_variable - minimum_risk_variable)/(ProjectConfigFile.ITERATION_MODEL_SATISFACTION - model_iteration_index)
-            affordable_risk_variable = satisfied_risk_variable - reduced_risk_value_iteration_variable
+            if affordable_risk_variable == minimum_risk_variable:
+                break
+            elif model_iteration_index == 0:
+                affordable_risk_variable = minimum_risk_variable
+            # reduced_risk_value_iteration_variable = (satisfied_risk_variable - minimum_risk_variable)/(ProjectConfigFile.ITERATION_MODEL_SATISFACTION - model_iteration_index)
+            else:
+                affordable_risk_variable = (satisfied_risk_variable + minimum_risk_variable)/2
         budget_variable += increase_budget
         CDM_Global_All_Statistice_Iterative.append(CDM_Global_All_Statistice_Iterative_Budget)
     return CDM_Global_All_Statistice_Iterative
