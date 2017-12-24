@@ -5,7 +5,7 @@ SECURITY_CONTROL_FILE = 'ResourceFolder/SecurityControls.csv'
 THREAT_ACTION_SECURITY_CONTROL_FILE = 'ResourceFolder/ThreatActionSecurityControldistribution.csv'
 
 ############################################################# Output Files ################################################
-OUTPUT_FILE_NAME = open("OutputRecords/VERIS_100_1.txt",'w')
+OUTPUT_FILE_NAME = open("OutputRecords/VERIS_100_2.txt",'w')
 ############################################################## Global Variables #############################################
 OTHER_ASSET = 'other'
 DESTROY_C = 4
@@ -32,13 +32,13 @@ CYBERARM_CDM_MATRIX = 0
 CYBERARM_RISK = 1
 CYBERARM_ROI = 2
 NUMBER_OF_CYBERARM_OUTPUT = 3
-TIMEOUT_DURATION = 1800*1000
+TIMEOUT_DURATION = 1200*1000
 SECURITY_CONTROL_COST_MEAN = 3500
 SECURITY_CONTROL_COST_DEVIATION = 666
 SECURITY_CONTROL_COST_MAX = 3000
 SECURITY_CONTROL_COST_MIN = 5000
-ITERATION_MODEL_SATISFACTION = 4
-COST_MODEL_ITERATION = 3
+ITERATION_MODEL_SATISFACTION = 6
+COST_MODEL_ITERATION = 4
 ################################################### Read from single THreat statistics file ##################
 WRITE_FILE_NAME = 'Global_Threat_Statistics.txt'
 FILENAME_TAG_OPEN = '<'
@@ -49,7 +49,7 @@ THREAT_TAG_OPEN = '<<<'
 THREAT_TAG_CLOSE = '>>>'
 THREAT_ACTION_TAG_OPEN = '<<<<'
 THREAT_ACTION_TAG_CLOSE = '>>>>'
-VERIS_LIST_FILE = 'ResourceFolder/InputFiles/veris_list_150.txt'
+VERIS_LIST_FILE = 'ResourceFolder/InputFiles/veris_list_100.txt'
 EXPERIENCE_LIST_FILE = 'ExperienceList.txt'
 
 ######################################### ROI Stattistics #####################################################

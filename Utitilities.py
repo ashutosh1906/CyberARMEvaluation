@@ -311,5 +311,27 @@ def printRiskThreatAction(risk_threat_action,asset_enterprise_list):
                 print "    Threat Action %s ----> %s" % (threat_action,risk_threat_action[i][j][threat_action])
 
 
+def calculateRiskRatioBasedOnSelectedThreatAction(threat_action_id_list_for_all_assets,risk_threat_action,threat_action_id_to_name):
+    asset_index = 0
+    risk_ratio_threat_action = []
+    total_risk = 0.0
+    for i in range(len(risk_threat_action)):
+        for j in range(len(risk_threat_action[i])):
+            risk_ratio_threat_action.append(0.0)
+            for threat_action_id in threat_action_id_list_for_all_assets[asset_index]:
+                if threat_action_id_to_name[threat_action_id] not in risk_threat_action[i][j].keys():
+                    print "(^_^)(^_^)(^_^)(^_^)Error: Why %s (threat action id: %s) not in the risk_threat_action_list" % (threat_action_id_to_name[threat_action_id],threat_action_id)
+                risk_ratio_threat_action[asset_index] += risk_threat_action[i][j][threat_action_id_to_name[threat_action_id]]
+            # print risk_ratio_threat_action[asset_index]
+            total_risk += risk_ratio_threat_action[asset_index]
+            asset_index += 1
 
+    number_of_asset = asset_index
+
+    for asset_index in range(number_of_asset):
+        risk_ratio_threat_action[asset_index] /= total_risk
+    return risk_ratio_threat_action
+
+def rationalCostAllocation(security_control_list,selected_security_controls):
+    pass
 
