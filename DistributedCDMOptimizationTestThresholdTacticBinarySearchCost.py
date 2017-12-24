@@ -10,7 +10,8 @@ def allocated_cost(number_of_unique_asset,global_estimated_risk,risk_asset_speci
 
 def SMT_Environment(security_control_list,selected_security_controls,threat_action_name_list,threat_action_list,
                     threat_action_id_list_for_all_assets,threat_id_for_all_assets,threat_list,asset_enterprise_list,affordable_risk,budget,cost_effectiveness_sc):
-
+    print "*********************************************** In Binary Search ********************************************************************************"
+    ProjectConfigFile.OUTPUT_FILE_NAME.write("*************************** In Binary Search *****************************\n")
     number_of_unique_asset = len(threat_action_id_list_for_all_assets)
     print "Enterprise Given Asset List %s \nEnterprise Given Asset List Length: %s" % (asset_enterprise_list,number_of_unique_asset)
 
@@ -199,7 +200,9 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
 
     ############################################################## Iterate over the SMT #################################################
     budget_variable = budget
-    increase_budget = (global_Total_Cost-budget)/ProjectConfigFile.COST_MODEL_ITERATION
+    increase_budget = 0
+    if ProjectConfigFile.COST_MODEL_ITERATION > 0:
+        increase_budget = (global_Total_Cost-budget)/(ProjectConfigFile.COST_MODEL_ITERATION-1)
     reduced_risk_value_iteration_variable = (affordable_risk - global_min_risk) / ProjectConfigFile.ITERATION_MODEL_SATISFACTION
     CDM_Global_All_Statistice_Iterative = []
     satisfied_risk_variable = global_estimated_risk
@@ -212,6 +215,10 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
         for model_iteration_index in range(ProjectConfigFile.ITERATION_MODEL_SATISFACTION):
             print "Budget: %s --- Affordable Risk: %s --- Minimum Risk Achievable: %s Satisfied Risk %s" % (
             budget_variable, affordable_risk_variable, minimum_risk_variable,satisfied_risk_variable)
+            ProjectConfigFile.OUTPUT_FILE_NAME.write(
+                "***** Iteration Number %s\n Budget: %s --- Affordable Risk: %s --- Minimum Risk Achievable: %s Satisfied Risk%s\n" %
+                (model_iteration_index, budget_variable, affordable_risk_variable, minimum_risk_variable,
+                 satisfied_risk_variable))
             if satisfied_risk_variable <= minimum_risk_variable:
                 break
             ############################################################ Declare SMT Solver #####################################################
@@ -388,7 +395,7 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
                 recommended_CDM.insert(ProjectConfigFile.CYBERARM_RISK, [])
                 recommended_CDM.insert(ProjectConfigFile.CYBERARM_ROI,-1)
                 CDM_Global_All_Statistice_Iterative_Budget.append(recommended_CDM)
-
+                ProjectConfigFile.OUTPUT_FILE_NAME.write("There is no satisfiable model\n")
                 ########################################################### get out if you can't satisfy the minimum ###################################################
                 if affordable_risk_variable == affordable_risk:
                     break
@@ -471,6 +478,7 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
             roi_statistics[ProjectConfigFile.MITIGATED_RISK] = (roi_statistics[ProjectConfigFile.IMPOSED_RISK] - roi_statistics[ProjectConfigFile.RESIDUAL_RISK])
             roi_statistics[ProjectConfigFile.ROI] = (roi_statistics[ProjectConfigFile.MITIGATED_RISK]-roi_statistics[ProjectConfigFile.TOTAL_IMPLEMENTATION_COST]
                                                      )/roi_statistics[ProjectConfigFile.TOTAL_IMPLEMENTATION_COST]
+            ProjectConfigFile.OUTPUT_FILE_NAME.write("%s\n" % (roi_statistics[ProjectConfigFile.ROI]))
             ########################################################### End of Capture of The Risk ####################################################
 
             ########################################################### Hold the Risk #######################################################
@@ -516,6 +524,7 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
                 affordable_risk_variable = (satisfied_risk_variable + minimum_risk_variable)/2
         budget_variable += increase_budget
         CDM_Global_All_Statistice_Iterative.append(CDM_Global_All_Statistice_Iterative_Budget)
+    ProjectConfigFile.OUTPUT_FILE_NAME.close()
     return CDM_Global_All_Statistice_Iterative
 
 

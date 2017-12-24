@@ -5,8 +5,7 @@ SECURITY_CONTROL_FILE = 'ResourceFolder/SecurityControls.csv'
 THREAT_ACTION_SECURITY_CONTROL_FILE = 'ResourceFolder/ThreatActionSecurityControldistribution.csv'
 
 ############################################################# Output Files ################################################
-OUTPUT_FILE_NAME = []
-OUTPUT_DIRECTORY =
+OUTPUT_FILE_NAME = open("OutputRecords/VERIS_100_1.txt",'w')
 ############################################################## Global Variables #############################################
 OTHER_ASSET = 'other'
 DESTROY_C = 4
@@ -33,13 +32,13 @@ CYBERARM_CDM_MATRIX = 0
 CYBERARM_RISK = 1
 CYBERARM_ROI = 2
 NUMBER_OF_CYBERARM_OUTPUT = 3
-TIMEOUT_DURATION = 1200*1000
+TIMEOUT_DURATION = 1800*1000
 SECURITY_CONTROL_COST_MEAN = 3500
 SECURITY_CONTROL_COST_DEVIATION = 666
 SECURITY_CONTROL_COST_MAX = 3000
 SECURITY_CONTROL_COST_MIN = 5000
-ITERATION_MODEL_SATISFACTION = 3
-COST_MODEL_ITERATION = 10
+ITERATION_MODEL_SATISFACTION = 4
+COST_MODEL_ITERATION = 3
 ################################################### Read from single THreat statistics file ##################
 WRITE_FILE_NAME = 'Global_Threat_Statistics.txt'
 FILENAME_TAG_OPEN = '<'
@@ -111,6 +110,7 @@ def init_conf():
     for i in range(len(SECURITY_FUNCTION_LIST)):
         SECURITY_FUNCTION_TO_ID[SECURITY_FUNCTION_LIST[i]] = i
         ID_TO_SECURITY_FUNCTION[i] = SECURITY_FUNCTION_LIST[i]
+
 
 def uploadFiles():
     PROJECT_ROOT = "%s/%s/%s" % (

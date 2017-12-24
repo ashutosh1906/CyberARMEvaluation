@@ -1,6 +1,6 @@
 import ProjectConfigFile,Utitilities
 # import DistributedCDMOptimizationTestThresholdTactic,DistributedCDMOptimizationTestThresholdTacticIterative
-import DistributedCDMOptimizationTestThresholdTacticIterativeCost
+import DistributedCDMOptimizationTestThresholdTacticIterativeCost,DistributedCDMOptimizationTestThresholdTacticBinarySearchCost
 
 from z3 import *
 import time
@@ -91,10 +91,11 @@ def select_security_controls(security_control_list,threat_action_list,threat_act
     # TestCases.securityControlCoverage(security_control_list,selected_security_controls,threat_action_name_list)
     # startProcessing(security_control_list,selected_security_controls,threat_action_name_list,threat_action_list,asset_enterprise_list,risk_threat_action,threat_list,threat_name_to_id)
     print "Number of Selected Security Controls %s" % (number_selected_security_controls)
+    ProjectConfigFile.OUTPUT_FILE_NAME.write("Number of Selected Security Controls %s\n" % (number_selected_security_controls))
     ######################################################### STart of the test and alternative approach ###########################################
     select_threat(threat_list, asset_enterprise_list,threat_id_for_all_assets)
     # Utitilities.printThreatIdForAllAssets(threat_id_for_all_assets,threat_list)
-    return DistributedCDMOptimizationTestThresholdTacticIterativeCost.SMT_Environment(security_control_list, selected_security_controls, threat_action_name_list,
+    return DistributedCDMOptimizationTestThresholdTacticBinarySearchCost.SMT_Environment(security_control_list, selected_security_controls, threat_action_name_list,
                                         threat_action_list, threat_action_id_list_for_all_assets,
                                         threat_id_for_all_assets, threat_list,
                                         asset_enterprise_list,affordable_risk,budget,cost_effectiveness_sc)
