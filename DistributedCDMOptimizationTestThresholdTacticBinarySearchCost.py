@@ -209,6 +209,7 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
     satisfied_risk_variable = global_estimated_risk
     affordable_risk_variable = affordable_risk
     for cost_iteration_index in range(ProjectConfigFile.COST_MODEL_ITERATION):
+        cost_iteration_total_time = 0.0
         CDM_Global_All_Statistice_Iterative_Budget = []
         # allocated_cost(number_of_unique_asset, global_estimated_risk, risk_asset_specific, alloted_cost_asset_specific,
         #                budget_variable)
@@ -385,11 +386,17 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
             # cyberARM.minimize(smt_Global_Residual_Risk)
             print time.ctime()
             print "Time Limitation %s" % (int(time_increase_variable * ProjectConfigFile.TIMEOUT_DURATION))
+            ProjectConfigFile.OUTPUT_FILE_NAME.write(
+                "Time Limitation %s\n" % (int(time_increase_variable * ProjectConfigFile.TIMEOUT_DURATION)))
             start_time = time.time()
             cyberARM.set("timeout",int(time_increase_variable*ProjectConfigFile.TIMEOUT_DURATION))
             satisfiability = cyberARM.check()
+            time_required_specific = time.time() - start_time
             print "Satisfiability %s" % (satisfiability)
-            print "Time Required for Solution %s" % (time.time() - start_time)
+            ProjectConfigFile.OUTPUT_FILE_NAME.write(
+                "Time Required for Solution %s\n" % (time_required_specific))
+            print "Time Required for Solution %s" % (time_required_specific)
+            cost_iteration_total_time += time_required_specific
             ############################################################ 4. Get The Model ############################################################
 
             recommended_CDM = None
@@ -406,7 +413,7 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
                 recommended_CDM.insert(ProjectConfigFile.CYBERARM_RISK, [])
                 recommended_CDM.insert(ProjectConfigFile.CYBERARM_ROI,-1)
                 CDM_Global_All_Statistice_Iterative_Budget.append(recommended_CDM)
-                ProjectConfigFile.OUTPUT_FILE_NAME.write("There is no satisfiable model\n")
+                ProjectConfigFile.OUTPUT_FILE_NAME.write("There is no satisfiable model\n\n")
                 ########################################################### get out if you can't satisfy the minimum ###################################################
                 if affordable_risk_variable == affordable_risk:
                     break
@@ -489,7 +496,7 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
             roi_statistics[ProjectConfigFile.MITIGATED_RISK] = (roi_statistics[ProjectConfigFile.IMPOSED_RISK] - roi_statistics[ProjectConfigFile.RESIDUAL_RISK])
             roi_statistics[ProjectConfigFile.ROI] = (roi_statistics[ProjectConfigFile.MITIGATED_RISK]-roi_statistics[ProjectConfigFile.TOTAL_IMPLEMENTATION_COST]
                                                      )/roi_statistics[ProjectConfigFile.TOTAL_IMPLEMENTATION_COST]
-            ProjectConfigFile.OUTPUT_FILE_NAME.write("Imposed Risk %s ROI: %s, Total Implementation Cost: %s, Residual Risk: %s, Mitigated Risk: %s\n" %
+            ProjectConfigFile.OUTPUT_FILE_NAME.write("Imposed Risk %s ROI: %s, Total Implementation Cost: %s, Residual Risk: %s, Mitigated Risk: %s\n\n" %
                                                      (roi_statistics[ProjectConfigFile.IMPOSED_RISK],roi_statistics[ProjectConfigFile.ROI],
                                                       roi_statistics[ProjectConfigFile.TOTAL_IMPLEMENTATION_COST],roi_statistics[ProjectConfigFile.RESIDUAL_RISK],
                                                       roi_statistics[ProjectConfigFile.MITIGATED_RISK]))
@@ -536,9 +543,10 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
             # reduced_risk_value_iteration_variable = (satisfied_risk_variable - minimum_risk_variable)/(ProjectConfigFile.ITERATION_MODEL_SATISFACTION - model_iteration_index)
             else:
                 affordable_risk_variable = (satisfied_risk_variable + minimum_risk_variable)/2
+        ProjectConfigFile.OUTPUT_FILE_NAME.write(
+            "Time Required For Specific Cost Iteration %s\n\n" % (cost_iteration_total_time))
         budget_variable += increase_budget
         CDM_Global_All_Statistice_Iterative.append(CDM_Global_All_Statistice_Iterative_Budget)
-    ProjectConfigFile.OUTPUT_FILE_NAME.close()
     return CDM_Global_All_Statistice_Iterative
 
 

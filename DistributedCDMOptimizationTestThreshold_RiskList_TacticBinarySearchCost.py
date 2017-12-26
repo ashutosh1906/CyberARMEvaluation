@@ -1,6 +1,7 @@
 from z3 import *
 import time
 import ProjectConfigFile, Utitilities
+from math import pow
 
 def allocated_cost(number_of_unique_asset,global_estimated_risk,risk_asset_specific,alloted_cost_asset_specific,budget):
     for asset_index in range(number_of_unique_asset):
@@ -8,12 +9,34 @@ def allocated_cost(number_of_unique_asset,global_estimated_risk,risk_asset_speci
     print "In Allocated Cost: Asset Specific Estimated Risk Proportion %s" % (risk_asset_specific)
     print "In Allocated Cost: Asset Specific Alloted Cost Proportion %s" % (alloted_cost_asset_specific)
 
-def SMT_Environment(security_control_list,selected_security_controls,threat_action_name_list,threat_action_list,
-                    threat_action_id_list_for_all_assets,threat_id_for_all_assets,threat_list,asset_enterprise_list,affordable_risk,budget,cost_effectiveness_sc):
+def prepareRiskList(risk_list,global_estimated_risk,global_Total_Cost,budget,satisfied_risk_variable):
+    global_min_risk = risk_list[2]
+    highest_risk_mitigation = global_estimated_risk - global_min_risk
+    if budget >= global_Total_Cost:
+        probable_risk_threshold = global_min_risk
+    else:
+        probable_risk_threshold = global_estimated_risk - (highest_risk_mitigation * budget / global_Total_Cost)
+    if probable_risk_threshold > global_min_risk:
+        risk_list.append(probable_risk_threshold)
+    MutateRiskList(risk_list,satisfied_risk_variable)
 
+    ####################################################### Return The Affordable Risk Index ##########################################
+    for risk_value in risk_list:
+        if risk_value < satisfied_risk_variable:
+            return risk_value
+    return -1
+
+def MutateRiskList(risk_list,satisfied_risk_variable):
+    if satisfied_risk_variable < risk_list[1]:
+        risk_list[1] = (satisfied_risk_variable+risk_list[2])/2
+
+def SMT_Environment(security_control_list,selected_security_controls,threat_action_name_list,threat_action_list,
+                    threat_action_id_list_for_all_assets,threat_id_for_all_assets,threat_list,asset_enterprise_list,affordable_risk,budget,cost_effectiveness_sc,risk_ratio_threat_action):
+    print "*********************************************** In Binary Search ********************************************************************************"
+    ProjectConfigFile.OUTPUT_FILE_NAME.write("*************************** In Binary Search *****************************\n")
     number_of_unique_asset = len(threat_action_id_list_for_all_assets)
     print "Enterprise Given Asset List %s \nEnterprise Given Asset List Length: %s" % (asset_enterprise_list,number_of_unique_asset)
-
+    print "Asset Selected Threat Action Specific Risk Ratio %s" % (risk_ratio_threat_action)
     ############################################### Risk List ############################################################################
     risk_list = []
     risk_asset_specific = [0.0 for i in range(number_of_unique_asset)] ######Risk Value For All Assets
@@ -79,7 +102,6 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
             global_estimated_risk += threat.maximum_risk[asset_index]
             risk_asset_specific[asset_index] += threat.maximum_risk[asset_index]
     print "Global Estimated Risk %s" % (global_estimated_risk)
-    ProjectConfigFile.OUTPUT_FILE_NAME.write("Global Estimated Risk %s\n" % (global_estimated_risk))
     print "Asset Specific Estimated Risk %s \n \t ------> Where Total Risk %s" % (risk_asset_specific,sum(risk_asset_specific))
     for asset_index in range(number_of_unique_asset):
         risk_asset_specific[asset_index] /= global_estimated_risk
@@ -140,7 +162,6 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
     # ######################################################### End of Print the Minimum Affordable Risk ##################################
 
     print "Global Minimum Risk %s" % (global_min_risk)
-    ProjectConfigFile.OUTPUT_FILE_NAME.write("Global Minimum Risk %s\n" % (global_min_risk))
     if global_min_risk > affordable_risk:
         max_risk_initial = 0
         for i in range(len(threat_id_for_all_assets)):
@@ -180,18 +201,18 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
     else:
         probable_risk_threshold =  global_estimated_risk-(highest_risk_mitigation * budget/global_Total_Cost)
     print "Global Total Cost %s" % (global_Total_Cost)
-    ProjectConfigFile.OUTPUT_FILE_NAME.write("Global Total Cost %s\n" % (global_Total_Cost))
     print "Budget %s" % (budget)
     print "Global Risk Threshold %s" % (probable_risk_threshold)
     print "Global Minimum Risk %s" % (global_min_risk)
     ################################################# Append All The Risks ##########################################################################
-    risk_list.append(global_estimated_risk)
-    risk_list.append(global_min_risk)
+    # risk_list.append(global_estimated_risk)
     risk_list.append(affordable_risk)
     risk_list.append(probable_risk_threshold)
+    if probable_risk_threshold > global_min_risk:
+        risk_list.append(global_min_risk)
     # print "Before Sort: Risk List : %s" % (risk_list)
-    risk_list.sort()
-    # print "After Sort: Risk List : %s" % (risk_list)
+    # risk_list.sort()
+    print "After Sort: Risk List : %s" % (risk_list)
     ################################################# Max Security Control Cost #############################################################
 
     ###################################################### End of Design of All Heuristics Here ############################################
@@ -202,24 +223,34 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
 
     ############################################################## Iterate over the SMT #################################################
     budget_variable = budget
-    increase_budget = (global_Total_Cost-budget)/ProjectConfigFile.COST_MODEL_ITERATION
+    increase_budget = 0
+    if ProjectConfigFile.COST_MODEL_ITERATION > 1:
+        increase_budget = (global_Total_Cost-budget)/(ProjectConfigFile.COST_MODEL_ITERATION-1)
     reduced_risk_value_iteration_variable = (affordable_risk - global_min_risk) / ProjectConfigFile.ITERATION_MODEL_SATISFACTION
     CDM_Global_All_Statistice_Iterative = []
     satisfied_risk_variable = global_estimated_risk
-    affordable_risk_variable = affordable_risk
+    # risk_list_iteration_index = 0
+    # affordable_risk_variable = risk_list[risk_list_iteration_index]
+    time_increase_variable = 1.0
     for cost_iteration_index in range(ProjectConfigFile.COST_MODEL_ITERATION):
-        cost_iteration_total_time = 0
+        cost_iteration_total_time = 0.0
         CDM_Global_All_Statistice_Iterative_Budget = []
-        allocated_cost(number_of_unique_asset, global_estimated_risk, risk_asset_specific, alloted_cost_asset_specific,
+        # allocated_cost(number_of_unique_asset, global_estimated_risk, risk_asset_specific, alloted_cost_asset_specific,
+        #                budget_variable)
+        ################################################## When Cost Distribution is based on Threat Action ###############################################
+        allocated_cost(number_of_unique_asset, global_estimated_risk, risk_ratio_threat_action, alloted_cost_asset_specific,
                        budget_variable)
+        # Utitilities.rationalCostAllocation(security_control_list,selected_security_controls,risk_ratio_threat_action,cost_effectiveness_sc,alloted_cost_asset_specific,budget_variable)
         minimum_risk_variable = global_min_risk + 1
-        max_security_control_number_variable = int(budget_variable / min_sec_control_cost)
-        time_increase_variable = 1
+        affordable_risk_variable = prepareRiskList(risk_list,global_estimated_risk,global_Total_Cost,budget_variable,satisfied_risk_variable)
+        max_security_control_number_variable = int(budget_variable/min_sec_control_cost)
         for model_iteration_index in range(ProjectConfigFile.ITERATION_MODEL_SATISFACTION):
-            print "Budget: %s --- Affordable Risk: %s --- Minimum Risk Achievable: %s Satisfied Risk%s" % \
-                  (budget_variable, affordable_risk_variable, minimum_risk_variable,satisfied_risk_variable)
-            ProjectConfigFile.OUTPUT_FILE_NAME.write("***** Iteration Number %s\n Budget: %s --- Affordable Risk: %s --- Minimum Risk Achievable: %s Satisfied Risk%s\n" %
-                                                     (model_iteration_index,budget_variable, affordable_risk_variable, minimum_risk_variable,satisfied_risk_variable))
+            print "Budget: %s --- Affordable Risk: %s --- Minimum Risk Achievable: %s Satisfied Risk %s" % (
+            budget_variable, affordable_risk_variable, minimum_risk_variable,satisfied_risk_variable)
+            ProjectConfigFile.OUTPUT_FILE_NAME.write(
+                "***** Iteration Number %s\n Budget: %s --- Affordable Risk: %s --- Minimum Risk Achievable: %s Satisfied Risk%s\n" %
+                (model_iteration_index, budget_variable, affordable_risk_variable, minimum_risk_variable,
+                 satisfied_risk_variable))
             if satisfied_risk_variable <= minimum_risk_variable:
                 break
             ############################################################ Declare SMT Solver #####################################################
@@ -349,6 +380,7 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
             cyberARMGoal.add(smt_Global_Residual_Risk == sum(smt_Residual_Risk_Asset))
             # cyberARMGoal.add(smt_Global_Residual_Risk > sum(minimum_affordable_risk))
             cyberARMGoal.add(smt_Global_Residual_Risk > (minimum_risk_variable-2))
+
             ########################################################### 2.5 Total Security Control Cost ##################################################
             cyberARMGoal.add([smt_Total_Security_Control_Cost[asset_index]==sum(smt_Security_Control_Cost[asset_index]) for asset_index in range(len(asset_list_for_smt))])
             cyberARMGoal.add(smt_Global_Security_Control_Cost==sum(smt_Total_Security_Control_Cost))
@@ -377,8 +409,7 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
             # cyberARM.minimize(smt_Global_Residual_Risk)
             print time.ctime()
             print "Time Limitation %s" % (int(time_increase_variable * ProjectConfigFile.TIMEOUT_DURATION))
-            ProjectConfigFile.OUTPUT_FILE_NAME.write(
-                "Time Limitation %s\n" % (int(time_increase_variable * ProjectConfigFile.TIMEOUT_DURATION)))
+            ProjectConfigFile.OUTPUT_FILE_NAME.write("Time Limitation %s\n" % (int(time_increase_variable * ProjectConfigFile.TIMEOUT_DURATION)))
             start_time = time.time()
             cyberARM.set("timeout",int(time_increase_variable*ProjectConfigFile.TIMEOUT_DURATION))
             satisfiability = cyberARM.check()
@@ -394,21 +425,24 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
             # print "Try %s" % (recommended_CDM.check())
             if satisfiability == z3.sat:
                 recommended_CDM = cyberARM.model()
+                # time_increase_variable += (1.0/pow(2,model_iteration_index))
                 # print "Model %s" % (recommended_CDM)
 
             else:
                 print "There is no satisfiable model"
-                ProjectConfigFile.OUTPUT_FILE_NAME.write("There is no satisfiable model\n")
                 recommended_CDM = []
                 recommended_CDM.insert(ProjectConfigFile.CYBERARM_CDM_MATRIX, [])
                 recommended_CDM.insert(ProjectConfigFile.CYBERARM_RISK, [])
                 recommended_CDM.insert(ProjectConfigFile.CYBERARM_ROI,-1)
-                CDM_Global_All_Statistice_Iterative.append(recommended_CDM)
+                CDM_Global_All_Statistice_Iterative_Budget.append(recommended_CDM)
+                ProjectConfigFile.OUTPUT_FILE_NAME.write("There is no satisfiable model\n\n")
+                ########################################################### get out if you can't satisfy the minimum ###################################################
                 if affordable_risk_variable == affordable_risk:
                     break
-                minimum_risk_variable = affordable_risk_variable + 1
-                reduced_risk_value_iteration_variable = (satisfied_risk_variable - minimum_risk_variable)/(ProjectConfigFile.ITERATION_MODEL_SATISFACTION - model_iteration_index)
-                affordable_risk_variable = satisfied_risk_variable - reduced_risk_value_iteration_variable
+                time_increase_variable -= (1.0/pow(2,model_iteration_index))
+                minimum_risk_variable = affordable_risk_variable
+                # reduced_risk_value_iteration_variable = (satisfied_risk_variable - minimum_risk_variable)/(ProjectConfigFile.ITERATION_MODEL_SATISFACTION - model_iteration_index)
+                affordable_risk_variable = (satisfied_risk_variable + minimum_risk_variable)/2
                 continue
             # cyberARM.pop()
 
@@ -484,7 +518,10 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
             roi_statistics[ProjectConfigFile.MITIGATED_RISK] = (roi_statistics[ProjectConfigFile.IMPOSED_RISK] - roi_statistics[ProjectConfigFile.RESIDUAL_RISK])
             roi_statistics[ProjectConfigFile.ROI] = (roi_statistics[ProjectConfigFile.MITIGATED_RISK]-roi_statistics[ProjectConfigFile.TOTAL_IMPLEMENTATION_COST]
                                                      )/roi_statistics[ProjectConfigFile.TOTAL_IMPLEMENTATION_COST]
-            ProjectConfigFile.OUTPUT_FILE_NAME.write("%s\n"%(roi_statistics[ProjectConfigFile.ROI]))
+            ProjectConfigFile.OUTPUT_FILE_NAME.write("Imposed Risk %s ROI: %s, Total Implementation Cost: %s, Residual Risk: %s, Mitigated Risk: %s\n\n" %
+                                                     (roi_statistics[ProjectConfigFile.IMPOSED_RISK],roi_statistics[ProjectConfigFile.ROI],
+                                                      roi_statistics[ProjectConfigFile.TOTAL_IMPLEMENTATION_COST],roi_statistics[ProjectConfigFile.RESIDUAL_RISK],
+                                                      roi_statistics[ProjectConfigFile.MITIGATED_RISK]))
             ########################################################### End of Capture of The Risk ####################################################
 
             ########################################################### Hold the Risk #######################################################
@@ -520,14 +557,29 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
             CDM_Global_All_Statistice.insert(ProjectConfigFile.CYBERARM_RISK,risk_all)
             CDM_Global_All_Statistice.insert(ProjectConfigFile.CYBERARM_ROI,roi_statistics)
             CDM_Global_All_Statistice_Iterative_Budget.append(CDM_Global_All_Statistice)
+
             satisfied_risk_variable = roi_statistics[ProjectConfigFile.RESIDUAL_RISK]
-            reduced_risk_value_iteration_variable = (satisfied_risk_variable - minimum_risk_variable)/(ProjectConfigFile.ITERATION_MODEL_SATISFACTION - model_iteration_index)
-            affordable_risk_variable = satisfied_risk_variable - reduced_risk_value_iteration_variable
-        ProjectConfigFile.OUTPUT_FILE_NAME.write(
-            "Time Required For Specific Cost Iteration %s\n\n" % (cost_iteration_total_time))
+            next_mid_point_affordable_risk = (satisfied_risk_variable + minimum_risk_variable)/2
+            if satisfied_risk_variable <= minimum_risk_variable:
+                time_increase_variable += (1.0 / pow(2, model_iteration_index))
+                break
+            elif risk_list[1] == affordable_risk_variable:
+                affordable_risk_variable = minimum_risk_variable
+                time_increase_variable += 0.5
+            elif risk_list[0] == affordable_risk_variable:
+                if next_mid_point_affordable_risk >= risk_list[1]:
+                    affordable_risk_variable = risk_list[1]
+                    time_increase_variable += 0.5
+                else:
+                    affordable_risk_variable = next_mid_point_affordable_risk
+                    time_increase_variable += (1.0 / pow(2, model_iteration_index))
+            # reduced_risk_value_iteration_variable = (satisfied_risk_variable - minimum_risk_variable)/(ProjectConfigFile.ITERATION_MODEL_SATISFACTION - model_iteration_index)
+            else:
+                affordable_risk_variable = next_mid_point_affordable_risk
+                time_increase_variable += (1.0 / pow(2, model_iteration_index))
+        ProjectConfigFile.OUTPUT_FILE_NAME.write("Time Required For Specific Cost Iteration %s\n\n"%(cost_iteration_total_time))
         budget_variable += increase_budget
         CDM_Global_All_Statistice_Iterative.append(CDM_Global_All_Statistice_Iterative_Budget)
-
     return CDM_Global_All_Statistice_Iterative
 
 

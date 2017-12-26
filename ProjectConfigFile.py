@@ -5,7 +5,7 @@ SECURITY_CONTROL_FILE = 'ResourceFolder/SecurityControls.csv'
 THREAT_ACTION_SECURITY_CONTROL_FILE = 'ResourceFolder/ThreatActionSecurityControldistribution.csv'
 
 ############################################################# Output Files ################################################
-OUTPUT_FILE_NAME = open("OutputRecords/VERIS_100_2_2.txt",'w')
+OUTPUT_FILE_NAME = open("OutputRecords/VERIS_100_Compare_1.txt",'w')
 ############################################################## Global Variables #############################################
 OTHER_ASSET = 'other'
 DESTROY_C = 4
@@ -37,7 +37,7 @@ SECURITY_CONTROL_COST_MEAN = 3500
 SECURITY_CONTROL_COST_DEVIATION = 666
 SECURITY_CONTROL_COST_MAX = 3000
 SECURITY_CONTROL_COST_MIN = 5000
-ITERATION_MODEL_SATISFACTION = 5
+ITERATION_MODEL_SATISFACTION = 6
 COST_MODEL_ITERATION = 1
 ################################################### Read from single THreat statistics file ##################
 WRITE_FILE_NAME = 'Global_Threat_Statistics.txt'
