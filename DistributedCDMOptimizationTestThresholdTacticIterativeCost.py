@@ -206,13 +206,14 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
     reduced_risk_value_iteration_variable = (affordable_risk - global_min_risk) / ProjectConfigFile.ITERATION_MODEL_SATISFACTION
     CDM_Global_All_Statistice_Iterative = []
     satisfied_risk_variable = global_estimated_risk
-    minimum_risk_variable = global_min_risk
     affordable_risk_variable = affordable_risk
     for cost_iteration_index in range(ProjectConfigFile.COST_MODEL_ITERATION):
         CDM_Global_All_Statistice_Iterative_Budget = []
         allocated_cost(number_of_unique_asset, global_estimated_risk, risk_asset_specific, alloted_cost_asset_specific,
                        budget_variable)
-        minimum_risk_variable = global_min_risk
+        minimum_risk_variable = global_min_risk + 1
+        max_security_control_number_variable = int(budget_variable / min_sec_control_cost)
+        time_increase_variable = 1
         for model_iteration_index in range(ProjectConfigFile.ITERATION_MODEL_SATISFACTION):
             print "Budget: %s --- Affordable Risk: %s --- Minimum Risk Achievable: %s Satisfied Risk%s" % \
                   (budget_variable, affordable_risk_variable, minimum_risk_variable,satisfied_risk_variable)
@@ -345,17 +346,17 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
             cyberARMGoal.add([smt_Residual_Risk_Asset[i]==sum(smt_Threat[i]) for i in range(len(smt_Residual_Risk_Asset))])
             cyberARMGoal.add([smt_Residual_Risk_Asset[i] >= (minimum_affordable_risk[i]-1) for i in range(len(minimum_affordable_risk))])
             cyberARMGoal.add(smt_Global_Residual_Risk == sum(smt_Residual_Risk_Asset))
-            cyberARMGoal.add(smt_Global_Residual_Risk > sum(minimum_affordable_risk))
-
+            # cyberARMGoal.add(smt_Global_Residual_Risk > sum(minimum_affordable_risk))
+            cyberARMGoal.add(smt_Global_Residual_Risk > (minimum_risk_variable-2))
             ########################################################### 2.5 Total Security Control Cost ##################################################
             cyberARMGoal.add([smt_Total_Security_Control_Cost[asset_index]==sum(smt_Security_Control_Cost[asset_index]) for asset_index in range(len(asset_list_for_smt))])
-            # cyberARMGoal.add(smt_Global_Security_Control_Cost==sum(smt_Total_Security_Control_Cost))
-            # cyberARMGoal.add(smt_Global_Security_Control_Cost <= budget)
-            for asset_index in range(number_of_unique_asset):
-                cyberARMGoal.add(smt_Total_Security_Control_Cost[asset_index] < (alloted_cost_asset_specific[asset_index]+0.1))
+            cyberARMGoal.add(smt_Global_Security_Control_Cost==sum(smt_Total_Security_Control_Cost))
+            cyberARMGoal.add(smt_Global_Security_Control_Cost <= budget_variable)
+            # for asset_index in range(number_of_unique_asset):
+            #     cyberARMGoal.add(smt_Total_Security_Control_Cost[asset_index] < (alloted_cost_asset_specific[asset_index]+0.1))
             ########################################################### 2.6 Maximum Number of Security Controls ############################################
             cyberARMGoal.add(smt_Maximum_Number_Security_Control == sum([sum([smt_Security_Control_Flag[asset_index][sec_index] for sec_index in range(len(selected_security_controls[asset_index]))]) for asset_index in range(len(selected_security_controls))]))
-            cyberARMGoal.add(smt_Maximum_Number_Security_Control <= max_security_control_number)
+            cyberARMGoal.add(smt_Maximum_Number_Security_Control <= max_security_control_number_variable)
 
             ########################################################### Discover The Most Cost Effective Pattern #####################################
 
@@ -374,8 +375,9 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
                 cyberARM.add(simRes)
             # cyberARM.minimize(smt_Global_Residual_Risk)
             print time.ctime()
+            print "Time Limitation %s" % (int(time_increase_variable * ProjectConfigFile.TIMEOUT_DURATION))
             start_time = time.time()
-            cyberARM.set("timeout",ProjectConfigFile.TIMEOUT_DURATION)
+            cyberARM.set("timeout",int(time_increase_variable*ProjectConfigFile.TIMEOUT_DURATION))
             satisfiability = cyberARM.check()
             print "Satisfiability %s" % (satisfiability)
             print "Time Required for Solution %s" % (time.time() - start_time)
@@ -395,6 +397,8 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
                 recommended_CDM.insert(ProjectConfigFile.CYBERARM_RISK, [])
                 recommended_CDM.insert(ProjectConfigFile.CYBERARM_ROI,-1)
                 CDM_Global_All_Statistice_Iterative.append(recommended_CDM)
+                if affordable_risk_variable == affordable_risk:
+                    break
                 minimum_risk_variable = affordable_risk_variable + 1
                 reduced_risk_value_iteration_variable = (satisfied_risk_variable - minimum_risk_variable)/(ProjectConfigFile.ITERATION_MODEL_SATISFACTION - model_iteration_index)
                 affordable_risk_variable = satisfied_risk_variable - reduced_risk_value_iteration_variable

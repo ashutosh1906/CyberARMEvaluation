@@ -1,4 +1,5 @@
 import ProjectConfigFile
+from math import sqrt,pow
 
 def determineCostEffectiveness(selected_security_controls,security_control_list,risk_threat_action,threat_action_id_list_for_all_assets,
                                threat_action_id_to_name,cost_effectiveness_sc):
@@ -332,6 +333,73 @@ def calculateRiskRatioBasedOnSelectedThreatAction(threat_action_id_list_for_all_
         risk_ratio_threat_action[asset_index] /= total_risk
     return risk_ratio_threat_action
 
-def rationalCostAllocation(security_control_list,selected_security_controls):
-    pass
+def calculateKConstant(risk_ratio_threat_action, cost_effectiveness_sc,resource_available,max_cost_asset,k_based_cost_allocation,updated_risk_ratio):
+    print "Updated Risk Ratio %s" % (updated_risk_ratio)
+    constant_k_list = []
+    for asset_index in range(len(max_cost_asset)):
+        if cost_effectiveness_sc[asset_index] == 0 or\
+                        risk_ratio_threat_action[asset_index]==0 or\
+                        max_cost_asset[asset_index] ==0 or k_based_cost_allocation[asset_index] >= max_cost_asset[asset_index]:
+            constant_k_list.append(0.0)
+            continue
+        constant_k_list.append(pow(risk_ratio_threat_action[asset_index]/updated_risk_ratio,2) * sqrt(max_cost_asset[asset_index]-k_based_cost_allocation[asset_index])/cost_effectiveness_sc[asset_index])
+    constant_k = sum(constant_k_list)
+    if constant_k <> 0 :
+        constant_k = resource_available / constant_k
+    print "Value of Constant K %s" % (constant_k)
+    for asset_index in range(len(max_cost_asset)):
+        k_based_cost_allocation[asset_index] += constant_k * constant_k_list[asset_index]
+    print "Resource Provided %s Total Distribution %s" % (resource_available,sum(k_based_cost_allocation))
+    return constant_k
 
+def rationalCostAllocation(security_control_list,selected_security_controls,risk_ratio_threat_action,cost_effectiveness_sc,alloted_cost_asset_specific,budget):
+    max_cost_asset = []
+    for asset_index in range(len(selected_security_controls)):
+        max_cost_asset.append(0.0)
+        for sec_control in selected_security_controls[asset_index]:
+            max_cost_asset[asset_index] += security_control_list[sec_control].investment_cost
+
+    k_based_cost_allocation = [0.0 for i in range(len(selected_security_controls))]
+    updated_risk_ratio = 1.0
+    resource_available = budget
+    contant_k = calculateKConstant(risk_ratio_threat_action, cost_effectiveness_sc, resource_available, max_cost_asset,k_based_cost_allocation,updated_risk_ratio)
+    updated_risk_ratio = 0.0
+    rest_cost = 0
+    cost_starving = []
+    rest_cost_k_based = 0
+    for asset_index in range(len(selected_security_controls)):
+        # print "Alloted Cost %s <------> Max Cost %s" % (alloted_cost_asset_specific[asset_index],max_cost_asset[asset_index])
+        # print "Risk Ratio %s <-------> Cost Effectiveness %s" % (risk_ratio_threat_action[asset_index],cost_effectiveness_sc[asset_index])
+        if max_cost_asset[asset_index] < alloted_cost_asset_specific[asset_index]:
+            rest_cost += alloted_cost_asset_specific[asset_index] - max_cost_asset[asset_index]
+            cost_starving.append(asset_index)
+        # print "K Based Cost Allocation ::::: %s" % (k_based_cost_allocation[asset_index])
+        if max_cost_asset[asset_index] < k_based_cost_allocation[asset_index]:
+            rest_cost_k_based += k_based_cost_allocation[asset_index] - max_cost_asset[asset_index]
+            k_based_cost_allocation[asset_index] = max_cost_asset[asset_index]
+        elif max_cost_asset[asset_index] > k_based_cost_allocation[asset_index]:
+            updated_risk_ratio += risk_ratio_threat_action[asset_index]
+    print "Unnecessary K Cost Allocation %s" % (rest_cost_k_based)
+
+    if rest_cost_k_based > ProjectConfigFile.K_THRESHOLD:
+        while(True):
+            resource_available = rest_cost_k_based
+            rest_cost_k_based = 0
+            constant_k_updated = calculateKConstant(risk_ratio_threat_action,cost_effectiveness_sc,resource_available,max_cost_asset,k_based_cost_allocation,updated_risk_ratio)
+            updated_risk_ratio = 0.0
+            for asset_index in range(len(selected_security_controls)):
+                if max_cost_asset[asset_index] < k_based_cost_allocation[asset_index]:
+                    rest_cost_k_based += k_based_cost_allocation[asset_index] - max_cost_asset[asset_index]
+                    k_based_cost_allocation[asset_index] = max_cost_asset[asset_index]
+                elif max_cost_asset[asset_index] > k_based_cost_allocation[asset_index]:
+                    updated_risk_ratio += risk_ratio_threat_action[asset_index]
+            print "Unnecessary K Cost Allocation %s" % (rest_cost_k_based)
+            if abs(resource_available-rest_cost_k_based) <= ProjectConfigFile.K_THRESHOLD or rest_cost_k_based <= ProjectConfigFile.K_THRESHOLD:
+                break
+
+
+    print "Unnecessary Allocation %s" % (rest_cost)
+    print "Unnecessary Allocation K Based %s" % (rest_cost_k_based)
+    print "Cost Starving %s" % (cost_starving)
+    for asset_index in range(len(selected_security_controls)):
+        print "Alloted Cost %s <------> Max Cost %s K Based Cost %s" % (alloted_cost_asset_specific[asset_index], max_cost_asset[asset_index],k_based_cost_allocation[asset_index])

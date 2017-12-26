@@ -5,7 +5,7 @@ SECURITY_CONTROL_FILE = 'ResourceFolder/SecurityControls.csv'
 THREAT_ACTION_SECURITY_CONTROL_FILE = 'ResourceFolder/ThreatActionSecurityControldistribution.csv'
 
 ############################################################# Output Files ################################################
-OUTPUT_FILE_NAME = open("OutputRecords/VERIS_100_2.txt",'w')
+OUTPUT_FILE_NAME = open("OutputRecords/VERIS_100_2_2.txt",'w')
 ############################################################## Global Variables #############################################
 OTHER_ASSET = 'other'
 DESTROY_C = 4
@@ -32,13 +32,13 @@ CYBERARM_CDM_MATRIX = 0
 CYBERARM_RISK = 1
 CYBERARM_ROI = 2
 NUMBER_OF_CYBERARM_OUTPUT = 3
-TIMEOUT_DURATION = 1200*1000
+TIMEOUT_DURATION = 900*1000
 SECURITY_CONTROL_COST_MEAN = 3500
 SECURITY_CONTROL_COST_DEVIATION = 666
 SECURITY_CONTROL_COST_MAX = 3000
 SECURITY_CONTROL_COST_MIN = 5000
-ITERATION_MODEL_SATISFACTION = 6
-COST_MODEL_ITERATION = 4
+ITERATION_MODEL_SATISFACTION = 5
+COST_MODEL_ITERATION = 1
 ################################################### Read from single THreat statistics file ##################
 WRITE_FILE_NAME = 'Global_Threat_Statistics.txt'
 FILENAME_TAG_OPEN = '<'
@@ -58,6 +58,7 @@ RESIDUAL_RISK = 'Residual Risk'
 MITIGATED_RISK = 'Mitigated Risk'
 ROI = 'ROI'
 TOTAL_IMPLEMENTATION_COST = 'Total Implementation Cost'
+K_THRESHOLD = 1000
 ######################################### Kill chain phase dimension ##################################################
 RECON_KEY = 'recon'
 WEAPONIZE_KEY = 'weaponize'

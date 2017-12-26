@@ -55,3 +55,13 @@ Wed Dec 20 18:04:19 2017
 Satisfiability sat
 Time Required for Solution 214.477999926
 ROI {'Imposed Risk': 91550278.932, 'ROI': 28.02564761291654, 'Total Implementation Cost': 1182112.0, 'Residual Risk': 57238712.581, 'Mitigated Risk': 34311566.350999996}
+
+Global Minimum Risk 39388334.6813
+Global Total Cost 3406023.0
+Global Risk Threshold 61885096.3684
+Global Minimum Risk 39388334.6813
+***** Affordable Risk 58488336.0 *********
+Wed Dec 20 18:44:38 2017
+Satisfiability sat
+Time Required for Solution 215.832000017
+ROI {'Imposed Risk': 91550278.932, 'ROI': 28.02564761291654, 'Total Implementation Cost': 1182112.0, 'Residual Risk': 57238712.581, 'Mitigated Risk': 34311566.350999996}
