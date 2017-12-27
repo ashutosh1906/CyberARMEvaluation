@@ -5,7 +5,7 @@ SECURITY_CONTROL_FILE = 'ResourceFolder/SecurityControls.csv'
 THREAT_ACTION_SECURITY_CONTROL_FILE = 'ResourceFolder/ThreatActionSecurityControldistribution.csv'
 
 ############################################################# Output Files ################################################
-OUTPUT_FILE_NAME = open("OutputRecords/VERIS_100_Compare_1.txt",'w')
+OUTPUT_FILE_NAME = open("OutputRecords/VERIS_100_Compare_3.txt",'w')
 ############################################################## Global Variables #############################################
 OTHER_ASSET = 'other'
 DESTROY_C = 4
@@ -51,6 +51,12 @@ THREAT_ACTION_TAG_OPEN = '<<<<'
 THREAT_ACTION_TAG_CLOSE = '>>>>'
 VERIS_LIST_FILE = 'ResourceFolder/InputFiles/veris_list_100.txt'
 EXPERIENCE_LIST_FILE = 'ExperienceList.txt'
+
+################################# SMT ENVIRONMENT VARIABLE KEY ##############################################
+GLOBAL_TOTAL_COST_KEY = 'global_total_cost'
+GLOBAL_MIN_RISK_KEY = 'global_min_risk'
+GLOBAL_ESTIMATED_RISK_KEY = 'global_estimated_risk'
+MIN_SEC_CONTROL_COST_KEY = 'min_sec_control_cost'
 
 ######################################### ROI Stattistics #####################################################
 IMPOSED_RISK = 'Imposed Risk'
