@@ -1,4 +1,8 @@
 import os
+############################################################ CyberARM Inputs ###############################################
+BUDGET = 1002900
+AFFORDABLE_RISK = 20069579
+RISK_ELIMINATION = 0.70
 ################################################################## File Names #############################################
 ############################################################# Initial Files ###############################################
 SECURITY_CONTROL_FILE = 'ResourceFolder/SecurityControls.csv'
@@ -32,12 +36,12 @@ CYBERARM_CDM_MATRIX = 0
 CYBERARM_RISK = 1
 CYBERARM_ROI = 2
 NUMBER_OF_CYBERARM_OUTPUT = 3
-TIMEOUT_DURATION = 900*1000
+TIMEOUT_DURATION = 1000*1000
 SECURITY_CONTROL_COST_MEAN = 3500
 SECURITY_CONTROL_COST_DEVIATION = 666
 SECURITY_CONTROL_COST_MAX = 3000
 SECURITY_CONTROL_COST_MIN = 5000
-ITERATION_MODEL_SATISFACTION = 6
+ITERATION_MODEL_SATISFACTION = 8
 COST_MODEL_ITERATION = 1
 ################################################### Read from single THreat statistics file ##################
 WRITE_FILE_NAME = 'Global_Threat_Statistics.txt'

@@ -62,7 +62,7 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
         ################################################## When Cost Distribution is based on Threat Action ###############################################
         allocated_cost(number_of_unique_asset, global_estimated_risk, risk_ratio_threat_action, alloted_cost_asset_specific,
                        budget_variable)
-        Utitilities.rationalCostAllocation(security_control_list,selected_security_controls,risk_ratio_threat_action,cost_effectiveness_sc,alloted_cost_asset_specific,budget_variable)
+        # Utitilities.rationalCostAllocation(security_control_list,selected_security_controls,risk_ratio_threat_action,cost_effectiveness_sc,alloted_cost_asset_specific,budget_variable)
         minimum_risk_variable = global_min_risk + 1
         max_security_control_number_variable = int(budget_variable/min_sec_control_cost)
         time_variable = ProjectConfigFile.TIMEOUT_DURATION
@@ -202,7 +202,7 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
             cyberARMGoal.add([smt_Residual_Risk_Asset[i] >= (minimum_affordable_risk[i]-1) for i in range(len(minimum_affordable_risk))])
             cyberARMGoal.add(smt_Global_Residual_Risk == sum(smt_Residual_Risk_Asset))
             # cyberARMGoal.add(smt_Global_Residual_Risk > sum(minimum_affordable_risk))
-            cyberARMGoal.add(smt_Global_Residual_Risk > (minimum_risk_variable-2))
+            cyberARMGoal.add(smt_Global_Residual_Risk >= (minimum_risk_variable-number_of_unique_asset))
 
             ########################################################### 2.5 Total Security Control Cost ##################################################
             cyberARMGoal.add([smt_Total_Security_Control_Cost[asset_index]==sum(smt_Security_Control_Cost[asset_index]) for asset_index in range(len(asset_list_for_smt))])
@@ -290,9 +290,9 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
                             # print "Remedied Threat Action %s" % (threat_action)
                             threat_action_effectiveness_enforced[asset_index][threat_action_id_to_position_roll[asset_index][threat_action]] *= (1-security_control_list[sec_control].threat_action_effectiveness[threat_action])
                         local_enforcement_cost[asset_index] += security_control_list[sec_control].investment_cost
-                    else:
-                        # print " ----  Boolean (SMT Variable --> %s, Asset Id --> %s, Security Control Id --> %s) : Status --> %s" % (smt_Security_Control_Bool[asset_index][sec_control_index],asset_index, sec_control_index, recommended_CDM[smt_Security_Control_Bool[asset_index][sec_control_index]])
-                        pass
+                    # else:
+                    #     # print " ----  Boolean (SMT Variable --> %s, Asset Id --> %s, Security Control Id --> %s) : Status --> %s" % (smt_Security_Control_Bool[asset_index][sec_control_index],asset_index, sec_control_index, recommended_CDM[smt_Security_Control_Bool[asset_index][sec_control_index]])
+                    #     pass
                     sec_control_index += 1
             global_enforcement_cost = sum(local_enforcement_cost)
             # print "Threat Action Effectiveness %s" % (threat_action_effectiveness_enforced)

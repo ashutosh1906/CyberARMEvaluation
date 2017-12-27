@@ -11,9 +11,9 @@ def readVerisList():
 
 if __name__=="__main__":
     # budget = 1497050 ###################### For 150 Assets ###############################
-    budget = 1002900 ########################## For 100 Assets ###############################
-    risk_elimination = .70
-    affordable_risk = 28069579
+    # budget = 1002900 ########################## For 100 Assets ###############################
+    # risk_elimination = .70
+    # affordable_risk = 20069579
     ######################################### Read the threat and threat action statistics ###############################################
     Initialization.initializeEnvironment()
     # print "(Init) Threat Threat Action Asset Veris %s" % (threat_threatAction_asset_veris)
@@ -37,5 +37,6 @@ if __name__=="__main__":
 
     CyberARMEngineUpdated.generate_risk_distribution(asset_enterprise_list_input,CyberARMPowerPlant.send_data)
     # print "Received DATA %s" % (CyberARMPowerPlant.send_data)
-    recommendedCDM = CyberARMPowerPlant.cyberarm_init_main(asset_enterprise_list_input, affordable_risk, budget,
-                                                           risk_elimination)
+    recommendedCDM = CyberARMPowerPlant.cyberarm_init_main(asset_enterprise_list_input, ProjectConfigFile.AFFORDABLE_RISK,
+                                                           ProjectConfigFile.BUDGET,
+                                                           ProjectConfigFile.RISK_ELIMINATION)
