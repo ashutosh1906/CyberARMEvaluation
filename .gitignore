@@ -2,3 +2,4 @@
 *.pyc
 ResourceFolder/VERIS
 OutputRecords
+ProjectConfigFile.py

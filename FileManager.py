@@ -6,7 +6,7 @@ from InputFileGenerator import plot_distriution
 
 threat_action_to_security_control_dict = {}
 security_control_cost_list = []
-
+threat_action_name_unique = []
 def security_control_threat_action_mapping_read():
     number_of_line = 0
     sec_control_file = open(ProjectConfigFile.THREAT_ACTION_SECURITY_CONTROL_FILE,'r+')
@@ -62,6 +62,25 @@ def write_security_control_cost():
         index += 1
     write_file.close()
 
+def gather_threat_action():
+    threat_action_file = open(ProjectConfigFile.WRITE_FILE_NAME,'r+')
+    for line in threat_action_file:
+        line = line.replace('\n','')
+        # print line
+        if line.startswith(ProjectConfigFile.THREAT_ACTION_TAG_OPEN):
+            threat_action = line.replace(ProjectConfigFile.THREAT_ACTION_TAG_OPEN,'').replace(ProjectConfigFile.THREAT_ACTION_TAG_CLOSE,'').split(',')[:-1]
+            # print threat_action
+            for threat_action_value in threat_action:
+                if threat_action_value not in threat_action_name_unique:
+                    threat_action_name_unique.append(threat_action_value)
+
+    ################################################################ Print the Unique Threat Actions #####################################################
+    write_file = open('Threat_Action_List','w')
+    for threat_action in threat_action_name_unique:
+        if threat_action <> ProjectConfigFile.THREAT_ACTION_UNKNOWN_TAG:
+            write_file.write('%s\n'%(threat_action))
+    write_file.close()
+
 if __name__=="__main__":
     # ################################### Compose Threat Statistics into Single File ##############################
     # ThreatStatisticsSingleFileCompositionUpdated.find_threat_statistics_all()
@@ -71,6 +90,9 @@ if __name__=="__main__":
     # print "Number of Threat Action Mappings %s" % (num_of_threat_action_to_security_control_mapping)
     # add_effectiveness_security_control_for_threat_action(num_of_threat_action_to_security_control_mapping)
 
-    ################################# Security Control Cost Distribution ########################################
-    read_security_control()
-    write_security_control_cost()
+    # ################################# Security Control Cost Distribution ########################################
+    # read_security_control()
+    # write_security_control_cost()
+
+    ################################# Threat Action Distribution ##################################################
+    gather_threat_action()

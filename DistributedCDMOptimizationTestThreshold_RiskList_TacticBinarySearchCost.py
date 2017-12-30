@@ -10,7 +10,7 @@ def allocated_cost(number_of_unique_asset,global_estimated_risk,risk_asset_speci
     print "In Allocated Cost: Asset Specific Alloted Cost Proportion %s" % (alloted_cost_asset_specific)
 
 def prepareRiskList(risk_list,global_estimated_risk,global_Total_Cost,budget,satisfied_risk_variable):
-    global_min_risk = risk_list[2]
+    global_min_risk = risk_list[-1]
     highest_risk_mitigation = global_estimated_risk - global_min_risk
     if budget >= global_Total_Cost:
         probable_risk_threshold = global_min_risk
