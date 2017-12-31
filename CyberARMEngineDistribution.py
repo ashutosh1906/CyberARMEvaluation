@@ -125,6 +125,7 @@ def select_security_controls(security_control_list,threat_action_list,threat_act
                                                                                                 risk_asset_specific,global_risk_related_variable[ProjectConfigFile.MIN_SEC_CONTROL_COST_KEY],
                                                                                                 threat_action_id_to_position_roll,threat_id_to_position_roll,
                                                                                                 minimum_threat_specific_risk,minimum_affordable_risk))
+    ProjectConfigFile.OUTPUT_FILE_NAME_BINARY_SEARCH.close()
     recommended_CDM_Different_Approach.append(
         DistributedCDMOptimizationTestThreshold_RiskList_TacticBinarySearchCost.SMT_Environment(security_control_list,selected_security_controls,threat_action_name_list,
                                                                                                 threat_action_list,threat_action_id_list_for_all_assets,threat_id_for_all_assets,
@@ -136,7 +137,7 @@ def select_security_controls(security_control_list,threat_action_list,threat_act
                                                                                                 risk_asset_specific,global_risk_related_variable[ProjectConfigFile.MIN_SEC_CONTROL_COST_KEY],
                                                                                                 threat_action_id_to_position_roll,threat_id_to_position_roll,
                                                                                                 minimum_threat_specific_risk,minimum_affordable_risk))
-    ProjectConfigFile.OUTPUT_FILE_NAME.close()
+    ProjectConfigFile.OUTPUT_FILE_NAME_BINARY_SEARCH_MODIFIED.close()
     return recommended_CDM_Different_Approach
 
 

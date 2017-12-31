@@ -35,7 +35,7 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
                     risk_list,global_Total_Cost,global_estimated_risk,global_min_risk,risk_asset_specific,min_sec_control_cost,threat_action_id_to_position_roll,threat_id_to_position_roll,
                     minimum_threat_specific_risk, minimum_affordable_risk):
     print "*********************************************** In Binary Search ********************************************************************************"
-    ProjectConfigFile.OUTPUT_FILE_NAME.write(
+    ProjectConfigFile.OUTPUT_FILE_NAME_BINARY_SEARCH_MODIFIED.write(
         "*************************** In Binary Search Modified *****************************\n")
     number_of_unique_asset = len(threat_action_id_list_for_all_assets)
 
@@ -93,7 +93,7 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
         for model_iteration_index in range(ProjectConfigFile.ITERATION_MODEL_SATISFACTION):
             print "Budget: %s --- Affordable Risk: %s --- Minimum Risk Achievable: %s Satisfied Risk %s" % (
             budget_variable, affordable_risk_variable, minimum_risk_variable,satisfied_risk_variable)
-            ProjectConfigFile.OUTPUT_FILE_NAME.write(
+            ProjectConfigFile.OUTPUT_FILE_NAME_BINARY_SEARCH_MODIFIED.write(
                 "***** Iteration Number %s\n Budget: %s --- Affordable Risk: %s --- Minimum Risk Achievable: %s Satisfied Risk%s\n" %
                 (model_iteration_index, budget_variable, affordable_risk_variable, minimum_risk_variable,
                  satisfied_risk_variable))
@@ -255,13 +255,13 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
             # cyberARM.minimize(smt_Global_Residual_Risk)
             print time.ctime()
             print "Time Limitation %s" % (int(time_increase_variable * ProjectConfigFile.TIMEOUT_DURATION))
-            ProjectConfigFile.OUTPUT_FILE_NAME.write("Time Limitation %s\n" % (int(time_increase_variable * ProjectConfigFile.TIMEOUT_DURATION)))
+            ProjectConfigFile.OUTPUT_FILE_NAME_BINARY_SEARCH_MODIFIED.write("Time Limitation %s\n" % (int(time_increase_variable * ProjectConfigFile.TIMEOUT_DURATION)))
             start_time = time.time()
             cyberARM.set("timeout",int(time_increase_variable*ProjectConfigFile.TIMEOUT_DURATION))
             satisfiability = cyberARM.check()
             time_required_specific = time.time() - start_time
             print "Satisfiability %s" % (satisfiability)
-            ProjectConfigFile.OUTPUT_FILE_NAME.write(
+            ProjectConfigFile.OUTPUT_FILE_NAME_BINARY_SEARCH_MODIFIED.write(
                 "Time Required for Solution %s\n" % (time_required_specific))
             print "Time Required for Solution %s" % (time_required_specific)
             cost_iteration_total_time += time_required_specific
@@ -281,7 +281,7 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
                 recommended_CDM.insert(ProjectConfigFile.CYBERARM_RISK, [])
                 recommended_CDM.insert(ProjectConfigFile.CYBERARM_ROI,-1)
                 CDM_Global_All_Statistice_Iterative_Budget.append(recommended_CDM)
-                ProjectConfigFile.OUTPUT_FILE_NAME.write("There is no satisfiable model\n\n")
+                ProjectConfigFile.OUTPUT_FILE_NAME_BINARY_SEARCH_MODIFIED.write("There is no satisfiable model\n\n")
                 ########################################################### get out if you can't satisfy the minimum ###################################################
                 if affordable_risk_variable == affordable_risk:
                     break
@@ -364,7 +364,7 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
             roi_statistics[ProjectConfigFile.MITIGATED_RISK] = (roi_statistics[ProjectConfigFile.IMPOSED_RISK] - roi_statistics[ProjectConfigFile.RESIDUAL_RISK])
             roi_statistics[ProjectConfigFile.ROI] = (roi_statistics[ProjectConfigFile.MITIGATED_RISK]-roi_statistics[ProjectConfigFile.TOTAL_IMPLEMENTATION_COST]
                                                      )/roi_statistics[ProjectConfigFile.TOTAL_IMPLEMENTATION_COST]
-            ProjectConfigFile.OUTPUT_FILE_NAME.write("Imposed Risk %s ROI: %s, Total Implementation Cost: %s, Residual Risk: %s, Mitigated Risk: %s\n\n" %
+            ProjectConfigFile.OUTPUT_FILE_NAME_BINARY_SEARCH_MODIFIED.write("Imposed Risk %s ROI: %s, Total Implementation Cost: %s, Residual Risk: %s, Mitigated Risk: %s\n\n" %
                                                      (roi_statistics[ProjectConfigFile.IMPOSED_RISK],roi_statistics[ProjectConfigFile.ROI],
                                                       roi_statistics[ProjectConfigFile.TOTAL_IMPLEMENTATION_COST],roi_statistics[ProjectConfigFile.RESIDUAL_RISK],
                                                       roi_statistics[ProjectConfigFile.MITIGATED_RISK]))
@@ -423,7 +423,7 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
             else:
                 affordable_risk_variable = next_mid_point_affordable_risk
                 time_increase_variable += (1.0 / pow(2, model_iteration_index))
-        ProjectConfigFile.OUTPUT_FILE_NAME.write("Time Required For Specific Cost Iteration %s\n\n"%(cost_iteration_total_time))
+        ProjectConfigFile.OUTPUT_FILE_NAME_BINARY_SEARCH_MODIFIED.write("Time Required For Specific Cost Iteration %s\n\n"%(cost_iteration_total_time))
         budget_variable += increase_budget
         CDM_Global_All_Statistice_Iterative.append(CDM_Global_All_Statistice_Iterative_Budget)
     return CDM_Global_All_Statistice_Iterative
