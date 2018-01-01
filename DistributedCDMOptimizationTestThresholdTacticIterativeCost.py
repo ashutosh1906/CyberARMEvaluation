@@ -61,12 +61,13 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
         max_security_control_number_variable = int(budget_variable / min_sec_control_cost)
         time_increase_variable = 1
         for model_iteration_index in range(ProjectConfigFile.ITERATION_MODEL_SATISFACTION):
-            print "Budget: %s --- Affordable Risk: %s --- Minimum Risk Achievable: %s Satisfied Risk%s" % \
+            print "Budget: %s --- Affordable Risk: %s --- Minimum Risk Achievable: %s Satisfied Risk %s" % \
                   (budget_variable, affordable_risk_variable, minimum_risk_variable,satisfied_risk_variable)
             ProjectConfigFile.OUTPUT_FILE_NAME_ITERATIVE_SEARCH.write("***** Iteration Number %s\n Budget: %s --- Affordable Risk: %s --- Minimum Risk Achievable: %s Satisfied Risk%s\n" %
                                                      (model_iteration_index,budget_variable, affordable_risk_variable, minimum_risk_variable,satisfied_risk_variable))
             if satisfied_risk_variable <= minimum_risk_variable:
                 break
+
             ############################################################ Declare SMT Solver #####################################################
             cyberARMGoal = Goal()
             cyberARMTactic = Then(Tactic('simplify'), Tactic('solve-eqs'))
@@ -335,6 +336,10 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
                  roi_statistics[ProjectConfigFile.TOTAL_IMPLEMENTATION_COST],
                  roi_statistics[ProjectConfigFile.RESIDUAL_RISK],
                  roi_statistics[ProjectConfigFile.MITIGATED_RISK]))
+            Utitilities.appendStatsInFile([number_of_unique_asset,global_estimated_risk,
+                                           roi_statistics[ProjectConfigFile.RESIDUAL_RISK],
+                                           roi_statistics[ProjectConfigFile.TOTAL_IMPLEMENTATION_COST],
+                                           time_required_specific])
             ########################################################### End of Capture of The Risk ####################################################
 
             ########################################################### Hold the Risk #######################################################

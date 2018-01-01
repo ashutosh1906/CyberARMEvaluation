@@ -368,6 +368,10 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
                                                      (roi_statistics[ProjectConfigFile.IMPOSED_RISK],roi_statistics[ProjectConfigFile.ROI],
                                                       roi_statistics[ProjectConfigFile.TOTAL_IMPLEMENTATION_COST],roi_statistics[ProjectConfigFile.RESIDUAL_RISK],
                                                       roi_statistics[ProjectConfigFile.MITIGATED_RISK]))
+            Utitilities.appendStatsInFile([number_of_unique_asset, global_estimated_risk,
+                                           roi_statistics[ProjectConfigFile.RESIDUAL_RISK],
+                                           roi_statistics[ProjectConfigFile.TOTAL_IMPLEMENTATION_COST],
+                                           time_required_specific])
             ########################################################### End of Capture of The Risk ####################################################
 
             ########################################################### Hold the Risk #######################################################
@@ -420,6 +424,8 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
                     affordable_risk_variable = next_mid_point_affordable_risk
                     time_increase_variable += (1.0 / pow(2, model_iteration_index))
             # reduced_risk_value_iteration_variable = (satisfied_risk_variable - minimum_risk_variable)/(ProjectConfigFile.ITERATION_MODEL_SATISFACTION - model_iteration_index)
+            elif satisfied_risk_variable < minimum_risk_variable:
+                break
             else:
                 affordable_risk_variable = next_mid_point_affordable_risk
                 time_increase_variable += (1.0 / pow(2, model_iteration_index))
