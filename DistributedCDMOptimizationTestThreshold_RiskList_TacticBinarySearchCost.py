@@ -50,12 +50,12 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
             asset_list_for_smt.append(asset_enterprise_list[i][j])
 
     print "################################################################# ALl the Problem Specific List #################################################"
-    print "Candidate Selected Threat Action %s" % (threat_action_id_list_for_all_assets)
-    print "Candidate Threat Action Roll %s" % (threat_action_id_to_position_roll)
-    print "Candidate Selected Security Controls %s" % (selected_security_controls)
-    print "Candidate Selected Threat %s" % (threat_id_for_all_assets)
-    print "Candidate Threat Roll %s" % (threat_id_to_position_roll)
-    print "Candiadet Security Control Set Cost Effectiveness %s" % (cost_effectiveness_sc)
+    # print "Candidate Selected Threat Action %s" % (threat_action_id_list_for_all_assets)
+    # print "Candidate Threat Action Roll %s" % (threat_action_id_to_position_roll)
+    # print "Candidate Selected Security Controls %s" % (selected_security_controls)
+    # print "Candidate Selected Threat %s" % (threat_id_for_all_assets)
+    # print "Candidate Threat Roll %s" % (threat_id_to_position_roll)
+    # print "Candiadet Security Control Set Cost Effectiveness %s" % (cost_effectiveness_sc)
     print "Global Estimated Risk %s" % (global_estimated_risk)
     print "Global Total Cost %s" % (global_Total_Cost)
     print "Budget %s" % (budget)
