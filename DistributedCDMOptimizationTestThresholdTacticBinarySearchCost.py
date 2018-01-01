@@ -395,4 +395,3 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
         CDM_Global_All_Statistice_Iterative.append(CDM_Global_All_Statistice_Iterative_Budget)
     return CDM_Global_All_Statistice_Iterative
 
-
