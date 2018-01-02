@@ -6,8 +6,8 @@ from math import pow
 def allocated_cost(number_of_unique_asset,global_estimated_risk,risk_asset_specific,alloted_cost_asset_specific,budget):
     for asset_index in range(number_of_unique_asset):
         alloted_cost_asset_specific[asset_index] = budget * risk_asset_specific[asset_index]
-    print "In Allocated Cost: Asset Specific Estimated Risk Proportion %s" % (risk_asset_specific)
-    print "In Allocated Cost: Asset Specific Alloted Cost Proportion %s" % (alloted_cost_asset_specific)
+    # print "In Allocated Cost: Asset Specific Estimated Risk Proportion %s" % (risk_asset_specific)
+    # print "In Allocated Cost: Asset Specific Alloted Cost Proportion %s" % (alloted_cost_asset_specific)
 
 def prepareRiskList(risk_list,global_estimated_risk,global_Total_Cost,budget,satisfied_risk_variable):
     global_min_risk = risk_list[-1]
@@ -34,7 +34,7 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
                     threat_action_id_list_for_all_assets,threat_id_for_all_assets,threat_list,asset_enterprise_list,affordable_risk,budget,cost_effectiveness_sc,risk_ratio_threat_action,
                     risk_list,global_Total_Cost,global_estimated_risk,global_min_risk,risk_asset_specific,min_sec_control_cost,threat_action_id_to_position_roll,threat_id_to_position_roll,
                     minimum_threat_specific_risk, minimum_affordable_risk):
-    print "*********************************************** In Binary Search ********************************************************************************"
+    print "*********************************************** In Binary Search Modified ********************************************************************************"
     ProjectConfigFile.OUTPUT_FILE_NAME_BINARY_SEARCH_MODIFIED.write(
         "*************************** In Binary Search Modified *****************************\n")
     number_of_unique_asset = len(threat_action_id_list_for_all_assets)
