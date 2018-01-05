@@ -6,8 +6,8 @@ from math import pow
 def allocated_cost(number_of_unique_asset,global_estimated_risk,risk_asset_specific,alloted_cost_asset_specific,budget):
     for asset_index in range(number_of_unique_asset):
         alloted_cost_asset_specific[asset_index] = budget * risk_asset_specific[asset_index]
-    print "In Allocated Cost: Asset Specific Estimated Risk Proportion %s" % (risk_asset_specific)
-    print "In Allocated Cost: Asset Specific Alloted Cost Proportion %s" % (alloted_cost_asset_specific)
+    # print "In Allocated Cost: Asset Specific Estimated Risk Proportion %s" % (risk_asset_specific)
+    # print "In Allocated Cost: Asset Specific Alloted Cost Proportion %s" % (alloted_cost_asset_specific)
 
 def SMT_Environment(security_control_list,selected_security_controls,threat_action_name_list,threat_action_list,
                     threat_action_id_list_for_all_assets,threat_id_for_all_assets,threat_list,asset_enterprise_list,affordable_risk,budget,cost_effectiveness_sc,risk_ratio_threat_action,

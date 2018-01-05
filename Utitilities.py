@@ -408,7 +408,7 @@ def appendStatsInFile(components):
     """ Components should be in (Asset,Total Risk,Residual Risk,Implementation Cost,Computation Time in Sec) Format"""
     append_file_iteration_index = open(ProjectConfigFile.OUTPUT_STATISTICAL_FILE_NAME,'a')
     # print "Components %s" % (components)
-    for comp in components[:-1]:
+    for comp in components:
         append_file_iteration_index.write("%s,"%(comp))
-    append_file_iteration_index.write("%s\n" % (components[-1]))
+    append_file_iteration_index.write("%s\n" % (ProjectConfigFile.RISK_ELIMINATION))
     append_file_iteration_index.close()
