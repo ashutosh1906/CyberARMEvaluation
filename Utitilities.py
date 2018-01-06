@@ -412,3 +412,19 @@ def appendStatsInFile(components):
         append_file_iteration_index.write("%s,"%(comp))
     append_file_iteration_index.write("%s\n" % (ProjectConfigFile.RISK_ELIMINATION))
     append_file_iteration_index.close()
+
+def appendTimeRiskStatsInFile(components):
+    """ Components should be in (Assets,Total Risk,Residual Risk,Time,Threat Elimination,Security Controls) Format"""
+    print "()() Components %s" % (components)
+    append_file_iteration_index = open(ProjectConfigFile.OUTPUT_TIME_MIN_RISK_FILE_NAME, 'a')
+    # print "Components %s" % (components)
+    for comp in components[:-1]:
+        append_file_iteration_index.write("%s," % (comp))
+    append_file_iteration_index.write("%s\n" % (components[-1]))
+    append_file_iteration_index.close()
+
+def determineSizeCandidateSet(selected_security_controls):
+    total_size = 0
+    for i in range(len(selected_security_controls)):
+        total_size += len(selected_security_controls[i])
+    return total_size

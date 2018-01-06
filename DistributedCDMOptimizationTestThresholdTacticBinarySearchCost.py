@@ -399,5 +399,9 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
             "Time Required For Specific Cost Iteration %s\n\n" % (cost_iteration_total_time))
         budget_variable += increase_budget
         CDM_Global_All_Statistice_Iterative.append(CDM_Global_All_Statistice_Iterative_Budget)
+        """Send in this format Assets,Total Risk,Residual Risk,Time,Threat Elimination,Security Controls"""
+        Utitilities.appendTimeRiskStatsInFile(
+            [number_of_unique_asset, global_estimated_risk, satisfied_risk_variable, cost_iteration_total_time,
+             ProjectConfigFile.RISK_ELIMINATION, Utitilities.determineSizeCandidateSet(selected_security_controls)])
     return CDM_Global_All_Statistice_Iterative
 
