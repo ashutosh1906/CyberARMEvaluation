@@ -4,7 +4,7 @@ from math import sqrt,pow
 def determineCostEffectiveness(selected_security_controls,security_control_list,risk_threat_action,threat_action_id_list_for_all_assets,
                                threat_action_id_to_name,cost_effectiveness_sc):
     asset_index = 0
-    print threat_action_id_list_for_all_assets
+    # print threat_action_id_list_for_all_assets
     for asset_type in range(len(risk_threat_action)):
         for index in range(len(risk_threat_action[asset_type])):
             # print "Asset Index %s" % (asset_index)
@@ -414,8 +414,8 @@ def appendStatsInFile(components):
     append_file_iteration_index.close()
 
 def appendTimeRiskStatsInFile(components):
-    """ Components should be in (Assets,Total Risk,Residual Risk,Time,Threat Elimination,Security Controls) Format"""
-    print "()() Components %s" % (components)
+    """ Components should be in (Assets,Total Risk,Budget,Residual Risk,Time,Threat Elimination,Security Controls) Format"""
+    # print "()() Components %s" % (components)
     append_file_iteration_index = open(ProjectConfigFile.OUTPUT_TIME_MIN_RISK_FILE_NAME, 'a')
     # print "Components %s" % (components)
     for comp in components[:-1]:
