@@ -5,9 +5,9 @@ def PreprocessingSMT_Environment(security_control_list,selected_security_control
                                  minimum_threat_specific_risk,minimum_affordable_risk,global_risk_related_variable):
 
     number_of_unique_asset = len(threat_action_id_list_for_all_assets)
-    print "Enterprise Given Asset List %s \nEnterprise Given Asset List Length: %s" % (
-    asset_enterprise_list, number_of_unique_asset)
-    print "Asset Selected Threat Action Specific Risk Ratio %s" % (risk_ratio_threat_action)
+    # print "Enterprise Given Asset List %s \nEnterprise Given Asset List Length: %s" % (
+    # asset_enterprise_list, number_of_unique_asset)
+    # print "Asset Selected Threat Action Specific Risk Ratio %s" % (risk_ratio_threat_action)
 
     #########################################  Create the environment for all the selected security controls ##############################
     for asset_index in range(len(selected_security_controls)):
@@ -72,12 +72,12 @@ def PreprocessingSMT_Environment(security_control_list,selected_security_control
             global_estimated_risk += threat.maximum_risk[asset_index]
             risk_asset_specific[asset_index] += threat.maximum_risk[asset_index]
     print "Global Estimated Risk %s" % (global_estimated_risk)
-    print "Asset Specific Estimated Risk %s \n \t ------> Where Total Risk %s" % (
-    risk_asset_specific, sum(risk_asset_specific))
+    # print "Asset Specific Estimated Risk %s \n \t ------> Where Total Risk %s" % (
+    # risk_asset_specific, sum(risk_asset_specific))
     for asset_index in range(number_of_unique_asset):
         risk_asset_specific[asset_index] /= global_estimated_risk
         # alloted_cost_asset_specific[asset_index] = budget * risk_asset_specific[asset_index]
-    print "Asset Specific Estimated Risk Proportion %s" % (risk_asset_specific)
+    # print "Asset Specific Estimated Risk Proportion %s" % (risk_asset_specific)
     # print "Asset Specific Alloted Cost Proportion %s" % (alloted_cost_asset_specific)
 
     # print "################################################################# ALl the Problem Specific List #################################################"

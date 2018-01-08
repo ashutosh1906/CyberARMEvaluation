@@ -34,10 +34,12 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
     # print "Candidate Selected Threat %s" % (threat_id_for_all_assets)
     # print "Candidate Threat Roll %s" % (threat_id_to_position_roll)
     # print "Candidate Security Control Set Cost Effectiveness %s" % (cost_effectiveness_sc)
+    number_selected_security_controls_candidate = Utitilities.determineSizeCandidateSet(selected_security_controls)
     print "Global Estimated Risk %s" % (global_estimated_risk)
     print "Global Total Cost %s" % (global_Total_Cost)
     print "Budget %s" % (budget)
     print "Global Minimum Risk %s" % (global_min_risk)
+    print "Number of Selected Security Control %s" % (number_selected_security_controls_candidate)
 
     ###################################################### End of Design of All Heuristics Here ############################################
     ############################################################ Set SMT Environment ####################################################
@@ -59,6 +61,7 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
                        budget_variable)
         minimum_risk_variable = global_min_risk + 1
         max_security_control_number_variable = int(budget_variable / min_sec_control_cost)
+        print "Probable Maximum Number of Security Controls %s" % (max_security_control_number_variable)
         time_increase_variable = 1
         for model_iteration_index in range(ProjectConfigFile.ITERATION_MODEL_SATISFACTION):
             print "Budget: %s --- Affordable Risk: %s --- Minimum Risk Achievable: %s Satisfied Risk %s" % \
