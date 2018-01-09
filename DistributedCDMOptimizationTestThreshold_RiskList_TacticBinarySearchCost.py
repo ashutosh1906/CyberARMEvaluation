@@ -229,7 +229,7 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
             cyberARMGoal.add([smt_Residual_Risk_Asset[i] >= (minimum_affordable_risk[i]-1) for i in range(len(minimum_affordable_risk))])
             cyberARMGoal.add(smt_Global_Residual_Risk == sum(smt_Residual_Risk_Asset))
             # cyberARMGoal.add(smt_Global_Residual_Risk > sum(minimum_affordable_risk))
-            cyberARMGoal.add(smt_Global_Residual_Risk >= (minimum_risk_variable-number_of_unique_asset))
+            cyberARMGoal.add(smt_Global_Residual_Risk >= (minimum_risk_variable-2))
 
             ########################################################### 2.5 Total Security Control Cost ##################################################
             cyberARMGoal.add([smt_Total_Security_Control_Cost[asset_index]==sum(smt_Security_Control_Cost[asset_index]) for asset_index in range(len(asset_list_for_smt))])
