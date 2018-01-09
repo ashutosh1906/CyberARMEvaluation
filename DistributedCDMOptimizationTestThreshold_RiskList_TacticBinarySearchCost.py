@@ -372,11 +372,11 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
                                                      (roi_statistics[ProjectConfigFile.IMPOSED_RISK],roi_statistics[ProjectConfigFile.ROI],
                                                       roi_statistics[ProjectConfigFile.TOTAL_IMPLEMENTATION_COST],roi_statistics[ProjectConfigFile.RESIDUAL_RISK],
                                                       roi_statistics[ProjectConfigFile.MITIGATED_RISK]))
-            """ Components should be in (Asset,Total Risk,Maximum Achievable Risk,Residual Risk,Implementation Cost,Computation Time in Sec) Format"""
+            """ Components should be in (Asset,Total Risk,Maximum Achievable Risk,Residual Risk,Implementation Cost,Computation Time in Sec,Approach) Format"""
             Utitilities.appendStatsInFile([number_of_unique_asset, global_estimated_risk,global_min_risk,
                                            roi_statistics[ProjectConfigFile.RESIDUAL_RISK],
                                            roi_statistics[ProjectConfigFile.TOTAL_IMPLEMENTATION_COST],
-                                           time_required_specific])
+                                           time_required_specific,ProjectConfigFile.BINARY_MODIFIED_SEARCH])
             ########################################################### End of Capture of The Risk ####################################################
 
             ########################################################### Hold the Risk #######################################################
@@ -438,10 +438,10 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
         ProjectConfigFile.OUTPUT_FILE_NAME_BINARY_SEARCH_MODIFIED.write("Time Required For Specific Cost Iteration %s\n\n"%(cost_iteration_total_time))
 
         CDM_Global_All_Statistice_Iterative.append(CDM_Global_All_Statistice_Iterative_Budget)
-        """ Components should be in (Assets,Total Risk,Maximum Achievable Risk,Budget,Implementation Cost,Residual Risk,Time,Threat Elimination,Security Controls) Format"""
+        """ Components should be in (Assets,Total Risk,Maximum Achievable Risk,Budget,Implementation Cost,Residual Risk,Time,Threat Elimination,Security Controls,Approach) Format"""
         Utitilities.appendTimeRiskStatsInFile([number_of_unique_asset,global_estimated_risk,global_min_risk,
                                                budget_variable,implementation_cost_best_solution,satisfied_risk_variable,cost_iteration_total_time,
-                                               ProjectConfigFile.RISK_ELIMINATION,Utitilities.determineSizeCandidateSet(selected_security_controls)])
+                                               ProjectConfigFile.RISK_ELIMINATION,Utitilities.determineSizeCandidateSet(selected_security_controls),ProjectConfigFile.BINARY_MODIFIED_SEARCH])
         budget_variable += increase_budget
     return CDM_Global_All_Statistice_Iterative
 
