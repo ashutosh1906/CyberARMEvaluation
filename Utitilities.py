@@ -414,7 +414,7 @@ def appendStatsInFile(components):
     append_file_iteration_index.close()
 
 def appendTimeRiskStatsInFile(components):
-    """ Components should be in (Assets,Total Risk,Maximum Achievable Risk,Budget,Residual Risk,Time,Threat Elimination,Security Controls) Format"""
+    """ Components should be in (Assets,Total Risk,Maximum Achievable Risk,Budget,Implementation Cost,Residual Risk,Time,Threat Elimination,Security Controls) Format"""
     # print "()() Components %s" % (components)
     append_file_iteration_index = open(ProjectConfigFile.OUTPUT_TIME_MIN_RISK_FILE_NAME, 'a')
     # print "Components %s" % (components)

@@ -56,6 +56,7 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
     CDM_Global_All_Statistice_Iterative = []
     satisfied_risk_variable = global_estimated_risk
     affordable_risk_variable = affordable_risk
+    implementation_cost_best_solution = -1
     for cost_iteration_index in range(ProjectConfigFile.COST_MODEL_ITERATION):
         cost_iteration_total_time = 0.0
         CDM_Global_All_Statistice_Iterative_Budget = []
@@ -390,6 +391,7 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
             CDM_Global_All_Statistice.insert(ProjectConfigFile.CYBERARM_ROI,roi_statistics)
             CDM_Global_All_Statistice_Iterative_Budget.append(CDM_Global_All_Statistice)
             satisfied_risk_variable = roi_statistics[ProjectConfigFile.RESIDUAL_RISK]
+            implementation_cost_best_solution = roi_statistics[ProjectConfigFile.TOTAL_IMPLEMENTATION_COST]
             if affordable_risk_variable == minimum_risk_variable:
                 break
             elif model_iteration_index == 0:
@@ -403,9 +405,9 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
             "Time Required For Specific Cost Iteration %s\n\n" % (cost_iteration_total_time))
 
         CDM_Global_All_Statistice_Iterative.append(CDM_Global_All_Statistice_Iterative_Budget)
-        """ Components should be in (Asset,Total Risk,Maximum Achievable Risk,Residual Risk,Implementation Cost,Computation Time in Sec) Format"""
+        """ Components should be in (Assets,Total Risk,Maximum Achievable Risk,Budget,Implementation Cost,Residual Risk,Time,Threat Elimination,Security Controls) Format"""
         Utitilities.appendTimeRiskStatsInFile([number_of_unique_asset,global_estimated_risk,global_min_risk,
-                                               budget_variable,satisfied_risk_variable,cost_iteration_total_time,
+                                               budget_variable,implementation_cost_best_solution,satisfied_risk_variable,cost_iteration_total_time,
                                                ProjectConfigFile.RISK_ELIMINATION,Utitilities.determineSizeCandidateSet(selected_security_controls)])
         budget_variable += increase_budget
     return CDM_Global_All_Statistice_Iterative
