@@ -339,7 +339,8 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
                  roi_statistics[ProjectConfigFile.TOTAL_IMPLEMENTATION_COST],
                  roi_statistics[ProjectConfigFile.RESIDUAL_RISK],
                  roi_statistics[ProjectConfigFile.MITIGATED_RISK]))
-            Utitilities.appendStatsInFile([number_of_unique_asset,global_estimated_risk,
+            """ Components should be in (Asset,Total Risk,Maximum Achievable Risk,Residual Risk,Implementation Cost,Computation Time in Sec) Format"""
+            Utitilities.appendStatsInFile([number_of_unique_asset,global_estimated_risk,global_min_risk,
                                            roi_statistics[ProjectConfigFile.RESIDUAL_RISK],
                                            roi_statistics[ProjectConfigFile.TOTAL_IMPLEMENTATION_COST],
                                            time_required_specific])
@@ -385,8 +386,9 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
             "Time Required For Specific Cost Iteration %s\n\n" % (cost_iteration_total_time))
 
         CDM_Global_All_Statistice_Iterative.append(CDM_Global_All_Statistice_Iterative_Budget)
-        """Send in this format Assets,Total Risk,Budget,Residual Risk,Time,Threat Elimination,Security Controls"""
-        Utitilities.appendTimeRiskStatsInFile([number_of_unique_asset,global_estimated_risk,budget_variable,satisfied_risk_variable,cost_iteration_total_time,
+        """ Components should be in (Asset,Total Risk,Maximum Achievable Risk,Residual Risk,Implementation Cost,Computation Time in Sec) Format"""
+        Utitilities.appendTimeRiskStatsInFile([number_of_unique_asset,global_estimated_risk,global_min_risk,
+                                               budget_variable,satisfied_risk_variable,cost_iteration_total_time,
                                                ProjectConfigFile.RISK_ELIMINATION,Utitilities.determineSizeCandidateSet(selected_security_controls)])
         budget_variable += increase_budget
     return CDM_Global_All_Statistice_Iterative

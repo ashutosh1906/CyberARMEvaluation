@@ -405,7 +405,7 @@ def rationalCostAllocation(security_control_list,selected_security_controls,risk
         print "Alloted Cost %s <------> Max Cost %s K Based Cost %s" % (alloted_cost_asset_specific[asset_index], max_cost_asset[asset_index],k_based_cost_allocation[asset_index])
 
 def appendStatsInFile(components):
-    """ Components should be in (Asset,Total Risk,Residual Risk,Implementation Cost,Computation Time in Sec) Format"""
+    """ Components should be in (Asset,Total Risk,Maximum Achievable Risk,Residual Risk,Implementation Cost,Computation Time in Sec) Format"""
     append_file_iteration_index = open(ProjectConfigFile.OUTPUT_STATISTICAL_FILE_NAME,'a')
     # print "Components %s" % (components)
     for comp in components:
@@ -414,7 +414,7 @@ def appendStatsInFile(components):
     append_file_iteration_index.close()
 
 def appendTimeRiskStatsInFile(components):
-    """ Components should be in (Assets,Total Risk,Budget,Residual Risk,Time,Threat Elimination,Security Controls) Format"""
+    """ Components should be in (Assets,Total Risk,Maximum Achievable Risk,Budget,Residual Risk,Time,Threat Elimination,Security Controls) Format"""
     # print "()() Components %s" % (components)
     append_file_iteration_index = open(ProjectConfigFile.OUTPUT_TIME_MIN_RISK_FILE_NAME, 'a')
     # print "Components %s" % (components)
