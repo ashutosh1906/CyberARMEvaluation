@@ -429,3 +429,27 @@ def determineSizeCandidateSet(selected_security_controls):
     for i in range(len(selected_security_controls)):
         total_size += len(selected_security_controls[i])
     return total_size
+
+def chosen_security_controls_threat_action_classified(selected_security_controls_length,threat_action_name_list,threat_action_list,security_control_list):
+    classified_selected_security_controls_threat_action = []
+    for asset_index in range(selected_security_controls_length):
+        classified_selected_security_controls_threat_action_asset_specific = {}
+        threat_action_index = 0
+        for threat_action in threat_action_name_list[asset_index]:
+            classified_selected_security_controls_threat_action_asset_specific[threat_action[0]] = [threat_action[1]]
+            for security_control in threat_action_list[threat_action[0]].applicable_security_controls:
+                if threat_action[1] < security_control_list[security_control].investment_cost:
+                    continue
+                if security_control not in classified_selected_security_controls_threat_action_asset_specific:
+                    classified_selected_security_controls_threat_action_asset_specific[threat_action[0]].append(security_control)
+            threat_action_index += 1
+
+
+        classified_selected_security_controls_threat_action.append(classified_selected_security_controls_threat_action_asset_specific)
+    printClassifiedSecurityControl_ThreatAction(classified_selected_security_controls_threat_action)
+
+def printClassifiedSecurityControl_ThreatAction(classified_selected_security_controls_threat_action):
+    for sc_asset_specific in classified_selected_security_controls_threat_action:
+        for threat_action_id in sc_asset_specific.keys():
+            print "Threat Action ID %s ---> " % (threat_action_id)
+            print "\t \t Security Controls %s" % (sc_asset_specific[threat_action_id])
