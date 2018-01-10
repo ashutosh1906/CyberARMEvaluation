@@ -304,6 +304,7 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
             # print "Threat Action Effectiveness Enforced %s %s" % (threat_action_effectiveness_enforced,threat_action_id_to_position_roll)
             global_enforcement_cost = 0.0
             local_enforcement_cost = [0.0 for i in range(len(asset_list_for_smt))]
+            number_of_selected_countermeasures = 0
             for asset_index in range(len(asset_list_for_smt)):
                 # print "******** >>>>>>>>>>>>>>> Asset Index %s" % (asset_index)
                 CDM_Global_id.append([])
@@ -316,6 +317,7 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
                             # print "Remedied Threat Action %s" % (threat_action)
                             threat_action_effectiveness_enforced[asset_index][threat_action_id_to_position_roll[asset_index][threat_action]] *= (1-security_control_list[sec_control].threat_action_effectiveness[threat_action])
                         local_enforcement_cost[asset_index] += security_control_list[sec_control].investment_cost
+                        number_of_selected_countermeasures += 1
                     # else:
                     #     # print " ----  Boolean (SMT Variable --> %s, Asset Id --> %s, Security Control Id --> %s) : Status --> %s" % (smt_Security_Control_Bool[asset_index][sec_control_index],asset_index, sec_control_index, recommended_CDM[smt_Security_Control_Bool[asset_index][sec_control_index]])
                     #     pass
@@ -368,15 +370,17 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
             roi_statistics[ProjectConfigFile.MITIGATED_RISK] = (roi_statistics[ProjectConfigFile.IMPOSED_RISK] - roi_statistics[ProjectConfigFile.RESIDUAL_RISK])
             roi_statistics[ProjectConfigFile.ROI] = (roi_statistics[ProjectConfigFile.MITIGATED_RISK]-roi_statistics[ProjectConfigFile.TOTAL_IMPLEMENTATION_COST]
                                                      )/roi_statistics[ProjectConfigFile.TOTAL_IMPLEMENTATION_COST]
-            ProjectConfigFile.OUTPUT_FILE_NAME_BINARY_SEARCH_MODIFIED.write("Imposed Risk %s ROI: %s, Total Implementation Cost: %s, Residual Risk: %s, Mitigated Risk: %s\n\n" %
+            ProjectConfigFile.OUTPUT_FILE_NAME_BINARY_SEARCH_MODIFIED.write("Imposed Risk %s ROI: %s, Total Implementation Cost: %s, Residual Risk: %s,"
+                                                                            " Mitigated Risk: %s, Number of Selected Countermeasures %s\n\n" %
                                                      (roi_statistics[ProjectConfigFile.IMPOSED_RISK],roi_statistics[ProjectConfigFile.ROI],
                                                       roi_statistics[ProjectConfigFile.TOTAL_IMPLEMENTATION_COST],roi_statistics[ProjectConfigFile.RESIDUAL_RISK],
-                                                      roi_statistics[ProjectConfigFile.MITIGATED_RISK]))
-            """ Components should be in (Asset,Total Risk,Maximum Achievable Risk,Residual Risk,Implementation Cost,Computation Time in Sec,Approach) Format"""
+                                                      roi_statistics[ProjectConfigFile.MITIGATED_RISK],number_of_selected_countermeasures))
+            """ Components should be in (Asset,Total Risk,Maximum Achievable Risk,Residual Risk,Implementation Cost,Computation Time in Sec,Number of Selected Countermeasures,Approach) Format"""
             Utitilities.appendStatsInFile([number_of_unique_asset, global_estimated_risk,global_min_risk,
                                            roi_statistics[ProjectConfigFile.RESIDUAL_RISK],
                                            roi_statistics[ProjectConfigFile.TOTAL_IMPLEMENTATION_COST],
-                                           time_required_specific,ProjectConfigFile.BINARY_MODIFIED_SEARCH])
+                                           time_required_specific,number_of_selected_countermeasures,
+                                           ProjectConfigFile.BINARY_MODIFIED_SEARCH])
             ########################################################### End of Capture of The Risk ####################################################
 
             ########################################################### Hold the Risk #######################################################
