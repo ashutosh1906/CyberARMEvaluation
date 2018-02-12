@@ -1,36 +1,38 @@
 import os
 import SecurityControl,ThreatAction,Threat
 import ProjectConfigFile
-SECURITY_CONTROL_FILE = '%s/%s/SecurityControls.csv' % (os.path.abspath(os.path.dirname(__file__)),ProjectConfigFile.RESOURCE_FOLDER)
-THREAT_ACTION_SECURITY_CONTROL_FILE = '%s/%s/ThreatActionSecurityControldistribution.csv' % (os.path.abspath(os.path.dirname(__file__)),ProjectConfigFile.RESOURCE_FOLDER)
-SECURITY_CONTROL_FILE_PARSER_CHARACTER = ';'
-THREAT_ACTION_SECURITY_CONTROL_FILE_PARSER_CHARACTER = ';'
+# SECURITY_CONTROL_FILE = '%s/%s/SecurityControls.csv' % (os.path.abspath(os.path.dirname(__file__)),ProjectConfigFile.RESOURCE_FOLDER)
+# THREAT_ACTION_SECURITY_CONTROL_FILE = '%s/%s/ThreatActionSecurityControldistribution.csv' % (os.path.abspath(os.path.dirname(__file__)),ProjectConfigFile.RESOURCE_FOLDER)
+
 
 def security_controls_list_builder(security_control_list,security_control_version_to_id):
-    sc_file = open(SECURITY_CONTROL_FILE,'r+')
+    sc_file = open(ProjectConfigFile.SECURITY_CONTROL_FILE,'r+')
     start_index = 0
     for line in sc_file:
         line = line.replace('\n','')
         line = line.lower()
-        line = line.split(SECURITY_CONTROL_FILE_PARSER_CHARACTER)
-        security_control_list.append(SecurityControl.SecurityControl(start_index,line[0],line[1],line[2],line[3],line[4],line[5]))
+        line = line.split(ProjectConfigFile.SECURITY_CONTROL_FILE_PARSER_CHARACTER)
+        security_control_list.append(SecurityControl.SecurityControl(start_index,line[ProjectConfigFile.VERSION_PLACE],line[ProjectConfigFile.SC_NAME_PLACE],
+                                                                     line[ProjectConfigFile.KILL_CHAIN_PHASE_PLACE],line[ProjectConfigFile.ENFORCEMENT_LEVEL_PLACE],
+                                                                     line[ProjectConfigFile.SEC_FUNC_PLACE],line[ProjectConfigFile.COST_PLACE]))
         security_control_version_to_id[line[0]] = start_index
         start_index += 1
     sc_file.close()
 
 def reinitialize_security_control_list(security_control_list):
+    """Create initial environment of the security control list for specific problem"""
     for security_control in security_control_list:
         security_control.re_init()
 
 def threat_action_security_controls_builder(security_control_version_to_id,security_control_list,threat_action_list,threat_action_name_to_id):
-    ta_sc_file = open(THREAT_ACTION_SECURITY_CONTROL_FILE,'r+')
+    ta_sc_file = open(ProjectConfigFile.THREAT_ACTION_SECURITY_CONTROL_FILE,'r+')
     for line in ta_sc_file:
         line = line.replace('\n','')
         # print "Error Line %s" % (line)
-        line = line.split(THREAT_ACTION_SECURITY_CONTROL_FILE_PARSER_CHARACTER)
-        threat_action_name = line[0].lower().strip()
-        security_control_version = line[1]
-        effectiveness = float(line[2])
+        line = line.split(ProjectConfigFile.THREAT_ACTION_SECURITY_CONTROL_FILE_PARSER_CHARACTER)
+        threat_action_name = line[ProjectConfigFile.THREAT_ACTION_NAME_PLACE].lower().strip()
+        security_control_version = line[ProjectConfigFile.SEC_VERSION_PLACE]
+        effectiveness = float(line[ProjectConfigFile.EFFECETIVENESS_PLACE])
         sec_control_obj = security_control_list[security_control_version_to_id[security_control_version]]
         if threat_action_name not in threat_action_name_to_id.keys():
             # print "Skip Threat Action Name %s" % (threat_action_name)
@@ -42,6 +44,7 @@ def threat_action_security_controls_builder(security_control_version_to_id,secur
     ta_sc_file.close()
 
 def threat_action_builder(prob_threat_action_threat,prob_threat_action_threat_experience,threat_action_list,threat_action_name_to_id,enterprise_asset_list_given,threat_action_id_to_name):
+    """Create the threat action and link it to the appropriate threat given assets"""
     start_index = 0
     for asset in enterprise_asset_list_given:
         if asset in prob_threat_action_threat.keys():

@@ -81,18 +81,21 @@ def gather_threat_action():
             write_file.write('%s\n'%(threat_action))
     write_file.close()
 
+def generate_security_control():
+    read_security_control()
+    write_security_control_cost()
+
 if __name__=="__main__":
     # ################################### Compose Threat Statistics into Single File ##############################
     # ThreatStatisticsSingleFileCompositionUpdated.find_threat_statistics_all()
     #
-    # ################################### Effectiveness Distribution ##############################################
-    # num_of_threat_action_to_security_control_mapping = security_control_threat_action_mapping_read()
-    # print "Number of Threat Action Mappings %s" % (num_of_threat_action_to_security_control_mapping)
-    # add_effectiveness_security_control_for_threat_action(num_of_threat_action_to_security_control_mapping)
+    ################################### Effectiveness Distribution ##############################################
+    num_of_threat_action_to_security_control_mapping = security_control_threat_action_mapping_read()
+    print "Number of Threat Action Mappings %s" % (num_of_threat_action_to_security_control_mapping)
+    add_effectiveness_security_control_for_threat_action(num_of_threat_action_to_security_control_mapping)
 
     # ################################# Security Control Cost Distribution ########################################
-    # read_security_control()
-    # write_security_control_cost()
+    # generate_security_control()
 
     ################################# Threat Action Distribution ##################################################
-    gather_threat_action()
+    # gather_threat_action()

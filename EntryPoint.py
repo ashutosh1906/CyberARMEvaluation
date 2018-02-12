@@ -4,6 +4,7 @@ from CyberARMPowerPlant import threat_threat_action_possible_pair,asset_name_lis
 veris_list = []
 experience_list = []
 def readVerisList():
+    """Read the VERIS Asset Input File"""
     veris_list_file = open(ProjectConfigFile.VERIS_LIST_FILE,'r+')
     for line in veris_list_file:
         line = line.replace('\n','').split(',')

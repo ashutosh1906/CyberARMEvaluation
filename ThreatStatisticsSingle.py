@@ -110,7 +110,8 @@ def find_threat_statistics_all(asset_statistics,asset_type_enumeration,threat_th
     return total_reported_incidents
 
 def read_threat_statistics_single_file(threat_threatAction_asset_veris, asset_name_list,
-                                                      threat_threat_action_possible_pair):
+                                                     threat_threat_action_possible_pair):
+    """Send the threat statistices (asset, threat, threat action) combinations in threat_threatAction_asset_veris structure"""
     read_file = open(ProjectConfigFile.WRITE_FILE_NAME,'r+')
     asset_name = ""
     threat_name = ""

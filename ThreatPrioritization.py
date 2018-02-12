@@ -3,6 +3,7 @@ import ProjectConfigFile
 def calculateRisk(prob_threat,prob_threat_action_threat,asset_enterprise_list,risk_threat_action,risk_threat):
     global_risk_threat = 0.0
     for asset_des in asset_enterprise_list:
+        # print "Asset %s" % (asset_des)
         asset_name = asset_des[0]
         asset_value = asset_des[1]
         risk_threat_action_asset = {}
@@ -64,6 +65,7 @@ def distribute_Unknown(asset_name,threat_name,threat_action_distribution):
 
 ######################################################### Probability Distributor ##################################################################
 def calculate_threatAction_threat_prob_distribution(prob_threat,prob_threat_action_threat,threat_threatAction_asset):
+    """Calculate the probability of threat action for given threat and asset and save it in prob_threat_action_threat"""
     for asset_name in threat_threatAction_asset.keys():
         prob_threat_action_threat[asset_name] = {}
         prob_threat[asset_name] = {}
@@ -97,6 +99,7 @@ def calculate_threatAction_threat_prob_distribution(prob_threat,prob_threat_acti
 
 ######################################################### 1.2 Probability Distributor ##################################################################
 def calculate_threat_threatAction_prob_distribution(prob_threat_threat_action,threat_threatAction_asset):
+    """Calculate the probability of threat for given threat action and asset and save it in prob_threat_threat_action"""
     for asset_name in threat_threatAction_asset.keys():
         if asset_name not in prob_threat_threat_action.keys():
             prob_threat_threat_action[asset_name] = {}
@@ -110,7 +113,6 @@ def calculate_threat_threatAction_prob_distribution(prob_threat_threat_action,th
                 if threat not in prob_threat_threat_action[asset_name][threat_action].keys():
                     prob_threat_threat_action[asset_name][threat_action][threat] = 0
                 prob_threat_threat_action[asset_name][threat_action][threat] += threat_threatAction_asset[asset_name][threat][threat_action]
-
 
         for threat_action in prob_threat_threat_action[asset_name].keys():
             total_threat = 0

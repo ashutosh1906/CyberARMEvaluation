@@ -30,6 +30,7 @@ def effectivenessDistribution():
     write_file.close()
 
 def initializeEnvironment():
+    """1. Read Threat Reports 2. Initialize Environment 3. Build Security Control Database"""
     read_threat_reports()
     ################################################ Initialize The Configuration & Security Control List #######################################
     ProjectConfigFile.init_conf()
