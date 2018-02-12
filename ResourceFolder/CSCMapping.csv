@@ -81,7 +81,7 @@
 11.4;Two Factor & Encrypted Authentication Network Device;Protect;Delivery;Application;3548
 11.5;Latest Stable Security Related Update;Protect;Exploitation;Application;4500
 11.6;Dedicated Machine for Network Administrative Tasks;Protect;Delivery;Device;3206
-12.1;Firewall Session Tracking;Detect;Execute;Network;2838
+12.10;Firewall Session Tracking;Detect;Execute;Network;2838
 12.1;Blacklist (IP Address);Protect;Delivery;Network;4185
 12.1;Blacklist (IP Address);Protect;C2;Network;4067
 12.2;DMZ Network Monitoring System;Detect;Delivery;Network;3979
@@ -129,7 +129,7 @@
 15.8;Disable Wireless Peripheral Access of Device;Protect;Execute;Device;2580
 15.8;Disable Wireless Peripheral Access of Device;Protect;Delivery;Device;3790
 15.9;VLAN for BYOD & Untrusted Device;Protect;Delivery;Device;2881
-16.1;Anomaly Detection by User's Account Profile;Detect;Execute;People;3147
+16.10;Anomaly Detection by User's Account Profile;Detect;Execute;People;3147
 16.1;Disable Anonymous System Account ;Protect;Exploitation;People;2692
 16.11;Multi Factor Authentication for Sensitive Data;Protect;Exploitation;People;3075
 16.13;Encrypt Credentials of Account;Protect;Reconnaissance;Network;1300
@@ -150,6 +150,7 @@
 18.1;Vendor Supported & Updated Application Software;Protect;Exploitation;Application;3978
 18.2;Web Application Firewall;Detect;Delivery;Network;3448
 18.3;Explicit Error Checking;Protect;Exploitation;Application;4110
+18.4;Test In-House Software;Identify;Exploitation;Application;3110
 18.5;Stop System Error Message;Protect;Reconnaissance;Application;2725
 18.6;Production and Non-production Environment;Protect;Reconnaissance;Application;2995
 18.7;Standard Hardening Configuration for Application Accessing Databases;Protect;Execute;Application;3946
