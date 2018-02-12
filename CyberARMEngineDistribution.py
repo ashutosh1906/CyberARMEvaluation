@@ -106,8 +106,8 @@ def select_security_controls(security_control_list,threat_action_list,threat_act
     # Utitilities.printThreatIdForAllAssets(threat_id_for_all_assets,threat_list)
     risk_ratio_threat_action = Utitilities.calculateRiskRatioBasedOnSelectedThreatAction(threat_action_id_list_for_all_assets,risk_threat_action,threat_action_id_to_name)
 
-    ########################################## Classified Security Controls Based On Threat Action #######################################################################
-    # Utitilities.chosen_security_controls_threat_action_classified(len(selected_security_controls),threat_action_name_list,threat_action_list,security_control_list)
+    ######################################### Classified Security Controls Based On Threat Action #######################################################################
+    Utitilities.chosen_security_controls_threat_action_classified(len(selected_security_controls),threat_action_name_list,threat_action_list,security_control_list)
     ########################################## Classified Security Controls Based On Threat Action #######################################################################
 
     ######################################################################### Create Common Environment For All #############################################################################
