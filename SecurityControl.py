@@ -13,6 +13,7 @@ class SecurityControl(object):
         self.number_threat_action = 0
         self.asset_threat_action_list = []
         self.global_asset_threat_action_list = []
+        self.global_asset_effectiveness = []
         self.investment_cost = int(cost)
         # self.investment_cost = random.randint(1000,5000)
 
@@ -22,6 +23,7 @@ class SecurityControl(object):
         self.number_threat_action = 0
         del self.asset_threat_action_list[:]
         del self.global_asset_threat_action_list[:]
+        del self.global_asset_effectiveness[:]
 
     def prepare_global_asset_threat_action_list(self,threat_action_id_list_for_all_assets):
         if len(self.global_asset_threat_action_list) > 0:
@@ -33,6 +35,20 @@ class SecurityControl(object):
                     if threat_action not in self.global_asset_threat_action_list[i]:
                         # print "Threat Action ID %s" % (threat_action)
                         self.global_asset_threat_action_list[i].append(threat_action)
+
+    def prepare_cost_effectiveness_for_each_asset(self,risk_threat_action,threat_action_id_to_name):
+        """Call it after preparing the threat action list for each asset. It will calculate the cost effectiveness for each asset"""
+        original_asset_index = 0
+        for asset_type in range(len(risk_threat_action)):
+            for asset_index_for_type in range(len(risk_threat_action[asset_type])):
+                self.global_asset_effectiveness.append(0.0)
+                for threat_action in self.global_asset_threat_action_list[original_asset_index]:
+                    self.global_asset_effectiveness[original_asset_index] += self.threat_action_effectiveness[threat_action] \
+                                                       * risk_threat_action[asset_type][asset_index_for_type][threat_action_id_to_name[threat_action]]
+                self.global_asset_effectiveness[original_asset_index] /= self.investment_cost
+                original_asset_index += 1
+
+
 
     def clearAllThreatActions(self):
         del self.asset_threat_action_list[:]

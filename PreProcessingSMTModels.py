@@ -9,11 +9,6 @@ def PreprocessingSMT_Environment(security_control_list,selected_security_control
     # asset_enterprise_list, number_of_unique_asset)
     # print "Asset Selected Threat Action Specific Risk Ratio %s" % (risk_ratio_threat_action)
 
-    #########################################  Create the environment for all the selected security controls ##############################
-    for asset_index in range(len(selected_security_controls)):
-        for sec_control in selected_security_controls[asset_index]:
-            security_control_list[sec_control].prepare_global_asset_threat_action_list(
-                threat_action_id_list_for_all_assets)
 
     # print "############################################ Security Controls Properties ########################################################"
     # for asset_index in range(len(selected_security_controls)):

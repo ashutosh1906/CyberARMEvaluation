@@ -231,6 +231,10 @@ def printSelectedSecurityControls(security_control_list,selected_security_contro
         for sec_con in selected_security_controls[asset]:
             print "                              ",
             print "Security Control ID : %s ---> Cost : %s" % (sec_con,security_control_list[sec_con].investment_cost)
+            print "\t \t \tThreat Action Coverage %s" % (security_control_list[sec_con].global_asset_threat_action_list[asset])
+            print "\t \t \tThreat Action Effectiveness %s" % (security_control_list[sec_con].threat_action_effectiveness)
+            print "\t \t \tSecurity Control Cost Effectiveness %s" % (security_control_list[sec_con].global_asset_effectiveness[asset])
+
         print ""
 
 def printAssetList(asset_eneterprise_list):
@@ -302,7 +306,7 @@ def printRiskPerThreatStatistics(risk):
 
 def printThreatActionList(threat_action_id_list_for_all_assets):
     for asset_index in range(len(threat_action_id_list_for_all_assets)):
-        print "\t Asset Index :%s Threat Actoin List %s" % (asset_index,threat_action_id_list_for_all_assets[asset_index])
+        print "\t Asset Index :%s \n\t \tThreat Actoin List %s" % (asset_index,threat_action_id_list_for_all_assets[asset_index])
 
 def printRiskThreatAction(risk_threat_action,asset_enterprise_list):
     for i in range(len(asset_enterprise_list)):
@@ -446,10 +450,14 @@ def chosen_security_controls_threat_action_classified(selected_security_controls
 
 
         classified_selected_security_controls_threat_action.append(classified_selected_security_controls_threat_action_asset_specific)
-    printClassifiedSecurityControl_ThreatAction(classified_selected_security_controls_threat_action)
+    # printClassifiedSecurityControl_ThreatAction(classified_selected_security_controls_threat_action)
+    return classified_selected_security_controls_threat_action
 
 def printClassifiedSecurityControl_ThreatAction(classified_selected_security_controls_threat_action):
+    asset_index = 0
     for sc_asset_specific in classified_selected_security_controls_threat_action:
+        print "Asset Index %s" % (asset_index)
         for threat_action_id in sc_asset_specific.keys():
-            print "Threat Action ID %s ---> " % (threat_action_id)
-            print "\t \t Security Controls %s" % (sc_asset_specific[threat_action_id])
+            print "\t Threat Action ID %s ---> " % (threat_action_id)
+            print "\t \t \t Security Controls %s" % (sc_asset_specific[threat_action_id])
+        asset_index += 1

@@ -90,7 +90,7 @@ def select_security_controls(security_control_list,threat_action_list,threat_act
     ################################################################### End of Cost Effectiveness ##########################################################
 
     # Utitilities.printSelectThreatActionName(threat_action_name_list,threat_action_list)
-    # Utitilities.printSelectedSecurityControls(security_control_list,selected_security_controls)
+
     # TestCases.securityControlCoverage(security_control_list,selected_security_controls,threat_action_name_list)
     # startProcessing(security_control_list,selected_security_controls,threat_action_name_list,threat_action_list,asset_enterprise_list,risk_threat_action,threat_list,threat_name_to_id)
     print "Number of Selected Security Controls %s" % (number_selected_security_controls)
@@ -107,7 +107,8 @@ def select_security_controls(security_control_list,threat_action_list,threat_act
     risk_ratio_threat_action = Utitilities.calculateRiskRatioBasedOnSelectedThreatAction(threat_action_id_list_for_all_assets,risk_threat_action,threat_action_id_to_name)
 
     ######################################### Classified Security Controls Based On Threat Action #######################################################################
-    Utitilities.chosen_security_controls_threat_action_classified(len(selected_security_controls),threat_action_name_list,threat_action_list,security_control_list)
+    classified_selected_security_controls_threat_action = Utitilities.chosen_security_controls_threat_action_classified(len(selected_security_controls),threat_action_name_list,threat_action_list,security_control_list)
+    # Utitilities.printClassifiedSecurityControl_ThreatAction(classified_selected_security_controls_threat_action)
     ########################################## Classified Security Controls Based On Threat Action #######################################################################
 
     ######################################################################### Create Common Environment For All #############################################################################
@@ -119,10 +120,20 @@ def select_security_controls(security_control_list,threat_action_list,threat_act
     number_of_unique_asset = len(threat_action_id_list_for_all_assets)
     risk_asset_specific = [0.0 for i in range(number_of_unique_asset)]  ######Risk Value For All Assets
     global_risk_related_variable = {}
+
+    #########################################  Create the environment for all the selected security controls ##############################
+    for asset_index in range(len(selected_security_controls)):
+        for sec_control in selected_security_controls[asset_index]:
+            security_control_list[sec_control].prepare_global_asset_threat_action_list(
+                threat_action_id_list_for_all_assets)
+            security_control_list[sec_control].prepare_cost_effectiveness_for_each_asset(risk_threat_action,threat_action_id_to_name)
+    # Utitilities.printSelectedSecurityControls(security_control_list, selected_security_controls)
+
     PreProcessingSMTModels.PreprocessingSMT_Environment(security_control_list,selected_security_controls,threat_action_name_list,threat_action_list,
                     threat_action_id_list_for_all_assets,threat_id_for_all_assets,threat_list,asset_enterprise_list,affordable_risk,budget,cost_effectiveness_sc,risk_ratio_threat_action,
                                  risk_list,risk_asset_specific,threat_action_id_to_position_roll,threat_id_to_position_roll,
                                  minimum_threat_specific_risk,minimum_affordable_risk,global_risk_related_variable)
+
     ######################################################################### End of Creating Common Environment For All #############################################################################
 
     recommended_CDM_Different_Approach = []
