@@ -23,7 +23,7 @@ if __name__=="__main__":
 
     #################################################### Read The Assets ###########################
     readVerisList()
-    print "VERIS List %s" % (veris_list)
+    # print "VERIS List %s" % (veris_list)
     # veris_list = [['database', [500000, 500000, 500000]], ['desktop', [100000, 100000,
     #                                                                    100000]]]  # ,['laptop',[100000,100000,100000]]]#,['end-user',[100000,100000,100000]]]
     experience_list = []
