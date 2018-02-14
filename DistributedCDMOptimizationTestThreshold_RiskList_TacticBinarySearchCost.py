@@ -375,11 +375,14 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
                                                      (roi_statistics[ProjectConfigFile.IMPOSED_RISK],roi_statistics[ProjectConfigFile.ROI],
                                                       roi_statistics[ProjectConfigFile.TOTAL_IMPLEMENTATION_COST],roi_statistics[ProjectConfigFile.RESIDUAL_RISK],
                                                       roi_statistics[ProjectConfigFile.MITIGATED_RISK],number_of_selected_countermeasures))
-            """ Components should be in (Asset,Total Risk,Maximum Achievable Risk,Residual Risk,Implementation Cost,Computation Time in Sec,Number of Selected Countermeasures,Approach) Format"""
-            Utitilities.appendStatsInFile([number_of_unique_asset, global_estimated_risk,global_min_risk,
+            """ Components should be in (Asset,Total Risk,Maximum Achievable Risk,Residual Risk,Budget,Implementation Cost,Computation Time in Sec,Risk Elimination,Max Sec Threat Action,Number of Selected Countermeasures,Approach) Format"""
+            Utitilities.appendStatsInFile([number_of_unique_asset, global_estimated_risk, global_min_risk,
                                            roi_statistics[ProjectConfigFile.RESIDUAL_RISK],
+                                           budget_variable,
                                            roi_statistics[ProjectConfigFile.TOTAL_IMPLEMENTATION_COST],
-                                           time_required_specific,number_of_selected_countermeasures,
+                                           time_required_specific,
+                                           ProjectConfigFile.RISK_ELIMINATION,
+                                           ProjectConfigFile.MAX_SEC_THREAT_ACTION,number_of_selected_countermeasures,
                                            ProjectConfigFile.BINARY_MODIFIED_SEARCH])
             ########################################################### End of Capture of The Risk ####################################################
 

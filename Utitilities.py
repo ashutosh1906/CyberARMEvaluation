@@ -415,7 +415,7 @@ def appendStatsInFile(components):
     # print "Components %s" % (components)
     for comp in components[:-1]:
         append_file_iteration_index.write("%s,"%(comp))
-    append_file_iteration_index.write("%s," % (ProjectConfigFile.RISK_ELIMINATION))
+    # append_file_iteration_index.write("%s," % (ProjectConfigFile.RISK_ELIMINATION))
     append_file_iteration_index.write("%s\n" % (components[-1]))
     append_file_iteration_index.close()
 
