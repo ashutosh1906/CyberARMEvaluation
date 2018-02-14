@@ -108,7 +108,7 @@ def select_security_controls(security_control_list,threat_action_list,threat_act
 
     ######################################### Classified Security Controls Based On Threat Action #######################################################################
     classified_selected_security_controls_threat_action = Utitilities.chosen_security_controls_threat_action_classified(len(selected_security_controls),threat_action_name_list,threat_action_list,security_control_list)
-    # Utitilities.printClassifiedSecurityControl_ThreatAction(classified_selected_security_controls_threat_action)
+    # Utitilities.printClassifiedSecurityControl_ThreatAction(classified_selected_security_controls_threat_action,threat_action_id_to_name)
     ########################################## Classified Security Controls Based On Threat Action #######################################################################
 
     ######################################################################### Create Common Environment For All #############################################################################
@@ -122,13 +122,18 @@ def select_security_controls(security_control_list,threat_action_list,threat_act
     global_risk_related_variable = {}
 
     #########################################  Create the environment for all the selected security controls ##############################
+    security_control_cost_effectiveness = []
     for asset_index in range(len(selected_security_controls)):
+        asset_specific_security_control_cost_effectiveness = {}
         for sec_control in selected_security_controls[asset_index]:
             security_control_list[sec_control].prepare_global_asset_threat_action_list(
                 threat_action_id_list_for_all_assets)
             security_control_list[sec_control].prepare_cost_effectiveness_for_each_asset(risk_threat_action,threat_action_id_to_name)
-    # Utitilities.printSelectedSecurityControls(security_control_list, selected_security_controls)
-
+            asset_specific_security_control_cost_effectiveness[sec_control] = security_control_list[sec_control].global_asset_effectiveness[asset_index]
+        security_control_cost_effectiveness.append(asset_specific_security_control_cost_effectiveness)
+    # Utitilities.printSelectedSecurityControls(security_control_list,selected_security_controls,security_control_cost_effectiveness)
+    Utitilities.prune_security_controls_list(classified_selected_security_controls_threat_action,security_control_list,selected_security_controls,security_control_cost_effectiveness)
+    # Utitilities.printSelectedSecurityControls(security_control_list, selected_security_controls,security_control_cost_effectiveness)
     PreProcessingSMTModels.PreprocessingSMT_Environment(security_control_list,selected_security_controls,threat_action_name_list,threat_action_list,
                     threat_action_id_list_for_all_assets,threat_id_for_all_assets,threat_list,asset_enterprise_list,affordable_risk,budget,cost_effectiveness_sc,risk_ratio_threat_action,
                                  risk_list,risk_asset_specific,threat_action_id_to_position_roll,threat_id_to_position_roll,

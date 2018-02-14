@@ -225,15 +225,16 @@ def printSelectThreatActionName(threat_action_name_list,threat_action_list):
             print "                                 ",
             print "ID %s : %s ---> Risk Value: %s" %(threat_action[0],threat_action_list[threat_action[0]].threat_action_name,threat_action[1])
 
-def printSelectedSecurityControls(security_control_list,selected_security_controls):
+def printSelectedSecurityControls(security_control_list,selected_security_controls,security_control_cost_effectiveness):
     for asset in range(len(selected_security_controls)):
         print "\nName of the asset ::: %s ------> " % (asset)
         for sec_con in selected_security_controls[asset]:
             print "                              ",
             print "Security Control ID : %s ---> Cost : %s" % (sec_con,security_control_list[sec_con].investment_cost)
-            print "\t \t \tThreat Action Coverage %s" % (security_control_list[sec_con].global_asset_threat_action_list[asset])
-            print "\t \t \tThreat Action Effectiveness %s" % (security_control_list[sec_con].threat_action_effectiveness)
-            print "\t \t \tSecurity Control Cost Effectiveness %s" % (security_control_list[sec_con].global_asset_effectiveness[asset])
+            # print "\t \t \tThreat Action Coverage %s" % (security_control_list[sec_con].global_asset_threat_action_list[asset])
+            # print "\t \t \tThreat Action Effectiveness %s" % (security_control_list[sec_con].threat_action_effectiveness)
+            # print "\t \t \tSecurity Control Cost Effectiveness %s == %s" % (security_control_list[sec_con].global_asset_effectiveness[asset]
+            #                                                                 ,security_control_cost_effectiveness[asset][sec_con])
 
         print ""
 
@@ -453,11 +454,53 @@ def chosen_security_controls_threat_action_classified(selected_security_controls
     # printClassifiedSecurityControl_ThreatAction(classified_selected_security_controls_threat_action)
     return classified_selected_security_controls_threat_action
 
-def printClassifiedSecurityControl_ThreatAction(classified_selected_security_controls_threat_action):
+def printClassifiedSecurityControl_ThreatAction(classified_selected_security_controls_threat_action,threat_action_id_to_name):
     asset_index = 0
     for sc_asset_specific in classified_selected_security_controls_threat_action:
         print "Asset Index %s" % (asset_index)
         for threat_action_id in sc_asset_specific.keys():
-            print "\t Threat Action ID %s ---> " % (threat_action_id)
+            print "\t Threat Action ID %s :: %s ---> " % (threat_action_id,threat_action_id_to_name[threat_action_id])
             print "\t \t \t Security Controls %s" % (sc_asset_specific[threat_action_id])
+            if len(sc_asset_specific[threat_action_id])==0:
+                print "Threat Action Error : ******* \t \t &&&&&&&&&&&&& %s &&&&&&&&&&&&& \t \t *******" % (threat_action_id_to_name[threat_action_id])
         asset_index += 1
+
+def prune_security_controls_list(classified_selected_security_controls_threat_action,security_control_list,
+                                 selected_security_controls,security_control_cost_effectiveness):
+    number_of_asset = len(selected_security_controls)
+    for asset_index in range(number_of_asset):
+        number_ta_asset = len(classified_selected_security_controls_threat_action[asset_index])
+        ta_frequency = {ta:0 for ta in classified_selected_security_controls_threat_action[asset_index]}
+
+        sorted_sec_control_by_effectivenes = sorted(security_control_cost_effectiveness[asset_index],
+                                                 key=security_control_cost_effectiveness[asset_index].__getitem__,reverse=True)
+        # print "Asset Index %s" % (asset_index)
+        # for sec_con in sorted_sec_control_by_effectivenes:
+        #     print "\t \tSecurity Control ID %s : %s" % (sec_con,security_control_cost_effectiveness[asset_index][sec_con])
+
+        pruned_selected_security_controls_asset = []
+        for index in range(len(sorted_sec_control_by_effectivenes)):
+            sec_con = sorted_sec_control_by_effectivenes[index]
+            if index < ProjectConfigFile.MAX_SEC_THREAT_ACTION:
+                pruned_selected_security_controls_asset.append(sorted_sec_control_by_effectivenes[index])
+                for ta in security_control_list[sec_con].global_asset_threat_action_list[asset_index]:
+                    if ta in ta_frequency.keys():
+                        ta_frequency[ta] += 1
+            else:
+                ta_sec_length = len(security_control_list[sec_con].global_asset_threat_action_list[asset_index])
+                for ta_index in range(ta_sec_length):
+                     ta = security_control_list[sec_con].global_asset_threat_action_list[asset_index][ta_index]
+                     if ta not in ta_frequency.keys():
+                         continue
+                     if ta_frequency[ta] < ProjectConfigFile.MAX_SEC_THREAT_ACTION:
+                         pruned_selected_security_controls_asset.append(sec_con)
+                         for change_ta_index in range(ta_index,ta_sec_length):
+                             change_ta = security_control_list[sec_con].global_asset_threat_action_list[asset_index][change_ta_index]
+                             if change_ta in ta_frequency.keys():
+                                 ta_frequency[change_ta] += 1
+
+        # print "TA Frequency %s" % (ta_frequency)
+        # print "Previous Selected Security Controls %s" % (selected_security_controls[asset_index])
+        selected_security_controls[asset_index] = pruned_selected_security_controls_asset
+        # print "Pruned Selected Security Controls %s" % (selected_security_controls[asset_index])
+

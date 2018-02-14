@@ -355,7 +355,7 @@
 <011E42B7-DF7F-4D2E-BB85-24A0DD159C64.json>
 <<0,1,2,system admin>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<malware>>>
 <<<<c2,backdoor,scan network,>>>>
 <<<social>>>
@@ -1282,7 +1282,7 @@
 <0442278A-925C-4C6B-913C-324E11BFB454.json>
 <<0,database>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <04490A97-BE49-4880-A1BE-63069237ABD6.json>
 <<web application>>
@@ -1550,7 +1550,7 @@
 <05638263-849F-4E8D-9074-05314DAB7F40.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -2359,7 +2359,7 @@
 <0823A858-14D6-44A8-9ADD-3BEBAB603F10.json>
 <<0,database>>
 <<<hacking>>>
-<<<<use of stolen creds,cryptanalysis,>>>>
+<<<<stolen creds,cryptanalysis,>>>>
 
 <082994AF-C81C-49CB-B18C-F41A8413929A.json>
 <<documents>>
@@ -2400,7 +2400,7 @@
 <083EDBD1-6BF4-4F01-80E4-04402650E872.json>
 <<0,1,2,web application>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<malware>>>
 <<<<spyware/keylogger,>>>>
 <<<social>>>
@@ -2548,7 +2548,7 @@
 <08A1428A-138A-4696-BAC7-5FE6D3AF4665.json>
 <<0,desktop>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<physical>>>
 <<<<connection,>>>>
 
@@ -4050,7 +4050,7 @@
 <0DD11501-E1B2-467E-BA26-DBBBBA0769D9.json>
 <<0,web application>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <0DD168DB-5172-49F8-8D92-31AD1F8DD2E3.json>
 <<web application>>
@@ -4116,7 +4116,7 @@
 <0DF5FC98-ADDB-48BF-8104-D20188692336.json>
 <<0,1,2,3,end-user>>
 <<<hacking>>>
-<<<<abuse of functionality,brute force,use of stolen creds,>>>>
+<<<<abuse of functionality,brute force,stolen creds,>>>>
 <<<malware>>>
 <<<<backdoor,adminware,>>>>
 <<<social>>>
@@ -4191,7 +4191,7 @@
 <0E3A7E6B-5650-487F-BF8A-0FA590A87ED9.json>
 <<0,1,2,web application>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<malware>>>
 <<<<client-side attack,>>>>
 <<<social>>>
@@ -4367,7 +4367,7 @@
 <0ECBD2D0-2703-42D4-9798-FF29618FD5E2.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -5227,7 +5227,7 @@
 <11BB0DBF-F2BB-46AC-9C06-237F51D05874.json>
 <<0,end-user>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<social>>>
 <<<<phishing,>>>>
 
@@ -6008,7 +6008,7 @@
 <14437695-0B7C-4B9F-A15B-F6A8E05DD65F.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -6405,7 +6405,7 @@
 <159D9559-F9B8-4CE0-970D-E16ACCB19FB0.json>
 <<unknown>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <15A59CDB-6709-4CF7-BD71-DF82607AB195.json>
 <<web application>>
@@ -6424,7 +6424,7 @@
 <15AF299A-2F22-4D16-90F3-4140CF262818.json>
 <<database>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <15B01A12-0FED-47E2-A97E-C12518C382E1.json>
 <<disk media>>
@@ -7392,7 +7392,7 @@
 <18CFF554-A6C1-4B70-8651-647F85EB899B.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -7968,7 +7968,7 @@
 <1B0D15CA-D0FB-4919-82A7-4D3630E1DF4D.json>
 <<wlan>>
 <<<hacking>>>
-<<<<use of stolen creds,cryptanalysis,>>>>
+<<<<stolen creds,cryptanalysis,>>>>
 
 <1B0D36AE-C0E4-4486-9095-1FB4D13BCCF0.json>
 <<unknown>>
@@ -8602,7 +8602,7 @@
 <1D6C1975-1840-4ECB-9F0B-9D1D69F0F822.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -8895,7 +8895,7 @@
 <1E92DA1F-CD94-49C0-8BEA-8BD41899D8BA.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -9148,7 +9148,7 @@
 <1F7845B4-1BA2-4C0D-A235-D623A1A70222.json>
 <<0,database>>
 <<<hacking>>>
-<<<<unknown,use of stolen creds,>>>>
+<<<<unknown,stolen creds,>>>>
 
 <1F7BE2C1-FCBB-4041-AF99-F66EC8AB2A9A.json>
 <<web application>>
@@ -9335,7 +9335,7 @@
 <201463D4-E4B5-4E3F-8062-45A540FD3D72.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -9563,7 +9563,7 @@
 <20DE2227-3738-4E4D-982F-4639A3B688CF.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -9656,7 +9656,7 @@
 <21349E3F-D0A7-42AA-B483-90611B09C58A.json>
 <<unknown>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<malware>>>
 <<<<spyware/keylogger,>>>>
 
@@ -9742,7 +9742,7 @@
 <2198417A-8CEF-45AC-92EA-5B683134AF5A.json>
 <<0,1,web application>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<social>>>
 <<<<phishing,>>>>
 
@@ -10148,7 +10148,7 @@
 <22D583BE-04B4-4DAC-8A1F-1ACC3EAF6EDE.json>
 <<0,web application>>
 <<<hacking>>>
-<<<<unknown,use of stolen creds,>>>>
+<<<<unknown,stolen creds,>>>>
 
 <22D69BDB-AE4D-4457-999D-30EA4872B096.json>
 <<database>>
@@ -10217,7 +10217,7 @@
 <2306876C-FE5F-41F6-91A4-D4E913A7FE63.json>
 <<0,unknown>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<social>>>
 <<<<phishing,>>>>
 
@@ -10231,7 +10231,7 @@
 <230ADF5A-6BA5-4541-80EC-2E27C02BF99A.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -10573,7 +10573,7 @@
 <246133A1-FE2A-407F-9419-A3F09E83AE3F.json>
 <<database>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <2463672C-E0D9-4F6D-B9EA-6A2D36CC1F37.json>
 <<desktop>>
@@ -10627,7 +10627,7 @@
 <2497619D-2265-45EB-A6FE-179339750AB5.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -10668,7 +10668,7 @@
 <24B4EFFB-A4D9-4EF0-A4FB-695052D14034.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -10718,7 +10718,7 @@
 <24D42429-8534-4145-BEF2-FA6FB3710BB2.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -10782,7 +10782,7 @@
 <2532904F-F4E0-47C7-BF92-3253CE310573.json>
 <<0,web application>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<social>>>
 <<<<phishing,>>>>
 
@@ -11554,7 +11554,7 @@
 <27D24DAC-E968-49E0-9A03-917583C5DD2C.json>
 <<unknown>>
 <<<hacking>>>
-<<<<unknown,use of stolen creds,>>>>
+<<<<unknown,stolen creds,>>>>
 
 <27DB3CDC-C451-4064-B3FB-F644C7DACCB3.json>
 <<web application>>
@@ -11571,7 +11571,7 @@
 <27E4BB0A-365B-4DBA-A140-0477F7F71647.json>
 <<web application>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <27E7F98F-7F49-4FDC-8BA5-DFD476F0AC9F.json>
 <<web application>>
@@ -12230,7 +12230,7 @@
 <2A698661-A4DA-47AB-9D06-7A218AFFD94E.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -12571,7 +12571,7 @@
 <2BA94FC1-E4C3-41AF-B4AE-6060BDAD9579.json>
 <<0,database>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <2BA96295-829A-4C9F-94E0-A0BEC4F3696C.json>
 <<web application>>
@@ -12876,7 +12876,7 @@
 <2CC1832D-0B97-4DBB-BF8E-6B47ED3FFDEF.json>
 <<web application>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<malware>>>
 <<<<capture app data,>>>>
 
@@ -13183,7 +13183,7 @@
 <2DCB2C83-A99A-4D5E-8CA3-9904EB1C1630.json>
 <<database>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <2DCEE70C-1C59-4EC9-B623-FDDB0179E528.json>
 <<laptop>>
@@ -13310,7 +13310,7 @@
 <2E171B9D-68A8-4BAB-B4A7-A1E0250BE9B1.json>
 <<0,database>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <2E1848D6-1F93-4C85-AAC4-0A6DF68A289D.json>
 <<web application>>
@@ -13740,7 +13740,7 @@
 <2F971782-CB79-4737-8B59-09477DC7E76D.json>
 <<0,1,2,system admin>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<malware>>>
 <<<<c2,backdoor,scan network,>>>>
 <<<social>>>
@@ -13960,7 +13960,7 @@
 <306C4364-8382-4821-909D-D250B1A7A3C0.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -14302,7 +14302,7 @@
 <31A367C1-174F-40CC-86AB-9145FEB71FEC.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -14644,7 +14644,7 @@
 <32C50506-3447-44FF-9D3D-954A9B734AD3.json>
 <<0,database>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <32C89CBE-98EB-4568-AE67-F13D0441F20C.json>
 <<documents>>
@@ -14678,7 +14678,7 @@
 <32E36A61-E7A6-495A-AADD-0B453949AC70.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -15616,7 +15616,7 @@
 <364FE118-0919-499A-B6F4-D81F876C53C2.json>
 <<0,web application>>
 <<<hacking>>>
-<<<<unknown,use of stolen creds,>>>>
+<<<<unknown,stolen creds,>>>>
 
 <36530B96-3C66-433F-BD76-BACA4D7E3314.json>
 <<laptop>>
@@ -15810,7 +15810,7 @@
 <36FB010D-2EE8-462F-B4F2-71088E3BC8CD.json>
 <<0,1,unknown>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<social>>>
 <<<<phishing,>>>>
 
@@ -15837,7 +15837,7 @@
 <370F9037-921F-4357-94B5-8C484AA76B2D.json>
 <<0,1,unknown>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<social>>>
 <<<<phishing,>>>>
 
@@ -16122,7 +16122,7 @@
 <37ECDB58-2231-498D-BB8C-4CC314B36A10.json>
 <<0,1,2,system admin>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<malware>>>
 <<<<c2,backdoor,scan network,>>>>
 <<<social>>>
@@ -16278,7 +16278,7 @@
 <3880FA79-F82B-442C-8396-A9C037528E30.json>
 <<desktop>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<malware>>>
 <<<<spyware/keylogger,>>>>
 
@@ -16568,7 +16568,7 @@
 <39678742-A4B5-477A-B828-6BB8DADCB1D4.json>
 <<0,mail>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<social>>>
 <<<<phishing,>>>>
 
@@ -17398,7 +17398,7 @@
 <3C4CDE2A-5F49-4135-ADCF-C4976F8570DE.json>
 <<database>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <3C53097D-472D-4DE3-8CFC-115DCEEA337E.json>
 <<web application>>
@@ -17827,7 +17827,7 @@
 <3D80516D-7EE9-4C0E-AA44-E4FA95D62395.json>
 <<web application>>
 <<<hacking>>>
-<<<<use of stolen creds,brute force,>>>>
+<<<<stolen creds,brute force,>>>>
 
 <3D82EBB1-7303-47BE-AB63-20EBF72324CB.json>
 <<0,database>>
@@ -18156,7 +18156,7 @@
 <3E7365B6-7FA5-4652-A06A-CB9B84AAB8DA.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -18486,7 +18486,7 @@
 <<<misuse>>>
 <<<<privilege abuse,>>>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,>>>>
+<<<<brute force,stolen creds,>>>>
 
 <3F89997B-7A6F-44E8-8B8B-1F5A4AA364B8.json>
 <<web application>>
@@ -18556,7 +18556,7 @@
 <3FC603DA-1DF3-4E2D-8C5A-0446D0E3CEA8.json>
 <<0,database>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <3FC6C043-39C6-4862-A5DF-8F26102D0970.json>
 <<web application>>
@@ -18582,7 +18582,7 @@
 <3FD2D843-952B-466A-BC33-8695D7019553.json>
 <<0,1,2,3,code repository>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<malware>>>
 <<<<c2,backdoor,scan network,>>>>
 <<<social>>>
@@ -18956,7 +18956,7 @@
 <40FF91C1-0BA2-445D-9694-D678BD4734AA.json>
 <<web application>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <4103B434-9A72-46B0-BCFC-625D32D3C446.json>
 <<database>>
@@ -19431,7 +19431,7 @@
 <42C036F9-5C0F-4CA0-97D0-0299CDF5BF7C.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -20064,7 +20064,7 @@
 <451E7678-0987-490A-AC82-669E28827898.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -20366,7 +20366,7 @@
 <46361B79-998A-45DD-826F-234E8E865DDA.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -20466,7 +20466,7 @@
 <467D0890-00C9-4FC4-8E37-CA4989FC4C7F.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -21195,7 +21195,7 @@
 <4914079A-787A-4A95-852B-15B79E1FD960.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -21643,7 +21643,7 @@
 <4AC2A3F5-7EEC-46B7-B168-0A483C8428CF.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -21908,7 +21908,7 @@
 <4B9113D1-629D-4B73-94FF-95913B671642.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -22123,7 +22123,7 @@
 <4C67C9D3-9D12-4839-93FA-3BC16DC4527C.json>
 <<0,1,web application>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<malware>>>
 <<<<ram scraper,export data,>>>>
 
@@ -22163,7 +22163,7 @@
 <4C7B9E21-D759-44D6-AC76-5AE1B2881B3C.json>
 <<web application>>
 <<<hacking>>>
-<<<<backdoor,c2,use of stolen creds,sqli,>>>>
+<<<<backdoor,c2,stolen creds,sqli,>>>>
 <<<malware>>>
 <<<<backdoor,>>>>
 
@@ -22589,7 +22589,7 @@
 <4DD06534-4514-4273-9315-83D697987E36.json>
 <<0,1,other>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<social>>>
 <<<<phishing,>>>>
 
@@ -23045,7 +23045,7 @@
 <4F6F10A3-228D-4D28-BAF9-8618C65DF44D.json>
 <<database>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <4F71DFA6-CEDF-4B1B-9B72-69F98409D9F0.json>
 <<database>>
@@ -23055,7 +23055,7 @@
 <4F797501-69F4-4414-BE75-B50EDCF93D6B.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -23071,7 +23071,7 @@
 <4F7DBD42-3425-4175-813F-2A5CFAEE970A.json>
 <<0,1,2,unknown>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<social>>>
 <<<<phishing,>>>>
 
@@ -23175,7 +23175,7 @@
 <4FD49A21-495A-4024-B524-6BB7A873B65A.json>
 <<0,1,2,system admin>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<malware>>>
 <<<<c2,backdoor,scan network,>>>>
 <<<social>>>
@@ -23547,7 +23547,7 @@
 <50F0C9FB-F607-4335-A76B-57C1AAEF6F78.json>
 <<web application>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<error>>>
 <<<<misconfiguration,>>>>
 
@@ -24305,7 +24305,7 @@
 <539BEA4A-11EB-4A91-B216-79ADEC884A0B.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -24493,7 +24493,7 @@
 <5447F473-1FE3-4095-B721-8C5E90994B91.json>
 <<web application>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <5447FA68-8CA4-40E5-973D-3C241F6B854B.json>
 <<documents>>
@@ -24883,7 +24883,7 @@
 <5599F122-D09D-4BB8-90A5-8A7D0FC91C0D.json>
 <<end-user>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<social>>>
 <<<<phishing,>>>>
 
@@ -25376,7 +25376,7 @@
 <57A23FAC-7BDE-4332-8F15-7255CFFFA58F.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -26223,7 +26223,7 @@
 <5AE0AA46-6AAA-41AD-957B-20E4261EA32F.json>
 <<0,1,2,system admin>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<malware>>>
 <<<<c2,backdoor,scan network,>>>>
 <<<social>>>
@@ -26308,7 +26308,7 @@
 <5B31A243-A17B-4428-A934-8D7C32D009D3.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -27084,7 +27084,7 @@
 <5DB3BFD5-CDA6-40C0-8F9A-99592EF6E8C9.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -27525,7 +27525,7 @@
 <5F6148EB-D935-478C-9873-5CAE18AC7E81.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -27763,7 +27763,7 @@
 <6070E93E-51D2-4887-8F3E-EB7FD1C3A6C6.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -27798,7 +27798,7 @@
 <608E0D20-4F08-47AF-ADD5-0E05BDBD6176.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -28338,7 +28338,7 @@
 <62436D3D-21C6-48E4-81B2-2847A9071120.json>
 <<unknown>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <624BE66F-5041-4E5D-8910-5C13A2ED4E10.json>
 <<desktop>>
@@ -29560,7 +29560,7 @@
 <66F467D7-8D1D-4275-A6B5-3043F28FB6A4.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -30593,7 +30593,7 @@
 <6A9CADE8-BD15-4799-9BE6-25EBB32DC90F.json>
 <<database>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <6A9FF0C1-76D8-4A3A-8822-A9CE32DE2F40.json>
 <<web application>>
@@ -30810,7 +30810,7 @@
 <6B5F3183-7FFB-4DFC-BB6E-F54D0B8D87F6.json>
 <<0,1,web application>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<social>>>
 <<<<phishing,>>>>
 
@@ -31271,7 +31271,7 @@
 <<<misuse>>>
 <<<<privilege abuse,>>>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <6D17744C-1DB8-457C-BAE8-D444471275C0.json>
 <<database>>
@@ -31296,7 +31296,7 @@
 <6D281852-BD13-48D1-9A49-E4DECFB88063.json>
 <<web application>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <6D292041-B110-4AA4-8A5D-EE062A061B4B.json>
 <<desktop>>
@@ -31572,7 +31572,7 @@
 <6E2065F8-0D5A-4B07-859E-45A9C98EFC2D.json>
 <<unknown>>
 <<<hacking>>>
-<<<<unknown,use of stolen creds,>>>>
+<<<<unknown,stolen creds,>>>>
 
 <6E217C8B-E75E-48D2-B5F0-A24C3872363D.json>
 <<documents>>
@@ -31884,7 +31884,7 @@
 <6F6087AA-2509-4EE2-83CF-FA96B910E654.json>
 <<0,database>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <6F6147A6-FEEB-41DA-952C-3B3557FF6C22.json>
 <<web application>>
@@ -32099,7 +32099,7 @@
 <6FFCE6C6-6C12-4DED-A2B8-66DF9EC5F6A5.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -32164,7 +32164,7 @@
 <7032A74E-FF49-491E-95D4-1EF6B3CC7406.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -33213,7 +33213,7 @@
 <740B3135-2862-4F91-90CF-172B77078678.json>
 <<unknown>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<physical>>>
 <<<<tampering,>>>>
 
@@ -33282,7 +33282,7 @@
 <743FC054-B74A-4813-A626-8F20BD249518.json>
 <<0,database>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <74482BBD-CCA8-4164-92E6-B8271B3E6E77.json>
 <<web application>>
@@ -33362,7 +33362,7 @@
 <749F41B6-A688-471E-AD15-2143B2B6D182.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -33621,7 +33621,7 @@
 <75633AE7-9DD3-4D74-93CD-C37001A4625A.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -33906,7 +33906,7 @@
 <763BEE2B-47B7-4DB3-BA30-3E742C52B38E.json>
 <<web application>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <763CEDCF-28F5-454B-B322-E280F013DED9.json>
 <<disk media>>
@@ -34585,7 +34585,7 @@
 <78B6B750-740C-4FFE-AF32-F813764C0366.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -35264,7 +35264,7 @@
 <7B2FB73B-3177-425F-8BE4-6977289A3CFC.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -35321,7 +35321,7 @@
 <7B87387C-CCFF-4FB5-A5A2-88B05905A047.json>
 <<0,other>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<social>>>
 <<<<phishing,>>>>
 
@@ -35445,7 +35445,7 @@
 <7BF96B87-B455-4488-9729-8AAF4AA4042D.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -35573,7 +35573,7 @@
 <7C600AF0-F4D2-4482-AB0F-6C965A2EDB15.json>
 <<0,end-user>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<social>>>
 <<<<phishing,>>>>
 
@@ -35709,7 +35709,7 @@
 <7CD6F400-DA70-4CB5-8B37-C442BA2FC3FB.json>
 <<web application>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <7CD71C15-C9D8-486E-9927-434178ADB08F.json>
 <<web application>>
@@ -36626,7 +36626,7 @@
 <80716EC8-B863-4E24-9A13-C012FD2AE8EE.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -36674,7 +36674,7 @@
 <809ACD9B-5D33-4DE6-9C65-654D55B5ED1E.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -37359,7 +37359,7 @@
 <82D9EDEC-5E1A-4480-9528-A60A34888E85.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -37663,7 +37663,7 @@
 <83D7E3A6-DADB-4097-8982-74CADD41F45F.json>
 <<0,1,database>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<malware>>>
 <<<<spyware/keylogger,>>>>
 <<<social>>>
@@ -37811,7 +37811,7 @@
 <8456B1DC-AAE2-4F12-A9A0-64F193F16D6A.json>
 <<0,1,dns>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<social>>>
 <<<<pretexting,>>>>
 
@@ -37866,7 +37866,7 @@
 <8489B3EA-5C87-479B-9BD0-EC8F372A07A2.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -37996,7 +37996,7 @@
 <84CECD5A-21AA-418F-A616-34600DDFEF9C.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -38015,7 +38015,7 @@
 <84D3682A-F418-4F8F-9E32-18FEE24D62B4.json>
 <<pos controller>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<malware>>>
 <<<<backdoor,export data,capture app data,>>>>
 
@@ -38426,7 +38426,7 @@
 <8621A54D-D7CA-4CE5-BDD6-6C21E3FD2F1F.json>
 <<0,database>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <8627F214-7258-401A-A9FE-13EA7993E870.json>
 <<documents>>
@@ -38465,7 +38465,7 @@
 <86414951-4D02-496A-9364-CF464B3EB59B.json>
 <<0,customer>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<social>>>
 <<<<spam,>>>>
 
@@ -38797,7 +38797,7 @@
 <87BB0274-107B-41C2-AAF5-208C22371377.json>
 <<0,web application>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<malware>>>
 <<<<spyware/keylogger,>>>>
 
@@ -39282,7 +39282,7 @@
 <898115D7-58A2-4752-B1B1-523652B17AB1.json>
 <<unknown>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<physical>>>
 <<<<tampering,>>>>
 
@@ -40009,7 +40009,7 @@
 <8B91F652-EEFA-46E2-8B19-6AA2CF5A113C.json>
 <<0,1,web application>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<social>>>
 <<<<pretexting,>>>>
 
@@ -40120,7 +40120,7 @@
 <8C0226C3-BD54-4CC5-BED5-96D2E0CF7FD3.json>
 <<0,database>>
 <<<hacking>>>
-<<<<unknown,use of stolen creds,>>>>
+<<<<unknown,stolen creds,>>>>
 <<<malware>>>
 <<<<unknown,>>>>
 <<<social>>>
@@ -40209,7 +40209,7 @@
 <8C2FE126-C3E6-407C-BA8F-8197C0403A0C.json>
 <<0,web application>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <8C34ACFE-68AE-4CA3-A15D-FD4B36C2C781.json>
 <<documents>>
@@ -40645,7 +40645,7 @@
 <8DCBC566-AE66-41FA-BCD0-4374F1CFA201.json>
 <<database>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <8DCFB885-48A9-4882-8577-7FD4C9C2AFD8.json>
 <<laptop>>
@@ -41104,7 +41104,7 @@
 <8F6B3AD6-B1D7-4C60-9E9F-9DCB8543356A.json>
 <<mail>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <8F6C3DFA-EDC9-4B31-8BD3-E1F04100AF2E.json>
 <<web application>>
@@ -41245,7 +41245,7 @@
 <901ED6A6-5952-442B-BBF9-0FDF82B5DEC6.json>
 <<0,database>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <90276F9C-EC9B-4859-9A4C-B9C315C2A7A1.json>
 <<0,mobile phone>>
@@ -42206,7 +42206,7 @@
 <93A5AEF3-3CF5-4750-AE05-5683AE9BD38D.json>
 <<mail>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <93AE4CEC-F997-4053-AF3E-823EB1043885.json>
 <<database>>
@@ -42274,7 +42274,7 @@
 <93DCF3FA-7EB8-443B-B5C3-61E17DAD4ABD.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -42700,7 +42700,7 @@
 <9579B980-8DAA-430C-BE45-996FF2EDCD3C.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -42793,7 +42793,7 @@
 <95B56D0D-F918-4B56-B1BF-767F1A49C958.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -43385,7 +43385,7 @@
 <97DF2761-318F-49E7-9F6D-9E87B8AA0674.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -43547,7 +43547,7 @@
 <98A797A1-D470-46DE-BA7E-0B294784B5CA.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -43759,7 +43759,7 @@
 <99747F66-E0BC-4B56-8A4A-2DA12D90ED1B.json>
 <<0,pos terminal>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<malware>>>
 <<<<unknown,>>>>
 
@@ -44087,7 +44087,7 @@
 <9A7A8D10-9D17-4697-8FA6-F72AC1A6205C.json>
 <<0,1,unknown>>
 <<<hacking>>>
-<<<<backdoor,c2,use of stolen creds,>>>>
+<<<<backdoor,c2,stolen creds,>>>>
 <<<malware>>>
 <<<<downloader,password dumper,c2,capture stored data,backdoor,>>>>
 <<<social>>>
@@ -44504,7 +44504,7 @@
 <9C593ED6-F662-4142-AA6B-217C3C097E90.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -44681,7 +44681,7 @@
 <<<misuse>>>
 <<<<privilege abuse,>>>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <9CD6280B-A5F3-4241-B30B-52BEE3BD8B28.json>
 <<laptop>>
@@ -44857,7 +44857,7 @@
 <9D5C1949-6B80-4B80-888D-267FEEF438D1.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -44873,7 +44873,7 @@
 <9D6229B5-D8F4-4B6B-91FF-BBF8A9B7061D.json>
 <<0,web application>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <9D687722-21C5-4A7B-9E69-D5DA62423BFF.json>
 <<desktop>>
@@ -45118,7 +45118,7 @@
 <9E3E33F3-E846-4226-BEB6-D8AD8639747C.json>
 <<0,database>>
 <<<hacking>>>
-<<<<forced browsing,os commanding,use of stolen creds,>>>>
+<<<<forced browsing,os commanding,stolen creds,>>>>
 
 <9E3E84A1-7FAB-4CBF-8F64-81288B8465D3.json>
 <<web application>>
@@ -45367,7 +45367,7 @@
 <9EFB472D-D1D2-452C-A999-A349CA5B3795.json>
 <<0,customer>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<social>>>
 <<<<phishing,>>>>
 
@@ -45617,7 +45617,7 @@
 <9FCBFBF2-596E-4DBB-9DF8-3F993BEC5F83.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -45724,7 +45724,7 @@
 <A0309A22-68F1-4CC4-961E-623C5E6B407F.json>
 <<web application>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <A0313183-DAA4-434A-A62E-1A3F25108526.json>
 <<web application>>
@@ -45818,7 +45818,7 @@
 <A073AA0E-CC7E-416F-9A59-4D97A39FF367.json>
 <<0,database>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <A0772109-2249-4F8E-A3EA-F7AB8FC4D898.json>
 <<documents>>
@@ -46220,7 +46220,7 @@
 <A1FF2F45-3927-4887-997D-8F61C087963A.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -46611,7 +46611,7 @@
 <A349508B-DA36-41BC-993C-CC129D04244F.json>
 <<0,unknown>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<social>>>
 <<<<unknown,>>>>
 
@@ -46740,7 +46740,7 @@
 <A3ACED45-8843-40DA-B0C2-91F16D95FAEE.json>
 <<0,1,end-user>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<social>>>
 <<<<phishing,>>>>
 
@@ -46861,7 +46861,7 @@
 <A432C987-192F-42FA-8179-14DBF6299F23.json>
 <<0,database>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <A435213A-11D1-4CF0-B2CD-2A56BE643248.json>
 <<documents>>
@@ -47131,7 +47131,7 @@
 <A5420B0D-A5B4-49F3-8AC0-913A075466E4.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -47405,7 +47405,7 @@
 <A61664D6-A675-483C-B6DE-EB9EE9FF4FA0.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -47489,7 +47489,7 @@
 <A66B5877-9BF1-447B-ADD0-A62F9E9A0842.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -47643,7 +47643,7 @@
 <A6BCD580-A5F3-46D6-8046-4655BCCE36D9.json>
 <<web application>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <A6C38DC4-2D26-4FA0-BAB7-49993B5A6461.json>
 <<web application>>
@@ -48212,7 +48212,7 @@
 <A8513C72-8A51-4478-BC3E-57030A9CC624.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -49029,7 +49029,7 @@
 <AAE58193-CBE3-48EE-A8EA-BCB25CD747BC.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -49917,7 +49917,7 @@
 <ADD7E519-6980-4972-B188-6C3FCE21A54A.json>
 <<0,web application>>
 <<<hacking>>>
-<<<<use of stolen creds,abuse of functionality,cryptanalysis,>>>>
+<<<<stolen creds,abuse of functionality,cryptanalysis,>>>>
 
 <ADDCEC58-3F7C-4584-87A4-A8DBE90B0F0B.json>
 <<unknown>>
@@ -51049,7 +51049,7 @@
 <B1B2B440-A7D5-457C-B94D-3D9ABE18B516.json>
 <<database>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <B1B8E5FA-FADA-414F-9559-39988B2CBBE8.json>
 <<documents>>
@@ -51146,7 +51146,7 @@
 <B1EE8F8C-DE42-487A-B277-E4A5E011D477.json>
 <<pos terminal>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<malware>>>
 <<<<unknown,>>>>
 
@@ -51274,7 +51274,7 @@
 <B26A8379-1C83-4CD8-9F1D-8C6814069856.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -51334,7 +51334,7 @@
 <B29C8B0C-CE40-4C37-8F7F-126B777063CB.json>
 <<pos controller>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<malware>>>
 <<<<ram scraper,>>>>
 
@@ -52018,7 +52018,7 @@
 <B52163E6-671D-43AB-B4EE-C1C481435A9C.json>
 <<0,web application>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<social>>>
 <<<<phishing,>>>>
 
@@ -52125,7 +52125,7 @@
 <B56A96FF-2814-4E9F-8ACC-D7E7E659B10F.json>
 <<0,database>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <B5781A67-65CF-4732-BBA2-99F7C87C8208.json>
 <<web application>>
@@ -52181,7 +52181,7 @@
 <B5ADFDEA-7EFA-4475-A5C7-67AA8356006F.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -52836,7 +52836,7 @@
 <B6C82CBF-CC49-4846-9F6E-26CE2F395A4C.json>
 <<0,1,2,system admin>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<malware>>>
 <<<<c2,backdoor,scan network,>>>>
 <<<social>>>
@@ -52896,7 +52896,7 @@
 <B714B01E-3D33-4DA8-9E38-43DFBC60D316.json>
 <<0,web application>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<social>>>
 <<<<phishing,>>>>
 
@@ -52969,7 +52969,7 @@
 <B7594A49-E6D7-46C8-8609-3A76315E536F.json>
 <<0,1,2,system admin>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<malware>>>
 <<<<c2,backdoor,scan network,>>>>
 <<<social>>>
@@ -53120,7 +53120,7 @@
 <B7EDC6D7-537E-4513-874C-3B6CBB2B3F7A.json>
 <<0,end-user>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<malware>>>
 <<<<unknown,>>>>
 <<<social>>>
@@ -53362,7 +53362,7 @@
 <B8F2599C-4BDF-4135-98D5-C622DA4B4816.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -53549,7 +53549,7 @@
 <B97A1CE3-07AB-440A-9C11-F4F535645019.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -53705,7 +53705,7 @@
 <BA2EFBC9-8415-40C5-8B5F-A4EFB8BF7B38.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -54086,7 +54086,7 @@
 <BB7D8E08-C2D6-4FAE-888B-F66B0C1B1E62.json>
 <<0,database>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <BB8326D3-FA4D-4A3D-9A45-78C4C139F2EB.json>
 <<documents>>
@@ -54115,7 +54115,7 @@
 <BB9377E2-B69D-4FED-BFA0-FD53D9D08E9B.json>
 <<0,database>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <BB945489-CCF6-4635-AF93-D14F1DA856A7.json>
 <<documents>>
@@ -54579,7 +54579,7 @@
 <BD5A8A6F-AF37-41F0-93D5-C657B92F9767.json>
 <<0,dns>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <BD61AF0C-81E9-404C-AF26-7FF22B9A843F.json>
 <<web application>>
@@ -54596,7 +54596,7 @@
 <BD71EF22-F735-4AE9-A9A4-3F39DABF6169.json>
 <<0,1,dns>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <BD7CAB21-25FD-4458-87D9-6CF0A1984ACF.json>
 <<web application>>
@@ -55036,7 +55036,7 @@
 <BF1140AD-5AFE-4629-8A48-D0FCF6723A0E.json>
 <<0,end-user>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<social>>>
 <<<<phishing,>>>>
 
@@ -55069,7 +55069,7 @@
 <BF17827D-7826-4366-96E1-C28DA6F243B2.json>
 <<0,database>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <BF182673-98C8-44CB-BAEE-C337A55ED944.json>
 <<unknown>>
@@ -55144,7 +55144,7 @@
 <BF58064E-19DF-49EA-9E7B-B89911F50801.json>
 <<0,1,2,unknown>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<social>>>
 <<<<phishing,>>>>
 
@@ -55304,7 +55304,7 @@
 <BFD6BC27-EFC7-4FAF-B9D3-27A2C4C282CB.json>
 <<0,database>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <BFD8B0CE-ACB4-4C20-9916-47A3F9918836.json>
 <<web application>>
@@ -55383,7 +55383,7 @@
 <<<misuse>>>
 <<<<possession abuse,privilege abuse,knowledge abuse,>>>>
 <<<hacking>>>
-<<<<unknown,use of stolen creds,>>>>
+<<<<unknown,stolen creds,>>>>
 <<<malware>>>
 <<<<adminware,>>>>
 <<<physical>>>
@@ -55467,7 +55467,7 @@
 <C08E6969-26ED-4FC7-84D0-618DDFCDE090.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -56364,7 +56364,7 @@
 <C36F51E8-07AE-4ADB-AC39-5EB57973C958.json>
 <<0,database>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <C3702514-8F30-4492-AE53-C9F1393B4D1D.json>
 <<web application>>
@@ -56465,7 +56465,7 @@
 <C3C9A59D-5A7E-44F2-8563-0F5192A10CCF.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -56638,7 +56638,7 @@
 <C4559733-8AFC-4689-B813-38B371D02E88.json>
 <<0,1,end-user>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<social>>>
 <<<<elicitation,>>>>
 <<<physical>>>
@@ -57153,7 +57153,7 @@
 <C64F3633-9A1F-4F74-898E-82ABB6A55C5E.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -57513,7 +57513,7 @@
 <C797F89C-62FC-42BA-8742-5460E1CB8E71.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -57712,7 +57712,7 @@
 <C868AE58-43DB-4100-87A2-F622068E74C6.json>
 <<0,1,2,system admin>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<malware>>>
 <<<<c2,backdoor,scan network,>>>>
 <<<social>>>
@@ -57740,7 +57740,7 @@
 <C870B972-26CA-40D4-B336-B2446A1BAB82.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -58295,7 +58295,7 @@
 <CA6AC92F-79AA-4C0E-8D8B-A3B069A7F72F.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -58532,7 +58532,7 @@
 <CB15495D-F4C9-4543-B8E4-8D844CE21499.json>
 <<0,web application>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<malware>>>
 <<<<spyware/keylogger,>>>>
 
@@ -58620,7 +58620,7 @@
 <CB54D203-FFC4-4E75-AA5E-47C46AEB26E4.json>
 <<0,1,2,system admin>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<malware>>>
 <<<<c2,backdoor,scan network,>>>>
 <<<social>>>
@@ -59111,7 +59111,7 @@
 <CCFCF219-90C0-40F5-AF4B-4D582693FE11.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -59170,7 +59170,7 @@
 <CD4F4FEB-93FB-47AD-A37E-6D268299E1FD.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -59456,7 +59456,7 @@
 <CE3115F7-1AF7-4304-928C-19088015179E.json>
 <<database>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<malware>>>
 <<<<unknown,>>>>
 
@@ -59584,7 +59584,7 @@
 <CECA9B17-91A7-458D-9BED-E8ACA63EC220.json>
 <<unknown>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <CECCB726-DDF1-4171-BDC3-C5DDA629FB7B.json>
 <<web application>>
@@ -60164,7 +60164,7 @@
 <D10D32E3-4C1C-4CD1-AB9D-0D45D5740DE7.json>
 <<web application>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <D10F3664-8514-471A-B0B8-4EACAF5741A0.json>
 <<documents>>
@@ -60239,7 +60239,7 @@
 <D13A77F6-A559-46D5-81A0-BEC6681E2071.json>
 <<0,1,database>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<social>>>
 <<<<phishing,>>>>
 
@@ -60455,7 +60455,7 @@
 <D2176C88-8511-404B-8342-369FBF8C5236.json>
 <<0,system admin>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<social>>>
 <<<<phishing,>>>>
 
@@ -60762,7 +60762,7 @@
 <D33DC7A4-C4A1-462B-8798-A63C0E9C8A70.json>
 <<0,file>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<malware>>>
 <<<<unknown,>>>>
 
@@ -61047,7 +61047,7 @@
 <D4609102-6ADF-42FF-8220-C88884B72CAF.json>
 <<0,web application>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<malware>>>
 <<<<unknown,>>>>
 <<<social>>>
@@ -61056,7 +61056,7 @@
 <D4613094-12DD-4F8D-A9FF-12188AC6B860.json>
 <<0,1,2,system admin>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<malware>>>
 <<<<c2,backdoor,scan network,>>>>
 <<<social>>>
@@ -61140,7 +61140,7 @@
 <D4AF9895-A338-4A0B-8D19-D0DFBF617E57.json>
 <<web application>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<malware>>>
 <<<<unknown,>>>>
 
@@ -61325,7 +61325,7 @@
 <D567A618-E17A-4921-97C0-DC48DA7017C6.json>
 <<database>>
 <<<hacking>>>
-<<<<unknown,use of stolen creds,>>>>
+<<<<unknown,stolen creds,>>>>
 <<<malware>>>
 <<<<ransomware,>>>>
 
@@ -61455,7 +61455,7 @@
 <D5EB5CD7-8925-4E4B-B6E8-A2C1C575C256.json>
 <<0,mainframe>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<malware>>>
 <<<<other,>>>>
 
@@ -61564,7 +61564,7 @@
 <<<misuse>>>
 <<<<privilege abuse,>>>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,>>>>
+<<<<brute force,stolen creds,>>>>
 
 <D649B30A-12C4-4FDF-9E38-B241790A3539.json>
 <<unknown>>
@@ -61772,7 +61772,7 @@
 <D6D68F18-383B-4B65-97A6-7C2B0EBE5B7A.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -62244,7 +62244,7 @@
 <D85BCF4C-6282-4014-917C-FE22666EC222.json>
 <<0,database>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <D86222E6-44D7-4526-A783-A0D0E2177D22.json>
 <<database>>
@@ -62534,7 +62534,7 @@
 <D99136B1-DA31-454D-91CA-0522E8CCA823.json>
 <<database>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <D9958FCC-949B-42F4-874B-75515AD7B015.json>
 <<unknown>>
@@ -62809,7 +62809,7 @@
 <DA9FD4C0-4054-4E3F-9EA9-2FA05DD202DD.json>
 <<database>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<malware>>>
 <<<<c2,exploit vuln,>>>>
 
@@ -62826,7 +62826,7 @@
 <DAAB8DA1-5712-417C-B922-0ACD08E235B5.json>
 <<unknown>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <DAB64362-B95B-48A3-8269-F009C0655098.json>
 <<web application>>
@@ -62978,7 +62978,7 @@
 <DB37EA51-82E4-4DFB-B2CF-D18AC985B36E.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -63245,7 +63245,7 @@
 <DC1760F6-243C-4F18-B183-F847C18F0117.json>
 <<0,1,unknown>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<malware>>>
 <<<<unknown,>>>>
 <<<social>>>
@@ -63376,7 +63376,7 @@
 <DC923786-42AE-4ADD-B2FD-8EE39495BC33.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -63390,7 +63390,7 @@
 <DC9BD2E7-9EED-44C0-9A26-94F8122F0865.json>
 <<database>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <DCA5FFCF-B092-4C43-A28A-A6C1EE5EB2FB.json>
 <<web application>>
@@ -63464,7 +63464,7 @@
 <DCE7F0BA-84ED-460E-823B-949E14E0809B.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -63516,7 +63516,7 @@
 <DD0B0C11-ED5D-45B1-A0A2-8CEF2A95389A.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -64095,7 +64095,7 @@
 <DEC1902C-CF1E-4471-AF06-C21214F3D875.json>
 <<0,database>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <DEC831FC-BE2D-4901-8112-564CD9944E6F.json>
 <<unknown>>
@@ -64388,7 +64388,7 @@
 <DFCE0252-2B4E-481D-84FC-2A167389F391.json>
 <<code repository>>
 <<<hacking>>>
-<<<<backdoor,c2,use of stolen creds,>>>>
+<<<<backdoor,c2,stolen creds,>>>>
 <<<malware>>>
 <<<<backdoor,>>>>
 
@@ -64432,7 +64432,7 @@
 <DFEB0718-90FF-47B8-83D4-5C5FC05468AE.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -64492,7 +64492,7 @@
 <E026A499-561A-4C2C-B6E2-942552AC25A6.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -64537,7 +64537,7 @@
 <E04A7131-9AB9-4DD9-8EF2-A000DE2A137A.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -64876,7 +64876,7 @@
 <<<misuse>>>
 <<<<unapproved hardware,>>>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <E1A92F45-D1FD-428F-972E-31F992E0045E.json>
 <<web application>>
@@ -64886,12 +64886,12 @@
 <E1B32920-7D99-48A9-B7FF-193F62B1B83E.json>
 <<web application>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <E1B4CBCA-A981-45AC-9D44-E896E22F16CD.json>
 <<payment switch>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<malware>>>
 <<<<unknown,>>>>
 
@@ -65577,7 +65577,7 @@
 <E411354B-C90A-4A71-B079-49C18C64D94B.json>
 <<0,pos terminal>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<malware>>>
 <<<<capture stored data,capture app data,>>>>
 
@@ -65647,7 +65647,7 @@
 <E45B6A44-8468-4B46-BFCC-8A0DD14BBD63.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -65806,7 +65806,7 @@
 <E4E18948-F363-453E-8699-5B66866539FF.json>
 <<0,web application>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <E4E73391-F2D5-4364-8286-8131ABC68631.json>
 <<unknown>>
@@ -65930,7 +65930,7 @@
 <<<misuse>>>
 <<<<privilege abuse,>>>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <E54428D0-CCEF-4612-93D6-88AAF7D0C4D2.json>
 <<web application>>
@@ -66388,7 +66388,7 @@
 <E66BFFF3-EBCB-4D58-9D69-36387F2D6FA4.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -67694,7 +67694,7 @@
 <EB327F2F-E9AF-4BC2-8C6D-AE840DFF7919.json>
 <<0,end-user>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<social>>>
 <<<<phishing,>>>>
 
@@ -68117,7 +68117,7 @@
 <ECD44AEA-6A86-4601-B0BF-64E0C3073303.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -68479,7 +68479,7 @@
 <<<misuse>>>
 <<<<privilege abuse,>>>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <EE4059B2-F3E7-4E45-9320-2948A227A86A.json>
 <<documents>>
@@ -68645,7 +68645,7 @@
 <EED7240E-9F5A-4813-B803-9A2F518CBB76.json>
 <<0,web application>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<malware>>>
 <<<<spyware/keylogger,backdoor,>>>>
 
@@ -69555,7 +69555,7 @@
 <F1999DDF-146C-45F3-9F17-71536B698134.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -69858,7 +69858,7 @@
 <F25CB3A9-7150-4951-91EA-9D9FE3D89588.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -70042,7 +70042,7 @@
 <F3042D81-6282-4C2E-8F83-336E25850E5D.json>
 <<0,1,2,web application>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<social>>>
 <<<<phishing,>>>>
 
@@ -70158,7 +70158,7 @@
 <F3A2FC89-2132-46B4-BBD9-6E2A53D18D29.json>
 <<database>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <F3A68E68-0ABA-46AE-B153-1C2A21A5B180.json>
 <<documents>>
@@ -70405,7 +70405,7 @@
 <F48CC626-2027-4061-98AE-DDF7A62C8F58.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -70801,7 +70801,7 @@
 <F61D6C46-14A7-42B2-8AD4-3808270BF631.json>
 <<0,1,system admin>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<malware>>>
 <<<<unknown,>>>>
 <<<social>>>
@@ -70896,7 +70896,7 @@
 <F68EF982-454F-46D2-8545-85FE1E908CD7.json>
 <<0,system admin>>
 <<<hacking>>>
-<<<<xss,backdoor,c2,use of stolen creds,>>>>
+<<<<xss,backdoor,c2,stolen creds,>>>>
 <<<malware>>>
 <<<<password dumper,capture stored data,backdoor,>>>>
 <<<social>>>
@@ -71110,7 +71110,7 @@
 <F7333DE1-FA59-4D42-B95E-98F752CFC3D2.json>
 <<0,database>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <F73441C4-9875-4CC3-959C-A121323F5A1F.json>
 <<documents>>
@@ -71361,7 +71361,7 @@
 <F82CC634-04CC-461C-BE4A-1C1A4611DB10.json>
 <<web application>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <F83273F6-1061-4678-BA2B-ED15AD9D92BA.json>
 <<laptop>>
@@ -73009,7 +73009,7 @@
 <FD95ACDA-EC84-4AD9-A94E-EB77DCF9C93D.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -73222,7 +73222,7 @@
 <FE42DED2-A8A9-4133-B818-762D942CB407.json>
 <<0,1,2,3,unknown>>
 <<<hacking>>>
-<<<<brute force,use of stolen creds,backdoor,c2,>>>>
+<<<<brute force,stolen creds,backdoor,c2,>>>>
 <<<malware>>>
 <<<<c2,capture stored data,scan network,exploit vuln,backdoor,downloader,export data,spyware/keylogger,brute force,>>>>
 <<<social>>>
@@ -73433,7 +73433,7 @@
 <FEDC2744-940A-46AE-9AB8-1B5D395DDA8A.json>
 <<database>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 
 <FEDE639F-1454-4767-8350-67FC55568CD4.json>
 <<database>>
@@ -73561,7 +73561,7 @@
 <FF5DAC91-F937-4CB5-87F3-35228422DE29.json>
 <<0,1,helpdesk>>
 <<<hacking>>>
-<<<<use of stolen creds,>>>>
+<<<<stolen creds,>>>>
 <<<social>>>
 <<<<pretexting,forgery,>>>>
 
