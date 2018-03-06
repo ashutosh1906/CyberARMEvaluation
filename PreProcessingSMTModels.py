@@ -139,7 +139,7 @@ def PreprocessingSMT_Environment(security_control_list,selected_security_control
 
     print "Global Minimum Risk %s" % (global_min_risk)
     if global_min_risk > affordable_risk:
-        print "Global Minimum Risk %s is greater than the threshold %s" % (global_min_risk,affordable_risk)
+        print "\n(^_^) (^_^) (^_^) Global Minimum Risk %s is greater than the threshold %s (^_^) (^_^) (^_^)\n" % (global_min_risk,affordable_risk)
         max_risk_initial = 0
         for i in range(len(threat_id_for_all_assets)):
             for threat_id in threat_id_for_all_assets[i]:
@@ -194,3 +194,4 @@ def PreprocessingSMT_Environment(security_control_list,selected_security_control
     global_risk_related_variable[ProjectConfigFile.GLOBAL_TOTAL_COST_KEY] = global_Total_Cost
     global_risk_related_variable[ProjectConfigFile.GLOBAL_MIN_RISK_KEY] = global_min_risk
     global_risk_related_variable[ProjectConfigFile.MIN_SEC_CONTROL_COST_KEY] = min_sec_control_cost
+    return ["success"]
