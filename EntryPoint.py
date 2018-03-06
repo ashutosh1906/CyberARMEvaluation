@@ -10,6 +10,7 @@ def readVerisList():
         line = line.replace('\n','').split(',')
         veris_list.append([line[0],[float(line[1]),float(line[2]),float(line[3])]])
 
+
 if __name__=="__main__":
     # budget = 1497050 ###################### For 150 Assets ###############################
     # budget = 1002900 ########################## For 100 Assets ###############################
@@ -38,6 +39,13 @@ if __name__=="__main__":
 
     CyberARMEngineUpdated.generate_risk_distribution(asset_enterprise_list_input,CyberARMPowerPlant.send_data)
     # print "Received DATA %s" % (CyberARMPowerPlant.send_data)
-    recommendedCDM = CyberARMPowerPlant.cyberarm_init_main(asset_enterprise_list_input, ProjectConfigFile.AFFORDABLE_RISK,
-                                                           ProjectConfigFile.BUDGET,
-                                                           ProjectConfigFile.RISK_ELIMINATION)
+    for risk_elimination_value in ProjectConfigFile.RISK_ELIMINATION_LIST:
+        recommendedCDM,success_result = CyberARMPowerPlant.cyberarm_init_main(asset_enterprise_list_input, ProjectConfigFile.AFFORDABLE_RISK,
+                                                               ProjectConfigFile.BUDGET,
+                                                               risk_elimination_value)
+        if success_result == 0:
+            print("Failed in Model Satisfaction %s" % (risk_elimination_value))
+            break
+        print("Success in Model Satisfaction %s" % (risk_elimination_value))
+
+    ProjectConfigFile.closeFiles()
