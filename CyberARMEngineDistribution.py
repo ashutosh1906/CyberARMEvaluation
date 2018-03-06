@@ -19,7 +19,7 @@ def select_threat(threat_list,asset_enterprise_list,threat_id_for_all_assets):
 
 
 def select_security_controls(security_control_list,threat_action_list,threat_action_name_to_id,risk_threat_action,asset_enterprise_list,threat_list,
-                             threat_name_to_id,affordable_risk,budget,global_risk_threat_action,threat_action_id_to_name):
+                             threat_name_to_id,affordable_risk,budget,global_risk_threat_action,threat_action_id_to_name,risk_elimination):
     ################################################################################## Global Variables ################################################################
     threat_action_name_list = []
     selected_security_controls = []
@@ -147,7 +147,7 @@ def select_security_controls(security_control_list,threat_action_list,threat_act
                                                                                                 global_risk_related_variable[ProjectConfigFile.GLOBAL_MIN_RISK_KEY],
                                                                                                 risk_asset_specific,global_risk_related_variable[ProjectConfigFile.MIN_SEC_CONTROL_COST_KEY],
                                                                                                 threat_action_id_to_position_roll,threat_id_to_position_roll,
-                                                                                                minimum_threat_specific_risk,minimum_affordable_risk))
+                                                                                                minimum_threat_specific_risk,minimum_affordable_risk,risk_elimination))
     # ProjectConfigFile.OUTPUT_FILE_NAME_BINARY_SEARCH.close()
     # recommended_CDM_Different_Approach.append(
     #     DistributedCDMOptimizationTestThreshold_RiskList_TacticBinarySearchCost.SMT_Environment(security_control_list,selected_security_controls,threat_action_name_list,
@@ -159,7 +159,7 @@ def select_security_controls(security_control_list,threat_action_list,threat_act
     #                                                                                             global_risk_related_variable[ProjectConfigFile.GLOBAL_MIN_RISK_KEY],
     #                                                                                             risk_asset_specific,global_risk_related_variable[ProjectConfigFile.MIN_SEC_CONTROL_COST_KEY],
     #                                                                                             threat_action_id_to_position_roll,threat_id_to_position_roll,
-    #                                                                                             minimum_threat_specific_risk,minimum_affordable_risk))
+    #                                                                                             minimum_threat_specific_risk,minimum_affordable_risk,risk_elimination))
     # ProjectConfigFile.OUTPUT_FILE_NAME_BINARY_SEARCH_MODIFIED.close()
     recommended_CDM_Different_Approach.append(
         DistributedCDMOptimizationTestThresholdTacticIterativeCost.SMT_Environment(security_control_list,selected_security_controls,threat_action_name_list,
@@ -170,7 +170,7 @@ def select_security_controls(security_control_list,threat_action_list,threat_act
                                                                                    global_risk_related_variable[ProjectConfigFile.GLOBAL_MIN_RISK_KEY],
                                                                                    risk_asset_specific,global_risk_related_variable[ProjectConfigFile.MIN_SEC_CONTROL_COST_KEY],
                                                                                    threat_action_id_to_position_roll,threat_id_to_position_roll,minimum_threat_specific_risk,
-                                                                                   minimum_affordable_risk))
+                                                                                   minimum_affordable_risk,risk_elimination))
     # ProjectConfigFile.OUTPUT_FILE_NAME_ITERATIVE_SEARCH.close()
     # recommended_CDM_Different_Approach.append(
     #     DistributedCDMOptimizationTestThresholdTacticIterativeCost_CostAllocation.SMT_Environment(security_control_list,
