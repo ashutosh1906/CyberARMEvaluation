@@ -120,8 +120,9 @@ def cyberarm_init_main(asset_enterprise_list_input,affordable_risk,budget,risk_e
                                                                  asset_enterprise_list, threat_list, threat_name_to_id,
                                                        float(affordable_risk), float(budget),global_risk_threat_action,threat_action_id_to_name,risk_elimination,max_sec_control_threat_action_index)
     success_result = 1
-    for approach_index in range(len(recommendedCDM)):
+    if len(recommendedCDM) > 0:
         success_result = 0
+    for approach_index in range(len(recommendedCDM)):
         for iter_index_cost in range(len(recommendedCDM[approach_index])):
             for iter_index in range(len(recommendedCDM[approach_index][iter_index_cost])):
                 print "ROI %s" % (recommendedCDM[approach_index][iter_index_cost][iter_index][2])
