@@ -1,5 +1,6 @@
 import CyberARMPowerPlant,CyberARMEngineUpdated, ProjectConfigFile, Initialization
 from CyberARMPowerPlant import threat_threat_action_possible_pair,asset_name_list,threat_threatAction_asset_veris,prob_threat_action_threat,prob_threat,prob_threat_threat_action,security_control_list,security_control_version_to_id
+import time
 
 veris_list = []
 experience_list = []
@@ -36,16 +37,22 @@ if __name__=="__main__":
     asset_enterprise_list_input[ProjectConfigFile.VERIS_LIST] = veris_list
     asset_enterprise_list_input[ProjectConfigFile.EXPERIENCE_LIST] = experience_list
 
-
+    start_time_whole = time.time()
     CyberARMEngineUpdated.generate_risk_distribution(asset_enterprise_list_input,CyberARMPowerPlant.send_data)
     # print "Received DATA %s" % (CyberARMPowerPlant.send_data)
-    for risk_elimination_value in ProjectConfigFile.RISK_ELIMINATION_LIST:
-        recommendedCDM,success_result = CyberARMPowerPlant.cyberarm_init_main(asset_enterprise_list_input, ProjectConfigFile.AFFORDABLE_RISK,
-                                                               ProjectConfigFile.BUDGET,
-                                                               risk_elimination_value)
-        if success_result == 0:
-            print("Failed in Model Satisfaction %s" % (risk_elimination_value))
-            break
-        print("Success in Model Satisfaction %s" % (risk_elimination_value))
+    max_risk_value_index_variable = len(ProjectConfigFile.RISK_ELIMINATION_LIST)
+    for max_sec_control_threat_action_index in range(1,ProjectConfigFile.MAX_SEC_THREAT_ACTION+1):
+        print("\n\nMax Security Control per Threat Action Index %s" % (max_sec_control_threat_action_index))
+        print("Risk Elimination List Current %s" % (ProjectConfigFile.RISK_ELIMINATION_LIST[0:max_risk_value_index_variable]))
+        for risk_elimination_value in ProjectConfigFile.RISK_ELIMINATION_LIST[0:max_risk_value_index_variable]:
+            recommendedCDM,success_result = CyberARMPowerPlant.cyberarm_init_main(asset_enterprise_list_input, ProjectConfigFile.AFFORDABLE_RISK,
+                                                                   ProjectConfigFile.BUDGET,
+                                                                   risk_elimination_value,max_sec_control_threat_action_index)
+            if success_result == 0:
+                print("Failed in Model Satisfaction %s" % (risk_elimination_value))
+                max_risk_value_index_variable = ProjectConfigFile.RISK_ELIMINATION_LIST.index(risk_elimination_value)
+                break
+            print("Success in Model Satisfaction %s" % (risk_elimination_value))
 
     ProjectConfigFile.closeFiles()
+    print("Total Duration %s" % (time.time()-start_time_whole))

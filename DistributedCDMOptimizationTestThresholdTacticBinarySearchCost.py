@@ -12,7 +12,7 @@ def allocated_cost(number_of_unique_asset,global_estimated_risk,risk_asset_speci
 def SMT_Environment(security_control_list,selected_security_controls,threat_action_name_list,threat_action_list,
                     threat_action_id_list_for_all_assets,threat_id_for_all_assets,threat_list,asset_enterprise_list,affordable_risk,budget,cost_effectiveness_sc,risk_ratio_threat_action,
                     risk_list,global_Total_Cost,global_estimated_risk,global_min_risk,risk_asset_specific,min_sec_control_cost,threat_action_id_to_position_roll,threat_id_to_position_roll,
-                    minimum_threat_specific_risk, minimum_affordable_risk,risk_elimination):
+                    minimum_threat_specific_risk, minimum_affordable_risk,risk_elimination,max_sec_control_threat_action_index):
     print "*********************************************** In Binary Search ********************************************************************************"
     ProjectConfigFile.OUTPUT_FILE_NAME_BINARY_SEARCH.write("*************************** In Binary Search *****************************\n")
     number_of_unique_asset = len(threat_action_id_list_for_all_assets)
@@ -362,7 +362,7 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
                                            roi_statistics[ProjectConfigFile.TOTAL_IMPLEMENTATION_COST],
                                            time_required_specific,
                                            risk_elimination,
-                                           ProjectConfigFile.MAX_SEC_THREAT_ACTION,number_of_selected_countermeasures,
+                                           max_sec_control_threat_action_index,number_of_selected_countermeasures,
                                            ProjectConfigFile.BINARY_SEARCH])
             ########################################################### End of Capture of The Risk ####################################################
 
@@ -417,7 +417,7 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
         """ Components should be in (Assets,Total Risk,Maximum Achievable Risk,Budget,Implementation Cost,Residual Risk,Time,Threat Elimination,Security Controls,Approach) Format"""
         Utitilities.appendTimeRiskStatsInFile([number_of_unique_asset,global_estimated_risk,global_min_risk,
                                                budget_variable,implementation_cost_best_solution,satisfied_risk_variable,cost_iteration_total_time,
-                                               risk_elimination,Utitilities.determineSizeCandidateSet(selected_security_controls),ProjectConfigFile.BINARY_SEARCH])
+                                               risk_elimination,Utitilities.determineSizeCandidateSet(selected_security_controls),ProjectConfigFile.BINARY_SEARCH],max_sec_control_threat_action_index)
         budget_variable += increase_budget
     return CDM_Global_All_Statistice_Iterative
 

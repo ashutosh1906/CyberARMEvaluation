@@ -25,7 +25,7 @@ def init_power_plant(asset_enterprise_list,enterprise_asset_list_given):
     return asset_index
     # ProjectConfigFile.init_conf()
 
-def cyberarm_init_main(asset_enterprise_list_input,affordable_risk,budget,risk_elimination):
+def cyberarm_init_main(asset_enterprise_list_input,affordable_risk,budget,risk_elimination,max_sec_control_threat_action_index):
     print "The Power Plant has started :: Affordable Risk --> %s Budget --> %s" % (affordable_risk,budget)
     asset_enterprise_list = asset_enterprise_list_input
     ###################################################################################### GLobal Variables ############################################################
@@ -118,7 +118,7 @@ def cyberarm_init_main(asset_enterprise_list_input,affordable_risk,budget,risk_e
         recommendedCDM = CyberARMEngineDistribution.select_security_controls(security_control_list, threat_action_list,
                                                                  threat_action_name_to_id, risk_threat_action,
                                                                  asset_enterprise_list, threat_list, threat_name_to_id,
-                                                       float(affordable_risk), float(budget),global_risk_threat_action,threat_action_id_to_name,risk_elimination)
+                                                       float(affordable_risk), float(budget),global_risk_threat_action,threat_action_id_to_name,risk_elimination,max_sec_control_threat_action_index)
     success_result = 1
     for approach_index in range(len(recommendedCDM)):
         for iter_index_cost in range(len(recommendedCDM[approach_index])):

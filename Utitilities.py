@@ -419,14 +419,14 @@ def appendStatsInFile(components):
     append_file_iteration_index.write("%s\n" % (components[-1]))
     append_file_iteration_index.close()
 
-def appendTimeRiskStatsInFile(components):
+def appendTimeRiskStatsInFile(components,max_sec_control_threat_action_index):
     """ Components should be in (Assets,Total Risk,Maximum Achievable Risk,Budget,Implementation Cost,Residual Risk,Time,Threat Elimination,Security Controls) Format"""
     # print "()() Components %s" % (components)
     append_file_iteration_index = open(ProjectConfigFile.OUTPUT_TIME_MIN_RISK_FILE_NAME, 'a')
     # print "Components %s" % (components)
     for comp in components[:-1]:
         append_file_iteration_index.write("%s," % (comp))
-    append_file_iteration_index.write("%s,"%(ProjectConfigFile.MAX_SEC_THREAT_ACTION))
+    append_file_iteration_index.write("%s,"%(max_sec_control_threat_action_index))
     append_file_iteration_index.write("%s\n" % (components[-1]))
     append_file_iteration_index.close()
 
@@ -467,7 +467,7 @@ def printClassifiedSecurityControl_ThreatAction(classified_selected_security_con
         asset_index += 1
 
 def prune_security_controls_list(classified_selected_security_controls_threat_action,security_control_list,
-                                 selected_security_controls,security_control_cost_effectiveness):
+                                 selected_security_controls,security_control_cost_effectiveness,max_sec_control_threat_action_index):
     number_of_asset = len(selected_security_controls)
     for asset_index in range(number_of_asset):
         number_ta_asset = len(classified_selected_security_controls_threat_action[asset_index])
@@ -482,7 +482,7 @@ def prune_security_controls_list(classified_selected_security_controls_threat_ac
         pruned_selected_security_controls_asset = []
         for index in range(len(sorted_sec_control_by_effectivenes)):
             sec_con = sorted_sec_control_by_effectivenes[index]
-            if index < ProjectConfigFile.MAX_SEC_THREAT_ACTION:
+            if index < max_sec_control_threat_action_index:
                 pruned_selected_security_controls_asset.append(sorted_sec_control_by_effectivenes[index])
                 for ta in security_control_list[sec_con].global_asset_threat_action_list[asset_index]:
                     if ta in ta_frequency.keys():
@@ -493,7 +493,7 @@ def prune_security_controls_list(classified_selected_security_controls_threat_ac
                      ta = security_control_list[sec_con].global_asset_threat_action_list[asset_index][ta_index]
                      if ta not in ta_frequency.keys():
                          continue
-                     if ta_frequency[ta] < ProjectConfigFile.MAX_SEC_THREAT_ACTION:
+                     if ta_frequency[ta] < max_sec_control_threat_action_index:
                          pruned_selected_security_controls_asset.append(sec_con)
                          for change_ta_index in range(ta_index,ta_sec_length):
                              change_ta = security_control_list[sec_con].global_asset_threat_action_list[asset_index][change_ta_index]

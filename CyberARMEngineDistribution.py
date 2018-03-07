@@ -19,7 +19,7 @@ def select_threat(threat_list,asset_enterprise_list,threat_id_for_all_assets):
 
 
 def select_security_controls(security_control_list,threat_action_list,threat_action_name_to_id,risk_threat_action,asset_enterprise_list,threat_list,
-                             threat_name_to_id,affordable_risk,budget,global_risk_threat_action,threat_action_id_to_name,risk_elimination):
+                             threat_name_to_id,affordable_risk,budget,global_risk_threat_action,threat_action_id_to_name,risk_elimination,max_sec_control_threat_action_index):
     ################################################################################## Global Variables ################################################################
     threat_action_name_list = []
     selected_security_controls = []
@@ -128,7 +128,7 @@ def select_security_controls(security_control_list,threat_action_list,threat_act
             asset_specific_security_control_cost_effectiveness[sec_control] = security_control_list[sec_control].global_asset_effectiveness[asset_index]
         security_control_cost_effectiveness.append(asset_specific_security_control_cost_effectiveness)
     # Utitilities.printSelectedSecurityControls(security_control_list,selected_security_controls,security_control_cost_effectiveness)
-    Utitilities.prune_security_controls_list(classified_selected_security_controls_threat_action,security_control_list,selected_security_controls,security_control_cost_effectiveness)
+    Utitilities.prune_security_controls_list(classified_selected_security_controls_threat_action,security_control_list,selected_security_controls,security_control_cost_effectiveness,max_sec_control_threat_action_index)
     # Utitilities.printSelectedSecurityControls(security_control_list, selected_security_controls,security_control_cost_effectiveness)
     env_variables = PreProcessingSMTModels.PreprocessingSMT_Environment(security_control_list,selected_security_controls,threat_action_name_list,threat_action_list,
                     threat_action_id_list_for_all_assets,threat_id_for_all_assets,threat_list,asset_enterprise_list,affordable_risk,budget,cost_effectiveness_sc,risk_ratio_threat_action,
@@ -148,7 +148,7 @@ def select_security_controls(security_control_list,threat_action_list,threat_act
                                                                                                 global_risk_related_variable[ProjectConfigFile.GLOBAL_MIN_RISK_KEY],
                                                                                                 risk_asset_specific,global_risk_related_variable[ProjectConfigFile.MIN_SEC_CONTROL_COST_KEY],
                                                                                                 threat_action_id_to_position_roll,threat_id_to_position_roll,
-                                                                                                minimum_threat_specific_risk,minimum_affordable_risk,risk_elimination))
+                                                                                                minimum_threat_specific_risk,minimum_affordable_risk,risk_elimination,max_sec_control_threat_action_index))
     # ProjectConfigFile.OUTPUT_FILE_NAME_BINARY_SEARCH.close()
     # recommended_CDM_Different_Approach.append(
     #     DistributedCDMOptimizationTestThreshold_RiskList_TacticBinarySearchCost.SMT_Environment(security_control_list,selected_security_controls,threat_action_name_list,
@@ -160,7 +160,7 @@ def select_security_controls(security_control_list,threat_action_list,threat_act
     #                                                                                             global_risk_related_variable[ProjectConfigFile.GLOBAL_MIN_RISK_KEY],
     #                                                                                             risk_asset_specific,global_risk_related_variable[ProjectConfigFile.MIN_SEC_CONTROL_COST_KEY],
     #                                                                                             threat_action_id_to_position_roll,threat_id_to_position_roll,
-    #                                                                                             minimum_threat_specific_risk,minimum_affordable_risk,risk_elimination))
+    #                                                                                             minimum_threat_specific_risk,minimum_affordable_risk,risk_elimination,max_sec_control_threat_action_index))
     # ProjectConfigFile.OUTPUT_FILE_NAME_BINARY_SEARCH_MODIFIED.close()
     recommended_CDM_Different_Approach.append(
         DistributedCDMOptimizationTestThresholdTacticIterativeCost.SMT_Environment(security_control_list,selected_security_controls,threat_action_name_list,
@@ -171,7 +171,7 @@ def select_security_controls(security_control_list,threat_action_list,threat_act
                                                                                    global_risk_related_variable[ProjectConfigFile.GLOBAL_MIN_RISK_KEY],
                                                                                    risk_asset_specific,global_risk_related_variable[ProjectConfigFile.MIN_SEC_CONTROL_COST_KEY],
                                                                                    threat_action_id_to_position_roll,threat_id_to_position_roll,minimum_threat_specific_risk,
-                                                                                   minimum_affordable_risk,risk_elimination))
+                                                                                   minimum_affordable_risk,risk_elimination,max_sec_control_threat_action_index))
     # ProjectConfigFile.OUTPUT_FILE_NAME_ITERATIVE_SEARCH.close()
     # recommended_CDM_Different_Approach.append(
     #     DistributedCDMOptimizationTestThresholdTacticIterativeCost_CostAllocation.SMT_Environment(security_control_list,
