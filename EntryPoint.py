@@ -38,14 +38,18 @@ if __name__=="__main__":
     asset_enterprise_list_input[ProjectConfigFile.EXPERIENCE_LIST] = experience_list
 
     start_time_whole = time.time()
-    CyberARMEngineUpdated.generate_risk_distribution(asset_enterprise_list_input,CyberARMPowerPlant.send_data)
+    total_risk_value = CyberARMEngineUpdated.generate_risk_distribution(asset_enterprise_list_input,CyberARMPowerPlant.send_data)
+    if ProjectConfigFile.INCLUDE_ROI == True:
+        affordable_risk = total_risk_value - ProjectConfigFile.ROI_VALUE*ProjectConfigFile.BUDGET
+    else:
+        affordable_risk = ProjectConfigFile.AFFORDABLE_RISK
     # print "Received DATA %s" % (CyberARMPowerPlant.send_data)
     max_risk_value_index_variable = len(ProjectConfigFile.RISK_ELIMINATION_LIST)
     for max_sec_control_threat_action_index in range(1,ProjectConfigFile.MAX_SEC_THREAT_ACTION+1):
         print("\n\nMax Security Control per Threat Action Index %s" % (max_sec_control_threat_action_index))
         print("Risk Elimination List Current %s" % (ProjectConfigFile.RISK_ELIMINATION_LIST[0:max_risk_value_index_variable]))
         for risk_elimination_value in ProjectConfigFile.RISK_ELIMINATION_LIST[0:max_risk_value_index_variable]:
-            recommendedCDM,success_result = CyberARMPowerPlant.cyberarm_init_main(asset_enterprise_list_input, ProjectConfigFile.AFFORDABLE_RISK,
+            recommendedCDM,success_result = CyberARMPowerPlant.cyberarm_init_main(asset_enterprise_list_input, affordable_risk,
                                                                    ProjectConfigFile.BUDGET,
                                                                    risk_elimination_value,max_sec_control_threat_action_index)
             if success_result == 0:

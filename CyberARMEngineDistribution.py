@@ -130,6 +130,7 @@ def select_security_controls(security_control_list,threat_action_list,threat_act
     # Utitilities.printSelectedSecurityControls(security_control_list,selected_security_controls,security_control_cost_effectiveness)
     Utitilities.prune_security_controls_list(classified_selected_security_controls_threat_action,security_control_list,selected_security_controls,security_control_cost_effectiveness,max_sec_control_threat_action_index)
     # Utitilities.printSelectedSecurityControls(security_control_list, selected_security_controls,security_control_cost_effectiveness)
+
     env_variables = PreProcessingSMTModels.PreprocessingSMT_Environment(security_control_list,selected_security_controls,threat_action_name_list,threat_action_list,
                     threat_action_id_list_for_all_assets,threat_id_for_all_assets,threat_list,asset_enterprise_list,affordable_risk,budget,cost_effectiveness_sc,risk_ratio_threat_action,
                                  risk_list,risk_asset_specific,threat_action_id_to_position_roll,threat_id_to_position_roll,

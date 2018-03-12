@@ -57,3 +57,4 @@ def generate_risk_distribution(asset_enterprise_list,send_data):
     # print "This is the percentage %s" % (sum_percentage)
     send_data['percentage'] = sum_percentage
     send_data['global_risk_threat_action'] = global_risk_threat_action
+    return total_risk_value
