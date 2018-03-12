@@ -41,6 +41,10 @@ if __name__=="__main__":
     total_risk_value = CyberARMEngineUpdated.generate_risk_distribution(asset_enterprise_list_input,CyberARMPowerPlant.send_data)
     if ProjectConfigFile.INCLUDE_ROI == True:
         affordable_risk = total_risk_value - ProjectConfigFile.ROI_VALUE*ProjectConfigFile.BUDGET
+        if affordable_risk < 0:
+            print("Affordable risk after satosfying the ROI is less than zero and therefore taking the constant variable")
+            affordable_risk = ProjectConfigFile.AFFORDABLE_RISK
+
     else:
         affordable_risk = ProjectConfigFile.AFFORDABLE_RISK
     # print "Received DATA %s" % (CyberARMPowerPlant.send_data)
