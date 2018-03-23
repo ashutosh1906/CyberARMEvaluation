@@ -1,5 +1,7 @@
 import random
 import ProjectConfigFile, ThreatAction
+import ProjectConfigFile
+
 class SecurityControl(object):
     def __init__(self,primary_key,version,name,kill_chain_phase,en_level,sec_func,cost):
         self.primary_key = primary_key
@@ -63,6 +65,14 @@ class SecurityControl(object):
         self.threat_action.append(threat_action_entity_id)
         self.threat_action_effectiveness[threat_action_entity_id] = effectiveness
         self.number_threat_action += 1
+
+    def printCDMProperties(self):
+        print("\n\t\t Security Control Name : %s" % (self.sc_name))
+        print("\t\t Security Function : %s" % (ProjectConfigFile.ID_TO_SECURITY_FUNCTION[self.sc_function]))
+        print("\t\t Enforcement Level : %s" % (ProjectConfigFile.ID_TO_ENFORCEMENT_LEVEL[self.en_level]))
+        print("\t\t Kill Chain Phase : %s" % (ProjectConfigFile.ID_TO_KILL_CHAIN_PHASE[self.kc_phase]))
+        print("\t\t Implementation Cost : %s" % (self.investment_cost))
+
 
     def printProperties(self):
         print "\nID : %s Name : %s" % (self.primary_key,self.sc_name)

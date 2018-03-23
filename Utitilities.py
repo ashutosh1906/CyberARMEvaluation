@@ -505,3 +505,42 @@ def prune_security_controls_list(classified_selected_security_controls_threat_ac
         selected_security_controls[asset_index] = pruned_selected_security_controls_asset
         # print "Pruned Selected Security Controls %s" % (selected_security_controls[asset_index])
 
+def printPrunedSelectedSecurityControlsWithProperties(security_control_list,selected_security_controls):
+    security_function_cost = [0.0 for i in range(len(ProjectConfigFile.SECURITY_FUNCTION_TO_ID))]
+    en_level_cost = [0.0 for i in range(len(ProjectConfigFile.ENFORCEMENT_LEVEL_TO_ID))]
+    kc_phase_cost = [0.0 for i in range(len(ProjectConfigFile.KILL_CHAIN_PHASE_TO_ID))]
+    total_cost = 0.0
+    for asset_index in range(len(selected_security_controls)):
+        # print "\nAsset Index %s --> %s"%(asset_index,selected_security_controls[asset_index])
+        for sec_id in selected_security_controls[asset_index]:
+            security_control_obj = security_control_list[sec_id]
+            # security_control_list[sec_id].printCDMProperties()
+            security_function_cost[security_control_obj.sc_function] += security_control_obj.investment_cost
+            en_level_cost[security_control_obj.en_level] += security_control_obj.investment_cost
+            kc_phase_cost[security_control_obj.kc_phase] += security_control_obj.investment_cost
+            total_cost += security_control_obj.investment_cost
+
+    security_function_cost_distribution = [security_function_cost[i]/sum(security_function_cost) for i in range(len(ProjectConfigFile.SECURITY_FUNCTION_TO_ID))]
+    en_level_cost_distribution = [en_level_cost[i]/sum(en_level_cost) for i in range(len(ProjectConfigFile.ENFORCEMENT_LEVEL_TO_ID))]
+    kc_phase_cost_distribution = [kc_phase_cost[i]/sum(kc_phase_cost) for i in range(len(ProjectConfigFile.KILL_CHAIN_PHASE_TO_ID))]
+
+    # print("************************************** Check the cost Distribution*****************************************")
+    # print("$$$$$$$$$$$$$$$ Global Total Costs : %s $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$" % (total_cost))
+    # print("\t\t Global Security Function Cost : %s" % (security_function_cost))
+    # print("\t\t Global Security Function Cost Distribution : %s" % (security_function_cost_distribution))
+    # print("\t\t Global Enforcement Level Cost : %s" % (en_level_cost))
+    # print("\t\t Global Enforcement Level Cost Distribution : %s" % (en_level_cost_distribution))
+    # print("\t\t Global Kill Chain Phase Cost : %s" % (kc_phase_cost))
+    # print("\t\t Global Kill Chain Phase Cost Distribution : %s" % (kc_phase_cost_distribution))
+    return [security_function_cost,en_level_cost,kc_phase_cost]
+
+def build_constraints():
+    all_smt_constraints = {}
+    if ProjectConfigFile.COST_DISTRIBUTION_CONSTRAINT:
+        all_smt_constraints[ProjectConfigFile.COST_DISTRIBUTION_PROPERTIES] = ProjectConfigFile.cost_constraint_development()
+    return all_smt_constraints
+
+def verify_cost_reult(cost_distribution_CDM):
+    print "Cost Distribution SMT Output %s" % (cost_distribution_CDM)
+    for i in range(3):
+        print "Total Implementaion Cost from Distribution %s" % (sum(cost_distribution_CDM[i]))
