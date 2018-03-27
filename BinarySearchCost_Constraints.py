@@ -9,6 +9,7 @@ def allocated_cost(number_of_unique_asset,global_estimated_risk,risk_asset_speci
     # print "In Allocated Cost: Asset Specific Estimated Risk Proportion %s" % (risk_asset_specific)
     # print "In Allocated Cost: Asset Specific Alloted Cost Proportion %s" % (alloted_cost_asset_specific)
 
+
 def SMT_Environment(security_control_list,selected_security_controls,global_sec_control_CDM_index_Asset_freq,threat_action_name_list,threat_action_list,
                     threat_action_id_list_for_all_assets,threat_id_for_all_assets,threat_list,asset_enterprise_list,affordable_risk,budget,cost_effectiveness_sc,risk_ratio_threat_action,
                     risk_list,global_Total_Cost,global_estimated_risk,global_min_risk,risk_asset_specific,min_sec_control_cost,threat_action_id_to_position_roll,threat_id_to_position_roll,
@@ -260,8 +261,39 @@ def SMT_Environment(security_control_list,selected_security_controls,global_sec_
                     for sc_func in range(ProjectConfigFile.NUMBER_OF_SECURITY_FUNCTION):
                         smt_CDM_Unit_Cost_Cons = (smt_CDM_cost[kc_phase][en_level][sc_func]==sum(smt_CDM_Cost_Sec_Control[kc_phase][en_level][sc_func]))
                         cyberARMGoal.add(smt_CDM_Unit_Cost_Cons)
+                    smt_CDM_Unit_en_level_Cost_Cons = (smt_en_level_cost[kc_phase][en_level]==sum(smt_CDM_cost[kc_phase][en_level]))
+                    cyberARMGoal.add(smt_CDM_Unit_en_level_Cost_Cons)
+                smt_CDM_Unit_kc_phase_Cost_Cons = (smt_kc_phase_cost[kc_phase]==sum(smt_en_level_cost[kc_phase]))
+                cyberARMGoal.add(smt_CDM_Unit_kc_phase_Cost_Cons)
 
-            ############################################################ End Constrainst Development #################################################
+            ############################################################# 2.8 Dynamic Constraint Satisfaction Properties ###################################
+            dynamic_constraint_builder = Utitilities.build_Dynamic_Constraint(all_smt_constraints)
+            print("Dynamic Constraints %s" % (dynamic_constraint_builder))
+            smt_dynamic_constraints = [[Real('smt_dynamic_constraints_%s_%s'%(cons_properties,index))for index in range(len(dynamic_constraint_builder[cons_properties]))] for cons_properties in dynamic_constraint_builder.keys()]
+            print "SMT Dynamic Constraints %s" % (smt_dynamic_constraints)
+
+            for cons_properties in dynamic_constraint_builder.keys():
+                constraint_id = 0
+                if cons_properties==ProjectConfigFile.COST_DISTRIBUTION_PROPERTIES:
+                    for each_property in dynamic_constraint_builder[cons_properties]:
+                        axis_name = each_property[0]
+                        component_value = each_property[1]
+                        constraint_satisfaction_value = each_property[2]
+                        print(" ({&}) ({&}) ({&}) ({&}) Constraints %s : (%s,%s,%s)" % (cons_properties,axis_name,component_value,constraint_satisfaction_value))
+                        if axis_name == ProjectConfigFile.SECURITY_FUNCTION_AXIS:
+                            smt_dynamic_cons = (
+                                    smt_dynamic_constraints[cons_properties][constraint_id] == sum([sum([smt_CDM_cost[kc_phase_iter][en_level_iter][component_value]
+                                                                                                         for en_level_iter in range(ProjectConfigFile.NUMNBER_OF_ENFORCEMENT_LEVEL)])
+                                                                                           for kc_phase_iter in range(ProjectConfigFile.NUMBER_OF_KILL_CHAIN_PHASE)])
+                                                )
+                            print("Adding Constraint ID (%s,%s)"%(cons_properties,constraint_id))
+                            cyberARMGoal.add(smt_dynamic_cons)
+                            if constraint_satisfaction_value > 0:
+                                cost_distribution_cons = (smt_dynamic_constraints[cons_properties][constraint_id] >= constraint_satisfaction_value*smt_Global_Security_Control_Cost)
+                                cyberARMGoal.add(cost_distribution_cons)
+                        constraint_id += 1
+
+            ############################################################ End Constrainst Development #######################################################
 
             ############################################################ 3. Check the model ##########################################################
             simplifiedResult = cyberARMTactic(cyberARMGoal)
@@ -318,7 +350,7 @@ def SMT_Environment(security_control_list,selected_security_controls,global_sec_
                                                     for asset_index in range(len(threat_action_id_list_for_all_assets))]
 
             # print "Threat Action Effectiveness Enforced %s %s" % (threat_action_effectiveness_enforced,threat_action_id_to_position_roll)
-            print("Cost CDM Units %s : %s" % (recommended_CDM[smt_Security_Control_Flag[asset_index][sec_index]],recommended_CDM[smt_CDM_Cost_Sec_Control[0][0][1][0]]))
+            # print("Cost CDM Units %s : %s" % (recommended_CDM[smt_Security_Control_Flag[asset_index][sec_index]],recommended_CDM[smt_CDM_Cost_Sec_Control[0][0][1][0]]))
             global_enforcement_cost = 0.0
             local_enforcement_cost = [0.0 for i in range(len(asset_list_for_smt))]
             number_of_selected_countermeasures = 0

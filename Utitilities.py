@@ -536,7 +536,7 @@ def printPrunedSelectedSecurityControlsWithProperties(security_control_list,sele
 
 def build_constraints():
     all_smt_constraints = {}
-    if ProjectConfigFile.COST_DISTRIBUTION_CONSTRAINT:
+    if ProjectConfigFile.COST_DISTRIBUTION_CONSTRAINT_ENABLED:
         all_smt_constraints[ProjectConfigFile.COST_DISTRIBUTION_PROPERTIES] = ProjectConfigFile.cost_constraint_development()
     return all_smt_constraints
 
@@ -544,3 +544,17 @@ def verify_cost_reult(cost_distribution_CDM):
     print "Cost Distribution SMT Output %s" % (cost_distribution_CDM)
     for i in range(3):
         print "Total Implementaion Cost from Distribution %s" % (sum(cost_distribution_CDM[i]))
+
+def build_Dynamic_Constraint(all_smt_constraints):
+    dynamic_constraint_builder = {}
+    for property_constraint_name in all_smt_constraints.keys():
+        dynamic_constraint_builder[property_constraint_name] = []
+        if property_constraint_name == ProjectConfigFile.COST_DISTRIBUTION_PROPERTIES:
+            for axis_name in range(ProjectConfigFile.NUMBER_OF_AXIS):
+                constraints_placements = [index_non_zero for index_non_zero, val in
+                                          enumerate(all_smt_constraints[property_constraint_name][axis_name]) if
+                                          val != 0.0]
+                for rank_cons in constraints_placements:
+                    print "Axis : %s --> Rank : %s" % (axis_name, rank_cons)
+                    dynamic_constraint_builder[property_constraint_name].append((axis_name, rank_cons,all_smt_constraints[property_constraint_name][axis_name][rank_cons]))
+    return dynamic_constraint_builder
