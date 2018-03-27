@@ -9,15 +9,15 @@ def allocated_cost(number_of_unique_asset,global_estimated_risk,risk_asset_speci
     # print "In Allocated Cost: Asset Specific Estimated Risk Proportion %s" % (risk_asset_specific)
     # print "In Allocated Cost: Asset Specific Alloted Cost Proportion %s" % (alloted_cost_asset_specific)
 
-def SMT_Environment(security_control_list,selected_security_controls,threat_action_name_list,threat_action_list,
+def SMT_Environment(security_control_list,selected_security_controls,global_sec_control_CDM_index_Asset_freq,threat_action_name_list,threat_action_list,
                     threat_action_id_list_for_all_assets,threat_id_for_all_assets,threat_list,asset_enterprise_list,affordable_risk,budget,cost_effectiveness_sc,risk_ratio_threat_action,
                     risk_list,global_Total_Cost,global_estimated_risk,global_min_risk,risk_asset_specific,min_sec_control_cost,threat_action_id_to_position_roll,threat_id_to_position_roll,
                     minimum_threat_specific_risk, minimum_affordable_risk,risk_elimination,max_sec_control_threat_action_index,all_smt_constraints,all_constraints_properties):
 
     print "************************************************* Constraints **********************************************************************************"
     print("SMT Constraints %s" % (all_smt_constraints))
+    print("CDM Matrix Frequency %s" % (global_sec_control_CDM_index_Asset_freq))
 
-    
     print "*********************************************** In Binary Search ********************************************************************************"
     ProjectConfigFile.OUTPUT_FILE_NAME_BINARY_SEARCH.write("*************************** In Binary Search *****************************\n")
     number_of_unique_asset = len(threat_action_id_list_for_all_assets)
@@ -97,10 +97,20 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
 
             smt_Security_Control_Cost = [[Real('sec_con_cost_%s_%s'%(i,j))for j in selected_security_controls[i]] for i in range(len(selected_security_controls))]
             # print "SMT Security Controls Cost %s" % (smt_Security_Control_Cost)
-            smt_CDM_cost = [[[Real('smt_CDM_cost_%s_%s_%s'%(sf_in,en_in,kc_in))
+            smt_CDM_Cost_Sec_Control = [[[[Real('smt_CDM_cost_%s_%s_%s_%s'%(kc_in,en_in,sf_in,sec_con_id)) for sec_con_id in range(global_sec_control_CDM_index_Asset_freq[kc_in][en_in][sf_in])]
                               for sf_in in range(ProjectConfigFile.NUMBER_OF_SECURITY_FUNCTION)]
                               for en_in in range(ProjectConfigFile.NUMNBER_OF_ENFORCEMENT_LEVEL)]
                               for kc_in in range(ProjectConfigFile.NUMBER_OF_KILL_CHAIN_PHASE)]
+            smt_CDM_cost = [[[Real('smt_CDM_cost_%s_%s_%s'%(kc_in,en_in,sf_in))
+                              for sf_in in range(ProjectConfigFile.NUMBER_OF_SECURITY_FUNCTION)]
+                              for en_in in range(ProjectConfigFile.NUMNBER_OF_ENFORCEMENT_LEVEL)]
+                              for kc_in in range(ProjectConfigFile.NUMBER_OF_KILL_CHAIN_PHASE)]
+            smt_en_level_cost = [[Real('smt_CDM_cost_%s_%s'%(kc_in,en_in))
+                                  for en_in in range(ProjectConfigFile.NUMNBER_OF_ENFORCEMENT_LEVEL)]
+                                  for kc_in in range(ProjectConfigFile.NUMBER_OF_KILL_CHAIN_PHASE)]
+            smt_kc_phase_cost = [Real('smt_CDM_cost_%s' % (kc_in))
+                                 for kc_in in range(ProjectConfigFile.NUMBER_OF_KILL_CHAIN_PHASE)]
+            print(smt_CDM_cost)
             smt_Total_Security_Control_Cost = [Real('smt_total_sc_cost_%s_%s'%(asset[0],asset_list_for_smt.index(asset))) for asset in asset_list_for_smt]
             # print smt_Total_Security_Control_Cost
             smt_Global_Security_Control_Cost = Real('smt_Global_Security_Control_Cost')
@@ -157,13 +167,23 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
                         # print "Security Control Position %s" % (sec_control_position)
                         cons = (smt_Threat_Action_Security_Control[asset_index][threat_action_id_to_position_roll[asset_index][threat_action_id]][sec_control_position]==
                                 If(smt_Security_Control_Bool[asset_index][sec_index],(1-effectiveness_threat_action),1))
-                        cost_cons = (smt_Security_Control_Cost[asset_index][sec_index]==
-                                     If(smt_Security_Control_Bool[asset_index][sec_index],
-                                      security_control_list[sec_control].investment_cost,0))
-                        security_control_flag_cons = (smt_Security_Control_Flag[asset_index][sec_index]==If(smt_Security_Control_Bool[asset_index][sec_index],1,0))
                         cyberARMGoal.add(cons)
-                        cyberARMGoal.add(cost_cons)
-                        cyberARMGoal.add(security_control_flag_cons)
+
+                    security_control_flag_cons = (smt_Security_Control_Flag[asset_index][sec_index] == If(
+                        smt_Security_Control_Bool[asset_index][sec_index], 1, 0))
+                    cyberARMGoal.add(security_control_flag_cons)
+                    cost_cons = (smt_Security_Control_Cost[asset_index][sec_index] ==
+                                 If(smt_Security_Control_Bool[asset_index][sec_index],
+                                    security_control_list[sec_control].investment_cost, 0))
+                    cyberARMGoal.add(cost_cons)
+                    kc_phase = security_control_list[sec_control].kc_phase
+                    en_level = security_control_list[sec_control].en_level
+                    sc_func = security_control_list[sec_control].sc_function
+                    index_of_CDM_sec_controls = global_sec_control_CDM_index_Asset_freq[kc_phase][en_level][sc_func]-1
+                    # print("(%s,%s,%s) Number of Sec Controls %s"%(kc_phase,en_level,sc_func,index_of_CDM_sec_controls))
+                    smt_CDM_cons = (smt_CDM_Cost_Sec_Control[kc_phase][en_level][sc_func][index_of_CDM_sec_controls] == smt_Security_Control_Flag[asset_index][sec_index]*security_control_list[sec_control].investment_cost)
+                    cyberARMGoal.add(smt_CDM_cons)
+                    global_sec_control_CDM_index_Asset_freq[kc_phase][en_level][sc_func] -= 1
                     sec_index += 1
 
             ############################################################# 2.2 Threat Action Success Constraint #####################################
@@ -233,7 +253,16 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
             print "***** Iteration Number %s :::: Affordable Risk %s *********" % (model_iteration_index,affordable_risk_variable)
             # cyberARM.push()
             cyberARMGoal.add(smt_Global_Residual_Risk <= affordable_risk_variable)
+
+            ############################################################ 2.7 CDM Units Based Cost ####################################################
+            for kc_phase in range(ProjectConfigFile.NUMBER_OF_KILL_CHAIN_PHASE):
+                for en_level in range(ProjectConfigFile.NUMNBER_OF_ENFORCEMENT_LEVEL):
+                    for sc_func in range(ProjectConfigFile.NUMBER_OF_SECURITY_FUNCTION):
+                        smt_CDM_Unit_Cost_Cons = (smt_CDM_cost[kc_phase][en_level][sc_func]==sum(smt_CDM_Cost_Sec_Control[kc_phase][en_level][sc_func]))
+                        cyberARMGoal.add(smt_CDM_Unit_Cost_Cons)
+
             ############################################################ End Constrainst Development #################################################
+
             ############################################################ 3. Check the model ##########################################################
             simplifiedResult = cyberARMTactic(cyberARMGoal)
             # print "Length %s" % (len(simplifiedResult))
@@ -289,6 +318,7 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
                                                     for asset_index in range(len(threat_action_id_list_for_all_assets))]
 
             # print "Threat Action Effectiveness Enforced %s %s" % (threat_action_effectiveness_enforced,threat_action_id_to_position_roll)
+            print("Cost CDM Units %s : %s" % (recommended_CDM[smt_Security_Control_Flag[asset_index][sec_index]],recommended_CDM[smt_CDM_Cost_Sec_Control[0][0][1][0]]))
             global_enforcement_cost = 0.0
             local_enforcement_cost = [0.0 for i in range(len(asset_list_for_smt))]
             number_of_selected_countermeasures = 0
@@ -305,6 +335,7 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
                             threat_action_effectiveness_enforced[asset_index][threat_action_id_to_position_roll[asset_index][threat_action]] *= (1-security_control_list[sec_control].threat_action_effectiveness[threat_action])
                         local_enforcement_cost[asset_index] += security_control_list[sec_control].investment_cost
                         number_of_selected_countermeasures += 1
+
                     # else:
                     #     # print " ----  Boolean (SMT Variable --> %s, Asset Id --> %s, Security Control Id --> %s) : Status --> %s" % (smt_Security_Control_Bool[asset_index][sec_control_index],asset_index, sec_control_index, recommended_CDM[smt_Security_Control_Bool[asset_index][sec_control_index]])
                     #     pass

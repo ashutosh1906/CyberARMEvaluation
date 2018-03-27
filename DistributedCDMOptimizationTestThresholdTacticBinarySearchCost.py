@@ -148,13 +148,15 @@ def SMT_Environment(security_control_list,selected_security_controls,threat_acti
                         # print "Security Control Position %s" % (sec_control_position)
                         cons = (smt_Threat_Action_Security_Control[asset_index][threat_action_id_to_position_roll[asset_index][threat_action_id]][sec_control_position]==
                                 If(smt_Security_Control_Bool[asset_index][sec_index],(1-effectiveness_threat_action),1))
-                        cost_cons = (smt_Security_Control_Cost[asset_index][sec_index]==
-                                     If(smt_Security_Control_Bool[asset_index][sec_index],
-                                      security_control_list[sec_control].investment_cost,0))
-                        security_control_flag_cons = (smt_Security_Control_Flag[asset_index][sec_index]==If(smt_Security_Control_Bool[asset_index][sec_index],1,0))
                         cyberARMGoal.add(cons)
-                        cyberARMGoal.add(cost_cons)
-                        cyberARMGoal.add(security_control_flag_cons)
+
+                    security_control_flag_cons = (smt_Security_Control_Flag[asset_index][sec_index] == If(
+                        smt_Security_Control_Bool[asset_index][sec_index], 1, 0))
+                    cyberARMGoal.add(security_control_flag_cons)
+                    cost_cons = (smt_Security_Control_Cost[asset_index][sec_index] ==
+                                 If(smt_Security_Control_Bool[asset_index][sec_index],
+                                    security_control_list[sec_control].investment_cost, 0))
+                    cyberARMGoal.add(cost_cons)
                     sec_index += 1
 
             ############################################################# 2.2 Threat Action Success Constraint #####################################

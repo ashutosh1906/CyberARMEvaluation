@@ -137,12 +137,15 @@ def select_security_controls(security_control_list,threat_action_list,threat_act
                                  minimum_threat_specific_risk,minimum_affordable_risk,global_risk_related_variable)
     units_cost_distribution = Utitilities.printPrunedSelectedSecurityControlsWithProperties(security_control_list,selected_security_controls)
     # print("Cost Distribution %s" % (units_cost_distribution))
+    global_sec_control_CDM_index_Asset_freq = []
     if len(env_variables)==0:
         return env_variables
+    global_sec_control_CDM_index_Asset_freq = env_variables[1]
+    # print("CDm Frequency %s" % (global_sec_control_CDM_index_Asset_freq))
     all_constraints_properties = {}
     all_constraints_properties[ProjectConfigFile.COST_DISTRIBUTION_PROPERTIES] = units_cost_distribution
     all_smt_constraints = Utitilities.build_constraints()
-    print "SMT Constraints %s" % (all_smt_constraints)
+    # print "SMT Constraints %s" % (all_smt_constraints)
     ######################################################################### End of Creating Common Environment For All #############################################################################
 
     recommended_CDM_Different_Approach = []
@@ -158,7 +161,7 @@ def select_security_controls(security_control_list,threat_action_list,threat_act
     #                                                                                             minimum_threat_specific_risk,minimum_affordable_risk,risk_elimination,max_sec_control_threat_action_index))
 
     recommended_CDM_Different_Approach.append(
-        BinarySearchCost_Constraints.SMT_Environment(security_control_list,selected_security_controls,threat_action_name_list,
+        BinarySearchCost_Constraints.SMT_Environment(security_control_list,selected_security_controls,global_sec_control_CDM_index_Asset_freq,threat_action_name_list,
                                                                                       threat_action_list,threat_action_id_list_for_all_assets,threat_id_for_all_assets,
                                                                                       threat_list,asset_enterprise_list,affordable_risk, budget,cost_effectiveness_sc,
                                                                                       risk_ratio_threat_action,risk_list,
@@ -171,7 +174,7 @@ def select_security_controls(security_control_list,threat_action_list,threat_act
                                                                                       all_smt_constraints,all_constraints_properties))
 
 
-    # ProjectConfigFile.OUTPUT_FILE_NAME_BINARY_SEARCH.close()
+
     # recommended_CDM_Different_Approach.append(
     #     DistributedCDMOptimizationTestThreshold_RiskList_TacticBinarySearchCost.SMT_Environment(security_control_list,selected_security_controls,threat_action_name_list,
     #                                                                                             threat_action_list,threat_action_id_list_for_all_assets,threat_id_for_all_assets,
@@ -183,7 +186,7 @@ def select_security_controls(security_control_list,threat_action_list,threat_act
     #                                                                                             risk_asset_specific,global_risk_related_variable[ProjectConfigFile.MIN_SEC_CONTROL_COST_KEY],
     #                                                                                             threat_action_id_to_position_roll,threat_id_to_position_roll,
     #                                                                                             minimum_threat_specific_risk,minimum_affordable_risk,risk_elimination,max_sec_control_threat_action_index))
-    # ProjectConfigFile.OUTPUT_FILE_NAME_BINARY_SEARCH_MODIFIED.close()
+    #
     # recommended_CDM_Different_Approach.append(
     #     DistributedCDMOptimizationTestThresholdTacticIterativeCost.SMT_Environment(security_control_list,selected_security_controls,threat_action_name_list,
     #                                                                                threat_action_list,threat_action_id_list_for_all_assets,threat_id_for_all_assets,
@@ -194,32 +197,32 @@ def select_security_controls(security_control_list,threat_action_list,threat_act
     #                                                                                risk_asset_specific,global_risk_related_variable[ProjectConfigFile.MIN_SEC_CONTROL_COST_KEY],
     #                                                                                threat_action_id_to_position_roll,threat_id_to_position_roll,minimum_threat_specific_risk,
     #                                                                                minimum_affordable_risk,risk_elimination,max_sec_control_threat_action_index))
-    # ProjectConfigFile.OUTPUT_FILE_NAME_ITERATIVE_SEARCH.close()
-    # recommended_CDM_Different_Approach.append(
-    #     DistributedCDMOptimizationTestThresholdTacticIterativeCost_CostAllocation.SMT_Environment(security_control_list,
-    #                                                                                selected_security_controls,
-    #                                                                                threat_action_name_list,
-    #                                                                                threat_action_list,
-    #                                                                                threat_action_id_list_for_all_assets,
-    #                                                                                threat_id_for_all_assets,
-    #                                                                                threat_list, asset_enterprise_list,
-    #                                                                                affordable_risk, budget,
-    #                                                                                cost_effectiveness_sc,
-    #                                                                                risk_ratio_threat_action,
-    #                                                                                global_risk_related_variable[
-    #                                                                                    ProjectConfigFile.GLOBAL_TOTAL_COST_KEY],
-    #                                                                                global_risk_related_variable[
-    #                                                                                    ProjectConfigFile.GLOBAL_ESTIMATED_RISK_KEY],
-    #                                                                                global_risk_related_variable[
-    #                                                                                    ProjectConfigFile.GLOBAL_MIN_RISK_KEY],
-    #                                                                                risk_asset_specific,
-    #                                                                                global_risk_related_variable[
-    #                                                                                    ProjectConfigFile.MIN_SEC_CONTROL_COST_KEY],
-    #                                                                                threat_action_id_to_position_roll,
-    #                                                                                threat_id_to_position_roll,
-    #                                                                                minimum_threat_specific_risk,
-    #                                                                                minimum_affordable_risk))
-    # ProjectConfigFile.OUTPUT_FILE_NAME_ITERATIVE_COST_ALLOCATION_SEARCH.close()
+    #
+    # # recommended_CDM_Different_Approach.append(
+    # #     DistributedCDMOptimizationTestThresholdTacticIterativeCost_CostAllocation.SMT_Environment(security_control_list,
+    # #                                                                                selected_security_controls,
+    # #                                                                                threat_action_name_list,
+    # #                                                                                threat_action_list,
+    # #                                                                                threat_action_id_list_for_all_assets,
+    # #                                                                                threat_id_for_all_assets,
+    # #                                                                                threat_list, asset_enterprise_list,
+    # #                                                                                affordable_risk, budget,
+    # #                                                                                cost_effectiveness_sc,
+    # #                                                                                risk_ratio_threat_action,
+    # #                                                                                global_risk_related_variable[
+    # #                                                                                    ProjectConfigFile.GLOBAL_TOTAL_COST_KEY],
+    # #                                                                                global_risk_related_variable[
+    # #                                                                                    ProjectConfigFile.GLOBAL_ESTIMATED_RISK_KEY],
+    # #                                                                                global_risk_related_variable[
+    # #                                                                                    ProjectConfigFile.GLOBAL_MIN_RISK_KEY],
+    # #                                                                                risk_asset_specific,
+    # #                                                                                global_risk_related_variable[
+    # #                                                                                    ProjectConfigFile.MIN_SEC_CONTROL_COST_KEY],
+    # #                                                                                threat_action_id_to_position_roll,
+    # #                                                                                threat_id_to_position_roll,
+    # #                                                                                minimum_threat_specific_risk,
+    # #                                                                                minimum_affordable_risk))
+    # # ProjectConfigFile.OUTPUT_FILE_NAME_ITERATIVE_COST_ALLOCATION_SEARCH.close()
     return recommended_CDM_Different_Approach
 
 
