@@ -288,9 +288,21 @@ def SMT_Environment(security_control_list,selected_security_controls,global_sec_
                                                 )
                             print("Adding Constraint ID (%s,%s)"%(cons_properties,constraint_id))
                             cyberARMGoal.add(smt_dynamic_cons)
-                            if constraint_satisfaction_value > 0:
-                                cost_distribution_cons = (smt_dynamic_constraints[cons_properties][constraint_id] >= constraint_satisfaction_value*smt_Global_Security_Control_Cost)
-                                cyberARMGoal.add(cost_distribution_cons)
+                            # if constraint_satisfaction_value > 0:
+                            #     cost_distribution_cons = (smt_dynamic_constraints[cons_properties][constraint_id] >= constraint_satisfaction_value*smt_Global_Security_Control_Cost)
+                            #     cyberARMGoal.add(cost_distribution_cons)
+                        elif axis_name == ProjectConfigFile.ENFORCEMENT_LEVEL_AXIS:
+                            smt_dynamic_cons = (
+                                smt_dynamic_constraints[cons_properties][constraint_id] == sum([smt_en_level_cost[kc_phase_index][component_value]
+                                                                                                for kc_phase_index in range(ProjectConfigFile.NUMBER_OF_KILL_CHAIN_PHASE)])
+                            )
+                            cyberARMGoal.add(smt_dynamic_cons)
+                        elif axis_name == ProjectConfigFile.KILL_CHAIN_PHASE_AXIS:
+                            smt_dynamic_cons = (smt_dynamic_constraints[cons_properties][constraint_id]==smt_kc_phase_cost[component_value])
+                        if constraint_satisfaction_value > 0:
+                            cost_distribution_cons = (smt_dynamic_constraints[cons_properties][constraint_id]
+                                                      >= constraint_satisfaction_value * smt_Global_Security_Control_Cost)
+                            cyberARMGoal.add(cost_distribution_cons)
                         constraint_id += 1
 
             ############################################################ End Constrainst Development #######################################################
