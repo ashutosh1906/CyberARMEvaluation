@@ -270,7 +270,7 @@ def SMT_Environment(security_control_list,selected_security_controls,global_sec_
             dynamic_constraint_builder = Utitilities.build_Dynamic_Constraint(all_smt_constraints)
             print("Dynamic Constraints %s" % (dynamic_constraint_builder))
             smt_dynamic_constraints = [[Real('smt_dynamic_constraints_%s_%s'%(cons_properties,index))for index in range(len(dynamic_constraint_builder[cons_properties]))] for cons_properties in dynamic_constraint_builder.keys()]
-            print "SMT Dynamic Constraints %s" % (smt_dynamic_constraints)
+            # print "SMT Dynamic Constraints %s" % (smt_dynamic_constraints)
 
             for cons_properties in dynamic_constraint_builder.keys():
                 constraint_id = 0
