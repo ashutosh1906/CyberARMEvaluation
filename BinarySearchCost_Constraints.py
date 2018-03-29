@@ -111,7 +111,7 @@ def SMT_Environment(security_control_list,selected_security_controls,global_sec_
                                   for kc_in in range(ProjectConfigFile.NUMBER_OF_KILL_CHAIN_PHASE)]
             smt_kc_phase_cost = [Real('smt_CDM_cost_%s' % (kc_in))
                                  for kc_in in range(ProjectConfigFile.NUMBER_OF_KILL_CHAIN_PHASE)]
-            print(smt_CDM_cost)
+            # print(smt_CDM_cost)
             smt_Total_Security_Control_Cost = [Real('smt_total_sc_cost_%s_%s'%(asset[0],asset_list_for_smt.index(asset))) for asset in asset_list_for_smt]
             # print smt_Total_Security_Control_Cost
             smt_Global_Security_Control_Cost = Real('smt_Global_Security_Control_Cost')
