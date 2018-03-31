@@ -5,10 +5,8 @@ def selectedSecurityControlsMatrix(selected_security_controls,security_control_l
         [[0 for sc_func in range(ProjectConfigFile.NUMBER_OF_SECURITY_FUNCTION)] for en_level in
          range(ProjectConfigFile.NUMNBER_OF_ENFORCEMENT_LEVEL)] for kc_phase in
         range(ProjectConfigFile.NUMBER_OF_KILL_CHAIN_PHASE)]
+
     for asset_index in range(len(selected_security_controls)):
-        sec_control_CDM_index_Asset = [[[{} for sc_func in range(ProjectConfigFile.NUMBER_OF_SECURITY_FUNCTION)]
-                                        for en_level in range(ProjectConfigFile.NUMNBER_OF_ENFORCEMENT_LEVEL)]
-                                        for kc_phase in range(ProjectConfigFile.NUMBER_OF_KILL_CHAIN_PHASE)]
         sec_control_CDM_index_Asset_freq = [
             [[0 for sc_func in range(ProjectConfigFile.NUMBER_OF_SECURITY_FUNCTION)] for en_level in
              range(ProjectConfigFile.NUMNBER_OF_ENFORCEMENT_LEVEL)] for kc_phase in
@@ -16,13 +14,11 @@ def selectedSecurityControlsMatrix(selected_security_controls,security_control_l
         # print("Asset Index %s" % (asset_index))
         # print("\t \t \t Sec Con List %s" % (selected_security_controls[asset_index]))
         for sc_control in selected_security_controls[asset_index]:
-            sec_control_CDM_index_Asset[security_control_list[sc_control].kc_phase][security_control_list[sc_control].en_level][security_control_list[sc_control].sc_function][sc_control] = \
-                sec_control_CDM_index_Asset_freq[security_control_list[sc_control].kc_phase][security_control_list[sc_control].en_level][security_control_list[sc_control].sc_function]
             sec_control_CDM_index_Asset_freq[security_control_list[sc_control].kc_phase][security_control_list[sc_control].en_level][security_control_list[sc_control].sc_function] += 1
             global_sec_control_CDM_index_Asset_freq[security_control_list[sc_control].kc_phase][
                 security_control_list[sc_control].en_level][security_control_list[sc_control].sc_function] += 1
-        # print(sec_control_CDM_index_Asset)
-        sec_control_CDM_index.append(sec_control_CDM_index_Asset)
+        # print(sec_control_CDM_index_Asset_freq)
+        sec_control_CDM_index.append(sec_control_CDM_index_Asset_freq)
 
     # print("########################################################### Cyber Defense Matrix #####################################################################")
     total_select_sec_controls = 0
@@ -33,7 +29,7 @@ def selectedSecurityControlsMatrix(selected_security_controls,security_control_l
                 total_select_sec_controls += num_sec_controls
                 # print("\t \t (%s,%s,%s) --> Number of Security Controls %s" % (kc_phase,en_level,sc_func,num_sec_controls))
     # print("Total Selected Security Controls %s" % (total_select_sec_controls))
-    return global_sec_control_CDM_index_Asset_freq
+    return global_sec_control_CDM_index_Asset_freq,sec_control_CDM_index
 
 def PreprocessingSMT_Environment(security_control_list,selected_security_controls,threat_action_name_list,threat_action_list,
                     threat_action_id_list_for_all_assets,threat_id_for_all_assets,threat_list,asset_enterprise_list,affordable_risk,budget,cost_effectiveness_sc,risk_ratio_threat_action,
@@ -230,5 +226,5 @@ def PreprocessingSMT_Environment(security_control_list,selected_security_control
     global_risk_related_variable[ProjectConfigFile.GLOBAL_TOTAL_COST_KEY] = global_Total_Cost
     global_risk_related_variable[ProjectConfigFile.GLOBAL_MIN_RISK_KEY] = global_min_risk
     global_risk_related_variable[ProjectConfigFile.MIN_SEC_CONTROL_COST_KEY] = min_sec_control_cost
-    global_sec_control_CDM_index_Asset_freq = selectedSecurityControlsMatrix(selected_security_controls,security_control_list)
-    return ["success",global_sec_control_CDM_index_Asset_freq]
+    global_sec_control_CDM_index_Asset_freq,sec_control_CDM_index = selectedSecurityControlsMatrix(selected_security_controls,security_control_list)
+    return ["success",global_sec_control_CDM_index_Asset_freq,sec_control_CDM_index]

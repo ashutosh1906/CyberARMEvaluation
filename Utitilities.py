@@ -509,15 +509,24 @@ def printPrunedSelectedSecurityControlsWithProperties(security_control_list,sele
     security_function_cost = [0.0 for i in range(len(ProjectConfigFile.SECURITY_FUNCTION_TO_ID))]
     en_level_cost = [0.0 for i in range(len(ProjectConfigFile.ENFORCEMENT_LEVEL_TO_ID))]
     kc_phase_cost = [0.0 for i in range(len(ProjectConfigFile.KILL_CHAIN_PHASE_TO_ID))]
+    security_function_cost_Asset_Specific = [[0.0 for i in range(len(ProjectConfigFile.SECURITY_FUNCTION_TO_ID))] for i in range(len(selected_security_controls))]
+    en_level_cost_Asset_Specific = [[0.0 for i in range(len(ProjectConfigFile.ENFORCEMENT_LEVEL_TO_ID))] for i in range(len(selected_security_controls))]
+    kc_phase_cost_Asset_Specific = [[0.0 for i in range(len(ProjectConfigFile.KILL_CHAIN_PHASE_TO_ID))] for i in range(len(selected_security_controls))]
     total_cost = 0.0
     for asset_index in range(len(selected_security_controls)):
         # print "\nAsset Index %s --> %s"%(asset_index,selected_security_controls[asset_index])
         for sec_id in selected_security_controls[asset_index]:
             security_control_obj = security_control_list[sec_id]
             # security_control_list[sec_id].printCDMProperties()
+            ################################################ Global Cost ##############################################
             security_function_cost[security_control_obj.sc_function] += security_control_obj.investment_cost
             en_level_cost[security_control_obj.en_level] += security_control_obj.investment_cost
             kc_phase_cost[security_control_obj.kc_phase] += security_control_obj.investment_cost
+
+            ################################################# Asset Specific Dimension Based Cost ##############################
+            security_function_cost_Asset_Specific[asset_index][security_control_obj.sc_function] += security_control_obj.investment_cost
+            en_level_cost_Asset_Specific[asset_index][security_control_obj.en_level] += security_control_obj.investment_cost
+            kc_phase_cost_Asset_Specific[asset_index][security_control_obj.kc_phase] += security_control_obj.investment_cost
             total_cost += security_control_obj.investment_cost
 
     security_function_cost_distribution = [security_function_cost[i]/sum(security_function_cost) for i in range(len(ProjectConfigFile.SECURITY_FUNCTION_TO_ID))]
@@ -532,12 +541,16 @@ def printPrunedSelectedSecurityControlsWithProperties(security_control_list,sele
     # print("\t\t Global Enforcement Level Cost Distribution : %s" % (en_level_cost_distribution))
     # print("\t\t Global Kill Chain Phase Cost : %s" % (kc_phase_cost))
     # print("\t\t Global Kill Chain Phase Cost Distribution : %s" % (kc_phase_cost_distribution))
-    return [security_function_cost,en_level_cost,kc_phase_cost]
+    return [[security_function_cost,en_level_cost,kc_phase_cost],
+            [kc_phase_cost_Asset_Specific,en_level_cost_Asset_Specific,security_function_cost_Asset_Specific]]
 
-def build_constraints():
+def build_constraints(asset_enterprise_list,selected_security_controls):
     all_smt_constraints = {}
     if ProjectConfigFile.COST_DISTRIBUTION_CONSTRAINT_ENABLED:
         all_smt_constraints[ProjectConfigFile.COST_DISTRIBUTION_PROPERTIES] = ProjectConfigFile.cost_constraint_development()
+    if ProjectConfigFile.ASSET_BASED_DISTRIBUTION_CONSTRAINT_ENABLED:
+        all_smt_constraints[ProjectConfigFile.ASSET_BASED_DISTRIBUTION_PROPERTIES] = \
+            ProjectConfigFile.asset_based_distribution_development(asset_enterprise_list,selected_security_controls)
     return all_smt_constraints
 
 def verify_cost_reult(cost_distribution_CDM):
@@ -558,3 +571,18 @@ def build_Dynamic_Constraint(all_smt_constraints):
                     print "Axis : %s --> Rank : %s" % (axis_name, rank_cons)
                     dynamic_constraint_builder[property_constraint_name].append((axis_name, rank_cons,all_smt_constraints[property_constraint_name][axis_name][rank_cons]))
     return dynamic_constraint_builder
+
+def test_properties_smt_constraints(smt_properties,constraint_properties):
+    print("SMT Properties %s" % (smt_properties))
+    print("Constraint properties %s" % (constraint_properties))
+    for asset_index in smt_properties.keys():
+        print("Asset Name %s " % (asset_index))
+        print "Maximum Cost %s" % (constraint_properties[0][asset_index])
+        cons_proper = smt_properties[asset_index]
+        for cons_prop_iter in cons_proper:
+            print "Property %s" % (cons_proper)
+            print "Alloted Cost For Specific One %s : Cons Value %s" % (constraint_properties[0][asset_index],cons_prop_iter[2])
+            print "Alloted Cost For Specific One %s : Cons Value %s" % (
+            constraint_properties[1][asset_index], cons_prop_iter[2])
+            print "Alloted Cost For Specific One %s : Cons Value %s" % (
+            constraint_properties[2][asset_index], cons_prop_iter[2])

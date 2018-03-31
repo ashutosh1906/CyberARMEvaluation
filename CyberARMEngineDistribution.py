@@ -26,7 +26,7 @@ def select_security_controls(security_control_list,threat_action_list,threat_act
     threat_id_for_all_assets = []
     threat_action_id_list_for_all_assets = []
     min_threat_action_consequence = []
-
+    # print("Asset Enterprise List %s" % (asset_enterprise_list))
     for i in range(len(asset_enterprise_list)):
         for j in range(len(asset_enterprise_list[i])):
             threat_action_name_list.append([])
@@ -141,10 +141,12 @@ def select_security_controls(security_control_list,threat_action_list,threat_act
     if len(env_variables)==0:
         return env_variables
     global_sec_control_CDM_index_Asset_freq = env_variables[1]
-    # print("CDm Frequency %s" % (global_sec_control_CDM_index_Asset_freq))
+    sec_control_CDM_index = env_variables[2]
+    print("CDm Frequency %s" % (sec_control_CDM_index))
     all_constraints_properties = {}
-    all_constraints_properties[ProjectConfigFile.COST_DISTRIBUTION_PROPERTIES] = units_cost_distribution
-    all_smt_constraints = Utitilities.build_constraints()
+    all_constraints_properties[ProjectConfigFile.COST_DISTRIBUTION_PROPERTIES] = units_cost_distribution[0]
+    all_constraints_properties[ProjectConfigFile.ASSET_BASED_DISTRIBUTION_PROPERTIES] = units_cost_distribution[1]
+    all_smt_constraints = Utitilities.build_constraints(asset_enterprise_list,selected_security_controls)
     # print "SMT Constraints %s" % (all_smt_constraints)
     ######################################################################### End of Creating Common Environment For All #############################################################################
 
@@ -161,7 +163,7 @@ def select_security_controls(security_control_list,threat_action_list,threat_act
     #                                                                                             minimum_threat_specific_risk,minimum_affordable_risk,risk_elimination,max_sec_control_threat_action_index))
 
     recommended_CDM_Different_Approach.append(
-        BinarySearchCost_Constraints.SMT_Environment(security_control_list,selected_security_controls,global_sec_control_CDM_index_Asset_freq,threat_action_name_list,
+        BinarySearchCost_Constraints.SMT_Environment(security_control_list,selected_security_controls,global_sec_control_CDM_index_Asset_freq,sec_control_CDM_index,threat_action_name_list,
                                                                                       threat_action_list,threat_action_id_list_for_all_assets,threat_id_for_all_assets,
                                                                                       threat_list,asset_enterprise_list,affordable_risk, budget,cost_effectiveness_sc,
                                                                                       risk_ratio_threat_action,risk_list,

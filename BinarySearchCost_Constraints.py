@@ -10,7 +10,7 @@ def allocated_cost(number_of_unique_asset,global_estimated_risk,risk_asset_speci
     # print "In Allocated Cost: Asset Specific Alloted Cost Proportion %s" % (alloted_cost_asset_specific)
 
 
-def SMT_Environment(security_control_list,selected_security_controls,global_sec_control_CDM_index_Asset_freq,threat_action_name_list,threat_action_list,
+def SMT_Environment(security_control_list,selected_security_controls,global_sec_control_CDM_index_Asset_freq,sec_control_CDM_index,threat_action_name_list,threat_action_list,
                     threat_action_id_list_for_all_assets,threat_id_for_all_assets,threat_list,asset_enterprise_list,affordable_risk,budget,cost_effectiveness_sc,risk_ratio_threat_action,
                     risk_list,global_Total_Cost,global_estimated_risk,global_min_risk,risk_asset_specific,min_sec_control_cost,threat_action_id_to_position_roll,threat_id_to_position_roll,
                     minimum_threat_specific_risk, minimum_affordable_risk,risk_elimination,max_sec_control_threat_action_index,all_smt_constraints,all_constraints_properties):
@@ -98,10 +98,16 @@ def SMT_Environment(security_control_list,selected_security_controls,global_sec_
 
             smt_Security_Control_Cost = [[Real('sec_con_cost_%s_%s'%(i,j))for j in selected_security_controls[i]] for i in range(len(selected_security_controls))]
             # print "SMT Security Controls Cost %s" % (smt_Security_Control_Cost)
-            smt_CDM_Cost_Sec_Control = [[[[Real('smt_CDM_cost_%s_%s_%s_%s'%(kc_in,en_in,sf_in,sec_con_id)) for sec_con_id in range(global_sec_control_CDM_index_Asset_freq[kc_in][en_in][sf_in])]
-                              for sf_in in range(ProjectConfigFile.NUMBER_OF_SECURITY_FUNCTION)]
-                              for en_in in range(ProjectConfigFile.NUMNBER_OF_ENFORCEMENT_LEVEL)]
-                              for kc_in in range(ProjectConfigFile.NUMBER_OF_KILL_CHAIN_PHASE)]
+
+
+            ############################################################## 1.1.2 Dimension Specific Constraints ########################################################
+
+            smt_CDM_Cost_Sec_Control = [[[[Real('smt_CDM_cost_%s_%s_%s_%s' % (kc_in, en_in, sf_in, sec_con_id))
+                                           for sec_con_id in range(global_sec_control_CDM_index_Asset_freq[kc_in][en_in][sf_in])]
+                                          for sf_in in range(ProjectConfigFile.NUMBER_OF_SECURITY_FUNCTION)]
+                                         for en_in in range(ProjectConfigFile.NUMNBER_OF_ENFORCEMENT_LEVEL)]
+                                        for kc_in in range(ProjectConfigFile.NUMBER_OF_KILL_CHAIN_PHASE)]
+
             smt_CDM_cost = [[[Real('smt_CDM_cost_%s_%s_%s'%(kc_in,en_in,sf_in))
                               for sf_in in range(ProjectConfigFile.NUMBER_OF_SECURITY_FUNCTION)]
                               for en_in in range(ProjectConfigFile.NUMNBER_OF_ENFORCEMENT_LEVEL)]
@@ -111,6 +117,34 @@ def SMT_Environment(security_control_list,selected_security_controls,global_sec_
                                   for kc_in in range(ProjectConfigFile.NUMBER_OF_KILL_CHAIN_PHASE)]
             smt_kc_phase_cost = [Real('smt_CDM_cost_%s' % (kc_in))
                                  for kc_in in range(ProjectConfigFile.NUMBER_OF_KILL_CHAIN_PHASE)]
+
+            ############################################################## 1.1.3 Asset Dimension Specific Constraints ########################################################
+            if ProjectConfigFile.ASSET_BASED_DISTRIBUTION_CONSTRAINT_ENABLED:
+                print("Asset Specific Constraints %s" % (all_smt_constraints[ProjectConfigFile.ASSET_BASED_DISTRIBUTION_PROPERTIES]))
+                # Utitilities.test_properties_smt_constraints(all_smt_constraints[ProjectConfigFile.ASSET_BASED_DISTRIBUTION_PROPERTIES],all_constraints_properties[ProjectConfigFile.ASSET_BASED_DISTRIBUTION_PROPERTIES])
+                smt_Asset_Specific_CDM_Sec_Control = [[[[[Real('smt_Asset_Specific_CDM_Sec_Control_%s_%s_%s_%s_%s'%(asset_index_iter,kc_phase,en_level,sc_func,sec_id))
+                                                          for sec_id in range(sec_control_CDM_index[asset_index_iter][kc_phase][en_level][sc_func])]
+                                                         for sc_func in range(ProjectConfigFile.NUMBER_OF_SECURITY_FUNCTION)]
+                                                        for en_level in range(ProjectConfigFile.NUMNBER_OF_ENFORCEMENT_LEVEL)]
+                                                       for kc_phase in range(ProjectConfigFile.NUMBER_OF_KILL_CHAIN_PHASE)]
+                                                      for asset_index_iter in all_smt_constraints[ProjectConfigFile.ASSET_BASED_DISTRIBUTION_PROPERTIES].keys()]
+
+                smt_Asset_Specific_CDM_Sc_Func = [[[[Real('smt_Asset_Specific_CDM_%s_%s_%s_%s'%(asset_index_iter,kc_phase,en_level,sc_func))
+                                                         for sc_func in range(ProjectConfigFile.NUMBER_OF_SECURITY_FUNCTION)]
+                                                        for en_level in range(ProjectConfigFile.NUMNBER_OF_ENFORCEMENT_LEVEL)]
+                                                       for kc_phase in range(ProjectConfigFile.NUMBER_OF_KILL_CHAIN_PHASE)]
+                                                      for asset_index_iter in all_smt_constraints[ProjectConfigFile.ASSET_BASED_DISTRIBUTION_PROPERTIES].keys()]
+
+                smt_Asset_Specific_CDM_En_Level = [
+                    [[Real('smt_Asset_Specific_CDM_%s_%s_%s' % (asset_index_iter, kc_phase, en_level))
+                      for en_level in range(ProjectConfigFile.NUMNBER_OF_ENFORCEMENT_LEVEL)]
+                     for kc_phase in range(ProjectConfigFile.NUMBER_OF_KILL_CHAIN_PHASE)]
+                    for asset_index_iter in all_smt_constraints[ProjectConfigFile.ASSET_BASED_DISTRIBUTION_PROPERTIES].keys()]
+
+                smt_Asset_Specific_CDM_KC_Phase = [[Real('smt_Asset_Specific_CDM_KC_Phase_%s_%s' % (asset_index_iter,kc_phase))
+                      for kc_phase in range(ProjectConfigFile.NUMBER_OF_KILL_CHAIN_PHASE)]
+                    for asset_index_iter in all_smt_constraints[ProjectConfigFile.ASSET_BASED_DISTRIBUTION_PROPERTIES].keys()]
+
             # print(smt_CDM_cost)
             smt_Total_Security_Control_Cost = [Real('smt_total_sc_cost_%s_%s'%(asset[0],asset_list_for_smt.index(asset))) for asset in asset_list_for_smt]
             # print smt_Total_Security_Control_Cost
@@ -302,6 +336,10 @@ def SMT_Environment(security_control_list,selected_security_controls,global_sec_
                         if constraint_satisfaction_value > 0:
                             cost_distribution_cons = (smt_dynamic_constraints[cons_properties][constraint_id]
                                                       >= constraint_satisfaction_value * smt_Global_Security_Control_Cost)
+                            cyberARMGoal.add(cost_distribution_cons)
+                        elif constraint_satisfaction_value < 0:
+                            cost_distribution_cons = (smt_dynamic_constraints[cons_properties][constraint_id]
+                                                      <= constraint_satisfaction_value * smt_Global_Security_Control_Cost)
                             cyberARMGoal.add(cost_distribution_cons)
                         constraint_id += 1
 
