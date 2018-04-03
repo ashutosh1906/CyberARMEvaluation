@@ -119,31 +119,38 @@ def SMT_Environment(security_control_list,selected_security_controls,global_sec_
                                  for kc_in in range(ProjectConfigFile.NUMBER_OF_KILL_CHAIN_PHASE)]
 
             ############################################################## 1.1.3 Asset Dimension Specific Constraints ########################################################
+            map_asset_specific_cost_distribution_constraints = {}
+            asset_specific_constraints_asset_id = []
             if ProjectConfigFile.ASSET_BASED_DISTRIBUTION_CONSTRAINT_ENABLED:
+                asset_specific_constraints_asset_id = sorted(all_smt_constraints[ProjectConfigFile.ASSET_BASED_DISTRIBUTION_PROPERTIES].keys())
                 print("Asset Specific Constraints %s" % (all_smt_constraints[ProjectConfigFile.ASSET_BASED_DISTRIBUTION_PROPERTIES]))
+                asset_specific_cons_id = 0
+                for asset in asset_specific_constraints_asset_id:
+                    map_asset_specific_cost_distribution_constraints[asset] = asset_specific_cons_id
+                    asset_specific_cons_id += 1
                 # Utitilities.test_properties_smt_constraints(all_smt_constraints[ProjectConfigFile.ASSET_BASED_DISTRIBUTION_PROPERTIES],all_constraints_properties[ProjectConfigFile.ASSET_BASED_DISTRIBUTION_PROPERTIES])
                 smt_Asset_Specific_CDM_Sec_Control = [[[[[Real('smt_Asset_Specific_CDM_Sec_Control_%s_%s_%s_%s_%s'%(asset_index_iter,kc_phase,en_level,sc_func,sec_id))
                                                           for sec_id in range(sec_control_CDM_index[asset_index_iter][kc_phase][en_level][sc_func])]
                                                          for sc_func in range(ProjectConfigFile.NUMBER_OF_SECURITY_FUNCTION)]
                                                         for en_level in range(ProjectConfigFile.NUMNBER_OF_ENFORCEMENT_LEVEL)]
                                                        for kc_phase in range(ProjectConfigFile.NUMBER_OF_KILL_CHAIN_PHASE)]
-                                                      for asset_index_iter in all_smt_constraints[ProjectConfigFile.ASSET_BASED_DISTRIBUTION_PROPERTIES].keys()]
+                                                      for asset_index_iter in asset_specific_constraints_asset_id]
 
                 smt_Asset_Specific_CDM_Sc_Func = [[[[Real('smt_Asset_Specific_CDM_%s_%s_%s_%s'%(asset_index_iter,kc_phase,en_level,sc_func))
                                                          for sc_func in range(ProjectConfigFile.NUMBER_OF_SECURITY_FUNCTION)]
                                                         for en_level in range(ProjectConfigFile.NUMNBER_OF_ENFORCEMENT_LEVEL)]
                                                        for kc_phase in range(ProjectConfigFile.NUMBER_OF_KILL_CHAIN_PHASE)]
-                                                      for asset_index_iter in all_smt_constraints[ProjectConfigFile.ASSET_BASED_DISTRIBUTION_PROPERTIES].keys()]
+                                                      for asset_index_iter in asset_specific_constraints_asset_id]
 
                 smt_Asset_Specific_CDM_En_Level = [
                     [[Real('smt_Asset_Specific_CDM_%s_%s_%s' % (asset_index_iter, kc_phase, en_level))
                       for en_level in range(ProjectConfigFile.NUMNBER_OF_ENFORCEMENT_LEVEL)]
                      for kc_phase in range(ProjectConfigFile.NUMBER_OF_KILL_CHAIN_PHASE)]
-                    for asset_index_iter in all_smt_constraints[ProjectConfigFile.ASSET_BASED_DISTRIBUTION_PROPERTIES].keys()]
+                    for asset_index_iter in asset_specific_constraints_asset_id]
 
                 smt_Asset_Specific_CDM_KC_Phase = [[Real('smt_Asset_Specific_CDM_KC_Phase_%s_%s' % (asset_index_iter,kc_phase))
                       for kc_phase in range(ProjectConfigFile.NUMBER_OF_KILL_CHAIN_PHASE)]
-                    for asset_index_iter in all_smt_constraints[ProjectConfigFile.ASSET_BASED_DISTRIBUTION_PROPERTIES].keys()]
+                    for asset_index_iter in asset_specific_constraints_asset_id]
 
             # print(smt_CDM_cost)
             smt_Total_Security_Control_Cost = [Real('smt_total_sc_cost_%s_%s'%(asset[0],asset_list_for_smt.index(asset))) for asset in asset_list_for_smt]
@@ -220,6 +227,18 @@ def SMT_Environment(security_control_list,selected_security_controls,global_sec_
                     cyberARMGoal.add(smt_CDM_cons)
                     global_sec_control_CDM_index_Asset_freq[kc_phase][en_level][sc_func] -= 1
                     sec_index += 1
+                    if asset_index in map_asset_specific_cost_distribution_constraints:
+                        cons_asset_index = map_asset_specific_cost_distribution_constraints[asset_index]
+                        # print("Required Asset Index %s::%s : (%s,%s,%s) --> %s :: %s" % (asset_index,cons_asset_index,kc_phase,en_level,
+                        #                                                              sc_func,sec_control_CDM_index[asset_index][kc_phase][en_level][sc_func],
+                        #                                                              smt_Asset_Specific_CDM_Sec_Control[cons_asset_index][kc_phase][en_level][sc_func]))
+
+                        index_asset_specific_CDM = sec_control_CDM_index[cons_asset_index][kc_phase][en_level][sc_func]-1
+                        smt_Asset_Specific_Cons = (smt_Asset_Specific_CDM_Sec_Control[cons_asset_index][kc_phase][en_level][sc_func][index_asset_specific_CDM]
+                            == smt_CDM_Cost_Sec_Control[kc_phase][en_level][sc_func][index_of_CDM_sec_controls])
+                        sec_control_CDM_index[asset_index][kc_phase][en_level][sc_func] -= 1
+                        cyberARMGoal.add(smt_Asset_Specific_Cons)
+
 
             ############################################################# 2.2 Threat Action Success Constraint #####################################
             # print "**************************************************** Threat Action Success ***************************************************"
@@ -300,16 +319,32 @@ def SMT_Environment(security_control_list,selected_security_controls,global_sec_
                 smt_CDM_Unit_kc_phase_Cost_Cons = (smt_kc_phase_cost[kc_phase]==sum(smt_en_level_cost[kc_phase]))
                 cyberARMGoal.add(smt_CDM_Unit_kc_phase_Cost_Cons)
 
-            ############################################################# 2.8 Dynamic Constraint Satisfaction Properties ###################################
-            dynamic_constraint_builder = Utitilities.build_Dynamic_Constraint(all_smt_constraints)
+            ############################################################ 2.8 Asset Specific CDM Constraints ###############################################
+            for asset_id in asset_specific_constraints_asset_id:
+                # print "Asset %s::%s" % (asset_id,map_asset_specific_cost_distribution_constraints[asset_id])
+                cons_asset_index = map_asset_specific_cost_distribution_constraints[asset_id]
+                for kc_phase in range(ProjectConfigFile.NUMBER_OF_KILL_CHAIN_PHASE):
+                    for en_level in range(ProjectConfigFile.NUMNBER_OF_ENFORCEMENT_LEVEL):
+                        for sc_func in range(ProjectConfigFile.NUMBER_OF_SECURITY_FUNCTION):
+                            smt_Asset_CDM_Unit_Cost_Cons = (smt_Asset_Specific_CDM_Sc_Func[cons_asset_index][kc_phase][en_level][sc_func] == sum(
+                                smt_Asset_Specific_CDM_Sec_Control[cons_asset_index][kc_phase][en_level][sc_func]))
+                            cyberARMGoal.add(smt_Asset_CDM_Unit_Cost_Cons)
+                        smt_Asset_CDM_Unit_en_level_Cost_Cons = (
+                                    smt_Asset_Specific_CDM_En_Level[cons_asset_index][kc_phase][en_level] == sum(smt_Asset_Specific_CDM_Sc_Func[cons_asset_index][kc_phase][en_level]))
+                        cyberARMGoal.add(smt_Asset_CDM_Unit_en_level_Cost_Cons)
+                    smt_Asset_CDM_Unit_kc_phase_Cost_Cons = (smt_Asset_Specific_CDM_KC_Phase[cons_asset_index][kc_phase] == sum(smt_Asset_Specific_CDM_En_Level[cons_asset_index][kc_phase]))
+                    cyberARMGoal.add(smt_Asset_CDM_Unit_kc_phase_Cost_Cons)
+
+            ############################################################# 2.9 Dynamic Constraint Satisfaction Properties ###################################
+            dynamic_constraint_builder = Utitilities.build_Dynamic_Constraint(all_smt_constraints,asset_specific_constraints_asset_id)
             print("Dynamic Constraints %s" % (dynamic_constraint_builder))
             smt_dynamic_constraints = [[Real('smt_dynamic_constraints_%s_%s'%(cons_properties,index))for index in range(len(dynamic_constraint_builder[cons_properties]))] for cons_properties in dynamic_constraint_builder.keys()]
-            # print "SMT Dynamic Constraints %s" % (smt_dynamic_constraints)
-
-            for cons_properties in dynamic_constraint_builder.keys():
+            print "SMT Dynamic Constraints %s" % (smt_dynamic_constraints)
+            cons_properties = 0
+            for cons_properties_label in dynamic_constraint_builder.keys():
                 constraint_id = 0
-                if cons_properties==ProjectConfigFile.COST_DISTRIBUTION_PROPERTIES:
-                    for each_property in dynamic_constraint_builder[cons_properties]:
+                if cons_properties_label==ProjectConfigFile.COST_DISTRIBUTION_PROPERTIES:
+                    for each_property in dynamic_constraint_builder[cons_properties_label]:
                         axis_name = each_property[0]
                         component_value = each_property[1]
                         constraint_satisfaction_value = each_property[2]
@@ -333,6 +368,7 @@ def SMT_Environment(security_control_list,selected_security_controls,global_sec_
                             cyberARMGoal.add(smt_dynamic_cons)
                         elif axis_name == ProjectConfigFile.KILL_CHAIN_PHASE_AXIS:
                             smt_dynamic_cons = (smt_dynamic_constraints[cons_properties][constraint_id]==smt_kc_phase_cost[component_value])
+                            cyberARMGoal.add(smt_dynamic_cons)
                         if constraint_satisfaction_value > 0:
                             cost_distribution_cons = (smt_dynamic_constraints[cons_properties][constraint_id]
                                                       >= constraint_satisfaction_value * smt_Global_Security_Control_Cost)
@@ -342,6 +378,54 @@ def SMT_Environment(security_control_list,selected_security_controls,global_sec_
                                                       <= constraint_satisfaction_value * smt_Global_Security_Control_Cost)
                             cyberARMGoal.add(cost_distribution_cons)
                         constraint_id += 1
+
+                elif cons_properties_label == ProjectConfigFile.ASSET_BASED_DISTRIBUTION_PROPERTIES:
+                    this_label_constraints = all_smt_constraints[ProjectConfigFile.ASSET_BASED_DISTRIBUTION_PROPERTIES]
+                    # print "This label Constraints %s" % (this_label_constraints)
+                    for asset_based_current_label_constraint in asset_specific_constraints_asset_id:
+                        # print "Asset Specific Constraints %s:%s" % (asset_based_current_label_constraint,this_label_constraints[asset_based_current_label_constraint])
+                        cons_asset_id = map_asset_specific_cost_distribution_constraints[asset_based_current_label_constraint]
+                        for iter_index in range(len(this_label_constraints[asset_based_current_label_constraint])):
+                            print("For Asset %s Adding Constraint ID (%s,%s) : %s" % (asset_based_current_label_constraint,
+                                                                                      cons_properties, constraint_id,
+                                                                                      this_label_constraints[asset_based_current_label_constraint][iter_index]))
+                            axis_name = this_label_constraints[asset_based_current_label_constraint][iter_index][0]
+                            component_value = this_label_constraints[asset_based_current_label_constraint][iter_index][1]
+                            constraint_satisfaction_value = this_label_constraints[asset_based_current_label_constraint][iter_index][2]
+                            print(" ({&}) ({&}) ({&}) ({&}) Constraints %s : (%s,%s,%s)" % (this_label_constraints[asset_based_current_label_constraint][iter_index],
+                                                                                           axis_name, component_value, constraint_satisfaction_value))
+                            print("Adding Constraint ID (%s,%s)" % (cons_properties, constraint_id))
+                            if axis_name == ProjectConfigFile.SECURITY_FUNCTION_AXIS:
+                                smt_dynamic_cons = (
+                                        smt_dynamic_constraints[cons_properties][constraint_id] == sum([sum(
+                                            [smt_Asset_Specific_CDM_Sc_Func[cons_asset_id][kc_phase_iter][en_level_iter][component_value]
+                                          for en_level_iter in range(ProjectConfigFile.NUMNBER_OF_ENFORCEMENT_LEVEL)])
+                                     for kc_phase_iter in range(ProjectConfigFile.NUMBER_OF_KILL_CHAIN_PHASE)])
+                                )
+                                cyberARMGoal.add(smt_dynamic_cons)
+                            elif axis_name == ProjectConfigFile.ENFORCEMENT_LEVEL_AXIS:
+                                smt_dynamic_cons = (
+                                        smt_dynamic_constraints[cons_properties][constraint_id] == sum(
+                                    [smt_Asset_Specific_CDM_En_Level[cons_asset_id][kc_phase_index][component_value]
+                                     for kc_phase_index in range(ProjectConfigFile.NUMBER_OF_KILL_CHAIN_PHASE)])
+                                )
+                                cyberARMGoal.add(smt_dynamic_cons)
+                            elif axis_name == ProjectConfigFile.KILL_CHAIN_PHASE_AXIS:
+                                smt_dynamic_cons = (smt_dynamic_constraints[cons_properties][constraint_id] ==
+                                                    smt_Asset_Specific_CDM_KC_Phase[cons_asset_id][component_value])
+                                cyberARMGoal.add(smt_dynamic_cons)
+                            if constraint_satisfaction_value > 0:
+                                cost_distribution_cons = (smt_dynamic_constraints[cons_properties][constraint_id]
+                                                          >= constraint_satisfaction_value * smt_Global_Security_Control_Cost)
+                                cyberARMGoal.add(cost_distribution_cons)
+                            elif constraint_satisfaction_value < 0:
+                                cost_distribution_cons = (smt_dynamic_constraints[cons_properties][constraint_id]
+                                                          <= constraint_satisfaction_value * smt_Global_Security_Control_Cost)
+                                cyberARMGoal.add(cost_distribution_cons)
+
+                            constraint_id += 1
+
+                cons_properties += 1
 
             ############################################################ End Constrainst Development #######################################################
 

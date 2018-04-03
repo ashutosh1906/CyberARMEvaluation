@@ -558,7 +558,7 @@ def verify_cost_reult(cost_distribution_CDM):
     for i in range(3):
         print "Total Implementaion Cost from Distribution %s" % (sum(cost_distribution_CDM[i]))
 
-def build_Dynamic_Constraint(all_smt_constraints):
+def build_Dynamic_Constraint(all_smt_constraints,asset_specific_constraints_asset_id):
     dynamic_constraint_builder = {}
     for property_constraint_name in all_smt_constraints.keys():
         dynamic_constraint_builder[property_constraint_name] = []
@@ -570,6 +570,12 @@ def build_Dynamic_Constraint(all_smt_constraints):
                 for rank_cons in constraints_placements:
                     print "Axis : %s --> Rank : %s" % (axis_name, rank_cons)
                     dynamic_constraint_builder[property_constraint_name].append((axis_name, rank_cons,all_smt_constraints[property_constraint_name][axis_name][rank_cons]))
+        if property_constraint_name == ProjectConfigFile.ASSET_BASED_DISTRIBUTION_PROPERTIES:
+            print "Asset Specific Constraints %s" % (asset_specific_constraints_asset_id)
+            all_asset_specific_cons = all_smt_constraints[ProjectConfigFile.ASSET_BASED_DISTRIBUTION_PROPERTIES]
+            for asset_specific_cons in asset_specific_constraints_asset_id:
+                for asset_specific_cons_iter in all_asset_specific_cons[asset_specific_cons]:
+                    dynamic_constraint_builder[property_constraint_name].append(asset_specific_cons_iter)
     return dynamic_constraint_builder
 
 def test_properties_smt_constraints(smt_properties,constraint_properties):
