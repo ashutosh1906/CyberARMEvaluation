@@ -52,15 +52,19 @@ if __name__=="__main__":
     for max_sec_control_threat_action_index in range(1,ProjectConfigFile.MAX_SEC_THREAT_ACTION+1):
         print("\n\nMax Security Control per Threat Action Index %s" % (max_sec_control_threat_action_index))
         print("Risk Elimination List Current %s" % (ProjectConfigFile.RISK_ELIMINATION_LIST[0:max_risk_value_index_variable]))
+        success_result = 1
         for risk_elimination_value in ProjectConfigFile.RISK_ELIMINATION_LIST[0:max_risk_value_index_variable]:
-            recommendedCDM,success_result = CyberARMPowerPlant.cyberarm_init_main(asset_enterprise_list_input, affordable_risk,
-                                                                   ProjectConfigFile.BUDGET,
-                                                                   risk_elimination_value,max_sec_control_threat_action_index)
-            if success_result == 0:
+            previous_success_result = success_result
+            recommendedCDM, success_result = CyberARMPowerPlant.cyberarm_init_main(asset_enterprise_list_input,
+                                                                                   affordable_risk,
+                                                                                   ProjectConfigFile.BUDGET,
+                                                                                   risk_elimination_value,
+                                                                                   max_sec_control_threat_action_index)
+            if (success_result == 0 and previous_success_result == 0):
                 print("Failed in Model Satisfaction %s" % (risk_elimination_value))
                 max_risk_value_index_variable = ProjectConfigFile.RISK_ELIMINATION_LIST.index(risk_elimination_value)
                 break
             print("Success in Model Satisfaction %s" % (risk_elimination_value))
 
     ProjectConfigFile.closeFiles()
-    print("Total Duration %s" % (time.time()-start_time_whole))
+    print("Total Duration %s" % (time.time() - start_time_whole))
