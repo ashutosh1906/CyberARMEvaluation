@@ -1,5 +1,6 @@
 import ProjectConfigFile
 from math import sqrt,pow
+import json
 
 def determineCostEffectiveness(selected_security_controls,security_control_list,risk_threat_action,threat_action_id_list_for_all_assets,
                                threat_action_id_to_name,cost_effectiveness_sc):
@@ -592,3 +593,29 @@ def test_properties_smt_constraints(smt_properties,constraint_properties):
             constraint_properties[1][asset_index], cons_prop_iter[2])
             print "Alloted Cost For Specific One %s : Cons Value %s" % (
             constraint_properties[2][asset_index], cons_prop_iter[2])
+
+
+def writeResultIntoFile(recomendedCDM,risk_elimination):
+    print "Recommended CDM %s" % (recomendedCDM[ProjectConfigFile.CYBERARM_CDM_MATRIX])
+    print "Risk Distribution %s" % (recomendedCDM[ProjectConfigFile.CYBERARM_RISK])
+    print "ROI %s" % (recomendedCDM[ProjectConfigFile.CYBERARM_ROI])
+    result_file = open('%s_%s.txt'%(ProjectConfigFile.RESULT_OUTPUT_FILE_NAME,risk_elimination),'w')
+    result_file.write(json.dumps(recomendedCDM[ProjectConfigFile.CYBERARM_CDM_MATRIX]))
+    result_file.write("\n")
+    result_file.write(json.dumps(recomendedCDM[ProjectConfigFile.CYBERARM_RISK]))
+    result_file.write("\n")
+    result_file.write(json.dumps(recomendedCDM[ProjectConfigFile.CYBERARM_ROI]))
+    result_file.write("\n")
+    result_file.close()
+    readResultFile(risk_elimination)
+
+def readResultFile(risk_elimination):
+    recommendedCDM = []
+    readFile = open('%s_%s.txt'%(ProjectConfigFile.RESULT_OUTPUT_FILE_NAME,risk_elimination),'r+')
+    for line in readFile:
+        line = line.replace("\n","")
+        recommendedCDM.append(json.loads(line))
+    print("Length of the Recommended CDM %s" % (len(recommendedCDM)))
+    return recommendedCDM
+
+

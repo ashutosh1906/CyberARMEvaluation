@@ -122,6 +122,7 @@ def cyberarm_init_main(asset_enterprise_list_input,affordable_risk,budget,risk_e
     success_result = 1
     if len(recommendedCDM) > 0:
         success_result = 0
+        Utitilities.writeResultIntoFile(recommendedCDM[0][0][0],risk_elimination)
     for approach_index in range(len(recommendedCDM)):
         for iter_index_cost in range(len(recommendedCDM[approach_index])):
             for iter_index in range(len(recommendedCDM[approach_index][iter_index_cost])):
