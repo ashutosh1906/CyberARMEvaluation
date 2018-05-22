@@ -146,7 +146,7 @@ def select_security_controls(security_control_list,threat_action_list,threat_act
         return env_variables
     global_sec_control_CDM_index_Asset_freq = env_variables[1]
     sec_control_CDM_index = env_variables[2]
-    print("CDm Frequency %s" % (sec_control_CDM_index))
+    # print("CDm Frequency %s" % (sec_control_CDM_index))
     all_constraints_properties = {}
     all_constraints_properties[ProjectConfigFile.COST_DISTRIBUTION_PROPERTIES] = units_cost_distribution[0]
     all_constraints_properties[ProjectConfigFile.ASSET_BASED_DISTRIBUTION_PROPERTIES] = units_cost_distribution[1]
