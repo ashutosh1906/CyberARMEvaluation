@@ -63,8 +63,9 @@ if __name__=="__main__":
     conf,integrity,availability = [],[],[]
     mean = 130000.0
     standard_deviation = 60000.0
-    while i<1000:
-        for j in range(10):
+    i = 1490
+    while i<1500:
+        for j in range(1):
             i = i + 10
             file_name = "%s_%s.txt" % (VERIS_FILE_INPUT,i)
             file_name_pointer = open(file_name,'w')

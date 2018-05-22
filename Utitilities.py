@@ -595,11 +595,11 @@ def test_properties_smt_constraints(smt_properties,constraint_properties):
             constraint_properties[2][asset_index], cons_prop_iter[2])
 
 
-def writeResultIntoFile(recomendedCDM,risk_elimination):
+def writeResultIntoFile(recomendedCDM,risk_elimination,app_index):
     print "Recommended CDM %s" % (recomendedCDM[ProjectConfigFile.CYBERARM_CDM_MATRIX])
     print "Risk Distribution %s" % (recomendedCDM[ProjectConfigFile.CYBERARM_RISK])
     print "ROI %s" % (recomendedCDM[ProjectConfigFile.CYBERARM_ROI])
-    result_file = open('%s_%s.txt'%(ProjectConfigFile.RESULT_OUTPUT_FILE_NAME,risk_elimination),'w')
+    result_file = open('%s_%s_%s.txt'%(ProjectConfigFile.RESULT_OUTPUT_FILE_NAME,risk_elimination,app_index),'w')
     result_file.write(json.dumps(recomendedCDM[ProjectConfigFile.CYBERARM_CDM_MATRIX]))
     result_file.write("\n")
     result_file.write(json.dumps(recomendedCDM[ProjectConfigFile.CYBERARM_RISK]))
@@ -618,4 +618,48 @@ def readResultFile(risk_elimination):
     print("Length of the Recommended CDM %s" % (len(recommendedCDM)))
     return recommendedCDM
 
+def writeInFiles(risk_threat,asset_enterprise_list,selected_security_controls,security_control_list):
+    ######################################## Sort The Asset First ######################################
+    print("Risk of the Asset %s"%(len(selected_security_controls)))
+    total_risk_asset_dict = {}
+    for i in range(len(risk_threat)):
+        total_risk_asset_dict[i] = sum([risk_threat[i][key] for key in risk_threat[i].keys()])
+        # print('%s: %s ==> %s' % (i, risk_threat[i],total_risk_asset_dict[i]))
+    total_risk_asset_dict = sorted(total_risk_asset_dict.iteritems(), key=lambda (k, v): (v, k))
+    # for key, value in total_risk_asset_dict:
+    #     print "%s: %s" % (key, value)
 
+    cost_distribution = [[] for i in range(ProjectConfigFile.SPLITED_NUMBER_OF_FILES)]
+    ########################### Open Files ##############################
+    print("Split for the Asset %s"%(ProjectConfigFile.VERIS_ASSET_NUMBER))
+    write_file = []
+    for i in range(ProjectConfigFile.SPLITED_NUMBER_OF_FILES):
+        write_file.append(open('%s/%s/SPLIT_%s_%s_%s'%(ProjectConfigFile.SUBPROBLEMS_FOLDER,ProjectConfigFile.SPLITED_NUMBER_OF_FILES,ProjectConfigFile.VERIS_ASSET_NUMBER,
+                                                    ProjectConfigFile.SPLITED_NUMBER_OF_FILES,i),'w'))
+    asset_index = 0
+    risk_normalization = [0.0 for i in range(ProjectConfigFile.SPLITED_NUMBER_OF_FILES)]
+    for key, value in total_risk_asset_dict:
+        asset_name = asset_enterprise_list[key][0]
+        asset_value = asset_enterprise_list[key][1]
+        risk_normalization[(asset_index%ProjectConfigFile.SPLITED_NUMBER_OF_FILES)].append(value)
+        write_file[(asset_index%ProjectConfigFile.SPLITED_NUMBER_OF_FILES)].write('%s,%s,%s,%s\n'%(asset_name,asset_value[0],asset_value[1],asset_value[2]))
+        cost_distribution[(asset_index%ProjectConfigFile.SPLITED_NUMBER_OF_FILES)].append(key)
+        asset_index += 1
+
+    for i in range(ProjectConfigFile.SPLITED_NUMBER_OF_FILES):
+        risk_normalization[i] /=sum(risk_normalization)
+
+    ############################## Close the files #######################
+    for i in range(ProjectConfigFile.SPLITED_NUMBER_OF_FILES):
+        write_file[i].close()
+
+    cost_normalization = [0.0 for i in range(ProjectConfigFile.SPLITED_NUMBER_OF_FILES)]
+    for i in range(ProjectConfigFile.SPLITED_NUMBER_OF_FILES):
+        print("Cost Distribution %s"%(len(cost_distribution[i])))
+        for asset_index in cost_distribution[i]:
+            for sec_control in selected_security_controls[asset_index]:
+                cost_normalization[i] += security_control_list[sec_control].investment_cost
+    total_cost = sum(cost_normalization)
+    for i in range(ProjectConfigFile.SPLITED_NUMBER_OF_FILES):
+        cost_normalization[i]= (cost_normalization[i]*ProjectConfigFile.BUDGET)/total_cost
+    print("Cost Normalization %s"%(cost_normalization))

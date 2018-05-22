@@ -1,4 +1,5 @@
 import ProjectConfigFile
+import Utitilities
 ######################################################### Calculate Risk ###########################################################
 def calculateRisk(prob_threat,prob_threat_action_threat,asset_enterprise_list,risk_threat_action,risk_threat):
     global_risk_threat = 0.0
@@ -31,6 +32,7 @@ def calculateRisk(prob_threat,prob_threat_action_threat,asset_enterprise_list,ri
         risk_threat_action.append(risk_threat_action_asset)
         risk_threat.append(risk_threat_asset)
     print "VERIS Total Risk %s" % (global_risk_threat)
+
 
 ######################################################## Calculate threat action probability given threat ########################################################################
 
