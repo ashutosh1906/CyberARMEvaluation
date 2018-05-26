@@ -599,7 +599,7 @@ def writeResultIntoFile(recomendedCDM,risk_elimination,app_index):
     # print "Recommended CDM %s" % (recomendedCDM[ProjectConfigFile.CYBERARM_CDM_MATRIX])
     # print "Risk Distribution %s" % (recomendedCDM[ProjectConfigFile.CYBERARM_RISK])
     # print "ROI %s" % (recomendedCDM[ProjectConfigFile.CYBERARM_ROI])
-    result_file = open('%s_%s_%s.txt'%(ProjectConfigFile.RESULT_OUTPUT_FILE_NAME,risk_elimination,app_index),'w')
+    result_file = open('%s_%s_%s.txt'%(ProjectConfigFile.RESULT_OUTPUT_FILE_NAME,risk_elimination,app_index),'a')
     result_file.write(json.dumps(recomendedCDM[ProjectConfigFile.CYBERARM_CDM_MATRIX]))
     result_file.write("\n")
     result_file.write(json.dumps(recomendedCDM[ProjectConfigFile.CYBERARM_RISK]))
@@ -608,6 +608,15 @@ def writeResultIntoFile(recomendedCDM,risk_elimination,app_index):
     result_file.write("\n")
     result_file.close()
     # readResultFile(risk_elimination)
+
+def readResultFileWithName(readfile):
+    recommendedCDM = []
+    readFile = open(readfile,'r+')
+    for line in readFile:
+        line = line.replace("\n", "")
+        recommendedCDM.append(json.loads(line))
+    print("Length of the Recommended CDM %s" % (len(recommendedCDM)))
+    return recommendedCDM
 
 def readResultFile(risk_elimination):
     recommendedCDM = []

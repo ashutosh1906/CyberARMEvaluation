@@ -54,35 +54,63 @@ def plot_distriution(cia,mean,sd):
              linewidth=2, color='r')
     plt.show()
 
+def generateAssetFilePower(asset_size):
+    property_values = numpy.random.power(1,asset_size)
+    print("Number of Values %s"%(property_values.size))
+    file_name = "%s_%s_P.txt" % (VERIS_FILE_INPUT,asset_size)
+    file_name_pointer = open(file_name,'w')
+    number_unique_assets = len(asset_list_unique)
+    for asset_iteration_index in range(asset_size):
+        asset_index = random.randint(0,number_unique_assets-1)
+        if property_values[asset_iteration_index] == 0:
+            property_values[asset_iteration_index] += 0.05
+        impact_value = (property_values[asset_iteration_index]/3)*360000
+        file_name_pointer.write("%s,%s,%s,%s\n"%(asset_list_unique[asset_index],impact_value,impact_value,impact_value))
+    file_name_pointer.close()
+
+def generateAssetFileUniform(asset_size):
+    property_values = numpy.random.uniform(30000,360000,asset_size)
+    print("Number of Values %s"%(property_values.size))
+    file_name = "%s_%s_U.txt" % (VERIS_FILE_INPUT,asset_size)
+    file_name_pointer = open(file_name,'w')
+    number_unique_assets = len(asset_list_unique)
+    for asset_iteration_index in range(asset_size):
+        asset_index = random.randint(0,number_unique_assets-1)
+        impact_value = property_values[asset_iteration_index]/3
+        file_name_pointer.write("%s,%s,%s,%s\n"%(asset_list_unique[asset_index],impact_value,impact_value,impact_value))
+    file_name_pointer.close()
+
 if __name__=="__main__":
-    # asset_unique_file_generator()
+    # # asset_unique_file_generator()
     asset_file_read()
     print asset_list_unique
-    number_unique_assets = len(asset_list_unique)
-    i = 0
-    conf,integrity,availability = [],[],[]
-    mean = 130000.0
-    standard_deviation = 60000.0
-    i = 1490
-    while i<1500:
-        for j in range(1):
-            i = i + 10
-            file_name = "%s_%s.txt" % (VERIS_FILE_INPUT,i)
-            file_name_pointer = open(file_name,'w')
-            print "%s" % (i)
-            conf = numpy.random.normal(mean,standard_deviation, i)
-            integrity = numpy.random.normal(mean,standard_deviation, i)
-            availability = numpy.random.normal(mean,standard_deviation, i)
-            print conf.size
-            for asset_iteration_index in range(i):
-                asset_index = random.randint(0,number_unique_assets-1)
-                file_name_pointer.write("%s,%s,%s,%s\n"%(asset_list_unique[asset_index],conf[asset_iteration_index],integrity[asset_iteration_index],availability[asset_iteration_index]))
-            file_name_pointer.close()
-
-    # iterIn = 0
-    # for val in numpy.nditer(conf):
-    #     print "%s : %s" %(type(val),val)
-    #     iterIn += 1
-    # plot_distriution(conf,mean,standard_deviation)
-    # plot_distriution(integrity,mean,standard_deviation)
-    # plot_distriution(availability,mean,standard_deviation)
+    # number_unique_assets = len(asset_list_unique)
+    # i = 0
+    # conf,integrity,availability = [],[],[]
+    # mean = 130000.0
+    # standard_deviation = 60000.0
+    # i = 1490
+    # while i<1500:
+    #     for j in range(1):
+    #         i = i + 10
+    #         file_name = "%s_%s.txt" % (VERIS_FILE_INPUT,i)
+    #         file_name_pointer = open(file_name,'w')
+    #         print "%s" % (i)
+    #         conf = numpy.random.normal(mean,standard_deviation, i)
+    #         integrity = numpy.random.normal(mean,standard_deviation, i)
+    #         availability = numpy.random.normal(mean,standard_deviation, i)
+    #         print conf.size
+    #         for asset_iteration_index in range(i):
+    #             asset_index = random.randint(0,number_unique_assets-1)
+    #             file_name_pointer.write("%s,%s,%s,%s\n"%(asset_list_unique[asset_index],conf[asset_iteration_index],integrity[asset_iteration_index],availability[asset_iteration_index]))
+    #         file_name_pointer.close()
+    #
+    # # iterIn = 0
+    # # for val in numpy.nditer(conf):
+    # #     print "%s : %s" %(type(val),val)
+    # #     iterIn += 1
+    # # plot_distriution(conf,mean,standard_deviation)
+    # # plot_distriution(integrity,mean,standard_deviation)
+    # # plot_distriution(availability,mean,standard_deviation)
+    # generateAssetFileUniform(500)
+    generateAssetFilePower(500)
