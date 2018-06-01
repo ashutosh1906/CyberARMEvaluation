@@ -30,7 +30,7 @@ def generate_risk_distribution(asset_enterprise_list,send_data):
                 global_risk_threat_action.append([risk_threat_action_distribution[i][j][ta],asset_index,ta])
             asset_index += 1
     global_risk_threat_action.sort(reverse=True)
-    # print "Risk Threat Action %s" % (global_risk_threat_action)
+    print "Risk Threat Action %s" % (global_risk_threat_action)
     risk_length = len(global_risk_threat_action)
     print "Risk Threat Action Length %s" % (risk_length)
     total_risk_value = sum([global_risk_threat_action[i][0] for i in range(risk_length)])

@@ -4,7 +4,7 @@ import random
 def readFile():
     withOut_Noise_Index = 0
     withNoise_Index = 3
-    rCDM = readResultFileWithName('ResourceFolder/ResultFiles/OutResult_Power2_Up_500_0_0.85_1.txt')
+    rCDM = readResultFileWithName('ResourceFolder/ResultFiles/OutResult_Nor2_I_500_0_0.85_0.txt')
     print("Length of Results %s" % (len(rCDM)))
     cdm_results = []
     for i in range(len(rCDM)/3):
@@ -80,8 +80,8 @@ def introDuceNoiseInFileIncrementally(noise_percentage):
     if readFile_noise_index == 0:
         read_file = 'ResourceFolder/InputFiles/veris_list_%s.txt' %(ProjectConfigFile.VERIS_ASSET_NUMBER)
     else:
-        read_file = 'ResourceFolder/InputFiles/veris_list_%s_%s_N_I.txt' % (ProjectConfigFile.VERIS_ASSET_NUMBER,readFile_noise_index)
-    write_file = 'ResourceFolder/InputFiles/veris_list_%s_%s_N_I.txt' % (ProjectConfigFile.VERIS_ASSET_NUMBER,noise_percentage)
+        read_file = 'ResourceFolder/InputFiles/veris_list_%s_%s_P_I.txt' % (ProjectConfigFile.VERIS_ASSET_NUMBER,readFile_noise_index)
+    write_file = 'ResourceFolder/InputFiles/veris_list_%s_%s_P_IU.txt' % (ProjectConfigFile.VERIS_ASSET_NUMBER,noise_percentage)
     file_read_pointer = open(read_file,'r+')
     file_write_pointer = open(write_file,'w')
     number_iter = (int)(0.05*ProjectConfigFile.VERIS_ASSET_NUMBER)
@@ -117,9 +117,10 @@ def introDuceNoiseInFileIncrementally(noise_percentage):
 
 if __name__=="__main__":
     print("Here the comparison started")
-    # readFile()
-    noise_value =[0.05,0.1,0.15,0.2,0.25,0.3]
-    # noise_value = [0.2,0.25]
-    for noise in noise_value:
-        introDuceNoiseInFileIncrementally(noise)
-    # # # introDuceNoiseInFile(noise_value[2])
+    readFile()
+    # noise_value =[0.05,0.1,0.15,0.2,0.25,0.3]
+    # # noise_value = [0.2,0.25]
+    # for noise in noise_value:
+    #     introDuceNoiseInFileIncrementally(noise)
+    # # # # introDuceNoiseInFile(noise_value[2])
+    # introDuceNoiseInFileIncrementally(0.10)
