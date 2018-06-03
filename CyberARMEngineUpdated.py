@@ -11,6 +11,19 @@ def make_comparator(less_than):
             return 0
     return compare
 
+def file_write_threat_action(global_risk_threat_action,asset_enterprise_list):
+    RISK_INDEX = 0
+    ASSET_NAME_INDEX = 1
+    THREAT_NAME_INDEX = 2
+    file_writer = open('OutputRecords/Top_Threat_Action.txt','w')
+    # print("Asset Name %s"%(asset_enterprise_list[0]))
+    for threat_action in global_risk_threat_action:
+        try:
+            asset_name = asset_enterprise_list[0][threat_action[ASSET_NAME_INDEX]][0]
+        except:
+            asset_name = asset_enterprise_list[1][threat_action[ASSET_NAME_INDEX]-len(asset_enterprise_list[0])][0]
+        file_writer.write('%s,%s,%s\n' % (threat_action[RISK_INDEX], asset_name, threat_action[THREAT_NAME_INDEX]))
+    file_writer.close()
 
 def generate_risk_distribution(asset_enterprise_list,send_data):
     global_risk_threat_action = []
@@ -30,7 +43,9 @@ def generate_risk_distribution(asset_enterprise_list,send_data):
                 global_risk_threat_action.append([risk_threat_action_distribution[i][j][ta],asset_index,ta])
             asset_index += 1
     global_risk_threat_action.sort(reverse=True)
-    print "Risk Threat Action %s" % (global_risk_threat_action)
+    # print "Risk Threat Action %s" % (global_risk_threat_action)
+    if ProjectConfigFile.WRITE_THREAT_ACTION:
+        file_write_threat_action(global_risk_threat_action,asset_enterprise_list)
     risk_length = len(global_risk_threat_action)
     print "Risk Threat Action Length %s" % (risk_length)
     total_risk_value = sum([global_risk_threat_action[i][0] for i in range(risk_length)])
