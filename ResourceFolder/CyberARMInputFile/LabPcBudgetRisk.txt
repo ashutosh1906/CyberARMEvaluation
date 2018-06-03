@@ -1,5 +1,0 @@
-100:
-Budget: 927050
-Affordable Risk: 15142464
-Threat Elimination: 70%
-
