@@ -684,8 +684,8 @@ def risk_threat_action_after_CDM(asset_list_for_smt,risk_threat_action,threat_ac
         for ta_list in asset_type:
             asset_name = asset_list_for_smt[asset_index][0]
             threat_action_risk_statistics.append([asset_name, {}])
-            print("Asset Name %s"%(asset_name))
-            print("Risk Threat Action %s"%(ta_list))
+            # print("Asset Name %s"%(asset_name))
+            # print("Risk Threat Action %s"%(ta_list))
             for ta_id in threat_action_id_list_for_all_assets[asset_index]:
                 threat_action_name = threat_action_list[ta_id].threat_action_name
                 threat_action_roll = threat_action_id_to_position_roll[asset_index][ta_id]
@@ -693,6 +693,6 @@ def risk_threat_action_after_CDM(asset_list_for_smt,risk_threat_action,threat_ac
                 if threat_action_name not in threat_action_risk_statistics[asset_index][1]:
                     threat_action_risk_statistics[asset_index][1][threat_action_name] = [threat_action_effectiveness*ta_list[threat_action_name],
                                                                                          ta_list[threat_action_name]]
-            print("Mitigated Threat Actions %s"%(threat_action_risk_statistics[asset_index][1]))
+            # print("Mitigated Threat Actions %s"%(threat_action_risk_statistics[asset_index][1]))
             asset_index += 1
     return threat_action_risk_statistics
