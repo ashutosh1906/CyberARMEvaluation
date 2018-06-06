@@ -12,7 +12,7 @@ def allocated_cost(number_of_unique_asset,global_estimated_risk,risk_asset_speci
 
 def SMT_Environment(security_control_list,selected_security_controls,global_sec_control_CDM_index_Asset_freq,sec_control_CDM_index,threat_action_name_list,threat_action_list,
                     threat_action_id_list_for_all_assets,threat_id_for_all_assets,threat_list,asset_enterprise_list,affordable_risk,budget,cost_effectiveness_sc,risk_ratio_threat_action,
-                    risk_list,global_Total_Cost,global_estimated_risk,global_min_risk,risk_asset_specific,min_sec_control_cost,threat_action_id_to_position_roll,threat_id_to_position_roll,
+                    risk_list,risk_threat_action,global_Total_Cost,global_estimated_risk,global_min_risk,risk_asset_specific,min_sec_control_cost,threat_action_id_to_position_roll,threat_id_to_position_roll,
                     minimum_threat_specific_risk, minimum_affordable_risk,risk_elimination,max_sec_control_threat_action_index,all_smt_constraints,all_constraints_properties):
 
     print "************************************************* Constraints **********************************************************************************"
@@ -610,6 +610,11 @@ def SMT_Environment(security_control_list,selected_security_controls,global_sec_
                 risk_all[asset_index]['threat_list'] = all_threats
             ########################################################### End Hold Risk #######################################################
 
+            ########################################### Hold Threat Action Risk ############################################################
+            mitigated_TA_risk_statistics = Utitilities.risk_threat_action_after_CDM(asset_list_for_smt, risk_threat_action, threat_action_list,
+                                                     threat_action_id_list_for_all_assets,threat_action_id_to_position_roll,threat_action_effectiveness_enforced)
+            ########################################### End Hold Threat Action Risk ############################################################
+
             ########################################################### Return Value ########################################################
             CDM_Global_All_Statistice = []
             # CDM_Global_All_Statistice.insert(ProjectConfigFile.CYBERARM_CDM_MATRIX,CDM_Global)
@@ -618,6 +623,7 @@ def SMT_Environment(security_control_list,selected_security_controls,global_sec_
             CDM_Global_All_Statistice.insert(ProjectConfigFile.CYBERARM_CDM_MATRIX, CDM_Global)
             CDM_Global_All_Statistice.insert(ProjectConfigFile.CYBERARM_RISK,risk_all)
             CDM_Global_All_Statistice.insert(ProjectConfigFile.CYBERARM_ROI,roi_statistics)
+            CDM_Global_All_Statistice.insert(ProjectConfigFile.CYBERARM_MITIGATED_TA, mitigated_TA_risk_statistics)
             CDM_Global_All_Statistice_Iterative_Budget.append(CDM_Global_All_Statistice)
             satisfied_risk_variable = roi_statistics[ProjectConfigFile.RESIDUAL_RISK]
             implementation_cost_best_solution = roi_statistics[ProjectConfigFile.TOTAL_IMPLEMENTATION_COST]

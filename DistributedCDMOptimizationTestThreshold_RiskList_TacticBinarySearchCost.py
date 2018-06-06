@@ -32,7 +32,7 @@ def MutateRiskList(risk_list,satisfied_risk_variable):
 
 def SMT_Environment(security_control_list,selected_security_controls,threat_action_name_list,threat_action_list,
                     threat_action_id_list_for_all_assets,threat_id_for_all_assets,threat_list,asset_enterprise_list,affordable_risk,budget,cost_effectiveness_sc,risk_ratio_threat_action,
-                    risk_list,global_Total_Cost,global_estimated_risk,global_min_risk,risk_asset_specific,min_sec_control_cost,threat_action_id_to_position_roll,threat_id_to_position_roll,
+                    risk_list,risk_threat_action,global_Total_Cost,global_estimated_risk,global_min_risk,risk_asset_specific,min_sec_control_cost,threat_action_id_to_position_roll,threat_id_to_position_roll,
                     minimum_threat_specific_risk, minimum_affordable_risk,risk_elimination,max_sec_control_threat_action_index):
     print "*********************************************** In Binary Search Modified ********************************************************************************"
     ProjectConfigFile.OUTPUT_FILE_NAME_BINARY_SEARCH_MODIFIED.write(

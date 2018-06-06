@@ -9,7 +9,7 @@ def allocated_cost(number_of_unique_asset,global_estimated_risk,risk_asset_speci
     # print "In Allocated Cost: Asset Specific Alloted Cost Proportion %s" % (alloted_cost_asset_specific)
 
 def SMT_Environment(security_control_list,selected_security_controls,threat_action_name_list,threat_action_list,
-                    threat_action_id_list_for_all_assets,threat_id_for_all_assets,threat_list,asset_enterprise_list,affordable_risk,budget,cost_effectiveness_sc,risk_ratio_threat_action,
+                    threat_action_id_list_for_all_assets,threat_id_for_all_assets,threat_list,asset_enterprise_list,affordable_risk,budget,cost_effectiveness_sc,risk_ratio_threat_action,risk_threat_action,
                     global_Total_Cost,global_estimated_risk,global_min_risk,risk_asset_specific,min_sec_control_cost,threat_action_id_to_position_roll,threat_id_to_position_roll,
                     minimum_threat_specific_risk, minimum_affordable_risk,risk_elimination,max_sec_control_threat_action_index):
     print "*********************************************** In Iterative Search ********************************************************************************"

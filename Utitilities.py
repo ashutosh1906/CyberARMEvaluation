@@ -594,18 +594,20 @@ def test_properties_smt_constraints(smt_properties,constraint_properties):
             print "Alloted Cost For Specific One %s : Cons Value %s" % (
             constraint_properties[2][asset_index], cons_prop_iter[2])
 
-
 def writeResultIntoFile(recomendedCDM,risk_elimination,app_index):
     # print "Recommended CDM %s" % (recomendedCDM[ProjectConfigFile.CYBERARM_CDM_MATRIX])
     # print "Risk Distribution %s" % (recomendedCDM[ProjectConfigFile.CYBERARM_RISK])
     # print "ROI %s" % (recomendedCDM[ProjectConfigFile.CYBERARM_ROI])
     result_file = open('%s_%s_%s.txt'%(ProjectConfigFile.RESULT_OUTPUT_FILE_NAME,risk_elimination,app_index),'a')
-    result_file.write(json.dumps(recomendedCDM[ProjectConfigFile.CYBERARM_CDM_MATRIX]))
-    result_file.write("\n")
-    result_file.write(json.dumps(recomendedCDM[ProjectConfigFile.CYBERARM_RISK]))
-    result_file.write("\n")
-    result_file.write(json.dumps(recomendedCDM[ProjectConfigFile.CYBERARM_ROI]))
-    result_file.write("\n")
+    for i in range(len(recomendedCDM)):
+        result_file.write(json.dumps(recomendedCDM[i]))
+        result_file.write("\n")
+    # result_file.write(json.dumps(recomendedCDM[ProjectConfigFile.CYBERARM_CDM_MATRIX]))
+    # result_file.write("\n")
+    # result_file.write(json.dumps(recomendedCDM[ProjectConfigFile.CYBERARM_RISK]))
+    # result_file.write("\n")
+    # result_file.write(json.dumps(recomendedCDM[ProjectConfigFile.CYBERARM_ROI]))
+    # result_file.write("\n")
     result_file.close()
     # readResultFile(risk_elimination)
 
@@ -672,3 +674,25 @@ def writeInFiles(risk_threat,asset_enterprise_list,selected_security_controls,se
     for i in range(ProjectConfigFile.SPLITED_NUMBER_OF_FILES):
         cost_normalization[i]= (cost_normalization[i]*ProjectConfigFile.BUDGET)/total_cost
     print("Cost Normalization %s"%(cost_normalization))
+
+def risk_threat_action_after_CDM(asset_list_for_smt,risk_threat_action,threat_action_list,
+                                 threat_action_id_list_for_all_assets, threat_action_id_to_position_roll,
+                                 threat_action_effectiveness_enforced):
+    asset_index = 0
+    threat_action_risk_statistics = []
+    for asset_type in risk_threat_action:
+        for ta_list in asset_type:
+            asset_name = asset_list_for_smt[asset_index][0]
+            threat_action_risk_statistics.append([asset_name, {}])
+            print("Asset Name %s"%(asset_name))
+            print("Risk Threat Action %s"%(ta_list))
+            for ta_id in threat_action_id_list_for_all_assets[asset_index]:
+                threat_action_name = threat_action_list[ta_id].threat_action_name
+                threat_action_roll = threat_action_id_to_position_roll[asset_index][ta_id]
+                threat_action_effectiveness = threat_action_effectiveness_enforced[asset_index][threat_action_roll]
+                if threat_action_name not in threat_action_risk_statistics[asset_index][1]:
+                    threat_action_risk_statistics[asset_index][1][threat_action_name] = [threat_action_effectiveness*ta_list[threat_action_name],
+                                                                                         ta_list[threat_action_name]]
+            print("Mitigated Threat Actions %s"%(threat_action_risk_statistics[asset_index][1]))
+            asset_index += 1
+    return threat_action_risk_statistics
