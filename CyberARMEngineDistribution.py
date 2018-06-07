@@ -132,7 +132,12 @@ def select_security_controls(security_control_list,threat_action_list,threat_act
             asset_specific_security_control_cost_effectiveness[sec_control] = security_control_list[sec_control].global_asset_effectiveness[asset_index]
         security_control_cost_effectiveness.append(asset_specific_security_control_cost_effectiveness)
     # Utitilities.printSelectedSecurityControls(security_control_list,selected_security_controls,security_control_cost_effectiveness)
-    Utitilities.prune_security_controls_list(classified_selected_security_controls_threat_action,security_control_list,selected_security_controls,security_control_cost_effectiveness,max_sec_control_threat_action_index)
+    if ProjectConfigFile.COST_EFFECTIVE_SELECTION:
+        Utitilities.prune_security_controls_list(classified_selected_security_controls_threat_action,security_control_list,selected_security_controls,
+                                                 security_control_cost_effectiveness,max_sec_control_threat_action_index)
+    else:
+        Utitilities.prune_security_controls_list_RANDOM(classified_selected_security_controls_threat_action,security_control_list,selected_security_controls,
+                                                        security_control_cost_effectiveness,max_sec_control_threat_action_index)
     # Utitilities.printSelectedSecurityControls(security_control_list, selected_security_controls,security_control_cost_effectiveness)
 
     env_variables = PreProcessingSMTModels.PreprocessingSMT_Environment(security_control_list,selected_security_controls,threat_action_name_list,threat_action_list,

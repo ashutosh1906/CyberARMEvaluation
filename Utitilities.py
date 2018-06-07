@@ -1,6 +1,7 @@
 import ProjectConfigFile
 from math import sqrt,pow
 import json
+import random
 
 def determineCostEffectiveness(selected_security_controls,security_control_list,risk_threat_action,threat_action_id_list_for_all_assets,
                                threat_action_id_to_name,cost_effectiveness_sc):
@@ -484,7 +485,7 @@ def prune_security_controls_list(classified_selected_security_controls_threat_ac
         for index in range(len(sorted_sec_control_by_effectivenes)):
             sec_con = sorted_sec_control_by_effectivenes[index]
             if index < max_sec_control_threat_action_index:
-                pruned_selected_security_controls_asset.append(sorted_sec_control_by_effectivenes[index])
+                pruned_selected_security_controls_asset.append(sec_con)
                 for ta in security_control_list[sec_con].global_asset_threat_action_list[asset_index]:
                     if ta in ta_frequency.keys():
                         ta_frequency[ta] += 1
@@ -505,6 +506,53 @@ def prune_security_controls_list(classified_selected_security_controls_threat_ac
         # print "Previous Selected Security Controls %s" % (selected_security_controls[asset_index])
         selected_security_controls[asset_index] = pruned_selected_security_controls_asset
         # print "Pruned Selected Security Controls %s" % (selected_security_controls[asset_index])
+
+def prune_security_controls_list_RANDOM(classified_selected_security_controls_threat_action,security_control_list,
+                                 selected_security_controls,security_control_cost_effectiveness,max_sec_control_threat_action_index):
+    print(classified_selected_security_controls_threat_action)
+    print(selected_security_controls)
+    print(security_control_cost_effectiveness)
+    number_of_assets = len(selected_security_controls)
+    print "Number of Assets %s"%(number_of_assets)
+    for asset_index in range(number_of_assets):
+        ta_frequency = {ta: 0 for ta in classified_selected_security_controls_threat_action[asset_index]}
+        pruned_selected_security_controls_asset = []
+        number_of_sec_controls = len(selected_security_controls[asset_index])
+        analyzed_sec_con_index = []
+        print("Number of Security Controls %s"%(number_of_sec_controls))
+        while(True):
+            if number_of_sec_controls==0:
+                break
+            index = random.randint(0,number_of_sec_controls-1)
+            if index in analyzed_sec_con_index:
+                continue
+            else:
+                analyzed_sec_con_index.append(index)
+            sec_con = selected_security_controls[asset_index][index]
+            if index < max_sec_control_threat_action_index:
+                pruned_selected_security_controls_asset.append(sec_con)
+                for ta in security_control_list[sec_con].global_asset_threat_action_list[asset_index]:
+                    if ta in ta_frequency.keys():
+                        ta_frequency[ta] += 1
+            else:
+                ta_sec_length = len(security_control_list[sec_con].global_asset_threat_action_list[asset_index])
+                for ta_index in range(ta_sec_length):
+                    ta = security_control_list[sec_con].global_asset_threat_action_list[asset_index][ta_index]
+                    if ta not in ta_frequency.keys():
+                        continue
+                    if ta_frequency[ta] < max_sec_control_threat_action_index:
+                        pruned_selected_security_controls_asset.append(sec_con)
+                        for change_ta_index in range(ta_index, ta_sec_length):
+                            change_ta = security_control_list[sec_con].global_asset_threat_action_list[asset_index][
+                                change_ta_index]
+                            if change_ta in ta_frequency.keys():
+                                ta_frequency[change_ta] += 1
+            if len(analyzed_sec_con_index)==number_of_sec_controls:
+                break
+        # print "TA Frequency %s" % (ta_frequency)
+        # print "Previous Selected Security Controls %s" % (selected_security_controls[asset_index])
+        selected_security_controls[asset_index] = pruned_selected_security_controls_asset
+        print "Pruned Selected Security Controls %s:%s" % (asset_index,selected_security_controls[asset_index])
 
 def printPrunedSelectedSecurityControlsWithProperties(security_control_list,selected_security_controls):
     security_function_cost = [0.0 for i in range(len(ProjectConfigFile.SECURITY_FUNCTION_TO_ID))]
