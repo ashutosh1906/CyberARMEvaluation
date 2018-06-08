@@ -50,7 +50,7 @@ if __name__=="__main__":
     # print "Received DATA %s" % (CyberARMPowerPlant.send_data)
     max_risk_value_index_variable = len(ProjectConfigFile.RISK_ELIMINATION_LIST)
     success_result = 1
-    for max_sec_control_threat_action_index in range(2,ProjectConfigFile.MAX_SEC_THREAT_ACTION+1):
+    for max_sec_control_threat_action_index in range(ProjectConfigFile.INITIAL_SEC_THREAT_ACTION,ProjectConfigFile.MAX_SEC_THREAT_ACTION+1):
         print("\n\nMax Security Control per Threat Action Index %s" % (max_sec_control_threat_action_index))
         print("Risk Elimination List Current %s" % (ProjectConfigFile.RISK_ELIMINATION_LIST[0:max_risk_value_index_variable]))
         # success_result = 1
