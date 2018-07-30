@@ -38,7 +38,7 @@ class SecurityControl(object):
                         # print "Threat Action ID %s" % (threat_action)
                         self.global_asset_threat_action_list[i].append(threat_action)
 
-    def prepare_cost_effectiveness_for_each_asset(self,risk_threat_action,threat_action_id_to_name):
+    def prepare_cost_effectiveness_for_each_asset(self,risk_threat_action,threat_action_id_to_name,cost_effectiveness = True):
         """Call it after preparing the threat action list for each asset. It will calculate the cost effectiveness for each asset"""
         original_asset_index = 0
         for asset_type in range(len(risk_threat_action)):
@@ -47,10 +47,13 @@ class SecurityControl(object):
                 for threat_action in self.global_asset_threat_action_list[original_asset_index]:
                     self.global_asset_effectiveness[original_asset_index] += self.threat_action_effectiveness[threat_action] \
                                                        * risk_threat_action[asset_type][asset_index_for_type][threat_action_id_to_name[threat_action]]
-                self.global_asset_effectiveness[original_asset_index] /= self.investment_cost
+                if cost_effectiveness:
+                    # print("**************************** Prunning by Cost _effectiveness*********************************************")
+                    self.global_asset_effectiveness[original_asset_index] /= self.investment_cost
+                # else:
+                #     print(
+                #         "**************************** Prunning by Expected Benefit*********************************************")
                 original_asset_index += 1
-
-
 
     def clearAllThreatActions(self):
         del self.asset_threat_action_list[:]

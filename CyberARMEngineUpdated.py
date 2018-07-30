@@ -43,7 +43,7 @@ def generate_risk_distribution(asset_enterprise_list,send_data):
                 global_risk_threat_action.append([risk_threat_action_distribution[i][j][ta],asset_index,ta])
             asset_index += 1
     global_risk_threat_action.sort(reverse=True)
-    # print "Risk Threat Action %s" % (global_risk_threat_action)
+    print "Risk Threat Action %s" % (global_risk_threat_action)
     if ProjectConfigFile.WRITE_THREAT_ACTION:
         file_write_threat_action(global_risk_threat_action,asset_enterprise_list)
     risk_length = len(global_risk_threat_action)

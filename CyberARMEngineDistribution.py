@@ -128,11 +128,11 @@ def select_security_controls(security_control_list,threat_action_list,threat_act
         for sec_control in selected_security_controls[asset_index]:
             security_control_list[sec_control].prepare_global_asset_threat_action_list(
                 threat_action_id_list_for_all_assets)
-            security_control_list[sec_control].prepare_cost_effectiveness_for_each_asset(risk_threat_action,threat_action_id_to_name)
+            security_control_list[sec_control].prepare_cost_effectiveness_for_each_asset(risk_threat_action,threat_action_id_to_name,ProjectConfigFile.COST_EFFECTIVE_SELECTION)
             asset_specific_security_control_cost_effectiveness[sec_control] = security_control_list[sec_control].global_asset_effectiveness[asset_index]
         security_control_cost_effectiveness.append(asset_specific_security_control_cost_effectiveness)
     # Utitilities.printSelectedSecurityControls(security_control_list,selected_security_controls,security_control_cost_effectiveness)
-    if ProjectConfigFile.COST_EFFECTIVE_SELECTION:
+    if ProjectConfigFile.EFFECTIVE_SELECTION:
         Utitilities.prune_security_controls_list(classified_selected_security_controls_threat_action,security_control_list,selected_security_controls,
                                                  security_control_cost_effectiveness,max_sec_control_threat_action_index)
     else:
